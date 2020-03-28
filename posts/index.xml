@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on K.MIURA@OUC</title>
+    <link>https://murkouc.github.io/posts/</link>
+    <description>Recent content in Posts on K.MIURA@OUC</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-jp</language>
+    <lastBuildDate>Sat, 28 Mar 2020 22:36:00 +0900</lastBuildDate>
+    
+	<atom:link href="https://murkouc.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>2020年度の担当講義</title>
+      <link>https://murkouc.github.io/2020/03/2020%E5%B9%B4%E5%BA%A6%E3%81%AE%E6%8B%85%E5%BD%93%E8%AC%9B%E7%BE%A9/</link>
+      <pubDate>Sat, 28 Mar 2020 22:36:00 +0900</pubDate>
+      
+      <guid>https://murkouc.github.io/2020/03/2020%E5%B9%B4%E5%BA%A6%E3%81%AE%E6%8B%85%E5%BD%93%E8%AC%9B%E7%BE%A9/</guid>
+      <description>前期
+後期</description>
+    </item>
+    
+  </channel>
+</rss>
