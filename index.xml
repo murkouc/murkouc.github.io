@@ -6,10 +6,19 @@
     <description>Recent content on K.MIURA@OUC</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Sun, 29 Mar 2020 22:39:49 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 29 Mar 2020 22:50:34 +0900</lastBuildDate>
     
 	<atom:link href="https://murkouc.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>お知らせ</title>
+      <link>https://murkouc.github.io/2020/03/%E3%81%8A%E7%9F%A5%E3%82%89%E3%81%9B/</link>
+      <pubDate>Sun, 29 Mar 2020 22:50:34 +0900</pubDate>
+      
+      <guid>https://murkouc.github.io/2020/03/%E3%81%8A%E7%9F%A5%E3%82%89%E3%81%9B/</guid>
+      <description>2020年3月29日  本サイトは、Googleサイトで運用していたMIURA@OUCを引き継いでいます。 今後は、本サイトから講義資料(主にPDF)を発信します。 これに伴いGoogleサイト上のMIURA@OUCを閉鎖します。  </description>
+    </item>
     
     <item>
       <title>ゼミナール</title>
@@ -28,15 +37,6 @@
       
       <guid>https://murkouc.github.io/2020/03/%E6%83%85%E5%A0%B1%E5%87%A6%E7%90%86%E5%A4%9C%E9%96%93/</guid>
       <description>[教室]  第1演習室  [時間]  毎週月曜日 7講目(19:25&amp;ndash;20:55)  [講義内容と資料]  本授業の概要 =必要な基礎知識と最終目標を知る= (PDF, MB)  [小テストの問題と答え]  必要に応じて準備します。  </description>
-    </item>
-    
-    <item>
-      <title>お知らせ</title>
-      <link>https://murkouc.github.io/2020/03/%E3%81%8A%E7%9F%A5%E3%82%89%E3%81%9B/</link>
-      <pubDate>Sun, 29 Mar 2020 12:47:34 +0900</pubDate>
-      
-      <guid>https://murkouc.github.io/2020/03/%E3%81%8A%E7%9F%A5%E3%82%89%E3%81%9B/</guid>
-      <description>Link Link Link</description>
     </item>
     
     <item>
