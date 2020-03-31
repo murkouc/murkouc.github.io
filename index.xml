@@ -6,10 +6,19 @@
     <description>Recent content on K.MIURA@OUC</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Tue, 31 Mar 2020 12:09:48 +0900</lastBuildDate>
+    <lastBuildDate>Tue, 31 Mar 2020 12:40:37 +0900</lastBuildDate>
     
 	<atom:link href="https://murkouc.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>WordCloudを作る</title>
+      <link>https://murkouc.github.io/2020/03/wordcloud%E3%82%92%E4%BD%9C%E3%82%8B/</link>
+      <pubDate>Tue, 31 Mar 2020 12:40:37 +0900</pubDate>
+      
+      <guid>https://murkouc.github.io/2020/03/wordcloud%E3%82%92%E4%BD%9C%E3%82%8B/</guid>
+      <description>[基本環境]  Debian 10.3.0 (amd64) Docker 19.03.8  [注意]  Docker環境の構築や他のサイトを読んで、Docker環境を構築していること  [Dockerコンテナの展開]  mkdir /home/ユーザ名/workspace  ホストのディレクトリをコンテナでマウントするための準備 ユーザ名は各々の環境に合わせて置き換える   docker run -itd &amp;ndash;privileged -v /home/ユーザ名/workspace:/mnt &amp;ndash;name wordcloud debian:stable docker exec -it wordcloud /bin/bash  [コンテナ(wordcloud)内での手続き]  apt update apt install python-pip python3-pip pip3 install wordcloud apt install vim cd /mnt vi sample.</description>
+    </item>
     
     <item>
       <title>Docker環境の構築</title>
@@ -17,7 +26,7 @@
       <pubDate>Tue, 31 Mar 2020 12:09:48 +0900</pubDate>
       
       <guid>https://murkouc.github.io/2020/03/docker%E7%92%B0%E5%A2%83%E3%81%AE%E6%A7%8B%E7%AF%89/</guid>
-      <description>[基本環境]  Debian 10.3.0 (amd64) Docker 19.03.8 (安定版)  [Dockerのインストール]  sudo apt update sudo apt install apt-transport-https sudo apt install ca-certificates sudo apt install curl sudo apt install gnupg2 sudo apt istall software-properties-common curl -fsSL https://download.</description>
+      <description>[基本環境]  Debian 10.3.0 (amd64)  [Dockerのインストール]  sudo apt update sudo apt install apt-transport-https sudo apt install ca-certificates sudo apt install curl sudo apt install gnupg2 sudo apt istall software-properties-common curl -fsSL https://download.</description>
     </item>
     
     <item>

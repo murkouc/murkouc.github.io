@@ -5,15 +5,16 @@
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<meta property="og:title" content="Tags" />
-<meta property="og:description" content="The special secret of making dreams come true can be summarized in four C&#39;s. They are Curiosity, Confidence, Courage, and Constancy." />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://murkouc.github.io/tags/" />
-<meta property="og:updated_time" content="2020-03-31T12:40:37+09:00" />
+<meta property="og:title" content="WordCloudを作る" />
+<meta property="og:description" content="[基本環境]  Debian 10.3.0 (amd64) Docker 19.03.8  [注意]  Docker環境の構築や他のサイトを読んで、Docker環境を構築していること  [Dockerコンテナの展開]  mkdir /home/ユーザ名/workspace  ホストのディレクトリをコンテナでマウントするための準備 ユーザ名は各々の環境に合わせて置き換える   docker run -itd &ndash;privileged -v /home/ユーザ名/workspace:/mnt &ndash;name wordcloud debian:stable docker exec -it wordcloud /bin/bash  [コンテナ(wordcloud)内での手続き]  apt update apt install python-pip python3-pip pip3 install wordcloud apt install vim cd /mnt vi sample." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://murkouc.github.io/2020/03/wordcloud%E3%82%92%E4%BD%9C%E3%82%8B/" />
+<meta property="article:published_time" content="2020-03-31T12:40:37+09:00" />
+<meta property="article:modified_time" content="2020-03-31T12:40:37+09:00" />
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Tags"/>
-<meta name="twitter:description" content="The special secret of making dreams come true can be summarized in four C&#39;s. They are Curiosity, Confidence, Courage, and Constancy."/>
+<meta name="twitter:title" content="WordCloudを作る"/>
+<meta name="twitter:description" content="[基本環境]  Debian 10.3.0 (amd64) Docker 19.03.8  [注意]  Docker環境の構築や他のサイトを読んで、Docker環境を構築していること  [Dockerコンテナの展開]  mkdir /home/ユーザ名/workspace  ホストのディレクトリをコンテナでマウントするための準備 ユーザ名は各々の環境に合わせて置き換える   docker run -itd &ndash;privileged -v /home/ユーザ名/workspace:/mnt &ndash;name wordcloud debian:stable docker exec -it wordcloud /bin/bash  [コンテナ(wordcloud)内での手続き]  apt update apt install python-pip python3-pip pip3 install wordcloud apt install vim cd /mnt vi sample."/>
 <meta name="generator" content="Hugo 0.68.3" />
 
 
@@ -21,23 +22,25 @@
 <script type="application/ld+json">
 {
   "@context": "http://schema.org",
-  "@type": "Blog",
-  "headline": "K.MIURA@OUC",
-  "url" : "https://murkouc.github.io/tags/",
+  "@type": "BlogPosting",
+  "headline": "WordCloudを作る",
+  "url": "https://murkouc.github.io/2020/03/wordcloud%E3%82%92%E4%BD%9C%E3%82%8B/",
+  "wordCount": "47",
+  "datePublished": "2020-03-31T12:40:37+09:00",
+  "dateModified": "2020-03-31T12:40:37+09:00",
   "author": {
     "@type": "Person",
     "name": "Katsunori MIURA"
   },
-  "dateModified": "2020-03-31T12:40:37+09:00",
-  "keywords": "小樽商大,""その他,""技術,""研究,""講義,",
-  "description":"The special secret of making dreams come true can be summarized in four C's. They are Curiosity, Confidence, Courage, and Constancy."
+  "keywords": "小樽商大, 技術"
 }
 </script>
 
 
-    <link rel="canonical" href="https://murkouc.github.io/tags/">
 
-    <title>K.MIURA@OUC</title>
+    <link rel="canonical" href="https://murkouc.github.io/2020/03/wordcloud%E3%82%92%E4%BD%9C%E3%82%8B/">
+
+    <title>WordCloudを作る | K.MIURA@OUC</title>
 
     
     <!-- combined, minified CSS -->
@@ -50,7 +53,6 @@
     <script defer src="https://murkouc.github.io/js/fontawesome.min.f3d2a1f5980bab30ddd0d8cadbd496475309fc48e2b1d052c5c09e6facffcb0f.js" integrity="sha256-89Kh9ZgLqzDd0NjK29SWR1MJ/EjisdBSxcCeb6z/yw8=" crossorigin="anonymous"></script>
 
     <!-- RSS 2.0 feed -->
-    <link rel="alternate" type="application/rss+xml" href="https://murkouc.github.io/tags/index.xml" title="K.MIURA@OUC" />
     
 
     
@@ -99,11 +101,6 @@
           
 
 
-
-
-
-
-
 <article class="blog-post">
   <header>
     <h2 class="blog-post-title" dir="auto"><a href="https://murkouc.github.io/2020/03/wordcloud%E3%82%92%E4%BD%9C%E3%82%8B/">WordCloudを作る</a></h2>
@@ -115,64 +112,65 @@
 
 </p>
   </header>
-  [基本環境]  Debian 10.3.0 (amd64) Docker 19.03.8  [注意]  Docker環境の構築や他のサイトを読んで、Docker環境を構築していること  [Dockerコンテナの展開]  mkdir /home/ユーザ名/workspace  ホストのディレクトリをコンテナでマウントするための準備 ユーザ名は各々の環境に合わせて置き換える   docker run -itd &ndash;privileged -v /home/ユーザ名/workspace:/mnt &ndash;name wordcloud debian:stable docker exec -it wordcloud /bin/bash  [コンテナ(wordcloud)内での手続き]  apt update apt install python-pip python3-pip pip3 install wordcloud apt install vim cd /mnt vi sample.
-  <a href='https://murkouc.github.io/2020/03/wordcloud%E3%82%92%E4%BD%9C%E3%82%8B/'>Read more →</a>
+  <h6 id="基本環境">[基本環境]</h6>
+<ul>
+<li>Debian 10.3.0 (amd64)</li>
+<li>Docker 19.03.8</li>
+</ul>
+<h6 id="注意">[注意]</h6>
+<ul>
+<li><a href="/2020/03/docker%E7%92%B0%E5%A2%83%E3%81%AE%E6%A7%8B%E7%AF%89/">Docker環境の構築</a>や他のサイトを読んで、Docker環境を構築していること</li>
+</ul>
+<h6 id="dockerコンテナの展開">[Dockerコンテナの展開]</h6>
+<ol>
+<li>mkdir /home/ユーザ名/workspace
+<ul>
+<li>ホストのディレクトリをコンテナでマウントするための準備</li>
+<li>ユーザ名は各々の環境に合わせて置き換える</li>
+</ul>
+</li>
+<li>docker run -itd &ndash;privileged -v /home/ユーザ名/workspace:/mnt &ndash;name wordcloud debian:stable</li>
+<li>docker exec -it wordcloud /bin/bash</li>
+</ol>
+<h6 id="コンテナwordcloud内での手続き">[コンテナ(wordcloud)内での手続き]</h6>
+<ol>
+<li>apt update</li>
+<li>apt install python-pip python3-pip</li>
+<li>pip3 install wordcloud</li>
+<li>apt install vim</li>
+<li>cd /mnt</li>
+<li>vi <a href="/sources/sample.py">sample.py</a></li>
+<li>python3 sample.py
+<ul>
+<li>sample.pngが生成されている</li>
+</ul>
+</li>
+</ol>
+
+
+  
+
+  
+  <hr>
+  <footer>
+
+  
+    <section>
+    <h4>Share</h4>
+    <nav class="nav sharing-icons">
+      <a class="nav-item" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fmurkouc.github.io%2f2020%2f03%2fwordcloud%25E3%2582%2592%25E4%25BD%259C%25E3%2582%258B%2f" title="Share on Facebook"><span class="fab fa-facebook-f fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fmurkouc.github.io%2f2020%2f03%2fwordcloud%25E3%2582%2592%25E4%25BD%259C%25E3%2582%258B%2f" title="Share on LinkedIn"><span class="fab fa-linkedin-in fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://twitter.com/intent/tweet?url=https%3a%2f%2fmurkouc.github.io%2f2020%2f03%2fwordcloud%25E3%2582%2592%25E4%25BD%259C%25E3%2582%258B%2f&amp;text=WordCloud%e3%82%92%e4%bd%9c%e3%82%8b" title="Tweet this"><span class="fab fa-twitter fa-2x"></span></a>
+    </nav>
+  </section>
+
+  
+
+  
+  </footer>
+  
+
 </article> 
-
-
-
-
-
-
-<article class="blog-post">
-  <header>
-    <h2 class="blog-post-title" dir="auto"><a href="https://murkouc.github.io/2020/03/docker%E7%92%B0%E5%A2%83%E3%81%AE%E6%A7%8B%E7%AF%89/">Docker環境の構築</a></h2>
-    <p class="blog-post-meta"><time datetime="2020-03-31T12:09:48+09:00">Tue Mar 31, 2020</time> by Katsunori MIURA in 
-<span class="fas fa-folder" aria-hidden="true"></span>&nbsp;<a href="/categories/%E5%B0%8F%E6%A8%BD%E5%95%86%E5%A4%A7/" rel="category tag">小樽商大</a>
-
-
-<span class="fas fa-tag" aria-hidden="true"></span>&nbsp;<a href="/tags/%E6%8A%80%E8%A1%93/" rel="tag">技術</a>
-
-</p>
-  </header>
-  [基本環境]  Debian 10.3.0 (amd64)  [Dockerのインストール]  sudo apt update sudo apt install apt-transport-https sudo apt install ca-certificates sudo apt install curl sudo apt install gnupg2 sudo apt istall software-properties-common curl -fsSL https://download.
-  <a href='https://murkouc.github.io/2020/03/docker%E7%92%B0%E5%A2%83%E3%81%AE%E6%A7%8B%E7%AF%89/'>Read more →</a>
-</article> 
-
-
-
-
-
-
-<article class="blog-post">
-  <header>
-    <h2 class="blog-post-title" dir="auto"><a href="https://murkouc.github.io/2020/03/%E3%81%8A%E7%9F%A5%E3%82%89%E3%81%9B/">お知らせ</a></h2>
-    <p class="blog-post-meta"><time datetime="2020-03-30T21:00:34+09:00">Mon Mar 30, 2020</time> by Katsunori MIURA in 
-<span class="fas fa-folder" aria-hidden="true"></span>&nbsp;<a href="/categories/%E5%B0%8F%E6%A8%BD%E5%95%86%E5%A4%A7/" rel="category tag">小樽商大</a>
-
-
-<span class="fas fa-tag" aria-hidden="true"></span>&nbsp;<a href="/tags/%E3%81%9D%E3%81%AE%E4%BB%96/" rel="tag">その他</a>
-
-</p>
-  </header>
-  2020年3月30日(月曜日)  三浦担当の前期講義の開始日(第1回目)に関して、  情報システム管理論は 5月11日(月曜日) で、 情報処理(夜間)は 5月11日(月曜日) です。   大学からの公式通知は、こちらで確認できます。  2020年3月29日(日曜日)  本サイトは、Googleサイトで運用していた「MIURA@OUC」を引き継いでいます。 今後は、本サイトから講義資料(主にPDF)を発信します。 これに伴いGoogleサイト上の「MIURA@OUC」を閉鎖します。  
-  <a href='https://murkouc.github.io/2020/03/%E3%81%8A%E7%9F%A5%E3%82%89%E3%81%9B/'>Read more →</a>
-</article> 
-
-
-
-
-
-<nav class="blog-pagination">
-  
-  
-  
-  <a class="btn btn-outline-primary disabled" href="#" role="button" aria-disabled="true">Previous page</a>
-  <a class="btn btn-outline-primary" href="/tags/page/2/" rel="next" role="button">Next page</a>
-  
-</nav>
-
-
 
 
 
