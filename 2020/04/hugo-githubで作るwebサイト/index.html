@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<meta property="og:title" content="Hugo &#43; GitHubで作るWEBサイト" />
+<meta property="og:description" content="[基本環境]  Debian 10.3.0 (amd64)  [注意]  HugoとGitHubで作るWEBサイトの大まかな流れを掴むための記事です 記事を書くときのMarkdownについては、別のサイトを参照すること  [Hugoのインストール]  sudo apt update sudo apt install git sudo apt install golang sudo apt install snapd sudo snap install hugo --channel=extended cd /usr/bin sudo ln -s /snap/bin/hugo hugo  [作業用ディレクトリの作成]  cd /home/ユーザ名 mkdir workspace  ディレクトリ名は何でも良い   hugo new site blog  blogという名前でWEBサイトを新規作成する WEBサイト名は何でも良い    [HugoテーマのDL]  cd ~/workspace/blog/theme HugoテーマのDL方法  Hugo Bootstrap v4 BlogをDLするなら (本サイトと同じ)  git clone https://github." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://murkouc.github.io/2020/04/hugo-github%E3%81%A7%E4%BD%9C%E3%82%8Bweb%E3%82%B5%E3%82%A4%E3%83%88/" />
+<meta property="article:published_time" content="2020-04-02T21:43:56+09:00" />
+<meta property="article:modified_time" content="2020-04-02T21:43:56+09:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Hugo &#43; GitHubで作るWEBサイト"/>
+<meta name="twitter:description" content="[基本環境]  Debian 10.3.0 (amd64)  [注意]  HugoとGitHubで作るWEBサイトの大まかな流れを掴むための記事です 記事を書くときのMarkdownについては、別のサイトを参照すること  [Hugoのインストール]  sudo apt update sudo apt install git sudo apt install golang sudo apt install snapd sudo snap install hugo --channel=extended cd /usr/bin sudo ln -s /snap/bin/hugo hugo  [作業用ディレクトリの作成]  cd /home/ユーザ名 mkdir workspace  ディレクトリ名は何でも良い   hugo new site blog  blogという名前でWEBサイトを新規作成する WEBサイト名は何でも良い    [HugoテーマのDL]  cd ~/workspace/blog/theme HugoテーマのDL方法  Hugo Bootstrap v4 BlogをDLするなら (本サイトと同じ)  git clone https://github."/>
+<meta name="generator" content="Hugo 0.68.3" />
+
+
+    
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Hugo + GitHubで作るWEBサイト",
+  "url": "https://murkouc.github.io/2020/04/hugo-github%E3%81%A7%E4%BD%9C%E3%82%8Bweb%E3%82%B5%E3%82%A4%E3%83%88/",
+  "wordCount": "163",
+  "datePublished": "2020-04-02T21:43:56+09:00",
+  "dateModified": "2020-04-02T21:43:56+09:00",
+  "author": {
+    "@type": "Person",
+    "name": "Katsunori MIURA"
+  },
+  "keywords": "小樽商大, 技術"
+}
+</script>
+
+
+
+    <link rel="canonical" href="https://murkouc.github.io/2020/04/hugo-github%E3%81%A7%E4%BD%9C%E3%82%8Bweb%E3%82%B5%E3%82%A4%E3%83%88/">
+
+    <title>Hugo &#43; GitHubで作るWEBサイト | K.MIURA@OUC</title>
+
+    
+    <!-- combined, minified CSS -->
+    
+    <link href="https://murkouc.github.io/css/style.6da5c906cc7a8fbb93f31cd2316c5dbe3f19ac4aa6bfb066f1243045b8f6061e.css" rel="stylesheet" integrity="sha256-baXJBsx6j7uT8xzSMWxdvj8ZrEqmv7Bm8SQwRbj2Bh4=" crossorigin="anonymous">
+    
+
+    <!-- minified Font Awesome for SVG icons -->
+    
+    <script defer src="https://murkouc.github.io/js/fontawesome.min.f3d2a1f5980bab30ddd0d8cadbd496475309fc48e2b1d052c5c09e6facffcb0f.js" integrity="sha256-89Kh9ZgLqzDd0NjK29SWR1MJ/EjisdBSxcCeb6z/yw8=" crossorigin="anonymous"></script>
+
+    <!-- RSS 2.0 feed -->
+    
+
+    
+
+    
+
+  </head>
+
+  <body>
+
+    
+    <div class="blog-masthead">
+      <div class="container">
+        <nav class="nav blog-nav">
+          <a class="nav-link " href="https://murkouc.github.io/">Home</a>
+          
+          <a class="nav-link" href="/2020/04/%E3%81%8A%E7%9F%A5%E3%82%89%E3%81%9B" title="">お知らせ</a>
+          
+          
+          <a class="nav-link" href="/2020/03/%E6%8B%85%E5%BD%93%E8%AC%9B%E7%BE%A9" title="">担当講義</a>
+          
+          
+          <a class="nav-link" href="/2020/03/%E7%A0%94%E7%A9%B6%E6%A5%AD%E7%B8%BE" title="">研究業績</a>
+          
+        </nav>
+      </div>
+    </div>
+    
+
+    
+    
+    <header class="blog-header">
+      <div class="container">
+        <h1 class="blog-title" dir="auto"><a href="https://murkouc.github.io/" rel="home">K.MIURA@OUC</a></h1>
+        <p class="lead blog-description" dir="auto">The special secret of making dreams come true can be summarized in four C&rsquo;s. They are Curiosity, Confidence, Courage, and Constancy.</p>
+      </div>
+    </header>
+    
+    
+
+    
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8 blog-main">
+
+          
+
+
+<article class="blog-post">
+  <header>
+    <h2 class="blog-post-title" dir="auto"><a href="https://murkouc.github.io/2020/04/hugo-github%E3%81%A7%E4%BD%9C%E3%82%8Bweb%E3%82%B5%E3%82%A4%E3%83%88/">Hugo + GitHubで作るWEBサイト</a></h2>
+    <p class="blog-post-meta"><time datetime="2020-04-02T21:43:56+09:00">Thu Apr 02, 2020</time> by Katsunori MIURA in 
+<span class="fas fa-folder" aria-hidden="true"></span>&nbsp;<a href="/categories/%E5%B0%8F%E6%A8%BD%E5%95%86%E5%A4%A7/" rel="category tag">小樽商大</a>
+
+
+<span class="fas fa-tag" aria-hidden="true"></span>&nbsp;<a href="/tags/%E6%8A%80%E8%A1%93/" rel="tag">技術</a>
+
+</p>
+  </header>
+  <h6 id="基本環境">[基本環境]</h6>
+<ul>
+<li>Debian 10.3.0 (amd64)</li>
+</ul>
+<h6 id="注意">[注意]</h6>
+<ul>
+<li>HugoとGitHubで作るWEBサイトの大まかな流れを掴むための記事です</li>
+<li>記事を書くときのMarkdownについては、別のサイトを参照すること</li>
+</ul>
+<h6 id="hugoのインストール">[Hugoのインストール]</h6>
+<ol>
+<li>sudo apt update</li>
+<li>sudo apt install git</li>
+<li>sudo apt install golang</li>
+<li>sudo apt install snapd</li>
+<li>sudo snap install hugo --channel=extended</li>
+<li>cd /usr/bin</li>
+<li>sudo ln -s /snap/bin/hugo hugo</li>
+</ol>
+<h6 id="作業用ディレクトリの作成">[作業用ディレクトリの作成]</h6>
+<ol>
+<li>cd /home/ユーザ名</li>
+<li>mkdir workspace
+<ul>
+<li>ディレクトリ名は何でも良い</li>
+</ul>
+</li>
+<li>hugo new site blog
+<ul>
+<li>blogという名前でWEBサイトを新規作成する</li>
+<li>WEBサイト名は何でも良い</li>
+</ul>
+</li>
+</ol>
+<h6 id="hugoテーマのdl">[HugoテーマのDL]</h6>
+<ol>
+<li>cd ~/workspace/blog/theme</li>
+<li><a href="https://themes.gohugo.io">Hugoテーマ</a>のDL方法
+<ul>
+<li><a href="https://themes.gohugo.io/hugo-theme-bootstrap4-blog">Hugo Bootstrap v4 Blog</a>をDLするなら (本サイトと同じ)
+<ol>
+<li>git clone <a href="https://github.com/alanorth/hugo-theme-bootstrap4-blog.git">https://github.com/alanorth/hugo-theme-bootstrap4-blog.git</a></li>
+</ol>
+</li>
+<li><a href="https://themes.gohugo.io/minimal/">Minimal</a>をDLするなら (別のシンプルなテーマ)
+<ol>
+<li>git init</li>
+<li>git submodule add <a href="https://github.com/calintat/minimal.git">https://github.com/calintat/minimal.git</a> minimal</li>
+<li>git submodule init</li>
+<li>git submodule update</li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+<h6 id="configtomlの編集">[config.tomlの編集]</h6>
+<ol>
+<li>cd ~/workspace/blog</li>
+<li>mv config.toml config.toml.org</li>
+<li>cp themes/テーマ名/exampleSite/config.toml .</li>
+<li>vi config.toml
+<ul>
+<li>テーマ毎に内容が異なるため、テーマのWEBサイトを参照すること</li>
+<li>DLしたテーマを基にオリジナルテーマを作っても良い</li>
+<li>本サイトは、Hugo Bootstrap v4 Blogに少し手を入れている</li>
+</ul>
+</li>
+</ol>
+<h6 id="記事の新規作成">[記事の新規作成]</h6>
+<ol>
+<li>cd ~/workspace/blog</li>
+<li>hugo new posts/sample.md
+<ul>
+<li>postsは記事が保存されるディレクトリであり、ディレクトリ名は何でも良い (存在しないときは自動的に作られる)</li>
+<li>sample.mdは記事ファイルであり、ファイル名は何でも良い</li>
+</ul>
+</li>
+<li>cd content/posts</li>
+<li>vi sample.md
+<ul>
+<li>記事はMarkdownで書く</li>
+<li>「draft: true」は非公開記事で、「draft:false」は公開記事である</li>
+<li>title:は記事タイトルなので、ファイル名から書き換える</li>
+</ul>
+</li>
+</ol>
+<h6 id="githubへアップロードするファイルの作成">[GitHubへアップロードするファイルの作成]</h6>
+<ol>
+<li>cd ~/workspace/blog</li>
+<li>hugo
+<ul>
+<li>publicというディレクトリが生成される</li>
+<li>ここにアップロードするファイルが作られる</li>
+</ul>
+</li>
+</ol>
+<h6 id="githubへのアップロード">[GitHubへのアップロード]</h6>
+<ul>
+<li>GitHub上に「GitHubアカウント名.github.io」というレポジトリを作成する</li>
+</ul>
+<ol>
+<li>cd ~/workspace/blog/public</li>
+<li>git remote add origin <a href="https://github.com/GitHub">https://github.com/GitHub</a>アカウント名/GitHubアカウント名.github.io.git</li>
+<li>git add -A</li>
+<li>git commit -m &ldquo;コメント&rdquo;</li>
+<li>git push origin master</li>
+</ol>
+<h6 id="2件目以降の記事作成からアップロード">[2件目以降の記事作成からアップロード]</h6>
+<ol>
+<li>記事を作り
+<ol>
+<li>cd ~/workspace/blog</li>
+<li>hugo new posts/sample.md</li>
+<li>cd content/posts</li>
+<li>vi sample.md</li>
+</ol>
+</li>
+<li>アップロードするファイルを作り
+<ol>
+<li>cd ~/workspace/blog</li>
+<li>hugo</li>
+</ol>
+</li>
+<li>GitHubへアップロード
+<ol>
+<li>cd public</li>
+<li>git add -A</li>
+<li>git commit -m &ldquo;コメント&rdquo;</li>
+<li>git push origin master</li>
+</ol>
+</li>
+</ol>
+
+
+  
+
+  
+  <hr>
+  <footer>
+
+  
+    <section>
+    <h4>Share</h4>
+    <nav class="nav sharing-icons">
+      <a class="nav-item" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fmurkouc.github.io%2f2020%2f04%2fhugo-github%25E3%2581%25A7%25E4%25BD%259C%25E3%2582%258Bweb%25E3%2582%25B5%25E3%2582%25A4%25E3%2583%2588%2f" title="Share on Facebook"><span class="fab fa-facebook-f fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fmurkouc.github.io%2f2020%2f04%2fhugo-github%25E3%2581%25A7%25E4%25BD%259C%25E3%2582%258Bweb%25E3%2582%25B5%25E3%2582%25A4%25E3%2583%2588%2f" title="Share on LinkedIn"><span class="fab fa-linkedin-in fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://twitter.com/intent/tweet?url=https%3a%2f%2fmurkouc.github.io%2f2020%2f04%2fhugo-github%25E3%2581%25A7%25E4%25BD%259C%25E3%2582%258Bweb%25E3%2582%25B5%25E3%2582%25A4%25E3%2583%2588%2f&amp;text=Hugo%20%2b%20GitHub%e3%81%a7%e4%bd%9c%e3%82%8bWEB%e3%82%b5%e3%82%a4%e3%83%88" title="Tweet this"><span class="fab fa-twitter fa-2x"></span></a>
+    </nav>
+  </section>
+
+  
+
+  
+  </footer>
+  
+
+</article> 
+
+
+
+        </div> <!-- /.blog-main -->
+
+        <aside class="col-sm-3 ml-auto blog-sidebar">
+  
+  <section class="sidebar-module sidebar-module-inset">
+    <h4>About Me</h4>
+三浦 克宜<br>
+博士(情報科学)<br>
+　小樽商科大学 商学部<br>
+　　准教授<br>
+　情報総合センター<br>
+　　副センター長
+  </section>
+  
+
+
+
+  
+  <section class="sidebar-module">
+    <h4>Links</h4>
+    <ol class="list-unstyled">
+      
+      <li><a href="https://researchmap.jp/miurakatsunori">researchmap</a></li>
+      
+      <li><a href="https://www.otaru-uc.ac.jp">小樽商科大学</a></li>
+      
+      <li><a href="https://www.otaru-uc.ac.jp/center/">情報総合センター</a></li>
+      
+    </ol>
+  </section>
+  
+
+  <section class="sidebar-module">
+    <h4>Categories</h4>
+    <ol class="list-unstyled">
+      
+      <li><a href="/categories/%E5%B0%8F%E6%A8%BD%E5%95%86%E5%A4%A7">小樽商大</a>(11)</li>
+      
+    </ol>
+  </section>
+  <section class="sidebar-module">
+    <h4>Tags</h4>
+    <ol class="list-unstyled">
+      
+      <li><a href="/tags/%E3%81%9D%E3%81%AE%E4%BB%96">その他</a>(1)</li>
+      
+      <li><a href="/tags/%E6%8A%80%E8%A1%93">技術</a>(4)</li>
+      
+      <li><a href="/tags/%E7%A0%94%E7%A9%B6">研究</a>(1)</li>
+      
+      <li><a href="/tags/%E8%AC%9B%E7%BE%A9">講義</a>(5)</li>
+      
+    </ol>
+  </section>
+
+</aside>
+
+
+      </div> <!-- /.row -->
+    </div> <!-- /.container -->
+    
+
+    
+    <footer class="blog-footer">
+      <p dir="auto">
+      
+      Blog template created by <a href="https://twitter.com/mdo">@mdo</a>, ported to Hugo by <a href='https://twitter.com/mralanorth'>@mralanorth</a>.
+      
+      </p>
+      <p>
+      <a href="#">Back to top</a>
+      </p>
+    </footer>
+    
+
+  </body>
+
+</html>
