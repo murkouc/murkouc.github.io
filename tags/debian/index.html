@@ -148,14 +148,44 @@
 
 
 
-<nav class="blog-pagination">
-  
-  
-  
-  <a class="btn btn-outline-primary disabled" href="#" role="button" aria-disabled="true">Previous page</a>
-  <a class="btn btn-outline-primary" href="/tags/debian/page/2/" rel="next" role="button">Next page</a>
-  
-</nav>
+
+<article class="blog-post">
+  <header>
+    <h2 class="blog-post-title" dir="auto"><a href="https://murkouc.github.io/2020/03/wordcloud%E3%82%92%E4%BD%9C%E3%82%8B/">WordCloudを作る</a></h2>
+    <p class="blog-post-meta"><time datetime="2020-03-31T12:40:37+09:00">Tue Mar 31, 2020</time> by Katsunori MIURA in 
+<span class="fas fa-folder" aria-hidden="true"></span>&nbsp;<a href="/categories/%E5%B0%8F%E6%A8%BD%E5%95%86%E5%A4%A7/" rel="category tag">小樽商大</a>
+
+
+<span class="fas fa-tag" aria-hidden="true"></span>&nbsp;<a href="/tags/%E6%8A%80%E8%A1%93/" rel="tag">技術</a>, <a href="/tags/python/" rel="tag">python</a>, <a href="/tags/debian/" rel="tag">debian</a>, <a href="/tags/docker/" rel="tag">docker</a>
+
+</p>
+  </header>
+  [基本環境]  Debian 10.3.0 (amd64) Docker 19.03.8  [注意]  Docker環境の構築や他のサイトを読んで、Docker環境を構築していること  [Dockerコンテナの展開]  mkdir /home/ユーザ名/workspace  ホストのディレクトリをコンテナでマウントするための準備 ユーザ名は各々の環境に合わせて置き換える   docker run -itd --privileged -v /home/ユーザ名/workspace:/mnt --name wordcloud debian:stable docker exec -it wordcloud /bin/bash  [コンテナ(wordcloud)内での手続き]  apt update apt install python-pip python3-pip pip3 install wordcloud apt install vim cd /mnt vi sample.
+  <a href='https://murkouc.github.io/2020/03/wordcloud%E3%82%92%E4%BD%9C%E3%82%8B/'>Read more →</a>
+</article> 
+
+
+
+
+
+
+<article class="blog-post">
+  <header>
+    <h2 class="blog-post-title" dir="auto"><a href="https://murkouc.github.io/2020/03/docker%E7%92%B0%E5%A2%83%E3%81%AE%E6%A7%8B%E7%AF%89/">Docker環境の構築</a></h2>
+    <p class="blog-post-meta"><time datetime="2020-03-31T12:09:48+09:00">Tue Mar 31, 2020</time> by Katsunori MIURA in 
+<span class="fas fa-folder" aria-hidden="true"></span>&nbsp;<a href="/categories/%E5%B0%8F%E6%A8%BD%E5%95%86%E5%A4%A7/" rel="category tag">小樽商大</a>
+
+
+<span class="fas fa-tag" aria-hidden="true"></span>&nbsp;<a href="/tags/%E6%8A%80%E8%A1%93/" rel="tag">技術</a>, <a href="/tags/docker/" rel="tag">docker</a>, <a href="/tags/debian/" rel="tag">debian</a>
+
+</p>
+  </header>
+  [基本環境]  Debian 10.3.0 (amd64)  [Dockerのインストール]  sudo apt update sudo apt install apt-transport-https sudo apt install ca-certificates sudo apt install curl sudo apt install gnupg2 sudo apt istall software-properties-common curl -fsSL https://download.
+  <a href='https://murkouc.github.io/2020/03/docker%E7%92%B0%E5%A2%83%E3%81%AE%E6%A7%8B%E7%AF%89/'>Read more →</a>
+</article> 
+
+
+
 
 
 
