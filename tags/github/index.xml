@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>github on K.MIURA@OUC</title>
+    <link>https://murkouc.github.io/tags/github/</link>
+    <description>Recent content in github on K.MIURA@OUC</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-jp</language>
+    <lastBuildDate>Thu, 02 Apr 2020 21:43:56 +0900</lastBuildDate>
+    
+	<atom:link href="https://murkouc.github.io/tags/github/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Hugo&#43;GitHubで作るWEBサイト</title>
+      <link>https://murkouc.github.io/2020/04/hugo-github%E3%81%A7%E4%BD%9C%E3%82%8Bweb%E3%82%B5%E3%82%A4%E3%83%88/</link>
+      <pubDate>Thu, 02 Apr 2020 21:43:56 +0900</pubDate>
+      
+      <guid>https://murkouc.github.io/2020/04/hugo-github%E3%81%A7%E4%BD%9C%E3%82%8Bweb%E3%82%B5%E3%82%A4%E3%83%88/</guid>
+      <description>[基本環境]  Debian 10.3.0 (amd64)  [注意]  HugoとGitHubで作るWEBサイトの大まかな流れを掴むためのまとめです 記事を書くときのMarkdownについては、別のサイトを参照すること  [Hugoのインストール]  sudo apt update sudo apt install git sudo apt install golang sudo apt install snapd sudo snap install hugo --channel=extended cd /usr/bin sudo ln -s /snap/bin/hugo hugo  [作業用ディレクトリの作成]  cd /home/ユーザ名 mkdir workspace  ディレクトリ名は何でも良い   hugo new site blog  blogという名前でWEBサイトを新規作成する WEBサイト名は何でも良い    [HugoテーマのDL]  cd ~/workspace/blog/theme HugoテーマのDL方法  Hugo Bootstrap v4 BlogをDLするなら (本サイトと同じ)  git clone https://github.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<meta property="og:title" content="python" />
+<meta property="og:description" content="The special secret of making dreams come true can be summarized in four C&#39;s. They are Curiosity, Confidence, Courage, and Constancy." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://murkouc.github.io/tags/python/" />
+<meta property="og:updated_time" content="2020-03-31T12:40:37+09:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="python"/>
+<meta name="twitter:description" content="The special secret of making dreams come true can be summarized in four C&#39;s. They are Curiosity, Confidence, Courage, and Constancy."/>
+<meta name="generator" content="Hugo 0.68.3" />
+
+
+    
+      
+    
+
+    <link rel="canonical" href="https://murkouc.github.io/tags/python/">
+
+    <title>K.MIURA@OUC</title>
+
+    
+    <!-- combined, minified CSS -->
+    
+    <link href="https://murkouc.github.io/css/style.6da5c906cc7a8fbb93f31cd2316c5dbe3f19ac4aa6bfb066f1243045b8f6061e.css" rel="stylesheet" integrity="sha256-baXJBsx6j7uT8xzSMWxdvj8ZrEqmv7Bm8SQwRbj2Bh4=" crossorigin="anonymous">
+    
+
+    <!-- minified Font Awesome for SVG icons -->
+    
+    <script defer src="https://murkouc.github.io/js/fontawesome.min.f3d2a1f5980bab30ddd0d8cadbd496475309fc48e2b1d052c5c09e6facffcb0f.js" integrity="sha256-89Kh9ZgLqzDd0NjK29SWR1MJ/EjisdBSxcCeb6z/yw8=" crossorigin="anonymous"></script>
+
+    <!-- RSS 2.0 feed -->
+    <link rel="alternate" type="application/rss+xml" href="https://murkouc.github.io/tags/python/index.xml" title="K.MIURA@OUC" />
+    
+
+    
+
+    
+
+  </head>
+
+  <body>
+
+    
+    <div class="blog-masthead">
+      <div class="container">
+        <nav class="nav blog-nav">
+          <a class="nav-link " href="https://murkouc.github.io/">Home</a>
+          
+          <a class="nav-link" href="/2020/04/%E3%81%8A%E7%9F%A5%E3%82%89%E3%81%9B" title="">お知らせ</a>
+          
+          
+          <a class="nav-link" href="/2020/03/%E6%8B%85%E5%BD%93%E8%AC%9B%E7%BE%A9" title="">担当講義</a>
+          
+          
+          <a class="nav-link" href="/2020/03/%E7%A0%94%E7%A9%B6%E6%A5%AD%E7%B8%BE" title="">研究業績</a>
+          
+        </nav>
+      </div>
+    </div>
+    
+
+    
+    
+    <header class="blog-header">
+      <div class="container">
+        <h1 class="blog-title" dir="auto"><a href="https://murkouc.github.io/" rel="home">K.MIURA@OUC</a></h1>
+        <p class="lead blog-description" dir="auto">The special secret of making dreams come true can be summarized in four C&rsquo;s. They are Curiosity, Confidence, Courage, and Constancy.</p>
+      </div>
+    </header>
+    
+    
+
+    
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8 blog-main">
+
+          
+
+
+
+
+
+
+<article class="blog-post">
+  <header>
+    <h2 class="blog-post-title" dir="auto"><a href="https://murkouc.github.io/2020/03/wordcloud%E3%82%92%E4%BD%9C%E3%82%8B/">WordCloudを作る</a></h2>
+    <p class="blog-post-meta"><time datetime="2020-03-31T12:40:37+09:00">Tue Mar 31, 2020</time> by Katsunori MIURA in 
+<span class="fas fa-folder" aria-hidden="true"></span>&nbsp;<a href="/categories/%E5%B0%8F%E6%A8%BD%E5%95%86%E5%A4%A7/" rel="category tag">小樽商大</a>
+
+
+<span class="fas fa-tag" aria-hidden="true"></span>&nbsp;<a href="/tags/%E6%8A%80%E8%A1%93/" rel="tag">技術</a>, <a href="/tags/python/" rel="tag">python</a>, <a href="/tags/debian/" rel="tag">debian</a>, <a href="/tags/docker/" rel="tag">docker</a>
+
+</p>
+  </header>
+  [基本環境]  Debian 10.3.0 (amd64) Docker 19.03.8  [注意]  Docker環境の構築や他のサイトを読んで、Docker環境を構築していること  [Dockerコンテナの展開]  mkdir /home/ユーザ名/workspace  ホストのディレクトリをコンテナでマウントするための準備 ユーザ名は各々の環境に合わせて置き換える   docker run -itd --privileged -v /home/ユーザ名/workspace:/mnt --name wordcloud debian:stable docker exec -it wordcloud /bin/bash  [コンテナ(wordcloud)内での手続き]  apt update apt install python-pip python3-pip pip3 install wordcloud apt install vim cd /mnt vi sample.
+  <a href='https://murkouc.github.io/2020/03/wordcloud%E3%82%92%E4%BD%9C%E3%82%8B/'>Read more →</a>
+</article> 
+
+
+
+
+
+
+
+
+        </div> <!-- /.blog-main -->
+
+        <aside class="col-sm-3 ml-auto blog-sidebar">
+  
+  <section class="sidebar-module sidebar-module-inset">
+    <h4>About Me</h4>
+三浦 克宜<br>
+博士(情報科学)<br>
+　小樽商科大学 商学部<br>
+　　准教授<br>
+　情報総合センター<br>
+　　副センター長
+  </section>
+  
+
+
+
+  
+  <section class="sidebar-module">
+    <h4>Links</h4>
+    <ol class="list-unstyled">
+      
+      <li><a href="https://researchmap.jp/miurakatsunori">researchmap</a></li>
+      
+      <li><a href="https://www.otaru-uc.ac.jp">小樽商科大学</a></li>
+      
+      <li><a href="https://www.otaru-uc.ac.jp/center/">情報総合センター</a></li>
+      
+    </ol>
+  </section>
+  
+
+  <section class="sidebar-module">
+    <h4>Categories</h4>
+    <ol class="list-unstyled">
+      
+      <li><a href="/categories/%E5%B0%8F%E6%A8%BD%E5%95%86%E5%A4%A7">小樽商大</a>(12)</li>
+      
+    </ol>
+  </section>
+  <section class="sidebar-module">
+    <h4>Tags</h4>
+    <ol class="list-unstyled">
+      
+      <li><a href="/tags/debian">debian</a>(5)</li>
+      
+      <li><a href="/tags/docker">docker</a>(2)</li>
+      
+      <li><a href="/tags/github">github</a>(1)</li>
+      
+      <li><a href="/tags/hugo">hugo</a>(1)</li>
+      
+      <li><a href="/tags/nginx">nginx</a>(1)</li>
+      
+      <li><a href="/tags/python">python</a>(1)</li>
+      
+      <li><a href="/tags/%E3%81%9D%E3%81%AE%E4%BB%96">その他</a>(1)</li>
+      
+      <li><a href="/tags/%E5%AD%A6%E9%83%A8">学部</a>(3)</li>
+      
+      <li><a href="/tags/%E6%8A%80%E8%A1%93">技術</a>(5)</li>
+      
+      <li><a href="/tags/%E7%A0%94%E7%A9%B6">研究</a>(1)</li>
+      
+      <li><a href="/tags/%E8%AC%9B%E7%BE%A9">講義</a>(5)</li>
+      
+    </ol>
+  </section>
+
+</aside>
+
+
+      </div> <!-- /.row -->
+    </div> <!-- /.container -->
+    
+
+    
+    <footer class="blog-footer">
+      <p dir="auto">
+      
+      Blog template created by <a href="https://twitter.com/mdo">@mdo</a>, ported to Hugo by <a href='https://twitter.com/mralanorth'>@mralanorth</a>.
+      
+      </p>
+      <p>
+      <a href="#">Back to top</a>
+      </p>
+    </footer>
+    
+
+  </body>
+
+</html>

@@ -6,10 +6,19 @@
     <description>Recent content in 技術 on K.MIURA@OUC</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Thu, 02 Apr 2020 21:43:56 +0900</lastBuildDate>
+    <lastBuildDate>Fri, 03 Apr 2020 23:42:42 +0900</lastBuildDate>
     
 	<atom:link href="https://murkouc.github.io/tags/%E6%8A%80%E8%A1%93/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>ストリーミングサーバを立てる</title>
+      <link>https://murkouc.github.io/2020/04/%E3%82%B9%E3%83%88%E3%83%AA%E3%83%BC%E3%83%9F%E3%83%B3%E3%82%B0%E3%82%B5%E3%83%BC%E3%83%90%E3%82%92%E7%AB%8B%E3%81%A6%E3%82%8B/</link>
+      <pubDate>Fri, 03 Apr 2020 23:42:42 +0900</pubDate>
+      
+      <guid>https://murkouc.github.io/2020/04/%E3%82%B9%E3%83%88%E3%83%AA%E3%83%BC%E3%83%9F%E3%83%B3%E3%82%B0%E3%82%B5%E3%83%BC%E3%83%90%E3%82%92%E7%AB%8B%E3%81%A6%E3%82%8B/</guid>
+      <description>[基本環境]  Debian 10.3.0 (amd64)  [参考サイト]  ストリーミングサーバーを10分で作る  [nginxとrtmpのインストール]  sudo apt update sudo apt upgrade sudo add-apt-repository ppa:nginx/stable  レポジトリ追加の際の確認事項に対しては、[Enter]を押す   sudo apt install nginx libnginx-mod-rtmp  [rtmpの有効化]  cd /etc/nginx sudo vi nginx.</description>
+    </item>
     
     <item>
       <title>Hugo&#43;GitHubで作るWEBサイト</title>

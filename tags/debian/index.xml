@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>debian on K.MIURA@OUC</title>
+    <link>https://murkouc.github.io/tags/debian/</link>
+    <description>Recent content in debian on K.MIURA@OUC</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-jp</language>
+    <lastBuildDate>Fri, 03 Apr 2020 23:42:42 +0900</lastBuildDate>
+    
+	<atom:link href="https://murkouc.github.io/tags/debian/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>ストリーミングサーバを立てる</title>
+      <link>https://murkouc.github.io/2020/04/%E3%82%B9%E3%83%88%E3%83%AA%E3%83%BC%E3%83%9F%E3%83%B3%E3%82%B0%E3%82%B5%E3%83%BC%E3%83%90%E3%82%92%E7%AB%8B%E3%81%A6%E3%82%8B/</link>
+      <pubDate>Fri, 03 Apr 2020 23:42:42 +0900</pubDate>
+      
+      <guid>https://murkouc.github.io/2020/04/%E3%82%B9%E3%83%88%E3%83%AA%E3%83%BC%E3%83%9F%E3%83%B3%E3%82%B0%E3%82%B5%E3%83%BC%E3%83%90%E3%82%92%E7%AB%8B%E3%81%A6%E3%82%8B/</guid>
+      <description>[基本環境]  Debian 10.3.0 (amd64)  [参考サイト]  ストリーミングサーバーを10分で作る  [nginxとrtmpのインストール]  sudo apt update sudo apt upgrade sudo add-apt-repository ppa:nginx/stable  レポジトリ追加の際の確認事項に対しては、[Enter]を押す   sudo apt install nginx libnginx-mod-rtmp  [rtmpの有効化]  cd /etc/nginx sudo vi nginx.</description>
+    </item>
+    
+    <item>
+      <title>Hugo&#43;GitHubで作るWEBサイト</title>
+      <link>https://murkouc.github.io/2020/04/hugo-github%E3%81%A7%E4%BD%9C%E3%82%8Bweb%E3%82%B5%E3%82%A4%E3%83%88/</link>
+      <pubDate>Thu, 02 Apr 2020 21:43:56 +0900</pubDate>
+      
+      <guid>https://murkouc.github.io/2020/04/hugo-github%E3%81%A7%E4%BD%9C%E3%82%8Bweb%E3%82%B5%E3%82%A4%E3%83%88/</guid>
+      <description>[基本環境]  Debian 10.3.0 (amd64)  [注意]  HugoとGitHubで作るWEBサイトの大まかな流れを掴むためのまとめです 記事を書くときのMarkdownについては、別のサイトを参照すること  [Hugoのインストール]  sudo apt update sudo apt install git sudo apt install golang sudo apt install snapd sudo snap install hugo --channel=extended cd /usr/bin sudo ln -s /snap/bin/hugo hugo  [作業用ディレクトリの作成]  cd /home/ユーザ名 mkdir workspace  ディレクトリ名は何でも良い   hugo new site blog  blogという名前でWEBサイトを新規作成する WEBサイト名は何でも良い    [HugoテーマのDL]  cd ~/workspace/blog/theme HugoテーマのDL方法  Hugo Bootstrap v4 BlogをDLするなら (本サイトと同じ)  git clone https://github.</description>
+    </item>
+    
+    <item>
+      <title>Debianの初期設定</title>
+      <link>https://murkouc.github.io/2020/04/debian%E3%81%AE%E5%88%9D%E6%9C%9F%E8%A8%AD%E5%AE%9A/</link>
+      <pubDate>Thu, 02 Apr 2020 17:07:19 +0900</pubDate>
+      
+      <guid>https://murkouc.github.io/2020/04/debian%E3%81%AE%E5%88%9D%E6%9C%9F%E8%A8%AD%E5%AE%9A/</guid>
+      <description>[基本環境]  VirtualBox 6.0.18 (Mac版) Debian 10.3.0 (amd64)  [PATHへの/usr/sbin/の追加]  cd /home/ユーザ名  ホームディレクトリに移動する   touch .</description>
+    </item>
+    
+    <item>
+      <title>WordCloudを作る</title>
+      <link>https://murkouc.github.io/2020/03/wordcloud%E3%82%92%E4%BD%9C%E3%82%8B/</link>
+      <pubDate>Tue, 31 Mar 2020 12:40:37 +0900</pubDate>
+      
+      <guid>https://murkouc.github.io/2020/03/wordcloud%E3%82%92%E4%BD%9C%E3%82%8B/</guid>
+      <description>[基本環境]  Debian 10.3.0 (amd64) Docker 19.03.8  [注意]  Docker環境の構築や他のサイトを読んで、Docker環境を構築していること  [Dockerコンテナの展開]  mkdir /home/ユーザ名/workspace  ホストのディレクトリをコンテナでマウントするための準備 ユーザ名は各々の環境に合わせて置き換える   docker run -itd --privileged -v /home/ユーザ名/workspace:/mnt --name wordcloud debian:stable docker exec -it wordcloud /bin/bash  [コンテナ(wordcloud)内での手続き]  apt update apt install python-pip python3-pip pip3 install wordcloud apt install vim cd /mnt vi sample.</description>
+    </item>
+    
+    <item>
+      <title>Docker環境の構築</title>
+      <link>https://murkouc.github.io/2020/03/docker%E7%92%B0%E5%A2%83%E3%81%AE%E6%A7%8B%E7%AF%89/</link>
+      <pubDate>Tue, 31 Mar 2020 12:09:48 +0900</pubDate>
+      
+      <guid>https://murkouc.github.io/2020/03/docker%E7%92%B0%E5%A2%83%E3%81%AE%E6%A7%8B%E7%AF%89/</guid>
+      <description>[基本環境]  Debian 10.3.0 (amd64)  [Dockerのインストール]  sudo apt update sudo apt install apt-transport-https sudo apt install ca-certificates sudo apt install curl sudo apt install gnupg2 sudo apt istall software-properties-common curl -fsSL https://download.</description>
+    </item>
+    
+  </channel>
+</rss>
