@@ -6,10 +6,37 @@
     <description>Recent content in Tags on K.MIURA@OUC</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Fri, 03 Apr 2020 23:42:42 +0900</lastBuildDate>
+    <lastBuildDate>Mon, 06 Apr 2020 23:50:37 +0900</lastBuildDate>
     
 	<atom:link href="https://murkouc.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>OracleCloud</title>
+      <link>https://murkouc.github.io/tags/oraclecloud/</link>
+      <pubDate>Mon, 06 Apr 2020 23:50:37 +0900</pubDate>
+      
+      <guid>https://murkouc.github.io/tags/oraclecloud/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Ubuntu</title>
+      <link>https://murkouc.github.io/tags/ubuntu/</link>
+      <pubDate>Mon, 06 Apr 2020 23:50:37 +0900</pubDate>
+      
+      <guid>https://murkouc.github.io/tags/ubuntu/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>技術</title>
+      <link>https://murkouc.github.io/tags/%E6%8A%80%E8%A1%93/</link>
+      <pubDate>Mon, 06 Apr 2020 23:50:37 +0900</pubDate>
+      
+      <guid>https://murkouc.github.io/tags/%E6%8A%80%E8%A1%93/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>debian</title>
@@ -26,15 +53,6 @@
       <pubDate>Fri, 03 Apr 2020 23:42:42 +0900</pubDate>
       
       <guid>https://murkouc.github.io/tags/nginx/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>技術</title>
-      <link>https://murkouc.github.io/tags/%E6%8A%80%E8%A1%93/</link>
-      <pubDate>Fri, 03 Apr 2020 23:42:42 +0900</pubDate>
-      
-      <guid>https://murkouc.github.io/tags/%E6%8A%80%E8%A1%93/</guid>
       <description></description>
     </item>
     

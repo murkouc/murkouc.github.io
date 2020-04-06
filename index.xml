@@ -6,10 +6,21 @@
     <description>Recent content on K.MIURA@OUC</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Fri, 03 Apr 2020 23:42:42 +0900</lastBuildDate>
+    <lastBuildDate>Mon, 06 Apr 2020 23:50:37 +0900</lastBuildDate>
     
 	<atom:link href="https://murkouc.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Oracle Cloudで色々と遊ぶ</title>
+      <link>https://murkouc.github.io/2020/04/oracle-cloud%E3%81%A7%E8%89%B2%E3%80%85%E3%81%A8%E9%81%8A%E3%81%B6/</link>
+      <pubDate>Mon, 06 Apr 2020 23:50:37 +0900</pubDate>
+      
+      <guid>https://murkouc.github.io/2020/04/oracle-cloud%E3%81%A7%E8%89%B2%E3%80%85%E3%81%A8%E9%81%8A%E3%81%B6/</guid>
+      <description>[基本環境]
+ Oracle Cloud Ubuntu 18.04  [テスト中]
+ ロードバランサ、きちんと動くかな  動画配信    </description>
+    </item>
     
     <item>
       <title>ストリーミングサーバを立てる</title>
