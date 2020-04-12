@@ -18,7 +18,7 @@
       
       <guid>https://murkouc.github.io/2020/04/oracle%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%89%E3%82%92%E4%BD%BF%E3%81%86%E6%99%82%E3%81%AE%E6%B3%A8%E6%84%8F/</guid>
       <description>[基本環境]
- Oracleクラウド Ubuntu 18.04  [問題設定]
+ Oracleクラウド (VMインスタンス) Ubuntu 18.04  [問題設定]
  OSがUbuntuのVMインスタンスを使いWEBサイトを展開する OSのFWで80/tcpを開放してもWEBサイトにアクセスできない  [対処方法]</description>
     </item>
     
