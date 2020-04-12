@@ -6,8 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 <meta property="og:title" content="nextcloudとNFSサーバを接続する" />
-<meta property="og:description" content="[基本環境]
- Ubuntu 18.04 nextcloud 13.0.1 Oracleクラウド (NFSサーバ)  [参考サイト]" />
+<meta property="og:description" content="[基本環境]  Ubuntu 18.04 nextcloud 13.0.1 Oracleクラウド (NFSサーバ)  [参考サイト]  NextCloudでファイル共有【その1】サーバインストール手順 OCIでファイルストレージサービス(FSS)を実装してみた  [NFSサーバのマウント]  前提としてNFSサーバが構築されていること" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://murkouc.github.io/2020/04/nextcloud%E3%81%A8nfs%E3%82%B5%E3%83%BC%E3%83%90%E3%82%92%E6%8E%A5%E7%B6%9A%E3%81%99%E3%82%8B/" />
 <meta property="article:published_time" content="2020-04-12T17:27:58+09:00" />
@@ -15,8 +14,7 @@
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="nextcloudとNFSサーバを接続する"/>
-<meta name="twitter:description" content="[基本環境]
- Ubuntu 18.04 nextcloud 13.0.1 Oracleクラウド (NFSサーバ)  [参考サイト]"/>
+<meta name="twitter:description" content="[基本環境]  Ubuntu 18.04 nextcloud 13.0.1 Oracleクラウド (NFSサーバ)  [参考サイト]  NextCloudでファイル共有【その1】サーバインストール手順 OCIでファイルストレージサービス(FSS)を実装してみた  [NFSサーバのマウント]  前提としてNFSサーバが構築されていること"/>
 <meta name="generator" content="Hugo 0.68.3" />
 
 
@@ -114,18 +112,18 @@
 
 </p>
   </header>
-  <p>[基本環境]</p>
+  <h6 id="基本環境">[基本環境]</h6>
 <ul>
 <li>Ubuntu 18.04</li>
 <li>nextcloud 13.0.1</li>
 <li>Oracleクラウド (NFSサーバ)</li>
 </ul>
-<p>[参考サイト]</p>
+<h6 id="参考サイト">[参考サイト]</h6>
 <ul>
 <li><a href="https://mongonta.com/f317-howto-install-nextcloud-to-ubuntu">NextCloudでファイル共有【その1】サーバインストール手順</a></li>
 <li><a href="https://blogs.techvan.co.jp/oci/2019/06/21/oci%E3%81%A7%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%B9%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B8%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9fss%E3%82%92%E5%AE%9F%E8%A3%85%E3%81%97%E3%81%A6%E3%81%BF%E3%81%9F/">OCIでファイルストレージサービス(FSS)を実装してみた</a></li>
 </ul>
-<p>[NFSサーバのマウント]</p>
+<h6 id="nfsサーバのマウント">[NFSサーバのマウント]</h6>
 <ul>
 <li>前提としてNFSサーバが構築されていること<br>
 (本記事の場合はOracleクラウドのマネージドサービスで構築した)</li>
@@ -143,7 +141,7 @@
 </ul>
 </li>
 </ol>
-<p>[nextcloudからの接続]</p>
+<h6 id="nextcloudからの接続">[nextcloudからの接続]</h6>
 <ul>
 <li>コンソール上で実行する
 <ol>
