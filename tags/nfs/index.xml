@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>ubuntu on K.MIURA@OUC</title>
-    <link>https://murkouc.github.io/tags/ubuntu/</link>
-    <description>Recent content in ubuntu on K.MIURA@OUC</description>
+    <title>nfs on K.MIURA@OUC</title>
+    <link>https://murkouc.github.io/tags/nfs/</link>
+    <description>Recent content in nfs on K.MIURA@OUC</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <lastBuildDate>Sun, 12 Apr 2020 17:27:58 +0900</lastBuildDate>
     
-	<atom:link href="https://murkouc.github.io/tags/ubuntu/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://murkouc.github.io/tags/nfs/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -20,17 +20,6 @@
       <description>[基本環境]
  Ubuntu 18.04 nextcloud 13.0.1  [参考サイト]
  NextCloudでファイル共有【その1】サーバインストール手順 OCIでファイルストレージサービス(FSS)を実装してみた  [NFSサーバのマウント]</description>
-    </item>
-    
-    <item>
-      <title>Oracleクラウドを使う時の注意</title>
-      <link>https://murkouc.github.io/2020/04/oracle%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%89%E3%82%92%E4%BD%BF%E3%81%86%E6%99%82%E3%81%AE%E6%B3%A8%E6%84%8F/</link>
-      <pubDate>Sun, 12 Apr 2020 00:50:37 +0900</pubDate>
-      
-      <guid>https://murkouc.github.io/2020/04/oracle%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%89%E3%82%92%E4%BD%BF%E3%81%86%E6%99%82%E3%81%AE%E6%B3%A8%E6%84%8F/</guid>
-      <description>[基本環境]
- Oracleクラウド Ubuntu 18.04  [問題設定]
- OSがUbuntuのVMインスタンスを使いWEBサイトを展開する OSのFWで80/tcpを開放してもWEBサイトにアクセスできない  [対処方法]</description>
     </item>
     
   </channel>
