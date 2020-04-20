@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>jupyter on K.MIURA@OUC</title>
+    <link>https://murkouc.github.io/tags/jupyter/</link>
+    <description>Recent content in jupyter on K.MIURA@OUC</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-jp</language>
+    <lastBuildDate>Mon, 13 Apr 2020 22:27:29 +0900</lastBuildDate>
+    
+	<atom:link href="https://murkouc.github.io/tags/jupyter/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Docker上でJupyterを展開する</title>
+      <link>https://murkouc.github.io/2020/04/docker%E4%B8%8A%E3%81%A7jupyter%E3%82%92%E5%B1%95%E9%96%8B%E3%81%99%E3%82%8B/</link>
+      <pubDate>Mon, 13 Apr 2020 22:27:29 +0900</pubDate>
+      
+      <guid>https://murkouc.github.io/2020/04/docker%E4%B8%8A%E3%81%A7jupyter%E3%82%92%E5%B1%95%E9%96%8B%E3%81%99%E3%82%8B/</guid>
+      <description>[基本環境]  Debian 10.3.0 (amd64) Docker 19.03.8  [参考サイト]  EC2(Ubuntu 18.</description>
+    </item>
+    
+  </channel>
+</rss>

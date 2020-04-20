@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<meta property="og:title" content="Docker上でJupyterを展開する" />
+<meta property="og:description" content="[基本環境]  Debian 10.3.0 (amd64) Docker 19.03.8  [参考サイト]  EC2(Ubuntu 18." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://murkouc.github.io/2020/04/docker%E4%B8%8A%E3%81%A7jupyter%E3%82%92%E5%B1%95%E9%96%8B%E3%81%99%E3%82%8B/" />
+<meta property="article:published_time" content="2020-04-13T22:27:29+09:00" />
+<meta property="article:modified_time" content="2020-04-13T22:27:29+09:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Docker上でJupyterを展開する"/>
+<meta name="twitter:description" content="[基本環境]  Debian 10.3.0 (amd64) Docker 19.03.8  [参考サイト]  EC2(Ubuntu 18."/>
+<meta name="generator" content="Hugo 0.69.0" />
+
+
+    
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Docker上でJupyterを展開する",
+  "url": "https://murkouc.github.io/2020/04/docker%E4%B8%8A%E3%81%A7jupyter%E3%82%92%E5%B1%95%E9%96%8B%E3%81%99%E3%82%8B/",
+  "wordCount": "184",
+  "datePublished": "2020-04-13T22:27:29+09:00",
+  "dateModified": "2020-04-13T22:27:29+09:00",
+  "author": {
+    "@type": "Person",
+    "name": "Katsunori MIURA"
+  },
+  "keywords": "小樽商大, 技術, docker, jupyter, debian"
+}
+</script>
+
+
+
+    <link rel="canonical" href="https://murkouc.github.io/2020/04/docker%E4%B8%8A%E3%81%A7jupyter%E3%82%92%E5%B1%95%E9%96%8B%E3%81%99%E3%82%8B/">
+
+    <title>Docker上でJupyterを展開する | K.MIURA@OUC</title>
+
+    
+    <!-- combined, minified CSS -->
+    
+    <link href="https://murkouc.github.io/css/style.6da5c906cc7a8fbb93f31cd2316c5dbe3f19ac4aa6bfb066f1243045b8f6061e.css" rel="stylesheet" integrity="sha256-baXJBsx6j7uT8xzSMWxdvj8ZrEqmv7Bm8SQwRbj2Bh4=" crossorigin="anonymous">
+    
+
+    <!-- minified Font Awesome for SVG icons -->
+    
+    <script defer src="https://murkouc.github.io/js/fontawesome.min.f3d2a1f5980bab30ddd0d8cadbd496475309fc48e2b1d052c5c09e6facffcb0f.js" integrity="sha256-89Kh9ZgLqzDd0NjK29SWR1MJ/EjisdBSxcCeb6z/yw8=" crossorigin="anonymous"></script>
+
+    <!-- RSS 2.0 feed -->
+    
+
+    
+
+    
+
+  </head>
+
+  <body>
+
+    
+    <div class="blog-masthead">
+      <div class="container">
+        <nav class="nav blog-nav">
+          <a class="nav-link " href="https://murkouc.github.io/">Home</a>
+          
+          <a class="nav-link" href="/2020/04/%E3%81%8A%E7%9F%A5%E3%82%89%E3%81%9B" title="">お知らせ</a>
+          
+          
+          <a class="nav-link" href="/2020/03/%E6%8B%85%E5%BD%93%E8%AC%9B%E7%BE%A9" title="">担当講義</a>
+          
+          
+          <a class="nav-link" href="/2020/03/%E7%A0%94%E7%A9%B6%E6%A5%AD%E7%B8%BE" title="">研究業績</a>
+          
+        </nav>
+      </div>
+    </div>
+    
+
+    
+    
+    <header class="blog-header">
+      <div class="container">
+        <h1 class="blog-title" dir="auto"><a href="https://murkouc.github.io/" rel="home">K.MIURA@OUC</a></h1>
+        <p class="lead blog-description" dir="auto">The special secret of making dreams come true can be summarized in four C&rsquo;s. They are Curiosity, Confidence, Courage, and Constancy.</p>
+      </div>
+    </header>
+    
+    
+
+    
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8 blog-main">
+
+          
+
+
+<article class="blog-post">
+  <header>
+    <h2 class="blog-post-title" dir="auto"><a href="https://murkouc.github.io/2020/04/docker%E4%B8%8A%E3%81%A7jupyter%E3%82%92%E5%B1%95%E9%96%8B%E3%81%99%E3%82%8B/">Docker上でJupyterを展開する</a></h2>
+    <p class="blog-post-meta"><time datetime="2020-04-13T22:27:29+09:00">Mon Apr 13, 2020</time> by Katsunori MIURA in 
+<span class="fas fa-folder" aria-hidden="true"></span>&nbsp;<a href="/categories/%E5%B0%8F%E6%A8%BD%E5%95%86%E5%A4%A7/" rel="category tag">小樽商大</a>
+
+
+<span class="fas fa-tag" aria-hidden="true"></span>&nbsp;<a href="/tags/%E6%8A%80%E8%A1%93/" rel="tag">技術</a>, <a href="/tags/docker/" rel="tag">docker</a>, <a href="/tags/jupyter/" rel="tag">jupyter</a>, <a href="/tags/debian/" rel="tag">debian</a>
+
+</p>
+  </header>
+  <h6 id="基本環境">[基本環境]</h6>
+<ul>
+<li>Debian 10.3.0 (amd64)</li>
+<li>Docker 19.03.8</li>
+</ul>
+<h6 id="参考サイト">[参考サイト]</h6>
+<ul>
+<li><a href="https://dev.classmethod.jp/articles/ubuntu-jupyternotebook/">EC2(Ubuntu 18.04 LS)にJupyter Notebookをインストールしてみた</a></li>
+</ul>
+<h6 id="注意">[注意]</h6>
+<ul>
+<li><a href="/2020/03/docker%E7%92%B0%E5%A2%83%E3%81%AE%E6%A7%8B%E7%AF%89/">Docker環境の構築</a>や他のサイトを読んで、Docker環境を構築していること</li>
+<li>本記事は、Jupyter NotebookをWEBブラウザで確認するまでの手続きである</li>
+</ul>
+<h6 id="dockerコンテナの展開">[Dockerコンテナの展開]</h6>
+<ol>
+<li>docker pull debian:stable</li>
+<li>docker run -itd --privileged -p 8888:8888/tcp -p 8888:8888/udp --name jupyter debian:stable</li>
+<li>docker exec -it jupyter /bin/bash</li>
+</ol>
+<h6 id="コンテナjupyter内での手続き">[コンテナ(jupyter)内での手続き]</h6>
+<ol>
+<li>apt update</li>
+<li>apt upgrade</li>
+<li>apt install git</li>
+<li>apt install curl</li>
+<li>apt install bzip2</li>
+<li>apt install vim</li>
+<li>git clone <a href="https://github.com/pyenv/pyenv.git">https://github.com/pyenv/pyenv.git</a> ~/.pyenv</li>
+<li>echo &lsquo;export PYENV_ROOT=&quot;${HOME}/.pyenv&rdquo;&rsquo; &raquo; ~/.bash_profile</li>
+<li>echo &lsquo;export PATH=&quot;${PYENV_ROOT}/bin:$PATH&rdquo;&rsquo; &raquo; ~/.bash_profile</li>
+<li>echo &lsquo;export PATH=&quot;${PYENV_ROOT}/shims:$PATH&rdquo;&rsquo; &raquo; ~/.bash_profile</li>
+<li>echo &lsquo;eval &ldquo;$(pyenv init -)&quot;&rsquo; &raquo; ~/.bash_profile</li>
+<li>source ~/.bash_profile</li>
+<li>pyenv install anaconda3-5.3.1</li>
+<li>echo &lsquo;export PATH=&quot;$PYENV_ROOT/versions/anaconda3-5.3.1/bin:$PATH&rdquo;&rsquo; &raquo; ~/.bash_profile</li>
+<li>source ~/.bash_profile</li>
+<li>pyenv versions
+<ul>
+<li>anacondaのインストールを確認する</li>
+</ul>
+</li>
+<li>pyenv global anaconda3-5.3.1</li>
+<li>ipython3
+<ul>
+<li>In [1]: from IPython.lib importpasswd</li>
+<li>In [2]: passwd()
+<ul>
+<li>Jupyter Notebookを開くときの<strong>パスワード</strong>を設定する</li>
+</ul>
+</li>
+<li>Out[2]: &lsquo;sha1:xxxxxxxxx&rsquo; <strong>これをメモしておく</strong></li>
+<li>In[3]: quit()</li>
+</ul>
+</li>
+<li>jupyter-notebook --generate-config</li>
+<li>vi ~/.jupyter/jupyter_notebook_config.py
+<ul>
+<li>先頭(本当はどこでも良い)に以下の内容を追加する<br>
+c.IPKernelApp.pylab = &lsquo;inline&rsquo;<br>
+c.NotebookApp.ip = &lsquo;*&rsquo;<br>
+c.NotebookApp.open_browser = False<br>
+c.NotebookApp.port = 8888<br>
+c.NotebookApp.password = u&rsquo;sha1:xxxxxxxxx&rsquo; <strong>メモしたやつ</strong></li>
+</ul>
+</li>
+</ol>
+<h6 id="jupyter-notebookの起動">[Jupyter Notebookの起動]</h6>
+<ol>
+<li>mkdir workspace <strong>ホームディレクトリで実行する</strong></li>
+<li>cd workspace</li>
+<li>jupyter-notebook --allow-root
+<ul>
+<li>WEBブラウザで <strong>http://IPアドレス:8888/</strong> にアクセスする</li>
+<li>パスワードには上の <strong>passwd()</strong> で設定したものを記述する</li>
+</ul>
+</li>
+</ol>
+<h6 id="おまけコンテナ起動時にjupyter-notebookを一緒に起動する">[おまけ：コンテナ起動時にJupyter Notebookを一緒に起動する]</h6>
+<ul>
+<li>シェルスクリプトを仕込む
+<ol>
+<li>vi /etc/rc.local
+<ul>
+<li>以下の内容を記述する<br>
+#!/bin/sh<br>
+sh /etc/init.d/jupyter.sh</li>
+</ul>
+</li>
+<li>chmod 755 /etc/rc.local</li>
+<li>vi /etc/init.d/jupyter.sh
+<ul>
+<li>以下の内容を記述する<br>
+#!/bin/sh<br>
+. ~/.bash_profile<br>
+cd /workspace<br>
+sleep 3;jupyter-notebook --allow-root</li>
+</ul>
+</li>
+<li>chmod 755 /etc/init.d/jupyter.sh</li>
+</ol>
+</li>
+<li>コンテナ(jupyter)を起動する
+<ol>
+<li>docker restart jupyter</li>
+<li>docker exec -it jupyter /bin/bash /etc/rc.local</li>
+</ol>
+</li>
+</ul>
+
+
+  
+
+  
+  <hr>
+  <footer>
+
+  
+    <section>
+    <h4>Share</h4>
+    <nav class="nav sharing-icons">
+      <a class="nav-item" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fmurkouc.github.io%2f2020%2f04%2fdocker%25E4%25B8%258A%25E3%2581%25A7jupyter%25E3%2582%2592%25E5%25B1%2595%25E9%2596%258B%25E3%2581%2599%25E3%2582%258B%2f" title="Share on Facebook"><span class="fab fa-facebook-f fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fmurkouc.github.io%2f2020%2f04%2fdocker%25E4%25B8%258A%25E3%2581%25A7jupyter%25E3%2582%2592%25E5%25B1%2595%25E9%2596%258B%25E3%2581%2599%25E3%2582%258B%2f" title="Share on LinkedIn"><span class="fab fa-linkedin-in fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://twitter.com/intent/tweet?url=https%3a%2f%2fmurkouc.github.io%2f2020%2f04%2fdocker%25E4%25B8%258A%25E3%2581%25A7jupyter%25E3%2582%2592%25E5%25B1%2595%25E9%2596%258B%25E3%2581%2599%25E3%2582%258B%2f&amp;text=Docker%e4%b8%8a%e3%81%a7Jupyter%e3%82%92%e5%b1%95%e9%96%8b%e3%81%99%e3%82%8b" title="Tweet this"><span class="fab fa-twitter fa-2x"></span></a>
+    </nav>
+  </section>
+
+  
+
+  
+  </footer>
+  
+
+</article> 
+
+
+
+        </div> <!-- /.blog-main -->
+
+        <aside class="col-sm-3 ml-auto blog-sidebar">
+  
+  <section class="sidebar-module sidebar-module-inset">
+    <h4>About Me</h4>
+三浦 克宜<br>
+博士(情報科学)<br>
+　小樽商科大学 商学部<br>
+　　准教授<br>
+　情報総合センター<br>
+　　副センター長<br>
+  </section>
+  
+
+
+
+  
+  <section class="sidebar-module">
+    <h4>Links</h4>
+    <ol class="list-unstyled">
+      
+      <li><a href="https://researchmap.jp/miurakatsunori">researchmap</a></li>
+      
+      <li><a href="https://www.otaru-uc.ac.jp">小樽商科大学</a></li>
+      
+      <li><a href="https://www.otaru-uc.ac.jp/center/">情報総合センター</a></li>
+      
+    </ol>
+  </section>
+  
+
+  <section class="sidebar-module">
+    <h4>Categories</h4>
+    <ol class="list-unstyled">
+      
+      <li><a href="/categories/%E5%B0%8F%E6%A8%BD%E5%95%86%E5%A4%A7">小樽商大</a>(16)</li>
+      
+    </ol>
+  </section>
+  <section class="sidebar-module">
+    <h4>Tags</h4>
+    <ol class="list-unstyled">
+      
+      <li><a href="/tags/debian">debian</a>(6)</li>
+      
+      <li><a href="/tags/docker">docker</a>(3)</li>
+      
+      <li><a href="/tags/github">github</a>(1)</li>
+      
+      <li><a href="/tags/hugo">hugo</a>(1)</li>
+      
+      <li><a href="/tags/jupyter">jupyter</a>(1)</li>
+      
+      <li><a href="/tags/nextcloud">nextcloud</a>(1)</li>
+      
+      <li><a href="/tags/nfs">nfs</a>(1)</li>
+      
+      <li><a href="/tags/nginx">nginx</a>(2)</li>
+      
+      <li><a href="/tags/oraclecloud">oraclecloud</a>(1)</li>
+      
+      <li><a href="/tags/python">python</a>(1)</li>
+      
+      <li><a href="/tags/ubuntu">ubuntu</a>(3)</li>
+      
+      <li><a href="/tags/%E3%81%9D%E3%81%AE%E4%BB%96">その他</a>(1)</li>
+      
+      <li><a href="/tags/%E5%AD%A6%E9%83%A8">学部</a>(3)</li>
+      
+      <li><a href="/tags/%E6%8A%80%E8%A1%93">技術</a>(9)</li>
+      
+      <li><a href="/tags/%E7%A0%94%E7%A9%B6">研究</a>(1)</li>
+      
+      <li><a href="/tags/%E8%AC%9B%E7%BE%A9">講義</a>(5)</li>
+      
+    </ol>
+  </section>
+
+  <section class="sidebar-module">
+    <a href="https://github.com/murkouc/murkouc.github.io">
+      <img src="/images/github.png" width="45">
+    </a>
+    <a href="https://www.facebook.com/katsunori.miura.9">
+      <img src="/images/facebook.png" width="50">
+    </a>
+  </section>
+
+</aside>
+
+
+      </div> <!-- /.row -->
+    </div> <!-- /.container -->
+    
+
+    
+    <footer class="blog-footer">
+      <p dir="auto">
+      
+      Blog template created by <a href="https://twitter.com/mdo">@mdo</a>, ported to Hugo by <a href='https://twitter.com/mralanorth'>@mralanorth</a>.
+      
+      </p>
+      <p>
+      <a href="#">Back to top</a>
+      </p>
+    </footer>
+    
+
+  </body>
+
+</html>

@@ -6,10 +6,19 @@
     <description>Recent content in 技術 on K.MIURA@OUC</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Mon, 13 Apr 2020 21:43:59 +0900</lastBuildDate>
+    <lastBuildDate>Mon, 13 Apr 2020 22:27:29 +0900</lastBuildDate>
     
 	<atom:link href="https://murkouc.github.io/tags/%E6%8A%80%E8%A1%93/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Docker上でJupyterを展開する</title>
+      <link>https://murkouc.github.io/2020/04/docker%E4%B8%8A%E3%81%A7jupyter%E3%82%92%E5%B1%95%E9%96%8B%E3%81%99%E3%82%8B/</link>
+      <pubDate>Mon, 13 Apr 2020 22:27:29 +0900</pubDate>
+      
+      <guid>https://murkouc.github.io/2020/04/docker%E4%B8%8A%E3%81%A7jupyter%E3%82%92%E5%B1%95%E9%96%8B%E3%81%99%E3%82%8B/</guid>
+      <description>[基本環境]  Debian 10.3.0 (amd64) Docker 19.03.8  [参考サイト]  EC2(Ubuntu 18.</description>
+    </item>
     
     <item>
       <title>nginxでBasic認証を有効にする</title>
