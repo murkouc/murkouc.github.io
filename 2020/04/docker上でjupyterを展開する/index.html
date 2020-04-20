@@ -25,7 +25,7 @@
   "@type": "BlogPosting",
   "headline": "Docker上でJupyterを展開する",
   "url": "https://murkouc.github.io/2020/04/docker%E4%B8%8A%E3%81%A7jupyter%E3%82%92%E5%B1%95%E9%96%8B%E3%81%99%E3%82%8B/",
-  "wordCount": "184",
+  "wordCount": "191",
   "datePublished": "2020-04-13T22:27:29+09:00",
   "dateModified": "2020-04-13T22:27:29+09:00",
   "author": {
@@ -187,12 +187,14 @@ c.NotebookApp.password = u&rsquo;sha1:xxxxxxxxx&rsquo; <strong>メモしたや�
 <ul>
 <li>WEBブラウザで <strong>http://IPアドレス:8888/</strong> にアクセスする</li>
 <li>パスワードには上の <strong>passwd()</strong> で設定したものを記述する</li>
+<li>停止するときは<strong>Control + Z</strong>を押す</li>
+<li>プロセスが生きていたらkillで強制終了する</li>
 </ul>
 </li>
 </ol>
 <h6 id="おまけコンテナ起動時にjupyter-notebookを一緒に起動する">[おまけ：コンテナ起動時にJupyter Notebookを一緒に起動する]</h6>
 <ul>
-<li>シェルスクリプトを仕込む
+<li>シェルスクリプトを仕込む (コンテナ内で実行する)
 <ol>
 <li>vi /etc/rc.local
 <ul>
@@ -212,6 +214,7 @@ sleep 3;jupyter-notebook --allow-root</li>
 </ul>
 </li>
 <li>chmod 755 /etc/init.d/jupyter.sh</li>
+<li>exit <strong>コンテナ(jupyter)から一度出る</strong></li>
 </ol>
 </li>
 <li>コンテナ(jupyter)を起動する
