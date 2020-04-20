@@ -25,7 +25,7 @@
   "@type": "BlogPosting",
   "headline": "Docker上でJupyterを展開する",
   "url": "https://murkouc.github.io/2020/04/docker%E4%B8%8A%E3%81%A7jupyter%E3%82%92%E5%B1%95%E9%96%8B%E3%81%99%E3%82%8B/",
-  "wordCount": "192",
+  "wordCount": "191",
   "datePublished": "2020-04-20T12:27:29+09:00",
   "dateModified": "2020-04-20T12:27:29+09:00",
   "author": {
@@ -199,15 +199,15 @@ c.NotebookApp.password = u&rsquo;sha1:xxxxxxxxx&rsquo; <strong>メモしたや�
 <li>vi /etc/rc.local
 <ul>
 <li>以下の内容を記述する<br>
-#!/bin/sh<br>
-sh /etc/init.d/jupyter.sh</li>
+#!/bin/bash<br>
+/etc/init.d/jupyter.sh</li>
 </ul>
 </li>
 <li>chmod 755 /etc/rc.local</li>
 <li>vi /etc/init.d/jupyter.sh
 <ul>
 <li>以下の内容を記述する<br>
-#!/bin/sh<br>
+#!/bin/bash<br>
 . ~/.bash_profile<br>
 cd /workspace<br>
 sleep 3;jupyter-notebook --allow-root</li>
