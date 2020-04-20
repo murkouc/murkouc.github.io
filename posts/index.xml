@@ -6,7 +6,7 @@
     <description>Recent content in Posts on K.MIURA@OUC</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Mon, 13 Apr 2020 22:27:29 +0900</lastBuildDate>
+    <lastBuildDate>Mon, 20 Apr 2020 12:27:29 +0900</lastBuildDate>
     
 	<atom:link href="https://murkouc.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,7 +14,7 @@
     <item>
       <title>Docker上でJupyterを展開する</title>
       <link>https://murkouc.github.io/2020/04/docker%E4%B8%8A%E3%81%A7jupyter%E3%82%92%E5%B1%95%E9%96%8B%E3%81%99%E3%82%8B/</link>
-      <pubDate>Mon, 13 Apr 2020 22:27:29 +0900</pubDate>
+      <pubDate>Mon, 20 Apr 2020 12:27:29 +0900</pubDate>
       
       <guid>https://murkouc.github.io/2020/04/docker%E4%B8%8A%E3%81%A7jupyter%E3%82%92%E5%B1%95%E9%96%8B%E3%81%99%E3%82%8B/</guid>
       <description>[基本環境]  Debian 10.3.0 (amd64) Docker 19.03.8  [参考サイト]  EC2(Ubuntu 18.</description>
@@ -30,21 +30,21 @@
     </item>
     
     <item>
+      <title>Oracleクラウドを使う時の注意</title>
+      <link>https://murkouc.github.io/2020/04/oracle%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%89%E3%82%92%E4%BD%BF%E3%81%86%E6%99%82%E3%81%AE%E6%B3%A8%E6%84%8F/</link>
+      <pubDate>Mon, 13 Apr 2020 00:50:37 +0900</pubDate>
+      
+      <guid>https://murkouc.github.io/2020/04/oracle%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%89%E3%82%92%E4%BD%BF%E3%81%86%E6%99%82%E3%81%AE%E6%B3%A8%E6%84%8F/</guid>
+      <description>[基本環境]  Oracleクラウド (VMインスタンス) Ubuntu 18.04  [問題設定]  OSがUbuntuのVMインスタンスを使いWEBサイトを展開する OSのFWで80/tcpを開放してもWEBサイトにアクセスできない  [対処方法]  sudo vi /etc/iptables/rules.</description>
+    </item>
+    
+    <item>
       <title>nextcloudとNFSサーバを接続する</title>
       <link>https://murkouc.github.io/2020/04/nextcloud%E3%81%A8nfs%E3%82%B5%E3%83%BC%E3%83%90%E3%82%92%E6%8E%A5%E7%B6%9A%E3%81%99%E3%82%8B/</link>
       <pubDate>Sun, 12 Apr 2020 17:27:58 +0900</pubDate>
       
       <guid>https://murkouc.github.io/2020/04/nextcloud%E3%81%A8nfs%E3%82%B5%E3%83%BC%E3%83%90%E3%82%92%E6%8E%A5%E7%B6%9A%E3%81%99%E3%82%8B/</guid>
       <description>[基本環境]  Ubuntu 18.04 nextcloud 13.0.1 Oracleクラウド (NFSサーバ)  [参考サイト]  NextCloudでファイル共有【その1】サーバインストール手順 OCIでファイルストレージサービス(FSS)を実装してみた  [NFSサーバのマウント]  前提としてNFSサーバが構築されていること</description>
-    </item>
-    
-    <item>
-      <title>Oracleクラウドを使う時の注意</title>
-      <link>https://murkouc.github.io/2020/04/oracle%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%89%E3%82%92%E4%BD%BF%E3%81%86%E6%99%82%E3%81%AE%E6%B3%A8%E6%84%8F/</link>
-      <pubDate>Sun, 12 Apr 2020 00:50:37 +0900</pubDate>
-      
-      <guid>https://murkouc.github.io/2020/04/oracle%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%89%E3%82%92%E4%BD%BF%E3%81%86%E6%99%82%E3%81%AE%E6%B3%A8%E6%84%8F/</guid>
-      <description>[基本環境]  Oracleクラウド (VMインスタンス) Ubuntu 18.04  [問題設定]  OSがUbuntuのVMインスタンスを使いWEBサイトを展開する OSのFWで80/tcpを開放してもWEBサイトにアクセスできない  [対処方法]  sudo vi /etc/iptables/rules.</description>
     </item>
     
     <item>
