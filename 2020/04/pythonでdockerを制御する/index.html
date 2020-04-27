@@ -5,25 +5,42 @@
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<meta property="og:title" content="python" />
-<meta property="og:description" content="The special secret of making dreams come true can be summarized in four C&#39;s. They are Curiosity, Confidence, Courage, and Constancy." />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://murkouc.github.io/tags/python/" />
-<meta property="og:updated_time" content="2020-04-27T23:25:40+09:00" />
+<meta property="og:title" content="PythonでDockerを制御する" />
+<meta property="og:description" content="[基本環境]  Python 3.7.3 Docker 19.03.8  [注意]  Docker SDK for Pythonを基にしたDocker制御ではない Subprocessを基にしたDocker制御である Dockerのオプションを多様したいなら、結局、Subprocessに落ち着く  [Dockerコンテナ一覧の取得]  Dockerコマンドなら  docker ps -a   Pythonコードなら  import subprocess comp = subprocess." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://murkouc.github.io/2020/04/python%E3%81%A7docker%E3%82%92%E5%88%B6%E5%BE%A1%E3%81%99%E3%82%8B/" />
+<meta property="article:published_time" content="2020-04-27T23:25:40+09:00" />
+<meta property="article:modified_time" content="2020-04-27T23:25:40+09:00" />
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="python"/>
-<meta name="twitter:description" content="The special secret of making dreams come true can be summarized in four C&#39;s. They are Curiosity, Confidence, Courage, and Constancy."/>
+<meta name="twitter:title" content="PythonでDockerを制御する"/>
+<meta name="twitter:description" content="[基本環境]  Python 3.7.3 Docker 19.03.8  [注意]  Docker SDK for Pythonを基にしたDocker制御ではない Subprocessを基にしたDocker制御である Dockerのオプションを多様したいなら、結局、Subprocessに落ち着く  [Dockerコンテナ一覧の取得]  Dockerコマンドなら  docker ps -a   Pythonコードなら  import subprocess comp = subprocess."/>
 <meta name="generator" content="Hugo 0.69.0" />
 
 
     
-      
-    
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": "PythonでDockerを制御する",
+  "url": "https://murkouc.github.io/2020/04/python%E3%81%A7docker%E3%82%92%E5%88%B6%E5%BE%A1%E3%81%99%E3%82%8B/",
+  "wordCount": "58",
+  "datePublished": "2020-04-27T23:25:40+09:00",
+  "dateModified": "2020-04-27T23:25:40+09:00",
+  "author": {
+    "@type": "Person",
+    "name": "Katsunori MIURA"
+  },
+  "keywords": "小樽商大, 技術, python, docker"
+}
+</script>
 
-    <link rel="canonical" href="https://murkouc.github.io/tags/python/">
 
-    <title>K.MIURA@OUC</title>
+
+    <link rel="canonical" href="https://murkouc.github.io/2020/04/python%E3%81%A7docker%E3%82%92%E5%88%B6%E5%BE%A1%E3%81%99%E3%82%8B/">
+
+    <title>PythonでDockerを制御する | K.MIURA@OUC</title>
 
     
     <!-- combined, minified CSS -->
@@ -36,7 +53,6 @@
     <script defer src="https://murkouc.github.io/js/fontawesome.min.f3d2a1f5980bab30ddd0d8cadbd496475309fc48e2b1d052c5c09e6facffcb0f.js" integrity="sha256-89Kh9ZgLqzDd0NjK29SWR1MJ/EjisdBSxcCeb6z/yw8=" crossorigin="anonymous"></script>
 
     <!-- RSS 2.0 feed -->
-    <link rel="alternate" type="application/rss+xml" href="https://murkouc.github.io/tags/python/index.xml" title="K.MIURA@OUC" />
     
 
     
@@ -85,10 +101,6 @@
           
 
 
-
-
-
-
 <article class="blog-post">
   <header>
     <h2 class="blog-post-title" dir="auto"><a href="https://murkouc.github.io/2020/04/python%E3%81%A7docker%E3%82%92%E5%88%B6%E5%BE%A1%E3%81%99%E3%82%8B/">PythonでDockerを制御する</a></h2>
@@ -100,34 +112,76 @@
 
 </p>
   </header>
-  [基本環境]  Python 3.7.3 Docker 19.03.8  [注意]  Docker SDK for Pythonを基にしたDocker制御ではない Subprocessを基にしたDocker制御である Dockerのオプションを多様したいなら、結局、Subprocessに落ち着く  [Dockerコンテナ一覧の取得]  Dockerコマンドなら  docker ps -a   Pythonコードなら  import subprocess comp = subprocess.
-  <a href='https://murkouc.github.io/2020/04/python%E3%81%A7docker%E3%82%92%E5%88%B6%E5%BE%A1%E3%81%99%E3%82%8B/'>Read more →</a>
+  <h6 id="基本環境">[基本環境]</h6>
+<ul>
+<li>Python 3.7.3</li>
+<li>Docker 19.03.8</li>
+</ul>
+<h6 id="注意">[注意]</h6>
+<ul>
+<li>Docker SDK for Pythonを基にしたDocker制御ではない</li>
+<li>Subprocessを基にしたDocker制御である</li>
+<li>Dockerのオプションを多様したいなら、結局、Subprocessに落ち着く</li>
+</ul>
+<h6 id="dockerコンテナ一覧の取得">[Dockerコンテナ一覧の取得]</h6>
+<ul>
+<li>Dockerコマンドなら
+<ul>
+<li>docker ps -a</li>
+</ul>
+</li>
+<li>Pythonコードなら
+<ol>
+<li>import subprocess</li>
+<li>comp = subprocess.run([&lsquo;docker&rsquo;, &lsquo;ps&rsquo;, &lsquo;-a&rsquo;], encoding='utf-8&rsquo;, stdout=subprocess.PIPE)</li>
+<li>print(comp)</li>
+</ol>
+</li>
+</ul>
+<h6 id="dockerコンテナの起動">[Dockerコンテナの起動]</h6>
+<ul>
+<li>Dockerコマンドなら
+<ul>
+<li>docker run -itd --priviledged -p 80:80/tcp --name websrv debian:stable</li>
+</ul>
+</li>
+<li>Dockerコードなら
+<ol>
+<li>import subprocess</li>
+<li>comp = subprocess.run([&lsquo;docker&rsquo;, &lsquo;run&rsquo;, &lsquo;-itd&rsquo;, &lsquo;--priviledged&rsquo;, &lsquo;-p&rsquo;, &lsquo;80:80/tcp&rsquo;, &lsquo;--name&rsquo;, &lsquo;websrv&rsquo;, &lsquo;debian:stable&rsquo;], encoding='utf-8&rsquo;, stdout=subprocess.PIPE)</li>
+<li>priint(comp)</li>
+</ol>
+</li>
+</ul>
+<h6 id="まとめ">[まとめ]</h6>
+<ul>
+<li>subprocess.runの第一引数のリストにコマンドとオプションを列挙することで、オプションが増えても気にせず実行できる</li>
+</ul>
+
+
+  
+
+  
+  <hr>
+  <footer>
+
+  
+    <section>
+    <h4>Share</h4>
+    <nav class="nav sharing-icons">
+      <a class="nav-item" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fmurkouc.github.io%2f2020%2f04%2fpython%25E3%2581%25A7docker%25E3%2582%2592%25E5%2588%25B6%25E5%25BE%25A1%25E3%2581%2599%25E3%2582%258B%2f" title="Share on Facebook"><span class="fab fa-facebook-f fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fmurkouc.github.io%2f2020%2f04%2fpython%25E3%2581%25A7docker%25E3%2582%2592%25E5%2588%25B6%25E5%25BE%25A1%25E3%2581%2599%25E3%2582%258B%2f" title="Share on LinkedIn"><span class="fab fa-linkedin-in fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://twitter.com/intent/tweet?url=https%3a%2f%2fmurkouc.github.io%2f2020%2f04%2fpython%25E3%2581%25A7docker%25E3%2582%2592%25E5%2588%25B6%25E5%25BE%25A1%25E3%2581%2599%25E3%2582%258B%2f&amp;text=Python%e3%81%a7Docker%e3%82%92%e5%88%b6%e5%be%a1%e3%81%99%e3%82%8b" title="Tweet this"><span class="fab fa-twitter fa-2x"></span></a>
+    </nav>
+  </section>
+
+  
+
+  
+  </footer>
+  
+
 </article> 
-
-
-
-
-
-
-<article class="blog-post">
-  <header>
-    <h2 class="blog-post-title" dir="auto"><a href="https://murkouc.github.io/2020/03/wordcloud%E3%82%92%E4%BD%9C%E3%82%8B/">WordCloudを作る</a></h2>
-    <p class="blog-post-meta"><time datetime="2020-03-31T12:40:37+09:00">Tue Mar 31, 2020</time> by Katsunori MIURA in 
-<span class="fas fa-folder" aria-hidden="true"></span>&nbsp;<a href="/categories/%E5%B0%8F%E6%A8%BD%E5%95%86%E5%A4%A7/" rel="category tag">小樽商大</a>
-
-
-<span class="fas fa-tag" aria-hidden="true"></span>&nbsp;<a href="/tags/%E6%8A%80%E8%A1%93/" rel="tag">技術</a>, <a href="/tags/python/" rel="tag">python</a>, <a href="/tags/debian/" rel="tag">debian</a>, <a href="/tags/docker/" rel="tag">docker</a>
-
-</p>
-  </header>
-  [基本環境]  Debian 10.3.0 (amd64) Docker 19.03.8  [注意]  Docker環境の構築や他のサイトを読んで、Docker環境を構築していること  [Dockerコンテナの展開]  mkdir /home/ユーザ名/workspace  ホストのディレクトリをコンテナでマウントするための準備 ユーザ名は各々の環境に合わせて置き換える   docker run -itd --privileged -v /home/ユーザ名/workspace:/mnt --name wordcloud debian:stable docker exec -it wordcloud /bin/bash  [コンテナ(wordcloud)内での手続き]  apt update apt install python-pip python3-pip pip3 install wordcloud apt install vim cd /mnt vi sample.
-  <a href='https://murkouc.github.io/2020/03/wordcloud%E3%82%92%E4%BD%9C%E3%82%8B/'>Read more →</a>
-</article> 
-
-
-
-
-
 
 
 
