@@ -6,10 +6,19 @@
     <description>Recent content in Posts on K.MIURA@OUC</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Mon, 27 Apr 2020 23:25:40 +0900</lastBuildDate>
+    <lastBuildDate>Fri, 08 May 2020 00:00:09 +0900</lastBuildDate>
     
 	<atom:link href="https://murkouc.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>お知らせ</title>
+      <link>https://murkouc.github.io/2020/05/%E3%81%8A%E7%9F%A5%E3%82%89%E3%81%9B/</link>
+      <pubDate>Fri, 08 May 2020 00:00:09 +0900</pubDate>
+      
+      <guid>https://murkouc.github.io/2020/05/%E3%81%8A%E7%9F%A5%E3%82%89%E3%81%9B/</guid>
+      <description>2020年5月8日(金曜日)  情報処理(夜間)に関して、当面の間、Skypeのグループ会議で授業を行います。  受講希望者は、manabaのお知らせに記載したSkype IDを確認して下さい。    2020年4月1日(木曜日)  三浦ゼミの開始日(第1回目)に関して、  学部4年生は 4月21日(火曜日) 14:30&amp;ndash;17:40 で、 学部3年生(夜間)は 4月22日(水曜日) 17:45&amp;ndash;19:15 で、 学部3年生(昼間)は 4月23日(木曜日) 14:30&amp;ndash;17:40 です。   ゼミでは、ウェブ会議システム(Skype)を使います。  ゼミ生は、お伝えしたSkype IDを登録して下さい。    2020年3月30日(月曜日)  三浦担当の前期講義の開始日(第1回目)に関して、  情報システム管理論は 5月11日(月曜日) で、 情報処理(夜間)は 5月11日(月曜日) です。   大学からの公式通知は、こちらで確認できます。  2020年3月29日(日曜日)  本サイトは、Googleサイトで運用していた「MIURA@OUC」を引き継いでいます。 今後は、本サイトから講義資料(主にPDF)を発信します。 これに伴いGoogleサイト上の「MIURA@OUC」を閉鎖します。  </description>
+    </item>
     
     <item>
       <title>PythonでDockerを制御する</title>
@@ -81,15 +90,6 @@
       
       <guid>https://murkouc.github.io/2020/04/debian%E3%81%AE%E5%88%9D%E6%9C%9F%E8%A8%AD%E5%AE%9A/</guid>
       <description>[基本環境]  VirtualBox 6.0.18 (Mac版) Debian 10.3.0 (amd64)  [PATHへの/usr/sbin/の追加]  cd /home/ユーザ名  ホームディレクトリに移動する   touch .</description>
-    </item>
-    
-    <item>
-      <title>お知らせ</title>
-      <link>https://murkouc.github.io/2020/04/%E3%81%8A%E7%9F%A5%E3%82%89%E3%81%9B/</link>
-      <pubDate>Wed, 01 Apr 2020 00:00:09 +0900</pubDate>
-      
-      <guid>https://murkouc.github.io/2020/04/%E3%81%8A%E7%9F%A5%E3%82%89%E3%81%9B/</guid>
-      <description>2020年4月1日(木曜日)  三浦ゼミの開始日(第1回目)に関して、  学部4年生は 4月21日(火曜日) 14:30&amp;ndash;17:40 で、 学部3年生(夜間)は 4月22日(水曜日) 17:45&amp;ndash;19:15 で、 学部3年生(昼間)は 4月23日(木曜日) 14:30&amp;ndash;17:40 です。   ゼミでは、ウェブ会議システム(Skype)を使います。  ゼミ生は、お伝えしたSkype IDを登録して下さい。    2020年3月30日(月曜日)  三浦担当の前期講義の開始日(第1回目)に関して、  情報システム管理論は 5月11日(月曜日) で、 情報処理(夜間)は 5月11日(月曜日) です。   大学からの公式通知は、こちらで確認できます。  2020年3月29日(日曜日)  本サイトは、Googleサイトで運用していた「MIURA@OUC」を引き継いでいます。 今後は、本サイトから講義資料(主にPDF)を発信します。 これに伴いGoogleサイト上の「MIURA@OUC」を閉鎖します。  </description>
     </item>
     
     <item>
