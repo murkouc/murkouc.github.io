@@ -9,7 +9,7 @@
 <meta property="og:description" content="The special secret of making dreams come true can be summarized in four C&#39;s. They are Curiosity, Confidence, Courage, and Constancy." />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://murkouc.github.io/" />
-<meta property="og:updated_time" content="2020-05-08T00:00:09+09:00" />
+<meta property="og:updated_time" content="2020-05-19T22:35:27+09:00" />
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="K.MIURA@OUC"/>
@@ -28,8 +28,8 @@
     "@type": "Person",
     "name": "Katsunori MIURA"
   },
-  "dateModified": "2020-05-08T00:00:09+09:00",
-  "keywords": "小樽商大,""debian,""docker,""github,""hugo,""jupyter,""nextcloud,""nfs,""nginx,""oraclecloud,""python,""ubuntu,""その他,""学部,""技術,""研究,""講義,",
+  "dateModified": "2020-05-19T22:35:27+09:00",
+  "keywords": "小樽商大,""cgi,""debian,""docker,""github,""hugo,""jupyter,""nextcloud,""nfs,""nginx,""oraclecloud,""python,""ubuntu,""その他,""学部,""技術,""研究,""講義,",
   "description":"The special secret of making dreams come true can be summarized in four C's. They are Curiosity, Confidence, Courage, and Constancy."
 }
 </script>
@@ -98,6 +98,26 @@
 
           
 
+
+
+
+
+
+
+<article class="blog-post">
+  <header>
+    <h2 class="blog-post-title" dir="auto"><a href="https://murkouc.github.io/2020/05/nginx%E3%81%A8%E9%80%A3%E6%90%BA%E3%81%97%E3%81%A6python%E3%82%92%E5%8B%95%E3%81%8B%E3%81%99/">nginxと連携してPythonを動かす</a></h2>
+    <p class="blog-post-meta"><time datetime="2020-05-19T22:35:27+09:00">Tue May 19, 2020</time> by Katsunori MIURA in 
+<span class="fas fa-folder" aria-hidden="true"></span>&nbsp;<a href="/categories/%E5%B0%8F%E6%A8%BD%E5%95%86%E5%A4%A7/" rel="category tag">小樽商大</a>
+
+
+<span class="fas fa-tag" aria-hidden="true"></span>&nbsp;<a href="/tags/%E6%8A%80%E8%A1%93/" rel="tag">技術</a>, <a href="/tags/python/" rel="tag">python</a>, <a href="/tags/nginx/" rel="tag">nginx</a>, <a href="/tags/cgi/" rel="tag">cgi</a>
+
+</p>
+  </header>
+  [基本環境]  Ubuntu 18.04 nginx 1.14  [注意]  PythonでCGIは&hellip;と思う人にはお勧めしません  [nginxとfcgiwrapのインストール]  sudo apt update sudo atp upgrade sudo apt install python3 nginx-full fcgiwrap vim sudo vi /etc/nginx/fcgiwrap.
+  <a href='https://murkouc.github.io/2020/05/nginx%E3%81%A8%E9%80%A3%E6%90%BA%E3%81%97%E3%81%A6python%E3%82%92%E5%8B%95%E3%81%8B%E3%81%99/'>Read more →</a>
+</article> 
 
 
 
@@ -183,26 +203,6 @@
 
 
 
-
-<article class="blog-post">
-  <header>
-    <h2 class="blog-post-title" dir="auto"><a href="https://murkouc.github.io/2020/04/oracle%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%89%E3%82%92%E4%BD%BF%E3%81%86%E6%99%82%E3%81%AE%E6%B3%A8%E6%84%8F/">Oracleクラウドを使う時の注意</a></h2>
-    <p class="blog-post-meta"><time datetime="2020-04-13T00:50:37+09:00">Mon Apr 13, 2020</time> by Katsunori MIURA in 
-<span class="fas fa-folder" aria-hidden="true"></span>&nbsp;<a href="/categories/%E5%B0%8F%E6%A8%BD%E5%95%86%E5%A4%A7/" rel="category tag">小樽商大</a>
-
-
-<span class="fas fa-tag" aria-hidden="true"></span>&nbsp;<a href="/tags/%E6%8A%80%E8%A1%93/" rel="tag">技術</a>, <a href="/tags/oraclecloud/" rel="tag">oraclecloud</a>, <a href="/tags/ubuntu/" rel="tag">ubuntu</a>
-
-</p>
-  </header>
-  [基本環境]  Oracleクラウド (VMインスタンス) Ubuntu 18.04  [問題設定]  OSがUbuntuのVMインスタンスを使いWEBサイトを展開する OSのFWで80/tcpを開放してもWEBサイトにアクセスできない  [対処方法]  sudo vi /etc/iptables/rules.
-  <a href='https://murkouc.github.io/2020/04/oracle%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%89%E3%82%92%E4%BD%BF%E3%81%86%E6%99%82%E3%81%AE%E6%B3%A8%E6%84%8F/'>Read more →</a>
-</article> 
-
-
-
-
-
 <nav class="blog-pagination">
   
   
@@ -252,13 +252,15 @@
     <h4>Categories</h4>
     <ol class="list-unstyled">
       
-      <li><a href="/categories/%E5%B0%8F%E6%A8%BD%E5%95%86%E5%A4%A7">小樽商大</a>(17)</li>
+      <li><a href="/categories/%E5%B0%8F%E6%A8%BD%E5%95%86%E5%A4%A7">小樽商大</a>(18)</li>
       
     </ol>
   </section>
   <section class="sidebar-module">
     <h4>Tags</h4>
     <ol class="list-unstyled">
+      
+      <li><a href="/tags/cgi">cgi</a>(1)</li>
       
       <li><a href="/tags/debian">debian</a>(6)</li>
       
@@ -274,11 +276,11 @@
       
       <li><a href="/tags/nfs">nfs</a>(1)</li>
       
-      <li><a href="/tags/nginx">nginx</a>(2)</li>
+      <li><a href="/tags/nginx">nginx</a>(3)</li>
       
       <li><a href="/tags/oraclecloud">oraclecloud</a>(1)</li>
       
-      <li><a href="/tags/python">python</a>(2)</li>
+      <li><a href="/tags/python">python</a>(3)</li>
       
       <li><a href="/tags/ubuntu">ubuntu</a>(3)</li>
       
@@ -286,7 +288,7 @@
       
       <li><a href="/tags/%E5%AD%A6%E9%83%A8">学部</a>(3)</li>
       
-      <li><a href="/tags/%E6%8A%80%E8%A1%93">技術</a>(10)</li>
+      <li><a href="/tags/%E6%8A%80%E8%A1%93">技術</a>(11)</li>
       
       <li><a href="/tags/%E7%A0%94%E7%A9%B6">研究</a>(1)</li>
       

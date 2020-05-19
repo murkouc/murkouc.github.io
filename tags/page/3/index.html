@@ -9,7 +9,7 @@
 <meta property="og:description" content="The special secret of making dreams come true can be summarized in four C&#39;s. They are Curiosity, Confidence, Courage, and Constancy." />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://murkouc.github.io/tags/" />
-<meta property="og:updated_time" content="2020-05-08T00:00:09+09:00" />
+<meta property="og:updated_time" content="2020-05-19T22:35:27+09:00" />
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Tags"/>
@@ -28,8 +28,8 @@
     "@type": "Person",
     "name": "Katsunori MIURA"
   },
-  "dateModified": "2020-05-08T00:00:09+09:00",
-  "keywords": "小樽商大,""debian,""docker,""github,""hugo,""jupyter,""nextcloud,""nfs,""nginx,""oraclecloud,""python,""ubuntu,""その他,""学部,""技術,""研究,""講義,",
+  "dateModified": "2020-05-19T22:35:27+09:00",
+  "keywords": "小樽商大,""cgi,""debian,""docker,""github,""hugo,""jupyter,""nextcloud,""nfs,""nginx,""oraclecloud,""python,""ubuntu,""その他,""学部,""技術,""研究,""講義,",
   "description":"The special secret of making dreams come true can be summarized in four C's. They are Curiosity, Confidence, Courage, and Constancy."
 }
 </script>
@@ -98,6 +98,26 @@
 
           
 
+
+
+
+
+
+
+<article class="blog-post">
+  <header>
+    <h2 class="blog-post-title" dir="auto"><a href="https://murkouc.github.io/2020/03/wordcloud%E3%82%92%E4%BD%9C%E3%82%8B/">WordCloudを作る</a></h2>
+    <p class="blog-post-meta"><time datetime="2020-03-31T12:40:37+09:00">Tue Mar 31, 2020</time> by Katsunori MIURA in 
+<span class="fas fa-folder" aria-hidden="true"></span>&nbsp;<a href="/categories/%E5%B0%8F%E6%A8%BD%E5%95%86%E5%A4%A7/" rel="category tag">小樽商大</a>
+
+
+<span class="fas fa-tag" aria-hidden="true"></span>&nbsp;<a href="/tags/%E6%8A%80%E8%A1%93/" rel="tag">技術</a>, <a href="/tags/python/" rel="tag">python</a>, <a href="/tags/debian/" rel="tag">debian</a>, <a href="/tags/docker/" rel="tag">docker</a>
+
+</p>
+  </header>
+  [基本環境]  Debian 10.3.0 (amd64) Docker 19.03.8  [注意]  Docker環境の構築や他のサイトを読んで、Docker環境を構築していること  [Dockerコンテナの展開]  mkdir /home/ユーザ名/workspace  ホストのディレクトリをコンテナでマウントするための準備 ユーザ名は各々の環境に合わせて置き換える   docker run -itd --privileged -v /home/ユーザ名/workspace:/mnt --name wordcloud debian:stable docker exec -it wordcloud /bin/bash  [コンテナ(wordcloud)内での手続き]  apt update apt install python-pip python3-pip pip3 install wordcloud apt install vim cd /mnt vi sample.
+  <a href='https://murkouc.github.io/2020/03/wordcloud%E3%82%92%E4%BD%9C%E3%82%8B/'>Read more →</a>
+</article> 
 
 
 
@@ -184,26 +204,6 @@
 
 
 
-
-<article class="blog-post">
-  <header>
-    <h2 class="blog-post-title" dir="auto"><a href="https://murkouc.github.io/2020/03/%E6%83%85%E5%A0%B1%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E6%A7%8B%E7%AF%89%E8%AB%96/">情報システム構築論</a></h2>
-    <p class="blog-post-meta"><time datetime="2020-03-29T12:46:09+09:00">Sun Mar 29, 2020</time> by Katsunori MIURA in 
-<span class="fas fa-folder" aria-hidden="true"></span>&nbsp;<a href="/categories/%E5%B0%8F%E6%A8%BD%E5%95%86%E5%A4%A7/" rel="category tag">小樽商大</a>
-
-
-<span class="fas fa-tag" aria-hidden="true"></span>&nbsp;<a href="/tags/%E8%AC%9B%E7%BE%A9/" rel="tag">講義</a>, <a href="/tags/%E5%AD%A6%E9%83%A8/" rel="tag">学部</a>
-
-</p>
-  </header>
-  [教室]  370教室  [時間]  毎週金曜日 4講目(14:30&ndash;16:00)  [履修者]  教室定員を超えた場合に履修制限をかけます。  [講義内容と資料]  本授業の概要 =必要な基礎知識と最終目標を知る= (PDF, MB)  [小テストの問題と答え]  必要に応じて準備します。  
-  <a href='https://murkouc.github.io/2020/03/%E6%83%85%E5%A0%B1%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E6%A7%8B%E7%AF%89%E8%AB%96/'>Read more →</a>
-</article> 
-
-
-
-
-
 <nav class="blog-pagination">
   
   <a class="btn btn-outline-primary" href="/tags/page/2/" rel="prev" role="button">Previous page</a>
@@ -253,13 +253,15 @@
     <h4>Categories</h4>
     <ol class="list-unstyled">
       
-      <li><a href="/categories/%E5%B0%8F%E6%A8%BD%E5%95%86%E5%A4%A7">小樽商大</a>(17)</li>
+      <li><a href="/categories/%E5%B0%8F%E6%A8%BD%E5%95%86%E5%A4%A7">小樽商大</a>(18)</li>
       
     </ol>
   </section>
   <section class="sidebar-module">
     <h4>Tags</h4>
     <ol class="list-unstyled">
+      
+      <li><a href="/tags/cgi">cgi</a>(1)</li>
       
       <li><a href="/tags/debian">debian</a>(6)</li>
       
@@ -275,11 +277,11 @@
       
       <li><a href="/tags/nfs">nfs</a>(1)</li>
       
-      <li><a href="/tags/nginx">nginx</a>(2)</li>
+      <li><a href="/tags/nginx">nginx</a>(3)</li>
       
       <li><a href="/tags/oraclecloud">oraclecloud</a>(1)</li>
       
-      <li><a href="/tags/python">python</a>(2)</li>
+      <li><a href="/tags/python">python</a>(3)</li>
       
       <li><a href="/tags/ubuntu">ubuntu</a>(3)</li>
       
@@ -287,7 +289,7 @@
       
       <li><a href="/tags/%E5%AD%A6%E9%83%A8">学部</a>(3)</li>
       
-      <li><a href="/tags/%E6%8A%80%E8%A1%93">技術</a>(10)</li>
+      <li><a href="/tags/%E6%8A%80%E8%A1%93">技術</a>(11)</li>
       
       <li><a href="/tags/%E7%A0%94%E7%A9%B6">研究</a>(1)</li>
       
