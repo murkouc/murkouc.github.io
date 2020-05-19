@@ -25,7 +25,7 @@
   "@type": "BlogPosting",
   "headline": "nginxと連携してPythonを動かす",
   "url": "https://murkouc.github.io/2020/05/nginx%E3%81%A8%E9%80%A3%E6%90%BA%E3%81%97%E3%81%A6python%E3%82%92%E5%8B%95%E3%81%8B%E3%81%99/",
-  "wordCount": "56",
+  "wordCount": "58",
   "datePublished": "2020-05-19T22:35:27+09:00",
   "dateModified": "2020-05-19T22:35:27+09:00",
   "author": {
@@ -137,6 +137,10 @@ server{&hellip;}の中に、include fcgiwrap.conf; を追加する</li>
 <li>cd cgi-bin</li>
 <li>sudo vi <a href="/sources/test.py">test.py</a></li>
 <li>sudo chmod 755 test.py</li>
+</ol>
+<h6 id="cgiの動作確認">[CGIの動作確認]</h6>
+<ol>
+<li>http://IPアドレス/cgi-bin/test.py</li>
 </ol>
 
 
