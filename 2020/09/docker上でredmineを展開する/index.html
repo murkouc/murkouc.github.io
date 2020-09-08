@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<meta property="og:title" content="Docker上でRedmineを展開する" />
+<meta property="og:description" content="[基本環境]  Ubuntu 18.04 Docker 19.03.12  [参考サイト]  Redmine 4." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://murkouc.github.io/2020/09/docker%E4%B8%8A%E3%81%A7redmine%E3%82%92%E5%B1%95%E9%96%8B%E3%81%99%E3%82%8B/" />
+<meta property="article:published_time" content="2020-09-07T19:58:23+09:00" />
+<meta property="article:modified_time" content="2020-09-07T19:58:23+09:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Docker上でRedmineを展開する"/>
+<meta name="twitter:description" content="[基本環境]  Ubuntu 18.04 Docker 19.03.12  [参考サイト]  Redmine 4."/>
+<meta name="generator" content="Hugo 0.74.3" />
+
+
+    
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Docker上でRedmineを展開する",
+  "url": "https://murkouc.github.io/2020/09/docker%E4%B8%8A%E3%81%A7redmine%E3%82%92%E5%B1%95%E9%96%8B%E3%81%99%E3%82%8B/",
+  "wordCount": "281",
+  "datePublished": "2020-09-07T19:58:23+09:00",
+  "dateModified": "2020-09-07T19:58:23+09:00",
+  "author": {
+    "@type": "Person",
+    "name": "Katsunori MIURA"
+  },
+  "keywords": "小樽商大, 技術, docker, redmine, ubuntu"
+}
+</script>
+
+
+
+    <link rel="canonical" href="https://murkouc.github.io/2020/09/docker%E4%B8%8A%E3%81%A7redmine%E3%82%92%E5%B1%95%E9%96%8B%E3%81%99%E3%82%8B/">
+
+    <title>Docker上でRedmineを展開する | K.MIURA@OUC</title>
+
+    
+    <!-- combined, minified CSS -->
+    
+    <link href="https://murkouc.github.io/css/style.6da5c906cc7a8fbb93f31cd2316c5dbe3f19ac4aa6bfb066f1243045b8f6061e.css" rel="stylesheet" integrity="sha256-baXJBsx6j7uT8xzSMWxdvj8ZrEqmv7Bm8SQwRbj2Bh4=" crossorigin="anonymous">
+    
+
+    <!-- minified Font Awesome for SVG icons -->
+    
+    <script defer src="https://murkouc.github.io/js/fontawesome.min.f3d2a1f5980bab30ddd0d8cadbd496475309fc48e2b1d052c5c09e6facffcb0f.js" integrity="sha256-89Kh9ZgLqzDd0NjK29SWR1MJ/EjisdBSxcCeb6z/yw8=" crossorigin="anonymous"></script>
+
+    <!-- RSS 2.0 feed -->
+    
+
+    
+
+    
+
+  </head>
+
+  <body>
+
+    
+    <div class="blog-masthead">
+      <div class="container">
+        <nav class="nav blog-nav">
+          <a class="nav-link " href="https://murkouc.github.io/">Home</a>
+          
+          <a class="nav-link" href="/2020/08/%E3%81%8A%E7%9F%A5%E3%82%89%E3%81%9B" title="">お知らせ</a>
+          
+          
+          <a class="nav-link" href="/2020/03/%E6%8B%85%E5%BD%93%E8%AC%9B%E7%BE%A9" title="">担当講義</a>
+          
+          
+          <a class="nav-link" href="/2020/03/%E7%A0%94%E7%A9%B6%E6%A5%AD%E7%B8%BE" title="">研究業績</a>
+          
+        </nav>
+      </div>
+    </div>
+    
+
+    
+    
+    <header class="blog-header">
+      <div class="container">
+        <h1 class="blog-title" dir="auto"><a href="https://murkouc.github.io/" rel="home">K.MIURA@OUC</a></h1>
+        <p class="lead blog-description" dir="auto">The special secret of making dreams come true can be summarized in four C&rsquo;s. They are Curiosity, Confidence, Courage, and Constancy.</p>
+      </div>
+    </header>
+    
+    
+
+    
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8 blog-main">
+
+          
+
+
+<article class="blog-post">
+  <header>
+    <h2 class="blog-post-title" dir="auto"><a href="https://murkouc.github.io/2020/09/docker%E4%B8%8A%E3%81%A7redmine%E3%82%92%E5%B1%95%E9%96%8B%E3%81%99%E3%82%8B/">Docker上でRedmineを展開する</a></h2>
+    <p class="blog-post-meta"><time datetime="2020-09-07T19:58:23+09:00">Mon Sep 07, 2020</time> by Katsunori MIURA in 
+<span class="fas fa-folder" aria-hidden="true"></span>&nbsp;<a href="/categories/%E5%B0%8F%E6%A8%BD%E5%95%86%E5%A4%A7/" rel="category tag">小樽商大</a>
+
+
+<span class="fas fa-tag" aria-hidden="true"></span>&nbsp;<a href="/tags/%E6%8A%80%E8%A1%93/" rel="tag">技術</a>, <a href="/tags/docker/" rel="tag">docker</a>, <a href="/tags/redmine/" rel="tag">redmine</a>, <a href="/tags/ubuntu/" rel="tag">ubuntu</a>
+
+</p>
+  </header>
+  <h6 id="基本環境">[基本環境]</h6>
+<ul>
+<li>Ubuntu 18.04</li>
+<li>Docker 19.03.12</li>
+</ul>
+<h6 id="参考サイト">[参考サイト]</h6>
+<ul>
+<li><a href="http://blog.redmine.jp/articles/4_1/install/ubuntu/">Redmine 4.1をUbuntu Server 18.04.3 LTSにインストールする手順</a></li>
+</ul>
+<h6 id="注意">[注意]</h6>
+<ul>
+<li><a href="/2020/03/docker%E7%92%B0%E5%A2%83%E3%81%AE%E6%A7%8B%E7%AF%89/">Docker環境の構築</a>や他のサイトを読んで、Docker環境を構築していること</li>
+</ul>
+<h6 id="dockerコンテナの展開ホストos上で実行">[Dockerコンテナの展開(ホストOS上で実行)]</h6>
+<ol>
+<li>docker pull ubuntu:18.04</li>
+<li>docker run -itd --privileged -p 80:80/tcp --name redmine ubuntu:18.04</li>
+<li>docker exec -it redmine /bin/bash</li>
+</ol>
+<h6 id="コンテナredmine内での手続き">[コンテナ(redmine)内での手続き]</h6>
+<ol>
+<li>adduser ubuntu</li>
+<li>apt-get update</li>
+<li>apt-get upgrade</li>
+<li>apt-get install sudo</li>
+<li>usermod -G sudo ubuntu</li>
+<li>su - ubuntu</li>
+<li>sudo apt-get install locales</li>
+<li>sudo locale-gen ja_JP.UTF-8</li>
+<li>locale -a
+<ul>
+<li>ja_JP.utf8の存在を確認</li>
+</ul>
+</li>
+<li>sudo apt-get install build-essential zlib1g-dev libssl-dev libreadline-dev</li>
+<li>sudo apt-get install libyaml-dev libcurl4-openssl-dev libffi-dev</li>
+<li>sudo apt-get install postgresql libpq-dev</li>
+<li>sudo apt-get install apache2 apache2-dev</li>
+<li>sudo apt-get install imagemagick fonts-takao-pgothic</li>
+<li>sudo apt-get install subversion git vim</li>
+<li>curl -O <a href="https://cache.ruby-lang.org/pub/ruby/2.6/ruby-2.6.5.tar.gz">https://cache.ruby-lang.org/pub/ruby/2.6/ruby-2.6.5.tar.gz</a></li>
+<li>tar xvf ruby-2.6.5.tar.gz</li>
+<li>cd ruby-2.6.5</li>
+<li>./configure --disable-install-doc</li>
+<li>make</li>
+<li>sudo make install</li>
+<li>cd</li>
+<li>ruby -v
+<ul>
+<li>Rubyのバージョンを確認</li>
+</ul>
+</li>
+<li>sudo service postgresql start</li>
+<li>sudo -u postgres createuser -P redmine
+<ul>
+<li>パスワードをredmineと仮定</li>
+</ul>
+</li>
+<li>sudo -u postgres createdb -E UTF-8 -l ja_JP.UTF-8 -O redmine -T template0 redmine</li>
+<li>sudo mkdir /var/lib/redmine</li>
+<li>sudo chown www-data /var/lib/redmine</li>
+<li>sudo -u www-data svn co <a href="https://svn.redmine.org/redmine/branches/4.1-stable">https://svn.redmine.org/redmine/branches/4.1-stable</a> /var/lib/redmine</li>
+<li>cd</li>
+<li>vi <a href="/sources/database-yml.sh">database-yml.sh</a></li>
+<li>chmod 755 database-yml.sh</li>
+<li>sudo ./database-yml.sh</li>
+<li>more /var/lib/redmine/config/database.yml
+<ul>
+<li>ファイルの存在を確認</li>
+<li>password:にpostgresqlの<strong>ユーザredmineのパスワード</strong>を書く</li>
+</ul>
+</li>
+<li>vi <a href="/sources/configuration-yml.sh">configuration-yml.sh</a></li>
+<li>chmod 755 configuration-yml.sh</li>
+<li>sudo ./configuration-yml.sh</li>
+<li>more /var/lib/redmine/config/configuration.yml
+<ul>
+<li>ファイルの存在を確認</li>
+</ul>
+</li>
+<li>cd /var/lib/redmine/config/</li>
+<li>sudo chown www-data:www-data database.yml</li>
+<li>sudo chown www-data:www-data configuration.yml</li>
+<li>cd /var/lib/redmine/</li>
+<li>sudo -u www-data bundle install --without development test --path vendor/bundle</li>
+<li>sudo -u www-data bin/rake generate_secret_token</li>
+<li>sudo -u www-data RAILS_ENV=production bin/rake db:migrate</li>
+<li>sudo gem install passenger -N</li>
+<li>sudo passenger-install-apache2-module --auto --languages ruby</li>
+<li>cd</li>
+<li>vi <a href="/sources/redmine-conf.sh">redmine-conf.sh</a></li>
+<li>chmod 755 redmine-conf.sh</li>
+<li>sudo ./redmine-conf.sh</li>
+<li>more /etc/apache2/conf-available/redmine.conf
+<ul>
+<li>ファイルの存在を確認</li>
+<li>3行目(&lt;/Directory&gt;)以降の内容が<strong>passenger-install-apache2-module --snippet</strong>の出力結果であることを確認</li>
+</ul>
+</li>
+<li>sudo a2enconf redmine</li>
+<li>apache2ctl configtest</li>
+<li>sudo service apache2 reload</li>
+<li>vi /etc/apache2/sites-enabled/000-default.conf
+<ul>
+<li>DocumentRootの値を <strong>/var/lib/redmine/public</strong> に変更</li>
+</ul>
+</li>
+<li>apache2ctl configtest</li>
+<li>sudo service apache2 reload</li>
+<li>sudo service apache2 start</li>
+<li>sudo vi /etc/init.d/<a href="/sources/redmine.sh">redmine.sh</a></li>
+<li>exit</li>
+<li>exit</li>
+</ol>
+<h6 id="dockerイメージの生成ホストos上で実行">[Dockerイメージの生成(ホストOS上で実行)]</h6>
+<ol>
+<li>docker stop redmine</li>
+<li>docker commit redmine ubuntu1804:redmine</li>
+</ol>
+<h6 id="dockerイメージからredmineを展開ホストos上で実行">[DockerイメージからRedmineを展開(ホストOS上で実行)]</h6>
+<ol>
+<li>docker run -itd --privileged -p 8080:80 --name sample ubuntu1804:redmine</li>
+<li>docker exec sample /etc/init.d/redmine.sh</li>
+</ol>
+<h6 id="redmineの起動を確認">[Redmineの起動を確認]</h6>
+<ol>
+<li>手元PCのウェブブラウザで <strong>http://RedmineのIPアドレス:8080/</strong> に接続する</li>
+</ol>
+
+
+  
+
+  
+  <hr>
+  <footer>
+
+  
+    <section>
+    <h4>Share</h4>
+    <nav class="nav sharing-icons">
+      <a class="nav-item" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fmurkouc.github.io%2f2020%2f09%2fdocker%25E4%25B8%258A%25E3%2581%25A7redmine%25E3%2582%2592%25E5%25B1%2595%25E9%2596%258B%25E3%2581%2599%25E3%2582%258B%2f" title="Share on Facebook"><span class="fab fa-facebook-f fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fmurkouc.github.io%2f2020%2f09%2fdocker%25E4%25B8%258A%25E3%2581%25A7redmine%25E3%2582%2592%25E5%25B1%2595%25E9%2596%258B%25E3%2581%2599%25E3%2582%258B%2f" title="Share on LinkedIn"><span class="fab fa-linkedin-in fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://twitter.com/intent/tweet?url=https%3a%2f%2fmurkouc.github.io%2f2020%2f09%2fdocker%25E4%25B8%258A%25E3%2581%25A7redmine%25E3%2582%2592%25E5%25B1%2595%25E9%2596%258B%25E3%2581%2599%25E3%2582%258B%2f&amp;text=Docker%e4%b8%8a%e3%81%a7Redmine%e3%82%92%e5%b1%95%e9%96%8b%e3%81%99%e3%82%8b" title="Tweet this"><span class="fab fa-twitter fa-2x"></span></a>
+    </nav>
+  </section>
+
+  
+
+  
+  </footer>
+  
+
+</article> 
+
+
+
+        </div> <!-- /.blog-main -->
+
+        <aside class="col-sm-3 ml-auto blog-sidebar">
+  
+  <section class="sidebar-module sidebar-module-inset">
+    <h4>About Me</h4>
+三浦 克宜<br>
+博士(情報科学)<br>
+　小樽商科大学 商学部<br>
+　　准教授<br>
+　情報総合センター<br>
+　　副センター長<br>
+  </section>
+  
+
+
+
+  
+  <section class="sidebar-module">
+    <h4>Links</h4>
+    <ol class="list-unstyled">
+      
+      <li><a href="https://researchmap.jp/miurakatsunori">researchmap</a></li>
+      
+      <li><a href="https://www.otaru-uc.ac.jp">小樽商科大学</a></li>
+      
+      <li><a href="https://www.otaru-uc.ac.jp/center/">情報総合センター</a></li>
+      
+    </ol>
+  </section>
+  
+
+  <section class="sidebar-module">
+    <h4>Categories</h4>
+    <ol class="list-unstyled">
+      
+      <li><a href="/categories/%E5%B0%8F%E6%A8%BD%E5%95%86%E5%A4%A7">小樽商大</a>(19)</li>
+      
+    </ol>
+  </section>
+  <section class="sidebar-module">
+    <h4>Tags</h4>
+    <ol class="list-unstyled">
+      
+      <li><a href="/tags/cgi">cgi</a>(1)</li>
+      
+      <li><a href="/tags/debian">debian</a>(6)</li>
+      
+      <li><a href="/tags/docker">docker</a>(5)</li>
+      
+      <li><a href="/tags/github">github</a>(1)</li>
+      
+      <li><a href="/tags/hugo">hugo</a>(1)</li>
+      
+      <li><a href="/tags/jupyter">jupyter</a>(1)</li>
+      
+      <li><a href="/tags/nextcloud">nextcloud</a>(1)</li>
+      
+      <li><a href="/tags/nfs">nfs</a>(1)</li>
+      
+      <li><a href="/tags/nginx">nginx</a>(3)</li>
+      
+      <li><a href="/tags/oraclecloud">oraclecloud</a>(1)</li>
+      
+      <li><a href="/tags/python">python</a>(3)</li>
+      
+      <li><a href="/tags/redmine">redmine</a>(1)</li>
+      
+      <li><a href="/tags/ubuntu">ubuntu</a>(4)</li>
+      
+      <li><a href="/tags/%E3%81%9D%E3%81%AE%E4%BB%96">その他</a>(1)</li>
+      
+      <li><a href="/tags/%E5%AD%A6%E9%83%A8">学部</a>(3)</li>
+      
+      <li><a href="/tags/%E6%8A%80%E8%A1%93">技術</a>(12)</li>
+      
+      <li><a href="/tags/%E7%A0%94%E7%A9%B6">研究</a>(1)</li>
+      
+      <li><a href="/tags/%E8%AC%9B%E7%BE%A9">講義</a>(5)</li>
+      
+    </ol>
+  </section>
+
+  <section class="sidebar-module">
+    <a href="https://github.com/murkouc/murkouc.github.io">
+      <img src="/images/github.png" width="45">
+    </a>
+    <a href="https://www.facebook.com/katsunori.miura.9">
+      <img src="/images/facebook.png" width="50">
+    </a>
+  </section>
+
+</aside>
+
+
+      </div> <!-- /.row -->
+    </div> <!-- /.container -->
+    
+
+    
+    <footer class="blog-footer">
+      <p dir="auto">
+      
+      Blog template created by <a href="https://twitter.com/mdo">@mdo</a>, ported to Hugo by <a href='https://twitter.com/mralanorth'>@mralanorth</a>.
+      
+      </p>
+      <p>
+      <a href="#">Back to top</a>
+      </p>
+    </footer>
+    
+
+  </body>
+
+</html>
