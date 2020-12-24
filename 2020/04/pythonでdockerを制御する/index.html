@@ -15,7 +15,7 @@
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="PythonでDockerを制御する"/>
 <meta name="twitter:description" content="[基本環境]  Python 3.7.3 Docker 19.03.8  [注意]  Docker SDK for Pythonを基にしたDocker制御ではない Subprocessを基にしたDocker制御である Dockerのオプションを多様したいなら、結局、Subprocessに落ち着く  [Dockerコンテナ一覧の取得]  Dockerコマンドなら  docker ps -a   Pythonコードなら  import subprocess comp = subprocess."/>
-<meta name="generator" content="Hugo 0.74.3" />
+<meta name="generator" content="Hugo 0.79.1" />
 
 
     
@@ -133,7 +133,7 @@
 <li>Pythonコードなら
 <ol>
 <li>import subprocess</li>
-<li>comp = subprocess.run([&lsquo;docker&rsquo;, &lsquo;ps&rsquo;, &lsquo;-a&rsquo;], encoding='utf-8&rsquo;, stdout=subprocess.PIPE)</li>
+<li>comp = subprocess.run([&lsquo;docker&rsquo;, &lsquo;ps&rsquo;, &lsquo;-a&rsquo;], encoding=&lsquo;utf-8&rsquo;, stdout=subprocess.PIPE)</li>
 <li>print(comp)</li>
 </ol>
 </li>
@@ -148,7 +148,7 @@
 <li>Pythonコードなら
 <ol>
 <li>import subprocess</li>
-<li>comp = subprocess.run([&lsquo;docker&rsquo;, &lsquo;run&rsquo;, &lsquo;-itd&rsquo;, &lsquo;--priviledged&rsquo;, &lsquo;-p&rsquo;, &lsquo;80:80/tcp&rsquo;, &lsquo;--name&rsquo;, &lsquo;websrv&rsquo;, &lsquo;debian:stable&rsquo;], encoding='utf-8&rsquo;, stdout=subprocess.PIPE)</li>
+<li>comp = subprocess.run([&lsquo;docker&rsquo;, &lsquo;run&rsquo;, &lsquo;-itd&rsquo;, &lsquo;--priviledged&rsquo;, &lsquo;-p&rsquo;, &lsquo;80:80/tcp&rsquo;, &lsquo;--name&rsquo;, &lsquo;websrv&rsquo;, &lsquo;debian:stable&rsquo;], encoding=&lsquo;utf-8&rsquo;, stdout=subprocess.PIPE)</li>
 <li>print(comp)</li>
 </ol>
 </li>

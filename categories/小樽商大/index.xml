@@ -6,11 +6,7 @@
     <description>Recent content in 小樽商大 on K.MIURA@OUC</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Mon, 07 Sep 2020 19:58:23 +0900</lastBuildDate>
-    
-	<atom:link href="https://murkouc.github.io/categories/%E5%B0%8F%E6%A8%BD%E5%95%86%E5%A4%A7/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Mon, 07 Sep 2020 19:58:23 +0900</lastBuildDate><atom:link href="https://murkouc.github.io/categories/%E5%B0%8F%E6%A8%BD%E5%95%86%E5%A4%A7/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Docker上でRedmineを展開する</title>
       <link>https://murkouc.github.io/2020/09/docker%E4%B8%8A%E3%81%A7redmine%E3%82%92%E5%B1%95%E9%96%8B%E3%81%99%E3%82%8B/</link>
@@ -171,8 +167,7 @@
       <pubDate>Sun, 29 Mar 2020 00:39:09 +0900</pubDate>
       
       <guid>https://murkouc.github.io/2020/03/%E7%A0%94%E7%A9%B6%E6%A5%AD%E7%B8%BE/</guid>
-      <description> 以下の論文のWordCloudをアップロードしてみる。
-Optimal and Feasible Cloud Resource Configurations Generation Method for Genomic Analytics Applications  </description>
+      <description>[クラウドサービス, 最適解探索]  Constrained Multi-objective Optimization Method for Practica Scientific Workflow Resource Selection, 2019.</description>
     </item>
     
     <item>
