@@ -6,7 +6,16 @@
     <description>Recent content in 小樽商大 on K.MIURA@OUC</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Mon, 07 Sep 2020 19:58:23 +0900</lastBuildDate><atom:link href="https://murkouc.github.io/categories/%E5%B0%8F%E6%A8%BD%E5%95%86%E5%A4%A7/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 03 Feb 2021 11:56:14 +0900</lastBuildDate><atom:link href="https://murkouc.github.io/categories/%E5%B0%8F%E6%A8%BD%E5%95%86%E5%A4%A7/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>応用情報論I</title>
+      <link>https://murkouc.github.io/2021/02/%E5%BF%9C%E7%94%A8%E6%83%85%E5%A0%B1%E8%AB%96i/</link>
+      <pubDate>Wed, 03 Feb 2021 11:56:14 +0900</pubDate>
+      
+      <guid>https://murkouc.github.io/2021/02/%E5%BF%9C%E7%94%A8%E6%83%85%E5%A0%B1%E8%AB%96i/</guid>
+      <description>[教室]  第1演習室  [時間]  毎週水曜日 3講目(12:50&amp;ndash;14:20)  [履修者]  第1演習室の座席数を超える履修希望者がいる場合には、座席数を上限として選抜します。  [講義内容と資料]  本授業の概要 ()  </description>
+    </item>
+    
     <item>
       <title>Docker上でRedmineを展開する</title>
       <link>https://murkouc.github.io/2020/09/docker%E4%B8%8A%E3%81%A7redmine%E3%82%92%E5%B1%95%E9%96%8B%E3%81%99%E3%82%8B/</link>

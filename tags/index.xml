@@ -6,7 +6,25 @@
     <description>Recent content in Tags on K.MIURA@OUC</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Mon, 07 Sep 2020 19:58:23 +0900</lastBuildDate><atom:link href="https://murkouc.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 03 Feb 2021 11:56:14 +0900</lastBuildDate><atom:link href="https://murkouc.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>学部</title>
+      <link>https://murkouc.github.io/tags/%E5%AD%A6%E9%83%A8/</link>
+      <pubDate>Wed, 03 Feb 2021 11:56:14 +0900</pubDate>
+      
+      <guid>https://murkouc.github.io/tags/%E5%AD%A6%E9%83%A8/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>講義</title>
+      <link>https://murkouc.github.io/tags/%E8%AC%9B%E7%BE%A9/</link>
+      <pubDate>Wed, 03 Feb 2021 11:56:14 +0900</pubDate>
+      
+      <guid>https://murkouc.github.io/tags/%E8%AC%9B%E7%BE%A9/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>docker</title>
       <link>https://murkouc.github.io/tags/docker/</link>
@@ -139,24 +157,6 @@
       <pubDate>Thu, 02 Apr 2020 21:43:56 +0900</pubDate>
       
       <guid>https://murkouc.github.io/tags/hugo/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>講義</title>
-      <link>https://murkouc.github.io/tags/%E8%AC%9B%E7%BE%A9/</link>
-      <pubDate>Sun, 29 Mar 2020 22:39:49 +0900</pubDate>
-      
-      <guid>https://murkouc.github.io/tags/%E8%AC%9B%E7%BE%A9/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>学部</title>
-      <link>https://murkouc.github.io/tags/%E5%AD%A6%E9%83%A8/</link>
-      <pubDate>Sun, 29 Mar 2020 13:20:02 +0900</pubDate>
-      
-      <guid>https://murkouc.github.io/tags/%E5%AD%A6%E9%83%A8/</guid>
       <description></description>
     </item>
     
