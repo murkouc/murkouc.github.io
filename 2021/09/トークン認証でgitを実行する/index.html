@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<meta property="og:title" content="トークン認証でgitを実行する" />
+<meta property="og:description" content="[基本環境]  Debian 10.3.0  [参考サイト]  GitHubでパスワード認証廃止による認証エラーが出た件 GitHubのリポジトリアクセス時に「remote: Support for password authentication was removed on August 13, 2021." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://murkouc.github.io/2021/09/%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3%E8%AA%8D%E8%A8%BC%E3%81%A7git%E3%82%92%E5%AE%9F%E8%A1%8C%E3%81%99%E3%82%8B/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-09-10T15:00:00+09:00" />
+<meta property="article:modified_time" content="2021-09-10T15:00:00+09:00" />
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="トークン認証でgitを実行する"/>
+<meta name="twitter:description" content="[基本環境]  Debian 10.3.0  [参考サイト]  GitHubでパスワード認証廃止による認証エラーが出た件 GitHubのリポジトリアクセス時に「remote: Support for password authentication was removed on August 13, 2021."/>
+<meta name="generator" content="Hugo 0.88.1" />
+
+
+    
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": "トークン認証でgitを実行する",
+  "url": "https://murkouc.github.io/2021/09/%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3%E8%AA%8D%E8%A8%BC%E3%81%A7git%E3%82%92%E5%AE%9F%E8%A1%8C%E3%81%99%E3%82%8B/",
+  "wordCount": "74",
+  "datePublished": "2021-09-10T15:00:00+09:00",
+  "dateModified": "2021-09-10T15:00:00+09:00",
+  "author": {
+    "@type": "Person",
+    "name": "Katsunori MIURA"
+  },
+  "keywords": "小樽商大, 技術, github, debian"
+}
+</script>
+
+
+
+    <link rel="canonical" href="https://murkouc.github.io/2021/09/%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3%E8%AA%8D%E8%A8%BC%E3%81%A7git%E3%82%92%E5%AE%9F%E8%A1%8C%E3%81%99%E3%82%8B/">
+
+    <title>トークン認証でgitを実行する | K.MIURA@OUC</title>
+
+    
+    <!-- combined, minified CSS -->
+    
+    <link href="https://murkouc.github.io/css/style.6da5c906cc7a8fbb93f31cd2316c5dbe3f19ac4aa6bfb066f1243045b8f6061e.css" rel="stylesheet" integrity="sha256-baXJBsx6j7uT8xzSMWxdvj8ZrEqmv7Bm8SQwRbj2Bh4=" crossorigin="anonymous">
+    
+
+    <!-- minified Font Awesome for SVG icons -->
+    
+    <script defer src="https://murkouc.github.io/js/fontawesome.min.f3d2a1f5980bab30ddd0d8cadbd496475309fc48e2b1d052c5c09e6facffcb0f.js" integrity="sha256-89Kh9ZgLqzDd0NjK29SWR1MJ/EjisdBSxcCeb6z/yw8=" crossorigin="anonymous"></script>
+
+    <!-- RSS 2.0 feed -->
+    
+
+    
+
+    
+
+  </head>
+
+  <body>
+
+    
+    <div class="blog-masthead">
+      <div class="container">
+        <nav class="nav blog-nav">
+          <a class="nav-link " href="https://murkouc.github.io/">Home</a>
+          
+          <a class="nav-link" href="/2020/08/%E3%81%8A%E7%9F%A5%E3%82%89%E3%81%9B" title="">お知らせ</a>
+          
+          
+          <a class="nav-link" href="/2020/03/%E6%8B%85%E5%BD%93%E8%AC%9B%E7%BE%A9" title="">担当講義</a>
+          
+          
+          <a class="nav-link" href="/2020/03/%E7%A0%94%E7%A9%B6%E6%A5%AD%E7%B8%BE" title="">研究業績</a>
+          
+        </nav>
+      </div>
+    </div>
+    
+
+    
+    
+    <header class="blog-header">
+      <div class="container">
+        <h1 class="blog-title" dir="auto"><a href="https://murkouc.github.io/" rel="home">K.MIURA@OUC</a></h1>
+        <p class="lead blog-description" dir="auto">The special secret of making dreams come true can be summarized in four C&rsquo;s. They are Curiosity, Confidence, Courage, and Constancy.</p>
+      </div>
+    </header>
+    
+    
+
+    
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8 blog-main">
+
+          
+
+
+<article class="blog-post">
+  <header>
+    <h2 class="blog-post-title" dir="auto"><a href="https://murkouc.github.io/2021/09/%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3%E8%AA%8D%E8%A8%BC%E3%81%A7git%E3%82%92%E5%AE%9F%E8%A1%8C%E3%81%99%E3%82%8B/">トークン認証でgitを実行する</a></h2>
+    <p class="blog-post-meta"><time datetime="2021-09-10T15:00:00+09:00">Fri Sep 10, 2021</time> by Katsunori MIURA in 
+<span class="fas fa-folder" aria-hidden="true"></span>&nbsp;<a href="/categories/%E5%B0%8F%E6%A8%BD%E5%95%86%E5%A4%A7/" rel="category tag">小樽商大</a>
+
+
+<span class="fas fa-tag" aria-hidden="true"></span>&nbsp;<a href="/tags/%E6%8A%80%E8%A1%93/" rel="tag">技術</a>, <a href="/tags/github/" rel="tag">github</a>, <a href="/tags/debian/" rel="tag">debian</a>
+
+</p>
+  </header>
+  <h6 id="基本環境">[基本環境]</h6>
+<ul>
+<li>Debian 10.3.0</li>
+</ul>
+<h6 id="参考サイト">[参考サイト]</h6>
+<ul>
+<li><a href="https://qiita.com/atsymd/items/a1ff5a496b78f47ce80e">GitHubでパスワード認証廃止による認証エラーが出た件</a></li>
+<li><a href="https://note.kiriukun.com/entry/20210904-github-password-authentication-was-removed">GitHubのリポジトリアクセス時に「remote: Support for password authentication was removed on August 13, 2021.」エラー</a></li>
+</ul>
+<h6 id="注意">[注意]</h6>
+<ul>
+<li>8月末まで、次のコマンドをを実行した後に、パスワード認証で更新できた
+<ul>
+<li>git push origin master</li>
+</ul>
+</li>
+<li>しかし、この認証が廃止されたので、トークン認証に変更する必要がある</li>
+<li>この記事は、トークン認証に変更する方法をまとめている</li>
+</ul>
+<h6 id="トークンを生成する-githubのウェブサイト上で実行">[トークンを生成する (GitHubのウェブサイト上で実行)]</h6>
+<ol>
+<li>プロフィールのアイコンをクリックし、 <strong>Settings</strong> をクリックする</li>
+<li>左端に並んでいる項目の中から <strong>Developer settings</strong> をクリックする</li>
+<li>左端に並んでいる項目の中から <strong>Personal access tokens</strong> をクリックする</li>
+<li><strong>Generate new token</strong> をクリックして、トークンを生成する
+<ul>
+<li><strong>Note</strong> は、トークンのラベルの感覚で、適当に記述する</li>
+<li><strong>Expiration</strong> は、トークンの有効期限を設定する</li>
+<li><strong>Select scopes</strong> は、アクセスを許す項目を選択する</li>
+</ul>
+</li>
+<li>トークンをメモする</li>
+</ol>
+<h6 id="トークンを適用する-ターミナル上で実行">[トークンを適用する (ターミナル上で実行)]</h6>
+<ol>
+<li>git remove set-url origin <a href="https://ghp_xxxxxxxxxx@github.com/hoge/hoge.git">https://ghp_xxxxxxxxxx@github.com/hoge/hoge.git</a>
+<ul>
+<li>ghp_xxxxxxxxxx をトークンとする</li>
+<li><a href="https://github.com/hoge/hoge.git">https://github.com/hoge/hoge.git</a> を元のリモートURLとする</li>
+</ul>
+</li>
+</ol>
+<h6 id="データをアップロードする-ターミナル上で実行">[データをアップロードする (ターミナル上で実行)]</h6>
+<ol>
+<li>git add -A</li>
+<li>git comit -m &ldquo;コメント&rdquo;</li>
+<li>git push origin master</li>
+</ol>
+
+
+  
+
+  
+  <hr>
+  <footer>
+
+  
+    <section>
+    <h4>Share</h4>
+    <nav class="nav sharing-icons">
+      <a class="nav-item" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fmurkouc.github.io%2f2021%2f09%2f%25E3%2583%2588%25E3%2583%25BC%25E3%2582%25AF%25E3%2583%25B3%25E8%25AA%258D%25E8%25A8%25BC%25E3%2581%25A7git%25E3%2582%2592%25E5%25AE%259F%25E8%25A1%258C%25E3%2581%2599%25E3%2582%258B%2f" title="Share on Facebook"><span class="fab fa-facebook-f fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fmurkouc.github.io%2f2021%2f09%2f%25E3%2583%2588%25E3%2583%25BC%25E3%2582%25AF%25E3%2583%25B3%25E8%25AA%258D%25E8%25A8%25BC%25E3%2581%25A7git%25E3%2582%2592%25E5%25AE%259F%25E8%25A1%258C%25E3%2581%2599%25E3%2582%258B%2f" title="Share on LinkedIn"><span class="fab fa-linkedin-in fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://twitter.com/intent/tweet?url=https%3a%2f%2fmurkouc.github.io%2f2021%2f09%2f%25E3%2583%2588%25E3%2583%25BC%25E3%2582%25AF%25E3%2583%25B3%25E8%25AA%258D%25E8%25A8%25BC%25E3%2581%25A7git%25E3%2582%2592%25E5%25AE%259F%25E8%25A1%258C%25E3%2581%2599%25E3%2582%258B%2f&amp;text=%e3%83%88%e3%83%bc%e3%82%af%e3%83%b3%e8%aa%8d%e8%a8%bc%e3%81%a7git%e3%82%92%e5%ae%9f%e8%a1%8c%e3%81%99%e3%82%8b" title="Tweet this"><span class="fab fa-twitter fa-2x"></span></a>
+    </nav>
+  </section>
+
+  
+
+  
+  </footer>
+  
+
+</article> 
+
+
+
+        </div> <!-- /.blog-main -->
+
+        <aside class="col-sm-3 ml-auto blog-sidebar">
+  
+  <section class="sidebar-module sidebar-module-inset">
+    <h4>About Me</h4>
+三浦 克宜<br>
+博士(情報科学)<br>
+　小樽商科大学 商学部<br>
+　　准教授<br>
+　情報総合センター<br>
+　　副センター長<br>
+  </section>
+  
+
+
+
+  
+  <section class="sidebar-module">
+    <h4>Links</h4>
+    <ol class="list-unstyled">
+      
+      <li><a href="https://researchmap.jp/miurakatsunori">researchmap</a></li>
+      
+      <li><a href="https://www.otaru-uc.ac.jp">小樽商科大学</a></li>
+      
+      <li><a href="https://www.otaru-uc.ac.jp/center/">情報総合センター</a></li>
+      
+    </ol>
+  </section>
+  
+
+  <section class="sidebar-module">
+    <h4>Categories</h4>
+    <ol class="list-unstyled">
+      
+      <li><a href="/categories/%E5%B0%8F%E6%A8%BD%E5%95%86%E5%A4%A7">小樽商大</a>(21)</li>
+      
+    </ol>
+  </section>
+  <section class="sidebar-module">
+    <h4>Tags</h4>
+    <ol class="list-unstyled">
+      
+      <li><a href="/tags/cgi">cgi</a>(1)</li>
+      
+      <li><a href="/tags/debian">debian</a>(7)</li>
+      
+      <li><a href="/tags/docker">docker</a>(5)</li>
+      
+      <li><a href="/tags/github">github</a>(2)</li>
+      
+      <li><a href="/tags/hugo">hugo</a>(1)</li>
+      
+      <li><a href="/tags/jupyter">jupyter</a>(1)</li>
+      
+      <li><a href="/tags/nextcloud">nextcloud</a>(1)</li>
+      
+      <li><a href="/tags/nfs">nfs</a>(1)</li>
+      
+      <li><a href="/tags/nginx">nginx</a>(3)</li>
+      
+      <li><a href="/tags/oraclecloud">oraclecloud</a>(1)</li>
+      
+      <li><a href="/tags/python">python</a>(3)</li>
+      
+      <li><a href="/tags/redmine">redmine</a>(1)</li>
+      
+      <li><a href="/tags/ubuntu">ubuntu</a>(4)</li>
+      
+      <li><a href="/tags/%E3%81%9D%E3%81%AE%E4%BB%96">その他</a>(1)</li>
+      
+      <li><a href="/tags/%E5%AD%A6%E9%83%A8">学部</a>(4)</li>
+      
+      <li><a href="/tags/%E6%8A%80%E8%A1%93">技術</a>(13)</li>
+      
+      <li><a href="/tags/%E7%A0%94%E7%A9%B6">研究</a>(1)</li>
+      
+      <li><a href="/tags/%E8%AC%9B%E7%BE%A9">講義</a>(6)</li>
+      
+    </ol>
+  </section>
+
+  <section class="sidebar-module">
+    <a href="https://github.com/murkouc/murkouc.github.io">
+      <img src="/images/github.png" width="45">
+    </a>
+    <a href="https://www.facebook.com/katsunori.miura.9">
+      <img src="/images/facebook.png" width="50">
+    </a>
+  </section>
+
+</aside>
+
+
+      </div> <!-- /.row -->
+    </div> <!-- /.container -->
+    
+
+    
+    <footer class="blog-footer">
+      <p dir="auto">
+      
+      Blog template created by <a href="https://twitter.com/mdo">@mdo</a>, ported to Hugo by <a href='https://twitter.com/mralanorth'>@mralanorth</a>.
+      
+      </p>
+      <p>
+      <a href="#">Back to top</a>
+      </p>
+    </footer>
+    
+
+  </body>
+
+</html>
