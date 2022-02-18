@@ -6,7 +6,16 @@
     <description>Recent content in python on K.MIURA@OUC</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Tue, 19 May 2020 22:35:27 +0900</lastBuildDate><atom:link href="https://murkouc.github.io/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 10 Feb 2022 01:01:01 +0900</lastBuildDate><atom:link href="https://murkouc.github.io/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>テキスト内の全角文字を見つけるプログラム</title>
+      <link>https://murkouc.github.io/2022/02/%E3%83%86%E3%82%AD%E3%82%B9%E3%83%88%E5%86%85%E3%81%AE%E5%85%A8%E8%A7%92%E6%96%87%E5%AD%97%E3%82%92%E8%A6%8B%E3%81%A4%E3%81%91%E3%82%8B%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%A0/</link>
+      <pubDate>Thu, 10 Feb 2022 01:01:01 +0900</pubDate>
+      
+      <guid>https://murkouc.github.io/2022/02/%E3%83%86%E3%82%AD%E3%82%B9%E3%83%88%E5%86%85%E3%81%AE%E5%85%A8%E8%A7%92%E6%96%87%E5%AD%97%E3%82%92%E8%A6%8B%E3%81%A4%E3%81%91%E3%82%8B%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%A0/</guid>
+      <description>[基本環境]  Python 2.7.16  [やりたいこと]  TeXソースファイルの中に全角文字があるかどうかをチェックしたい  [プログラムの使い方]  以下のソースコードをisHarfCheck.</description>
+    </item>
+    
     <item>
       <title>nginxと連携してPythonを動かす</title>
       <link>https://murkouc.github.io/2020/05/nginx%E3%81%A8%E9%80%A3%E6%90%BA%E3%81%97%E3%81%A6python%E3%82%92%E5%8B%95%E3%81%8B%E3%81%99/</link>
