@@ -13,7 +13,7 @@
       <pubDate>Fri, 10 Sep 2021 15:00:00 +0900</pubDate>
       
       <guid>https://murkouc.github.io/2021/09/%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3%E8%AA%8D%E8%A8%BC%E3%81%A7git%E3%82%92%E5%AE%9F%E8%A1%8C%E3%81%99%E3%82%8B/</guid>
-      <description>[基本環境]  Debian 10.3.0  [参考サイト]  GitHubでパスワード認証廃止による認証エラーが出た件 GitHubのリポジトリアクセス時に「remote: Support for password authentication was removed on August 13, 2021.</description>
+      <description>[基本環境] Debian 10.3.0 [参考サイト] GitHubでパスワード認証廃止による認証エラーが出た件 GitHubのリポジトリアクセス時に「remote: Support for password authentication was removed on August 13, 2021.</description>
     </item>
     
     <item>
@@ -22,7 +22,7 @@
       <pubDate>Thu, 02 Apr 2020 21:43:56 +0900</pubDate>
       
       <guid>https://murkouc.github.io/2020/04/hugo-github%E3%81%A7%E4%BD%9C%E3%82%8Bweb%E3%82%B5%E3%82%A4%E3%83%88/</guid>
-      <description>[基本環境]  Debian 10.3.0 (amd64)  [注意]  HugoとGitHubで作るWEBサイトの大まかな流れを掴むためのまとめです 記事を書くときのMarkdownについては、別のサイトを参照すること  [Hugoのインストール]  sudo apt update sudo apt install git sudo apt install golang sudo apt install snapd sudo snap install hugo --channel=extended cd /usr/bin sudo ln -s /snap/bin/hugo hugo  [作業用ディレクトリの作成]  cd /home/ユーザ名 mkdir workspace  ディレクトリ名は何でも良い   hugo new site blog  blogという名前でWEBサイトを新規作成する WEBサイト名は何でも良い    [HugoテーマのDL]  cd ~/workspace/blog/theme HugoテーマのDL方法  Hugo Bootstrap v4 BlogをDLするなら (本サイトと同じ)  git clone https://github.</description>
+      <description>[基本環境] Debian 10.3.0 (amd64) [注意] HugoとGitHubで作るWEBサイトの大まかな流れを掴むためのまとめです 記事を書くときのMarkdownについては、別のサイトを参照すること [Hugoのインストール] sudo apt update sudo apt install git sudo apt install golang sudo apt install snapd sudo snap install hugo --channel=extended cd /usr/bin sudo ln -s /snap/bin/hugo hugo [作業用ディレクトリの作成] cd /home/ユーザ名 mkdir workspace ディレクトリ名は何でも良い hugo new site blog blogという名前でWEBサイトを新規作成する WEBサイト名は何でも良い [HugoテーマのDL] cd ~/workspace/blog/theme HugoテーマのDL方法 Hugo Bootstrap v4 BlogをDLするなら (本サイトと同じ) git clone https://github.</description>
     </item>
     
   </channel>

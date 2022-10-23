@@ -13,7 +13,7 @@
       <pubDate>Mon, 07 Sep 2020 19:58:23 +0900</pubDate>
       
       <guid>https://murkouc.github.io/2020/09/docker%E4%B8%8A%E3%81%A7redmine%E3%82%92%E5%B1%95%E9%96%8B%E3%81%99%E3%82%8B/</guid>
-      <description>[基本環境]  Ubuntu 18.04 Docker 19.03.12  [参考サイト]  Redmine 4.</description>
+      <description>[基本環境] Ubuntu 18.04 Docker 19.03.12 [参考サイト] Redmine 4.1をUbuntu Server 18.04.3 LTSにインストールする手順 [注意] Docker環境の構築や他のサイトを読んで、Docker環境を構築していること [Dockerコンテナの展開(ホストOS上で実行)] docker pull ubuntu:18.</description>
     </item>
     
   </channel>

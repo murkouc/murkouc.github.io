@@ -13,7 +13,7 @@
       <pubDate>Mon, 07 Sep 2020 19:58:23 +0900</pubDate>
       
       <guid>https://murkouc.github.io/2020/09/docker%E4%B8%8A%E3%81%A7redmine%E3%82%92%E5%B1%95%E9%96%8B%E3%81%99%E3%82%8B/</guid>
-      <description>[基本環境]  Ubuntu 18.04 Docker 19.03.12  [参考サイト]  Redmine 4.</description>
+      <description>[基本環境] Ubuntu 18.04 Docker 19.03.12 [参考サイト] Redmine 4.1をUbuntu Server 18.04.3 LTSにインストールする手順 [注意] Docker環境の構築や他のサイトを読んで、Docker環境を構築していること [Dockerコンテナの展開(ホストOS上で実行)] docker pull ubuntu:18.</description>
     </item>
     
     <item>
@@ -22,7 +22,7 @@
       <pubDate>Mon, 27 Apr 2020 23:25:40 +0900</pubDate>
       
       <guid>https://murkouc.github.io/2020/04/python%E3%81%A7docker%E3%82%92%E5%88%B6%E5%BE%A1%E3%81%99%E3%82%8B/</guid>
-      <description>[基本環境]  Python 3.7.3 Docker 19.03.8  [注意]  Docker SDK for Pythonを基にしたDocker制御ではない Subprocessを基にしたDocker制御である Dockerのオプションを多様したいなら、結局、Subprocessに落ち着く  [Dockerコンテナ一覧の取得]  Dockerコマンドなら  docker ps -a   Pythonコードなら  import subprocess comp = subprocess.</description>
+      <description>[基本環境] Python 3.7.3 Docker 19.03.8 [注意] Docker SDK for Pythonを基にしたDocker制御ではない Subprocessを基にしたDocker制御である Dockerのオプションを多様したいなら、結局、Subprocessに落ち着く [Dockerコンテナ一覧の取得] Dockerコマンドなら docker ps -a Pythonコードなら import subprocess comp = subprocess.</description>
     </item>
     
     <item>
@@ -31,7 +31,7 @@
       <pubDate>Mon, 20 Apr 2020 12:27:29 +0900</pubDate>
       
       <guid>https://murkouc.github.io/2020/04/docker%E4%B8%8A%E3%81%A7jupyter%E3%82%92%E5%B1%95%E9%96%8B%E3%81%99%E3%82%8B/</guid>
-      <description>[基本環境]  Debian 10.3.0 (amd64) Docker 19.03.8  [参考サイト]  EC2(Ubuntu 18.</description>
+      <description>[基本環境] Debian 10.3.0 (amd64) Docker 19.03.8 [参考サイト] EC2(Ubuntu 18.04 LS)にJupyter Notebookをインストールしてみた [注意] Docker環境の構築や他のサイトを読んで、Docker環境を構築していること 本記事は、Jupyter NotebookをWEBブラウザで確認するまでの手続きである [Dockerコンテナの展開] docker pull debian:stable docker run -itd --privileged -p 8888:8888/tcp -p 8888:8888/udp --name jupyter debian:stable docker exec -it jupyter /bin/bash [コンテナ(jupyter)内での手続き] apt update apt upgrade apt install git apt install curl apt install bzip2 apt install vim git clone https://github.</description>
     </item>
     
     <item>
@@ -40,7 +40,7 @@
       <pubDate>Tue, 31 Mar 2020 12:40:37 +0900</pubDate>
       
       <guid>https://murkouc.github.io/2020/03/wordcloud%E3%82%92%E4%BD%9C%E3%82%8B/</guid>
-      <description>[基本環境]  Debian 10.3.0 (amd64) Docker 19.03.8  [注意]  Docker環境の構築や他のサイトを読んで、Docker環境を構築していること  [Dockerコンテナの展開]  mkdir /home/ユーザ名/workspace  ホストのディレクトリをコンテナでマウントするための準備 ユーザ名は各々の環境に合わせて置き換える   docker run -itd --privileged -v /home/ユーザ名/workspace:/mnt --name wordcloud debian:stable docker exec -it wordcloud /bin/bash  [コンテナ(wordcloud)内での手続き]  apt update apt install python-pip python3-pip pip3 install wordcloud apt install vim cd /mnt vi sample.</description>
+      <description>[基本環境] Debian 10.3.0 (amd64) Docker 19.03.8 [注意] Docker環境の構築や他のサイトを読んで、Docker環境を構築していること [Dockerコンテナの展開] mkdir /home/ユーザ名/workspace ホストのディレクトリをコンテナでマウントするための準備 ユーザ名は各々の環境に合わせて置き換える docker run -itd --privileged -v /home/ユーザ名/workspace:/mnt --name wordcloud debian:stable docker exec -it wordcloud /bin/bash [コンテナ(wordcloud)内での手続き] apt update apt install python-pip python3-pip pip3 install wordcloud apt install vim cd /mnt vi sample.</description>
     </item>
     
     <item>
@@ -49,7 +49,7 @@
       <pubDate>Tue, 31 Mar 2020 12:09:48 +0900</pubDate>
       
       <guid>https://murkouc.github.io/2020/03/docker%E7%92%B0%E5%A2%83%E3%81%AE%E6%A7%8B%E7%AF%89/</guid>
-      <description>[基本環境]  Debian 10.3.0 (amd64)  [Dockerのインストール]  sudo apt update sudo apt install apt-transport-https sudo apt install ca-certificates sudo apt install curl sudo apt install gnupg2 sudo apt install software-properties-common curl -fsSL https://download.</description>
+      <description>[基本環境] Debian 10.3.0 (amd64) [Dockerのインストール] sudo apt update sudo apt install apt-transport-https sudo apt install ca-certificates sudo apt install curl sudo apt install gnupg2 sudo apt install software-properties-common curl -fsSL https://download.</description>
     </item>
     
   </channel>
