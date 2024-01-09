@@ -6,15 +6,14 @@
     <description>Recent content in 研究 on K.MIURA@OUC</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Sun, 29 Mar 2020 00:39:09 +0900</lastBuildDate><atom:link href="https://murkouc.github.io/tags/%E7%A0%94%E7%A9%B6/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 29 Mar 2020 00:39:09 +0900</lastBuildDate>
+    <atom:link href="https://murkouc.github.io/tags/%E7%A0%94%E7%A9%B6/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>研究業績</title>
       <link>https://murkouc.github.io/2020/03/%E7%A0%94%E7%A9%B6%E6%A5%AD%E7%B8%BE/</link>
       <pubDate>Sun, 29 Mar 2020 00:39:09 +0900</pubDate>
-      
       <guid>https://murkouc.github.io/2020/03/%E7%A0%94%E7%A9%B6%E6%A5%AD%E7%B8%BE/</guid>
       <description>[キーワード] 等価変換 (Equivalent transformation) プログラム合成 (Program synthesis) クラウドサービス (Cloud services) 最適化 (Optimization) [業績 (論文誌, 国際会議)] Automatic Proof of Logical Equivalences belonging to the ES Class using Confluence Search incorporating Slicing, 2023.</description>
     </item>
-    
   </channel>
 </rss>

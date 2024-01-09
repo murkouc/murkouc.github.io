@@ -6,15 +6,14 @@
     <description>Recent content in cgi on K.MIURA@OUC</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Tue, 19 May 2020 22:35:27 +0900</lastBuildDate><atom:link href="https://murkouc.github.io/tags/cgi/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 19 May 2020 22:35:27 +0900</lastBuildDate>
+    <atom:link href="https://murkouc.github.io/tags/cgi/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>nginxと連携してPythonを動かす</title>
       <link>https://murkouc.github.io/2020/05/nginx%E3%81%A8%E9%80%A3%E6%90%BA%E3%81%97%E3%81%A6python%E3%82%92%E5%8B%95%E3%81%8B%E3%81%99/</link>
       <pubDate>Tue, 19 May 2020 22:35:27 +0900</pubDate>
-      
       <guid>https://murkouc.github.io/2020/05/nginx%E3%81%A8%E9%80%A3%E6%90%BA%E3%81%97%E3%81%A6python%E3%82%92%E5%8B%95%E3%81%8B%E3%81%99/</guid>
       <description>[基本環境] Ubuntu 18.04 nginx 1.14 [注意] PythonでCGIは&amp;hellip;と思う人にはお勧めしません [nginxとfcgiwrapのインストール] sudo apt update sudo atp upgrade sudo apt install python3 nginx-full fcgiwrap vim sudo vi /etc/nginx/fcgiwrap.</description>
     </item>
-    
   </channel>
 </rss>
