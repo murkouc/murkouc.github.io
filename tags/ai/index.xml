@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ai on K.MIURA@OUC</title>
+    <link>https://murkouc.github.io/tags/ai/</link>
+    <description>Recent content in ai on K.MIURA@OUC</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-jp</language>
+    <lastBuildDate>Mon, 22 Jan 2024 01:01:01 +0900</lastBuildDate>
+    <atom:link href="https://murkouc.github.io/tags/ai/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>シンプルなQAシステムを作る</title>
+      <link>https://murkouc.github.io/2024/01/%E3%82%B7%E3%83%B3%E3%83%97%E3%83%AB%E3%81%AAqa%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E3%82%92%E4%BD%9C%E3%82%8B/</link>
+      <pubDate>Mon, 22 Jan 2024 01:01:01 +0900</pubDate>
+      <guid>https://murkouc.github.io/2024/01/%E3%82%B7%E3%83%B3%E3%83%97%E3%83%AB%E3%81%AAqa%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E3%82%92%E4%BD%9C%E3%82%8B/</guid>
+      <description>[基本環境] Google Cloud Platform (GCP) [やりたいこと] Vertex AI Searchを用いてシンプルなQAシステムを構築したい [Vertex AI Searchの設定] メニューの中から、[ARTIFICIAL INTELLIGENCE]-[Search &amp;amp; Conversation]を選択する チェックボックスにチェックを入れて、[CONTINUE AND ACTIVATE THE API]を押す 機能一覧の中から、[Apps]を選択し、[CREATE A NEW APP]を押す アプリタイプの中から、Chatの[SELECT]を押す Chatアプリの設定画面では、次の作業を行う Dialogflow APIの[ENABLE AIP]を押す Agent configurationsの企業名とエージェント名を記入する</description>
+    </item>
+  </channel>
+</rss>
