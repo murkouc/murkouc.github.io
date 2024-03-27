@@ -6,8 +6,15 @@
     <description>Recent content in 講義 on K.MIURA@OUC</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Wed, 08 Mar 2023 13:20:02 +0900</lastBuildDate>
+    <lastBuildDate>Tue, 26 Mar 2024 13:20:02 +0900</lastBuildDate>
     <atom:link href="https://murkouc.github.io/tags/%E8%AC%9B%E7%BE%A9/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>社会情報入門I</title>
+      <link>https://murkouc.github.io/2024/03/%E7%A4%BE%E4%BC%9A%E6%83%85%E5%A0%B1%E5%85%A5%E9%96%80i/</link>
+      <pubDate>Tue, 26 Mar 2024 13:20:02 +0900</pubDate>
+      <guid>https://murkouc.github.io/2024/03/%E7%A4%BE%E4%BC%9A%E6%83%85%E5%A0%B1%E5%85%A5%E9%96%80i/</guid>
+      <description>[実施方法・教室] 対面形式 160CL [講義内容と資料] 資料の配布は終了しました。 </description>
+    </item>
     <item>
       <title>社会情報入門(夜間)</title>
       <link>https://murkouc.github.io/2023/03/%E7%A4%BE%E4%BC%9A%E6%83%85%E5%A0%B1%E5%85%A5%E9%96%80%E5%A4%9C%E9%96%93/</link>
@@ -41,21 +48,21 @@
       <link>https://murkouc.github.io/2020/03/%E6%83%85%E5%A0%B1%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E7%AE%A1%E7%90%86%E8%AB%96/</link>
       <pubDate>Sun, 29 Mar 2020 12:47:09 +0900</pubDate>
       <guid>https://murkouc.github.io/2020/03/%E6%83%85%E5%A0%B1%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E7%AE%A1%E7%90%86%E8%AB%96/</guid>
-      <description>[実施方法・教室] 対面形式 370CL [時間] 月曜日 5講目(16:10&amp;ndash;17:40) [講義内容と資料] 資料の配布は終了しました。 </description>
+      <description>[実施方法・教室] 対面形式 教室未定 [時間] 水曜日 2講目(10:30&amp;ndash;12:00) [講義内容と資料] 資料の配布は終了しました。 </description>
     </item>
     <item>
       <title>情報システム構築論</title>
       <link>https://murkouc.github.io/2020/03/%E6%83%85%E5%A0%B1%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E6%A7%8B%E7%AF%89%E8%AB%96/</link>
       <pubDate>Sun, 29 Mar 2020 12:46:09 +0900</pubDate>
       <guid>https://murkouc.github.io/2020/03/%E6%83%85%E5%A0%B1%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E6%A7%8B%E7%AF%89%E8%AB%96/</guid>
-      <description>[実施方法・教室] 対面形式 413 -変更-&amp;gt; 470CL [時間] 金曜日 4講目(14:30&amp;ndash;16:00) [講義内容と資料] 資料の配布は終了しました。 </description>
+      <description>[実施方法・教室] 対面形式 教室未定 [時間] 金曜日 4講目(14:30&amp;ndash;16:00) [講義内容と資料] 資料の配布は終了しました。 </description>
     </item>
     <item>
       <title>担当講義</title>
       <link>https://murkouc.github.io/2020/03/%E6%8B%85%E5%BD%93%E8%AC%9B%E7%BE%A9/</link>
       <pubDate>Sat, 28 Mar 2020 22:36:00 +0900</pubDate>
       <guid>https://murkouc.github.io/2020/03/%E6%8B%85%E5%BD%93%E8%AC%9B%E7%BE%A9/</guid>
-      <description>2023年度 学部講義 [前期開講] 情報システム管理論　(370CL, 月曜日5講目) 応用情報論I　(第1実習室, 木曜日3講目) [後期開講] 情報システム構築論　(413 -変更-&amp;gt; 470CL, 金曜日4講目) 社会情報入門(夜間)　(オンデマンド配信) [通年] ゼミナール 大学院講義 [前期開講] 情報システムII　(211A, 月曜日3講目) 2023年度：情報システム管理論, 情報システム構築論, 応用情報論I, 社会情報入門(夜間)</description>
+      <description>2024年度 学部講義 [前期開講] 社会情報入門I　(160CL, 金曜日4講目) [後期開講] 情報システム管理論　(教室未定, 水曜日2講目) 情報システム構築論　(教室未定, 金曜日4講目) [通年] ゼミナール 大学院講義 [後期開講] 情報システムII　(211A, 金曜日3講目) 2023年度：情報システム管理論, 情報システム構築論, 応用情報論I, 社会情報入門(夜間)</description>
     </item>
   </channel>
 </rss>
