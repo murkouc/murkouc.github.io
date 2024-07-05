@@ -5,13 +5,13 @@
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<meta property="og:title" content="debian" />
+<meta property="og:title" content="utm" />
 <meta property="og:description" content="The special secret of making dreams come true can be summarized in four C&#39;s. They are Curiosity, Confidence, Courage, and Constancy. --Walt Disney" />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://murkouc.github.io/tags/debian/" />
+<meta property="og:url" content="https://murkouc.github.io/tags/utm/" />
 
 
-<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="debian"/>
+<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="utm"/>
 <meta name="twitter:description" content="The special secret of making dreams come true can be summarized in four C&#39;s. They are Curiosity, Confidence, Courage, and Constancy. --Walt Disney"/>
 <meta name="generator" content="Hugo 0.121.2">
 
@@ -20,7 +20,7 @@
       
     
 
-    <link rel="canonical" href="https://murkouc.github.io/tags/debian/">
+    <link rel="canonical" href="https://murkouc.github.io/tags/utm/">
 
     <title>K.MIURA@OUC</title>
 
@@ -35,7 +35,7 @@
     <script defer src="https://murkouc.github.io/js/fontawesome.min.f3d2a1f5980bab30ddd0d8cadbd496475309fc48e2b1d052c5c09e6facffcb0f.js" integrity="sha256-89Kh9ZgLqzDd0NjK29SWR1MJ/EjisdBSxcCeb6z/yw8=" crossorigin="anonymous"></script>
 
     <!-- RSS 2.0 feed -->
-    <link rel="alternate" type="application/rss+xml" href="https://murkouc.github.io/tags/debian/index.xml" title="K.MIURA@OUC" />
+    <link rel="alternate" type="application/rss+xml" href="https://murkouc.github.io/tags/utm/index.xml" title="K.MIURA@OUC" />
     
 
     
@@ -90,51 +90,21 @@
 
 <article class="blog-post">
   <header>
-    <h2 class="blog-post-title" dir="auto"><a href="https://murkouc.github.io/2020/03/wordcloud%E3%82%92%E4%BD%9C%E3%82%8B/">WordCloudを作る</a></h2>
-    <p class="blog-post-meta"><time datetime="2020-03-31T12:40:37+09:00">Tue Mar 31, 2020</time> by Katsunori MIURA in 
+    <h2 class="blog-post-title" dir="auto"><a href="https://murkouc.github.io/2024/07/utm%E3%82%92%E7%94%A8%E3%81%84%E3%81%A6linux%E7%92%B0%E5%A2%83%E3%82%92%E4%BD%9C%E3%82%8B/">UTMを用いてLinux環境を作る</a></h2>
+    <p class="blog-post-meta"><time datetime="2024-07-05T01:01:01+09:00">Fri Jul 05, 2024</time> by Katsunori MIURA in 
 <span class="fas fa-folder" aria-hidden="true"></span>&nbsp;<a href="/categories/%E5%B0%8F%E6%A8%BD%E5%95%86%E5%A4%A7/" rel="category tag">小樽商大</a>
 
 
-<span class="fas fa-tag" aria-hidden="true"></span>&nbsp;<a href="/tags/%E6%8A%80%E8%A1%93/" rel="tag">技術</a>, <a href="/tags/python/" rel="tag">python</a>, <a href="/tags/debian/" rel="tag">debian</a>, <a href="/tags/docker/" rel="tag">docker</a>
+<span class="fas fa-tag" aria-hidden="true"></span>&nbsp;<a href="/tags/%E6%8A%80%E8%A1%93/" rel="tag">技術</a>, <a href="/tags/utm/" rel="tag">utm</a>, <a href="/tags/macos/" rel="tag">macos</a>
 
 </p>
   </header>
-  [基本環境] Debian 10.3.0 (amd64) Docker 19.03.8 [注意] Docker環境の構築や他のサイトを読んで、Docker環境を構築していること [Dockerコンテナの展開] mkdir /home/ユーザ名/workspace ホストのディレクトリをコンテナでマウントするための準備 ユーザ名は各々の環境に合わせて置き換える docker run -itd --privileged -v /home/ユーザ名/workspace:/mnt --name wordcloud debian:stable docker exec -it wordcloud /bin/bash [コンテナ(wordcloud)内での手続き] apt update apt install python-pip python3-pip pip3 install wordcloud apt install vim cd /mnt vi sample.
-  <a href='https://murkouc.github.io/2020/03/wordcloud%E3%82%92%E4%BD%9C%E3%82%8B/'>Read more →</a>
+  [基本環境] Mac mini(Apple M1チップ) [参考サイト] UTMを用いてM1 MacBookにUbuntuの仮想化環境を構築する [やりたいこと] UTMを用いてLinux環境の仮想マシンを展開する [UTMのインストール] ここにアクセスする GitHubの方にあるDownload from GitHubをクリックする
+  <a href='https://murkouc.github.io/2024/07/utm%E3%82%92%E7%94%A8%E3%81%84%E3%81%A6linux%E7%92%B0%E5%A2%83%E3%82%92%E4%BD%9C%E3%82%8B/'>Read more →</a>
 </article> 
 
 
 
-
-
-
-<article class="blog-post">
-  <header>
-    <h2 class="blog-post-title" dir="auto"><a href="https://murkouc.github.io/2020/03/docker%E7%92%B0%E5%A2%83%E3%81%AE%E6%A7%8B%E7%AF%89/">Docker環境の構築</a></h2>
-    <p class="blog-post-meta"><time datetime="2020-03-31T12:09:48+09:00">Tue Mar 31, 2020</time> by Katsunori MIURA in 
-<span class="fas fa-folder" aria-hidden="true"></span>&nbsp;<a href="/categories/%E5%B0%8F%E6%A8%BD%E5%95%86%E5%A4%A7/" rel="category tag">小樽商大</a>
-
-
-<span class="fas fa-tag" aria-hidden="true"></span>&nbsp;<a href="/tags/%E6%8A%80%E8%A1%93/" rel="tag">技術</a>, <a href="/tags/docker/" rel="tag">docker</a>, <a href="/tags/debian/" rel="tag">debian</a>
-
-</p>
-  </header>
-  [基本環境] Debian 10.3.0 (amd64) [Dockerのインストール] sudo apt update sudo apt install apt-transport-https sudo apt install ca-certificates sudo apt install curl sudo apt install gnupg2 sudo apt install software-properties-common curl -fsSL https://download.
-  <a href='https://murkouc.github.io/2020/03/docker%E7%92%B0%E5%A2%83%E3%81%AE%E6%A7%8B%E7%AF%89/'>Read more →</a>
-</article> 
-
-
-
-
-
-<nav class="blog-pagination">
-  
-  
-  <a class="btn btn-outline-primary" href="/tags/debian/" rel="prev" role="button">Previous page</a>
-  <a class="btn btn-outline-primary disabled" href="#" role="button" aria-disabled="true">Next page</a>
-  
-  
-</nav>
 
 
 
