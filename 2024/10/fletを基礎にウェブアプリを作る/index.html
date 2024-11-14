@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<meta property="og:title" content="Fletを基礎にウェブアプリを作る" />
+<meta property="og:description" content="[基本環境] Debian 12 (amd64):Host(VM) Python 3.11:Host(VM) Ubuntu 22.04(amd64):Guest(Container) Python 3.11:Guest(Container) [やりたいこと] Fletを基礎にしたウェブアプリ開発の基盤環境を作りたい [注意] Docker環境の構築や他のサイトを読んで、Docker環境を構築していること [Flet環境の構築手順] ホストOS上にDockerコンテナを展開する" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://murkouc.github.io/2024/10/flet%E3%82%92%E5%9F%BA%E7%A4%8E%E3%81%AB%E3%82%A6%E3%82%A7%E3%83%96%E3%82%A2%E3%83%97%E3%83%AA%E3%82%92%E4%BD%9C%E3%82%8B/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-10-14T01:01:01+09:00" />
+<meta property="article:modified_time" content="2024-10-14T01:01:01+09:00" />
+
+
+<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Fletを基礎にウェブアプリを作る"/>
+<meta name="twitter:description" content="[基本環境] Debian 12 (amd64):Host(VM) Python 3.11:Host(VM) Ubuntu 22.04(amd64):Guest(Container) Python 3.11:Guest(Container) [やりたいこと] Fletを基礎にしたウェブアプリ開発の基盤環境を作りたい [注意] Docker環境の構築や他のサイトを読んで、Docker環境を構築していること [Flet環境の構築手順] ホストOS上にDockerコンテナを展開する"/>
+<meta name="generator" content="Hugo 0.121.2">
+
+
+    
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Fletを基礎にウェブアプリを作る",
+  "url": "https://murkouc.github.io/2024/10/flet%E3%82%92%E5%9F%BA%E7%A4%8E%E3%81%AB%E3%82%A6%E3%82%A7%E3%83%96%E3%82%A2%E3%83%97%E3%83%AA%E3%82%92%E4%BD%9C%E3%82%8B/",
+  "wordCount": "196",
+  "datePublished": "2024-10-14T01:01:01+09:00",
+  "dateModified": "2024-10-14T01:01:01+09:00",
+  "author": {
+    "@type": "Person",
+    "name": "Katsunori MIURA"
+  },
+  "keywords": "小樽商大, 技術, python, flet"
+}
+</script>
+
+
+
+    <link rel="canonical" href="https://murkouc.github.io/2024/10/flet%E3%82%92%E5%9F%BA%E7%A4%8E%E3%81%AB%E3%82%A6%E3%82%A7%E3%83%96%E3%82%A2%E3%83%97%E3%83%AA%E3%82%92%E4%BD%9C%E3%82%8B/">
+
+    <title>Fletを基礎にウェブアプリを作る | K.MIURA@OUC</title>
+
+    
+    <!-- combined, minified CSS -->
+    
+    <link href="https://murkouc.github.io/css/style.6da5c906cc7a8fbb93f31cd2316c5dbe3f19ac4aa6bfb066f1243045b8f6061e.css" rel="stylesheet" integrity="sha256-baXJBsx6j7uT8xzSMWxdvj8ZrEqmv7Bm8SQwRbj2Bh4=" crossorigin="anonymous">
+    
+
+    <!-- minified Font Awesome for SVG icons -->
+    
+    <script defer src="https://murkouc.github.io/js/fontawesome.min.f3d2a1f5980bab30ddd0d8cadbd496475309fc48e2b1d052c5c09e6facffcb0f.js" integrity="sha256-89Kh9ZgLqzDd0NjK29SWR1MJ/EjisdBSxcCeb6z/yw8=" crossorigin="anonymous"></script>
+
+    <!-- RSS 2.0 feed -->
+    
+
+    
+
+    
+
+  </head>
+
+  <body>
+
+    
+    <div class="blog-masthead">
+      <div class="container">
+        <nav class="nav blog-nav">
+          <a class="nav-link " href="https://murkouc.github.io/">Home</a>
+          
+          <a class="nav-link" href="/2020/08/%E3%81%8A%E7%9F%A5%E3%82%89%E3%81%9B" title="">お知らせ</a>
+          
+          
+          <a class="nav-link" href="/2020/03/%E6%8B%85%E5%BD%93%E8%AC%9B%E7%BE%A9" title="">担当講義</a>
+          
+          
+          <a class="nav-link" href="/2020/03/%E7%A0%94%E7%A9%B6%E6%A5%AD%E7%B8%BE" title="">研究業績</a>
+          
+        </nav>
+      </div>
+    </div>
+    
+
+    
+    
+    <header class="blog-header">
+      <div class="container">
+        <h1 class="blog-title" dir="auto"><a href="https://murkouc.github.io/" rel="home">K.MIURA@OUC</a></h1>
+        <p class="lead blog-description" dir="auto">The special secret of making dreams come true can be summarized in four C&rsquo;s. They are Curiosity, Confidence, Courage, and Constancy. &ndash;Walt Disney</p>
+      </div>
+    </header>
+    
+    
+
+    
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8 blog-main">
+
+          
+
+
+<article class="blog-post">
+  <header>
+    <h2 class="blog-post-title" dir="auto"><a href="https://murkouc.github.io/2024/10/flet%E3%82%92%E5%9F%BA%E7%A4%8E%E3%81%AB%E3%82%A6%E3%82%A7%E3%83%96%E3%82%A2%E3%83%97%E3%83%AA%E3%82%92%E4%BD%9C%E3%82%8B/">Fletを基礎にウェブアプリを作る</a></h2>
+    <p class="blog-post-meta"><time datetime="2024-10-14T01:01:01+09:00">Mon Oct 14, 2024</time> by Katsunori MIURA in 
+<span class="fas fa-folder" aria-hidden="true"></span>&nbsp;<a href="/categories/%E5%B0%8F%E6%A8%BD%E5%95%86%E5%A4%A7/" rel="category tag">小樽商大</a>
+
+
+<span class="fas fa-tag" aria-hidden="true"></span>&nbsp;<a href="/tags/%E6%8A%80%E8%A1%93/" rel="tag">技術</a>, <a href="/tags/python/" rel="tag">python</a>, <a href="/tags/flet/" rel="tag">flet</a>
+
+</p>
+  </header>
+  <h6 id="基本環境">[基本環境]</h6>
+<ul>
+<li>Debian 12 (amd64):Host(VM)</li>
+<li>Python 3.11:Host(VM)</li>
+<li>Ubuntu 22.04(amd64):Guest(Container)</li>
+<li>Python 3.11:Guest(Container)</li>
+</ul>
+<h6 id="やりたいこと">[やりたいこと]</h6>
+<ul>
+<li>Fletを基礎にした<strong>ウェブアプリ開発</strong>の基盤環境を作りたい</li>
+</ul>
+<h6 id="注意">[注意]</h6>
+<ul>
+<li><a href="/2020/03/docker%E7%92%B0%E5%A2%83%E3%81%AE%E6%A7%8B%E7%AF%89/">Docker環境の構築</a>や他のサイトを読んで、Docker環境を構築していること</li>
+</ul>
+<h6 id="flet環境の構築手順">[Flet環境の構築手順]</h6>
+<ol>
+<li>ホストOS上にDockerコンテナを展開する<br>
+※ コンテナ名を<strong>flet</strong>にしている</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span> $ docker pull ubuntu:22.04
+</span></span><span style="display:flex;"><span> $ docker run -itd --privileged -p 443:443/tcp --name flet ubuntu:22.04
+</span></span><span style="display:flex;"><span> $ docker exec -it flet /bin/bash
+</span></span></code></pre></div><ol start="2">
+<li>Fletプログラミング用のユーザを作成する<br>
+※ ここから先はコンテナ(flet)内での手続き<br>
+※ ユーザ名を<strong>fuser</strong>にしている</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span> $ apt update
+</span></span><span style="display:flex;"><span> $ apt upgrade
+</span></span><span style="display:flex;"><span> $ apt install sudo
+</span></span><span style="display:flex;"><span> $ adduser fuser
+</span></span><span style="display:flex;"><span> $ usermod -G sudo fuser
+</span></span><span style="display:flex;"><span> $ su - fuser
+</span></span></code></pre></div><ol start="3">
+<li>Flet環境を構築する<br>
+※ 2の続きなので、ここもコンテナ内での手続き<br>
+※ python仮想環境名を<strong>env</strong>にしている<br>
+※ Flet環境名を<strong>flet-test</strong>にしている</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span> $ sudo apt install nano python3.11-venv pip git
+</span></span><span style="display:flex;"><span> $ python3.11 -m venv env
+</span></span><span style="display:flex;"><span> $ source env/bin/activate
+</span></span><span style="display:flex;"><span> $ pip install flet
+</span></span><span style="display:flex;"><span> $ flet create flet-test
+</span></span><span style="display:flex;"><span> $ editor flet-test/main.py
+</span></span><span style="display:flex;"><span>   main.pyの一番下の行にある
+</span></span><span style="display:flex;"><span>   ft.app<span style="color:#f92672">(</span>main<span style="color:#f92672">)</span>を
+</span></span><span style="display:flex;"><span>   ft.app<span style="color:#f92672">(</span>target<span style="color:#f92672">=</span>main,view<span style="color:#f92672">=</span>None,port<span style="color:#f92672">=</span>8000<span style="color:#f92672">)</span>に変更して上書き保存する
+</span></span><span style="display:flex;"><span> $ sudo apt install apache2 systemctl
+</span></span><span style="display:flex;"><span> $ sudo a2enmod ssl
+</span></span><span style="display:flex;"><span> $ sudo a2ensite default-ssl
+</span></span><span style="display:flex;"><span> $ sudo editor /etc/apache2/conf-available/reverse_proxy.conf
+</span></span><span style="display:flex;"><span>   reverse_proxy.confの中に、以下の内容を書いて保存する
+</span></span><span style="display:flex;"><span>   &lt;IfModule mod_proxy.c&gt;
+</span></span><span style="display:flex;"><span>     ProxyRequests Off
+</span></span><span style="display:flex;"><span>     &lt;Proxy *&gt;
+</span></span><span style="display:flex;"><span>       Require all granted
+</span></span><span style="display:flex;"><span>     &lt;/Proxy&gt;
+</span></span><span style="display:flex;"><span>     ProxyPass /ws ws://localhost:8000/ws
+</span></span><span style="display:flex;"><span>     ProxyPassReverse /ws ws://localhost:8000/ws
+</span></span><span style="display:flex;"><span>     ProxyPass / http://localhost:8000/
+</span></span><span style="display:flex;"><span>     ProxyPassReverse / http://localhost:8000/
+</span></span><span style="display:flex;"><span>   &lt;/IfModule&gt;
+</span></span><span style="display:flex;"><span> $ sudo a2enconf reverse_proxy
+</span></span><span style="display:flex;"><span> $ sudo a2enmod proxy proxy_http
+</span></span><span style="display:flex;"><span> $ sudo systemctl restart apache2
+</span></span></code></pre></div><ol start="4">
+<li>Flet環境を起動する<br>
+※ 3の続きなので、ここもコンテナ内での手続き</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span> $ python3.11 flet-test/main.py &amp;
+</span></span><span style="display:flex;"><span>   PCのウェブブラウザを開いて、
+</span></span><span style="display:flex;"><span>     https://127.0.0.1/ または 
+</span></span><span style="display:flex;"><span>     グローバルIPを持っているなら、127.0.0.1をグローバルIPにする
+</span></span><span style="display:flex;"><span>   に接続すると、Fletの実行結果を確認できるはず
+</span></span></code></pre></div><ol start="5">
+<li>Flet環境を停止する
+※ 4の続きなので、ここもコンテナ内での手続き</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span> $ ps -aux | grep python
+</span></span><span style="display:flex;"><span>   このコマンドを実行すると
+</span></span><span style="display:flex;"><span>     fuser &lt;数字&gt; ..略.. python3.11 flet-test/main.py
+</span></span><span style="display:flex;"><span>   という行があるはず
+</span></span><span style="display:flex;"><span>   &lt;数字&gt;は、その都度、確認すること!
+</span></span><span style="display:flex;"><span> $ kill -9 &lt;数字&gt;
+</span></span></code></pre></div><h6 id="fletプログラミング">[Fletプログラミング]</h6>
+<ul>
+<li><strong>main.py</strong>を編集すると、実行結果が変わります</li>
+<li>具体的には、「Flet 入門」や「Flet サンプル」とGoogleで検索してください</li>
+</ul>
+
+
+  
+
+  
+  <hr>
+  <footer>
+
+  
+    <section>
+    <h4>Share</h4>
+    <nav class="nav sharing-icons">
+      <a class="nav-item" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fmurkouc.github.io%2f2024%2f10%2fflet%25E3%2582%2592%25E5%259F%25BA%25E7%25A4%258E%25E3%2581%25AB%25E3%2582%25A6%25E3%2582%25A7%25E3%2583%2596%25E3%2582%25A2%25E3%2583%2597%25E3%2583%25AA%25E3%2582%2592%25E4%25BD%259C%25E3%2582%258B%2f" title="Share on Facebook"><span class="fab fa-facebook-f fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fmurkouc.github.io%2f2024%2f10%2fflet%25E3%2582%2592%25E5%259F%25BA%25E7%25A4%258E%25E3%2581%25AB%25E3%2582%25A6%25E3%2582%25A7%25E3%2583%2596%25E3%2582%25A2%25E3%2583%2597%25E3%2583%25AA%25E3%2582%2592%25E4%25BD%259C%25E3%2582%258B%2f" title="Share on LinkedIn"><span class="fab fa-linkedin-in fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://twitter.com/intent/tweet?url=https%3a%2f%2fmurkouc.github.io%2f2024%2f10%2fflet%25E3%2582%2592%25E5%259F%25BA%25E7%25A4%258E%25E3%2581%25AB%25E3%2582%25A6%25E3%2582%25A7%25E3%2583%2596%25E3%2582%25A2%25E3%2583%2597%25E3%2583%25AA%25E3%2582%2592%25E4%25BD%259C%25E3%2582%258B%2f&amp;text=Flet%e3%82%92%e5%9f%ba%e7%a4%8e%e3%81%ab%e3%82%a6%e3%82%a7%e3%83%96%e3%82%a2%e3%83%97%e3%83%aa%e3%82%92%e4%bd%9c%e3%82%8b" title="Tweet this"><span class="fab fa-twitter fa-2x"></span></a>
+    </nav>
+  </section>
+
+  
+
+  
+  </footer>
+  
+
+</article> 
+
+
+
+        </div> <!-- /.blog-main -->
+
+        <aside class="col-sm-3 ml-auto blog-sidebar">
+  
+  <section class="sidebar-module sidebar-module-inset">
+    <h4>About Me</h4>
+三浦 克宜<br>
+博士(情報科学)<br>
+小樽商科大学<br>
+　商学部 社会情報学科<br>
+　　教授<br>
+　情報総合センター<br>
+　　副センター長<br>
+  </section>
+  
+
+
+
+  
+  <section class="sidebar-module">
+    <h4>Links</h4>
+    <ol class="list-unstyled">
+      
+      <li><a href="https://researchmap.jp/miurakatsunori">researchmap</a></li>
+      
+      <li><a href="https://www.otaru-uc.ac.jp">小樽商科大学</a></li>
+      
+      <li><a href="https://www.otaru-uc.ac.jp/center/">情報総合センター</a></li>
+      
+    </ol>
+  </section>
+  
+
+  <section class="sidebar-module">
+    <h4>Categories</h4>
+    <ol class="list-unstyled">
+      
+      <li><a href="/categories/%E5%B0%8F%E6%A8%BD%E5%95%86%E5%A4%A7">小樽商大</a>(28)</li>
+      
+    </ol>
+  </section>
+  <section class="sidebar-module">
+    <h4>Tags</h4>
+    <ol class="list-unstyled">
+      
+      <li><a href="/tags/ai">ai</a>(1)</li>
+      
+      <li><a href="/tags/cgi">cgi</a>(1)</li>
+      
+      <li><a href="/tags/debian">debian</a>(7)</li>
+      
+      <li><a href="/tags/docker">docker</a>(5)</li>
+      
+      <li><a href="/tags/flet">flet</a>(1)</li>
+      
+      <li><a href="/tags/gcp">gcp</a>(1)</li>
+      
+      <li><a href="/tags/github">github</a>(2)</li>
+      
+      <li><a href="/tags/hugo">hugo</a>(1)</li>
+      
+      <li><a href="/tags/jupyter">jupyter</a>(1)</li>
+      
+      <li><a href="/tags/macos">macos</a>(2)</li>
+      
+      <li><a href="/tags/nextcloud">nextcloud</a>(1)</li>
+      
+      <li><a href="/tags/nfs">nfs</a>(1)</li>
+      
+      <li><a href="/tags/nginx">nginx</a>(3)</li>
+      
+      <li><a href="/tags/oraclecloud">oraclecloud</a>(1)</li>
+      
+      <li><a href="/tags/python">python</a>(5)</li>
+      
+      <li><a href="/tags/redmine">redmine</a>(1)</li>
+      
+      <li><a href="/tags/ubuntu">ubuntu</a>(4)</li>
+      
+      <li><a href="/tags/utm">utm</a>(1)</li>
+      
+      <li><a href="/tags/vscode">vscode</a>(1)</li>
+      
+      <li><a href="/tags/%E3%81%9D%E3%81%AE%E4%BB%96">その他</a>(1)</li>
+      
+      <li><a href="/tags/%E5%AD%A6%E9%83%A8">学部</a>(6)</li>
+      
+      <li><a href="/tags/%E6%8A%80%E8%A1%93">技術</a>(18)</li>
+      
+      <li><a href="/tags/%E7%A0%94%E7%A9%B6">研究</a>(1)</li>
+      
+      <li><a href="/tags/%E8%AC%9B%E7%BE%A9">講義</a>(8)</li>
+      
+    </ol>
+  </section>
+
+  <section class="sidebar-module">
+    <a href="https://github.com/murkouc/murkouc.github.io">
+      <img src="/images/github.png" width="45">
+    </a>
+    <a href="https://www.facebook.com/katsunori.miura.9">
+      <img src="/images/facebook.png" width="50">
+    </a>
+  </section>
+
+</aside>
+
+
+      </div> <!-- /.row -->
+    </div> <!-- /.container -->
+    
+
+    
+    <footer class="blog-footer">
+      <p dir="auto">
+      
+      Blog template created by <a href="https://twitter.com/mdo">@mdo</a>, ported to Hugo by <a href='https://twitter.com/mralanorth'>@mralanorth</a>.
+      
+      </p>
+      <p>
+      <a href="#">Back to top</a>
+      </p>
+    </footer>
+    
+
+  </body>
+
+</html>

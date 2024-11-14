@@ -6,8 +6,15 @@
     <description>Recent content in 技術 on K.MIURA@OUC</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Fri, 05 Jul 2024 01:01:01 +0900</lastBuildDate>
+    <lastBuildDate>Mon, 14 Oct 2024 01:01:01 +0900</lastBuildDate>
     <atom:link href="https://murkouc.github.io/tags/%E6%8A%80%E8%A1%93/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Fletを基礎にウェブアプリを作る</title>
+      <link>https://murkouc.github.io/2024/10/flet%E3%82%92%E5%9F%BA%E7%A4%8E%E3%81%AB%E3%82%A6%E3%82%A7%E3%83%96%E3%82%A2%E3%83%97%E3%83%AA%E3%82%92%E4%BD%9C%E3%82%8B/</link>
+      <pubDate>Mon, 14 Oct 2024 01:01:01 +0900</pubDate>
+      <guid>https://murkouc.github.io/2024/10/flet%E3%82%92%E5%9F%BA%E7%A4%8E%E3%81%AB%E3%82%A6%E3%82%A7%E3%83%96%E3%82%A2%E3%83%97%E3%83%AA%E3%82%92%E4%BD%9C%E3%82%8B/</guid>
+      <description>[基本環境] Debian 12 (amd64):Host(VM) Python 3.11:Host(VM) Ubuntu 22.04(amd64):Guest(Container) Python 3.11:Guest(Container) [やりたいこと] Fletを基礎にしたウェブアプリ開発の基盤環境を作りたい [注意] Docker環境の構築や他のサイトを読んで、Docker環境を構築していること [Flet環境の構築手順] ホストOS上にDockerコンテナを展開する</description>
+    </item>
     <item>
       <title>UTMを用いてLinux環境を作る</title>
       <link>https://murkouc.github.io/2024/07/utm%E3%82%92%E7%94%A8%E3%81%84%E3%81%A6linux%E7%92%B0%E5%A2%83%E3%82%92%E4%BD%9C%E3%82%8B/</link>
