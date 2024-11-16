@@ -41,7 +41,7 @@
       <link>https://murkouc.github.io/2020/03/docker%E7%92%B0%E5%A2%83%E3%81%AE%E6%A7%8B%E7%AF%89/</link>
       <pubDate>Tue, 31 Mar 2020 12:09:48 +0900</pubDate>
       <guid>https://murkouc.github.io/2020/03/docker%E7%92%B0%E5%A2%83%E3%81%AE%E6%A7%8B%E7%AF%89/</guid>
-      <description>[基本環境] Debian 10.3.0 (amd64) [Dockerのインストール] sudo apt update sudo apt install apt-transport-https sudo apt install ca-certificates sudo apt install curl sudo apt install gnupg2 sudo apt install software-properties-common curl -fsSL https://download.</description>
+      <description>[基本環境] Debian 12 (amd64) [Docker環境の構築手順] Dockerをインストールする $ sudo apt update $ sudo apt install apt-transport-https $ sudo apt install ca-certificates $ sudo apt install curl $ sudo apt install gnupg2 $ sudo apt install software-properties-common $ curl -fsSL https://download.</description>
     </item>
   </channel>
 </rss>
