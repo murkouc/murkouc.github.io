@@ -25,7 +25,7 @@
   "@type": "BlogPosting",
   "headline": "Fletを基礎にウェブアプリを作る",
   "url": "https://murkouc.github.io/2024/10/flet%E3%82%92%E5%9F%BA%E7%A4%8E%E3%81%AB%E3%82%A6%E3%82%A7%E3%83%96%E3%82%A2%E3%83%97%E3%83%AA%E3%82%92%E4%BD%9C%E3%82%8B/",
-  "wordCount": "194",
+  "wordCount": "186",
   "datePublished": "2024-10-14T01:01:01+09:00",
   "dateModified": "2024-10-14T01:01:01+09:00",
   "author": {
@@ -157,13 +157,11 @@
 </span></span><span style="display:flex;"><span> $ source env/bin/activate
 </span></span><span style="display:flex;"><span> $ pip install flet
 </span></span><span style="display:flex;"><span> $ flet create flet-test
-</span></span><span style="display:flex;"><span> $ editor flet-test/main.py
+</span></span><span style="display:flex;"><span> $ editor flet-test/src/main.py
 </span></span><span style="display:flex;"><span>   main.pyの一番下の行にある
 </span></span><span style="display:flex;"><span>   ft.app<span style="color:#f92672">(</span>main<span style="color:#f92672">)</span>を
 </span></span><span style="display:flex;"><span>   ft.app<span style="color:#f92672">(</span>target<span style="color:#f92672">=</span>main,view<span style="color:#f92672">=</span>None,port<span style="color:#f92672">=</span>8000<span style="color:#f92672">)</span>に変更して上書き保存する
 </span></span><span style="display:flex;"><span> $ sudo apt install apache2 systemctl
-</span></span><span style="display:flex;"><span> $ sudo a2enmod ssl
-</span></span><span style="display:flex;"><span> $ sudo a2ensite default-ssl
 </span></span><span style="display:flex;"><span> $ sudo editor /etc/apache2/conf-available/reverse_proxy.conf
 </span></span><span style="display:flex;"><span>   reverse_proxy.confの中に、以下の内容を書いて保存する
 </span></span><span style="display:flex;"><span>   &lt;IfModule mod_proxy.c&gt;
@@ -179,13 +177,15 @@
 </span></span><span style="display:flex;"><span> $ sudo a2enconf reverse_proxy
 </span></span><span style="display:flex;"><span> $ sudo a2enmod proxy proxy_http
 </span></span><span style="display:flex;"><span> $ sudo systemctl restart apache2
-</span></span></code></pre></div><ol start="4">
+</span></span></code></pre></div><!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<ol start="4">
 <li>Flet環境を起動する<br>
 ※ 3の続きなので、ここもコンテナ内での手続き</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span> $ python3.11 flet-test/main.py &amp;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span> $ python3.11 flet-test/src/main.py &amp;
 </span></span><span style="display:flex;"><span>   PCのウェブブラウザを開いて、
-</span></span><span style="display:flex;"><span>     https://127.0.0.1/ または 
+</span></span><span style="display:flex;"><span>     http://127.0.0.1/ または 
 </span></span><span style="display:flex;"><span>     グローバルIPを持っているなら、127.0.0.1をグローバルIPにする
 </span></span><span style="display:flex;"><span>   に接続すると、Fletの実行結果を確認できるはず
 </span></span></code></pre></div><ol start="5">
