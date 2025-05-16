@@ -25,7 +25,7 @@
   "@type": "BlogPosting",
   "headline": "gcloudを入れたコンテナを作る",
   "url": "https://murkouc.github.io/2025/05/gcloud%E3%82%92%E5%85%A5%E3%82%8C%E3%81%9F%E3%82%B3%E3%83%B3%E3%83%86%E3%83%8A%E3%82%92%E4%BD%9C%E3%82%8B/",
-  "wordCount": "145",
+  "wordCount": "146",
   "datePublished": "2025-05-16T01:01:01+09:00",
   "dateModified": "2025-05-16T01:01:01+09:00",
   "author": {
@@ -142,7 +142,7 @@
 </span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>       apt-get install -y apt-transport-https <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
 </span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>       apt-get install -y ca-certificates <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
 </span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>       apt-get install -y gnupg
-</span></span><span style="display:flex;"><span>   RUN echo <span style="color:#e6db74">&#34;deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main&#34;</span> | tee -a /etc/apt/sources.list.d/google-cloud-sdk.list <span style="color:#f92672">&amp;&amp;</span><span style="color:#ae81ff">\
+</span></span><span style="display:flex;"><span>   RUN echo <span style="color:#e6db74">&#34;deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main&#34;</span> | tee -a /etc/apt/sources.list.d/google-cloud-sdk.list <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
 </span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>       curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | gpg --dearmor -o /usr/share/keyrings/cloud.google.gpg <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
 </span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>       apt-get update -y <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
 </span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>       apt-get install google-cloud-cli -y
