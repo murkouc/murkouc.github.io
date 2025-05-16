@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<meta property="og:title" content="gcloudを入れたコンテナを作る" />
+<meta property="og:description" content="[基本環境] Debian 12 (amd64) Docker 27.3.1 [やりたいこと] gcloudコマンドがインストール済みのDockerコンテナを作りたい ついでに、日本語入力対応済みのコンテナにする [注意] Docker環境の構築や他のサイトを読んで、Docker環境を構築していること [Dockerコンテナの展開手順] Dockerイメージを作成する" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://murkouc.github.io/2025/05/gcloud%E3%82%92%E5%85%A5%E3%82%8C%E3%81%9F%E3%82%B3%E3%83%B3%E3%83%86%E3%83%8A%E3%82%92%E4%BD%9C%E3%82%8B/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2025-05-16T01:01:01+09:00" />
+<meta property="article:modified_time" content="2025-05-16T01:01:01+09:00" />
+
+
+<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="gcloudを入れたコンテナを作る"/>
+<meta name="twitter:description" content="[基本環境] Debian 12 (amd64) Docker 27.3.1 [やりたいこと] gcloudコマンドがインストール済みのDockerコンテナを作りたい ついでに、日本語入力対応済みのコンテナにする [注意] Docker環境の構築や他のサイトを読んで、Docker環境を構築していること [Dockerコンテナの展開手順] Dockerイメージを作成する"/>
+<meta name="generator" content="Hugo 0.121.2">
+
+
+    
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": "gcloudを入れたコンテナを作る",
+  "url": "https://murkouc.github.io/2025/05/gcloud%E3%82%92%E5%85%A5%E3%82%8C%E3%81%9F%E3%82%B3%E3%83%B3%E3%83%86%E3%83%8A%E3%82%92%E4%BD%9C%E3%82%8B/",
+  "wordCount": "145",
+  "datePublished": "2025-05-16T01:01:01+09:00",
+  "dateModified": "2025-05-16T01:01:01+09:00",
+  "author": {
+    "@type": "Person",
+    "name": "Katsunori MIURA"
+  },
+  "keywords": "小樽商大, 技術, gcp, docker"
+}
+</script>
+
+
+
+    <link rel="canonical" href="https://murkouc.github.io/2025/05/gcloud%E3%82%92%E5%85%A5%E3%82%8C%E3%81%9F%E3%82%B3%E3%83%B3%E3%83%86%E3%83%8A%E3%82%92%E4%BD%9C%E3%82%8B/">
+
+    <title>gcloudを入れたコンテナを作る | K.MIURA@OUC</title>
+
+    
+    <!-- combined, minified CSS -->
+    
+    <link href="https://murkouc.github.io/css/style.6da5c906cc7a8fbb93f31cd2316c5dbe3f19ac4aa6bfb066f1243045b8f6061e.css" rel="stylesheet" integrity="sha256-baXJBsx6j7uT8xzSMWxdvj8ZrEqmv7Bm8SQwRbj2Bh4=" crossorigin="anonymous">
+    
+
+    <!-- minified Font Awesome for SVG icons -->
+    
+    <script defer src="https://murkouc.github.io/js/fontawesome.min.f3d2a1f5980bab30ddd0d8cadbd496475309fc48e2b1d052c5c09e6facffcb0f.js" integrity="sha256-89Kh9ZgLqzDd0NjK29SWR1MJ/EjisdBSxcCeb6z/yw8=" crossorigin="anonymous"></script>
+
+    <!-- RSS 2.0 feed -->
+    
+
+    
+
+    
+
+  </head>
+
+  <body>
+
+    
+    <div class="blog-masthead">
+      <div class="container">
+        <nav class="nav blog-nav">
+          <a class="nav-link " href="https://murkouc.github.io/">Home</a>
+          
+          <a class="nav-link" href="/2020/08/%E3%81%8A%E7%9F%A5%E3%82%89%E3%81%9B" title="">お知らせ</a>
+          
+          
+          <a class="nav-link" href="/2020/03/%E6%8B%85%E5%BD%93%E8%AC%9B%E7%BE%A9" title="">担当講義</a>
+          
+          
+          <a class="nav-link" href="/2020/03/%E7%A0%94%E7%A9%B6%E6%A5%AD%E7%B8%BE" title="">研究業績</a>
+          
+        </nav>
+      </div>
+    </div>
+    
+
+    
+    
+    <header class="blog-header">
+      <div class="container">
+        <h1 class="blog-title" dir="auto"><a href="https://murkouc.github.io/" rel="home">K.MIURA@OUC</a></h1>
+        <p class="lead blog-description" dir="auto">The special secret of making dreams come true can be summarized in four C&rsquo;s. They are Curiosity, Confidence, Courage, and Constancy. &ndash;Walt Disney</p>
+      </div>
+    </header>
+    
+    
+
+    
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8 blog-main">
+
+          
+
+
+<article class="blog-post">
+  <header>
+    <h2 class="blog-post-title" dir="auto"><a href="https://murkouc.github.io/2025/05/gcloud%E3%82%92%E5%85%A5%E3%82%8C%E3%81%9F%E3%82%B3%E3%83%B3%E3%83%86%E3%83%8A%E3%82%92%E4%BD%9C%E3%82%8B/">gcloudを入れたコンテナを作る</a></h2>
+    <p class="blog-post-meta"><time datetime="2025-05-16T01:01:01+09:00">Fri May 16, 2025</time> by Katsunori MIURA in 
+<span class="fas fa-folder" aria-hidden="true"></span>&nbsp;<a href="/categories/%E5%B0%8F%E6%A8%BD%E5%95%86%E5%A4%A7/" rel="category tag">小樽商大</a>
+
+
+<span class="fas fa-tag" aria-hidden="true"></span>&nbsp;<a href="/tags/%E6%8A%80%E8%A1%93/" rel="tag">技術</a>, <a href="/tags/gcp/" rel="tag">gcp</a>, <a href="/tags/docker/" rel="tag">docker</a>
+
+</p>
+  </header>
+  <h6 id="基本環境">[基本環境]</h6>
+<ul>
+<li>Debian 12 (amd64)</li>
+<li>Docker 27.3.1</li>
+</ul>
+<h6 id="やりたいこと">[やりたいこと]</h6>
+<ul>
+<li><strong>gcloudコマンドがインストール済み</strong>のDockerコンテナを作りたい</li>
+<li>ついでに、<strong>日本語入力対応済み</strong>のコンテナにする</li>
+</ul>
+<h6 id="注意">[注意]</h6>
+<ul>
+<li><a href="/2020/03/docker%E7%92%B0%E5%A2%83%E3%81%AE%E6%A7%8B%E7%AF%89/">Docker環境の構築</a>や他のサイトを読んで、Docker環境を構築していること</li>
+</ul>
+<h6 id="dockerコンテナの展開手順">[Dockerコンテナの展開手順]</h6>
+<ol>
+<li>Dockerイメージを作成する<br>
+※ <strong>ubuntu 22.04</strong>を基礎とする<br>
+※ Dockerイメージ名を<strong>ubuntu2204:gcloud</strong>にしている</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span> $ docker pull ubuntu:22.04
+</span></span><span style="display:flex;"><span> $ touch Dockerfile
+</span></span><span style="display:flex;"><span> $ editor Dockerfile
+</span></span><span style="display:flex;"><span>   Dockerfileの中に、以下の内容を書いて保存する
+</span></span><span style="display:flex;"><span>   FROM ubuntu:22.04
+</span></span><span style="display:flex;"><span>   RUN apt-get update -y <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>       apt-get install -y curl <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>       apt-get install -y apt-transport-https <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>       apt-get install -y ca-certificates <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>       apt-get install -y gnupg
+</span></span><span style="display:flex;"><span>   RUN echo <span style="color:#e6db74">&#34;deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main&#34;</span> | tee -a /etc/apt/sources.list.d/google-cloud-sdk.list <span style="color:#f92672">&amp;&amp;</span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>       curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | gpg --dearmor -o /usr/share/keyrings/cloud.google.gpg <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>       apt-get update -y <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>       apt-get install google-cloud-cli -y
+</span></span><span style="display:flex;"><span>   RUN apt-get update -y <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>       apt-get install -y locales <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>       locale-gen ja_JP.UTF-8 <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>       each <span style="color:#e6db74">&#34;export LANG=ja_JP.UTF-8&#34;</span> &gt;&gt; ~/.bashrc
+</span></span><span style="display:flex;"><span> $ docker build ./ -t ubuntu2204:gcloud
+</span></span></code></pre></div><ol start="2">
+<li>Dockerイメージを確認する</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span> $ docker images
+</span></span><span style="display:flex;"><span>   このコマンドを実行すると
+</span></span><span style="display:flex;"><span>     ubuntu2204  gcloud ..略..
+</span></span><span style="display:flex;"><span>   という行があるはず
+</span></span></code></pre></div><ol start="3">
+<li>Dockerコンテナを展開する<br>
+※ コンテナ名を<strong>google-env</strong>にしている</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span> $ docker run -itd --privileged --name google-env ubuntu2204:gcloud
+</span></span><span style="display:flex;"><span> $ docker exec -it google-env /bin/bash
+</span></span><span style="display:flex;"><span>   このコマンドを実行して
+</span></span><span style="display:flex;"><span>     root@&lt;コンテナID&gt;:/#
+</span></span><span style="display:flex;"><span>   が表示されていれば、コンテナの展開に成功している
+</span></span></code></pre></div>
+
+  
+
+  
+  <hr>
+  <footer>
+
+  
+    <section>
+    <h4>Share</h4>
+    <nav class="nav sharing-icons">
+      <a class="nav-item" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fmurkouc.github.io%2f2025%2f05%2fgcloud%25E3%2582%2592%25E5%2585%25A5%25E3%2582%258C%25E3%2581%259F%25E3%2582%25B3%25E3%2583%25B3%25E3%2583%2586%25E3%2583%258A%25E3%2582%2592%25E4%25BD%259C%25E3%2582%258B%2f" title="Share on Facebook"><span class="fab fa-facebook-f fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fmurkouc.github.io%2f2025%2f05%2fgcloud%25E3%2582%2592%25E5%2585%25A5%25E3%2582%258C%25E3%2581%259F%25E3%2582%25B3%25E3%2583%25B3%25E3%2583%2586%25E3%2583%258A%25E3%2582%2592%25E4%25BD%259C%25E3%2582%258B%2f" title="Share on LinkedIn"><span class="fab fa-linkedin-in fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://twitter.com/intent/tweet?url=https%3a%2f%2fmurkouc.github.io%2f2025%2f05%2fgcloud%25E3%2582%2592%25E5%2585%25A5%25E3%2582%258C%25E3%2581%259F%25E3%2582%25B3%25E3%2583%25B3%25E3%2583%2586%25E3%2583%258A%25E3%2582%2592%25E4%25BD%259C%25E3%2582%258B%2f&amp;text=gcloud%e3%82%92%e5%85%a5%e3%82%8c%e3%81%9f%e3%82%b3%e3%83%b3%e3%83%86%e3%83%8a%e3%82%92%e4%bd%9c%e3%82%8b" title="Tweet this"><span class="fab fa-twitter fa-2x"></span></a>
+    </nav>
+  </section>
+
+  
+
+  
+  </footer>
+  
+
+</article> 
+
+
+
+        </div> <!-- /.blog-main -->
+
+        <aside class="col-sm-3 ml-auto blog-sidebar">
+  
+  <section class="sidebar-module sidebar-module-inset">
+    <h4>About Me</h4>
+三浦 克宜<br>
+博士(情報科学)<br>
+小樽商科大学<br>
+　商学部 社会情報学科<br>
+　　教授<br>
+　情報総合センター<br>
+　　副センター長<br>
+  </section>
+  
+
+
+
+  
+  <section class="sidebar-module">
+    <h4>Links</h4>
+    <ol class="list-unstyled">
+      
+      <li><a href="https://researchmap.jp/miurakatsunori">researchmap</a></li>
+      
+      <li><a href="https://www.otaru-uc.ac.jp">小樽商科大学</a></li>
+      
+      <li><a href="https://www.otaru-uc.ac.jp/center/">情報総合センター</a></li>
+      
+    </ol>
+  </section>
+  
+
+  <section class="sidebar-module">
+    <h4>Categories</h4>
+    <ol class="list-unstyled">
+      
+      <li><a href="/categories/%E5%B0%8F%E6%A8%BD%E5%95%86%E5%A4%A7">小樽商大</a>(29)</li>
+      
+    </ol>
+  </section>
+  <section class="sidebar-module">
+    <h4>Tags</h4>
+    <ol class="list-unstyled">
+      
+      <li><a href="/tags/ai">ai</a>(1)</li>
+      
+      <li><a href="/tags/cgi">cgi</a>(1)</li>
+      
+      <li><a href="/tags/debian">debian</a>(7)</li>
+      
+      <li><a href="/tags/docker">docker</a>(6)</li>
+      
+      <li><a href="/tags/flet">flet</a>(1)</li>
+      
+      <li><a href="/tags/gcp">gcp</a>(2)</li>
+      
+      <li><a href="/tags/github">github</a>(2)</li>
+      
+      <li><a href="/tags/hugo">hugo</a>(1)</li>
+      
+      <li><a href="/tags/jupyter">jupyter</a>(1)</li>
+      
+      <li><a href="/tags/macos">macos</a>(2)</li>
+      
+      <li><a href="/tags/nextcloud">nextcloud</a>(1)</li>
+      
+      <li><a href="/tags/nfs">nfs</a>(1)</li>
+      
+      <li><a href="/tags/nginx">nginx</a>(3)</li>
+      
+      <li><a href="/tags/oraclecloud">oraclecloud</a>(1)</li>
+      
+      <li><a href="/tags/python">python</a>(5)</li>
+      
+      <li><a href="/tags/redmine">redmine</a>(1)</li>
+      
+      <li><a href="/tags/ubuntu">ubuntu</a>(4)</li>
+      
+      <li><a href="/tags/utm">utm</a>(1)</li>
+      
+      <li><a href="/tags/vscode">vscode</a>(1)</li>
+      
+      <li><a href="/tags/%E3%81%9D%E3%81%AE%E4%BB%96">その他</a>(1)</li>
+      
+      <li><a href="/tags/%E5%AD%A6%E9%83%A8">学部</a>(6)</li>
+      
+      <li><a href="/tags/%E6%8A%80%E8%A1%93">技術</a>(19)</li>
+      
+      <li><a href="/tags/%E7%A0%94%E7%A9%B6">研究</a>(1)</li>
+      
+      <li><a href="/tags/%E8%AC%9B%E7%BE%A9">講義</a>(8)</li>
+      
+    </ol>
+  </section>
+
+  <section class="sidebar-module">
+    <a href="https://github.com/murkouc/murkouc.github.io">
+      <img src="/images/github.png" width="45">
+    </a>
+    <a href="https://www.facebook.com/katsunori.miura.9">
+      <img src="/images/facebook.png" width="50">
+    </a>
+  </section>
+
+</aside>
+
+
+      </div> <!-- /.row -->
+    </div> <!-- /.container -->
+    
+
+    
+    <footer class="blog-footer">
+      <p dir="auto">
+      
+      Blog template created by <a href="https://twitter.com/mdo">@mdo</a>, ported to Hugo by <a href='https://twitter.com/mralanorth'>@mralanorth</a>.
+      
+      </p>
+      <p>
+      <a href="#">Back to top</a>
+      </p>
+    </footer>
+    
+
+  </body>
+
+</html>
