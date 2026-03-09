@@ -5,15 +5,18 @@
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<meta property="og:title" content="python" />
-<meta property="og:description" content="The special secret of making dreams come true can be summarized in four C&#39;s. They are Curiosity, Confidence, Courage, and Constancy. --Walt Disney" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://murkouc.github.io/tags/python/" />
+<meta property="og:url" content="https://murkouc.github.io/tags/python/">
+  <meta property="og:site_name" content="K.MIURA@OUC">
+  <meta property="og:title" content="Python">
+  <meta property="og:description" content="The special secret of making dreams come true can be summarized in four C&#39;s. They are Curiosity, Confidence, Courage, and Constancy. --Walt Disney">
+  <meta property="og:locale" content="ja_jp">
+  <meta property="og:type" content="website">
 
 
-<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="python"/>
-<meta name="twitter:description" content="The special secret of making dreams come true can be summarized in four C&#39;s. They are Curiosity, Confidence, Courage, and Constancy. --Walt Disney"/>
-<meta name="generator" content="Hugo 0.121.2">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Python">
+  <meta name="twitter:description" content="The special secret of making dreams come true can be summarized in four C&#39;s. They are Curiosity, Confidence, Courage, and Constancy. --Walt Disney">
+<meta name="generator" content="Hugo 0.157.0">
 
 
     
@@ -99,7 +102,95 @@
 
 </p>
   </header>
-  [基本環境] Debian 12 (amd64):Host(VM) Python 3.11:Host(VM) Ubuntu 22.04(amd64):Guest(Container) Python 3.11:Guest(Container) [やりたいこと] Fletを基礎にしたウェブアプリ開発の基盤環境を作りたい [注意] Docker環境の構築や他のサイトを読んで、Docker環境を構築していること [Flet環境の構築手順] ホストOS上にDockerコンテナを展開する
+  <h6 id="基本環境">[基本環境]</h6>
+<ul>
+<li>Debian 12 (amd64):Host(VM)</li>
+<li>Python 3.11:Host(VM)</li>
+<li>Ubuntu 22.04(amd64):Guest(Container)</li>
+<li>Python 3.11:Guest(Container)</li>
+</ul>
+<h6 id="やりたいこと">[やりたいこと]</h6>
+<ul>
+<li>Fletを基礎にした<strong>ウェブアプリ開発</strong>の基盤環境を作りたい</li>
+</ul>
+<h6 id="注意">[注意]</h6>
+<ul>
+<li><a href="/2020/03/docker%E7%92%B0%E5%A2%83%E3%81%AE%E6%A7%8B%E7%AF%89/">Docker環境の構築</a>や他のサイトを読んで、Docker環境を構築していること</li>
+</ul>
+<h6 id="flet環境の構築手順">[Flet環境の構築手順]</h6>
+<ol>
+<li>ホストOS上にDockerコンテナを展開する<br>
+※ コンテナ名を<strong>flet</strong>にしている</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span> $ docker pull ubuntu:22.04
+</span></span><span style="display:flex;"><span> $ docker run -itd --privileged -p 80:80/tcp --name flet ubuntu:22.04
+</span></span><span style="display:flex;"><span> $ docker exec -it flet /bin/bash
+</span></span></code></pre></div><ol start="2">
+<li>Fletプログラミング用のユーザを作成する<br>
+※ ここから先はコンテナ(flet)内での手続き<br>
+※ ユーザ名を<strong>fuser</strong>にしている</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span> $ apt update
+</span></span><span style="display:flex;"><span> $ apt upgrade
+</span></span><span style="display:flex;"><span> $ apt install sudo
+</span></span><span style="display:flex;"><span> $ adduser fuser
+</span></span><span style="display:flex;"><span> $ usermod -G sudo fuser
+</span></span><span style="display:flex;"><span> $ su - fuser
+</span></span></code></pre></div><ol start="3">
+<li>Flet環境を構築する<br>
+※ 2の続きなので、ここもコンテナ内での手続き<br>
+※ python仮想環境名を<strong>env</strong>にしている<br>
+※ Flet環境名を<strong>flet-test</strong>にしている</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span> $ sudo apt install nano python3.11-venv pip git
+</span></span><span style="display:flex;"><span> $ python3.11 -m venv env
+</span></span><span style="display:flex;"><span> $ source env/bin/activate
+</span></span><span style="display:flex;"><span> $ pip install flet
+</span></span><span style="display:flex;"><span> $ flet create flet-test
+</span></span><span style="display:flex;"><span> $ editor flet-test/src/main.py
+</span></span><span style="display:flex;"><span>   main.pyの一番下の行にある
+</span></span><span style="display:flex;"><span>   ft.app<span style="color:#f92672">(</span>main<span style="color:#f92672">)</span>を
+</span></span><span style="display:flex;"><span>   ft.app<span style="color:#f92672">(</span>target<span style="color:#f92672">=</span>main,view<span style="color:#f92672">=</span>None,port<span style="color:#f92672">=</span>8000<span style="color:#f92672">)</span>に変更して上書き保存する
+</span></span><span style="display:flex;"><span> $ sudo apt install apache2 systemctl
+</span></span><span style="display:flex;"><span> $ sudo editor /etc/apache2/conf-available/reverse_proxy.conf
+</span></span><span style="display:flex;"><span>   reverse_proxy.confの中に、以下の内容を書いて保存する
+</span></span><span style="display:flex;"><span>   &lt;IfModule mod_proxy.c&gt;
+</span></span><span style="display:flex;"><span>     ProxyRequests Off
+</span></span><span style="display:flex;"><span>     &lt;Proxy *&gt;
+</span></span><span style="display:flex;"><span>       Require all granted
+</span></span><span style="display:flex;"><span>     &lt;/Proxy&gt;
+</span></span><span style="display:flex;"><span>     ProxyPass /ws ws://localhost:8000/ws
+</span></span><span style="display:flex;"><span>     ProxyPassReverse /ws ws://localhost:8000/ws
+</span></span><span style="display:flex;"><span>     ProxyPass / http://localhost:8000/
+</span></span><span style="display:flex;"><span>     ProxyPassReverse / http://localhost:8000/
+</span></span><span style="display:flex;"><span>   &lt;/IfModule&gt;
+</span></span><span style="display:flex;"><span> $ sudo a2enconf reverse_proxy
+</span></span><span style="display:flex;"><span> $ sudo a2enmod proxy proxy_http
+</span></span><span style="display:flex;"><span> $ sudo systemctl restart apache2
+</span></span></code></pre></div><ol start="4">
+<li>Flet環境を起動する<br>
+※ 3の続きなので、ここもコンテナ内での手続き</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span> $ python3.11 flet-test/src/main.py &amp;
+</span></span><span style="display:flex;"><span>   PCのウェブブラウザを開いて、
+</span></span><span style="display:flex;"><span>     http://127.0.0.1/ または 
+</span></span><span style="display:flex;"><span>     グローバルIPを持っているなら、127.0.0.1をグローバルIPにする
+</span></span><span style="display:flex;"><span>   に接続すると、Fletの実行結果を確認できるはず
+</span></span></code></pre></div><ol start="5">
+<li>Flet環境を停止する<br>
+※ 4の続きなので、ここもコンテナ内での手続き</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span> $ ps -aux | grep python
+</span></span><span style="display:flex;"><span>   このコマンドを実行すると
+</span></span><span style="display:flex;"><span>     fuser &lt;数字&gt; ..略.. python3.11 flet-test/main.py
+</span></span><span style="display:flex;"><span>   という行があるはず
+</span></span><span style="display:flex;"><span>   &lt;数字&gt;は、その都度、確認すること!
+</span></span><span style="display:flex;"><span> $ kill -9 &lt;数字&gt;
+</span></span></code></pre></div><h6 id="fletプログラミング">[Fletプログラミング]</h6>
+<ul>
+<li><strong>main.py</strong>を編集すると、実行結果が変わります</li>
+<li>プログラム例は、別の記事でまとめたいと思います</li>
+</ul>
   <a href='https://murkouc.github.io/2024/10/flet%E3%82%92%E5%9F%BA%E7%A4%8E%E3%81%AB%E3%82%A6%E3%82%A7%E3%83%96%E3%82%A2%E3%83%97%E3%83%AA%E3%82%92%E4%BD%9C%E3%82%8B/'>Read more →</a>
 </article> 
 
@@ -119,7 +210,89 @@
 
 </p>
   </header>
-  [基本環境] Python 2.7.16 [やりたいこと] TeXソースファイルの中に全角文字があるかどうかをチェックしたい [プログラムの使い方] 以下のソースコードをisHarfCheck.pyという名前で保存したと仮定する sample.texという名前のTeXソースファイルをチェックすると仮定する このとき、以下のコマンドで実行できる $ python isHarfCheck.
+  <h6 id="基本環境">[基本環境]</h6>
+<ul>
+<li>Python 2.7.16</li>
+</ul>
+<h6 id="やりたいこと">[やりたいこと]</h6>
+<ul>
+<li>TeXソースファイルの中に<strong>全角文字</strong>があるかどうかをチェックしたい</li>
+</ul>
+<h6 id="プログラムの使い方">[プログラムの使い方]</h6>
+<ol>
+<li>以下のソースコードを<strong>isHarfCheck.py</strong>という名前で保存したと仮定する</li>
+<li><strong>sample.tex</strong>という名前のTeXソースファイルをチェックすると仮定する</li>
+<li>このとき、以下のコマンドで実行できる</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>  $ python isHarfCheck.py sample.tex
+</span></span></code></pre></div><h6 id="ソースコード">[ソースコード]</h6>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> re<span style="color:#f92672">,</span>sys
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">isHarf</span>(value):
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> re<span style="color:#f92672">.</span><span style="color:#66d9ef">match</span>(<span style="color:#e6db74">r</span><span style="color:#e6db74">&#34;^[\x20-\x7E]+$&#34;</span>, value) <span style="color:#f92672">is</span> <span style="color:#f92672">not</span> <span style="color:#66d9ef">None</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">isEnter</span>(value):
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> re<span style="color:#f92672">.</span><span style="color:#66d9ef">match</span>(<span style="color:#e6db74">&#34;^</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">$&#34;</span>, value) <span style="color:#f92672">is</span> <span style="color:#f92672">not</span> <span style="color:#66d9ef">None</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">isHarfCheck</span>(file):
+</span></span><span style="display:flex;"><span>  fid <span style="color:#f92672">=</span> open(file, <span style="color:#e6db74">&#34;r&#34;</span>)
+</span></span><span style="display:flex;"><span>  list <span style="color:#f92672">=</span> fid<span style="color:#f92672">.</span>readlines()
+</span></span><span style="display:flex;"><span>  line <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>  flag <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">for</span> value <span style="color:#f92672">in</span> list:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> isHarf(value)<span style="color:#f92672">!=</span><span style="color:#66d9ef">True</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">if</span> isEnter(value)<span style="color:#f92672">!=</span><span style="color:#66d9ef">True</span>:
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">&#34;l.&#34;</span><span style="color:#f92672">+</span>str(line)<span style="color:#f92672">+</span><span style="color:#e6db74">&#34;: &#34;</span><span style="color:#f92672">+</span>value)
+</span></span><span style="display:flex;"><span>        flag <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>    line <span style="color:#f92672">=</span> line <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>  fid<span style="color:#f92672">.</span>close()
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> flag
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>args <span style="color:#f92672">=</span> sys<span style="color:#f92672">.</span>argv
+</span></span><span style="display:flex;"><span>flag <span style="color:#f92672">=</span> isHarfCheck(args[<span style="color:#ae81ff">1</span>])
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#34;----------&#34;</span>)
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#34;msg&gt; Checked &#39;&#34;</span><span style="color:#f92672">+</span>args[<span style="color:#ae81ff">1</span>]<span style="color:#f92672">+</span><span style="color:#e6db74">&#34;&#39;.&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> flag<span style="color:#f92672">!=</span><span style="color:#ae81ff">0</span>:
+</span></span><span style="display:flex;"><span>  print(<span style="color:#e6db74">&#34;msg&gt; Double-byte characters APPEAR in the text.&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>  print(<span style="color:#e6db74">&#34;msg&gt; Double-byte characters do NOT appear in the text.&#34;</span>)
+</span></span></code></pre></td></tr></table>
+</div>
+</div>
   <a href='https://murkouc.github.io/2022/02/%E3%83%86%E3%82%AD%E3%82%B9%E3%83%88%E5%86%85%E3%81%AE%E5%85%A8%E8%A7%92%E6%96%87%E5%AD%97%E3%82%92%E8%A6%8B%E3%81%A4%E3%81%91%E3%82%8B/'>Read more →</a>
 </article> 
 
@@ -139,7 +312,36 @@
 
 </p>
   </header>
-  [基本環境] Ubuntu 18.04 nginx 1.14 [注意] PythonでCGIは&hellip;と思う人にはお勧めしません [nginxとfcgiwrapのインストール] sudo apt update sudo atp upgrade sudo apt install python3 nginx-full fcgiwrap vim sudo vi /etc/nginx/fcgiwrap.
+  <h6 id="基本環境">[基本環境]</h6>
+<ul>
+<li>Ubuntu 18.04</li>
+<li>nginx 1.14</li>
+</ul>
+<h6 id="注意">[注意]</h6>
+<ul>
+<li>PythonでCGIは&hellip;と思う人にはお勧めしません</li>
+</ul>
+<h6 id="nginxとfcgiwrapのインストール">[nginxとfcgiwrapのインストール]</h6>
+<ol>
+<li>sudo apt update</li>
+<li>sudo atp upgrade</li>
+<li>sudo apt install python3 nginx-full fcgiwrap vim</li>
+<li>sudo vi /etc/nginx/<a href="/sources/fcgiwrap.conf">fcgiwrap.conf</a></li>
+<li>cd /var/www</li>
+<li>sudo mkdir cgi-bin</li>
+<li>sudo chmod 755 cgi-bin</li>
+<li>sudo vi /etc/nginx/sites-availabel/default<br>
+server{&hellip;}の中に、include fcgiwrap.conf; を追加する</li>
+<li>sudo service nginx restart</li>
+<li>sudo service fcgiwrap restart</li>
+<li>cd cgi-bin</li>
+<li>sudo vi <a href="/sources/test.py">test.py</a></li>
+<li>sudo chmod 755 test.py</li>
+</ol>
+<h6 id="cgiの動作確認">[CGIの動作確認]</h6>
+<ol>
+<li>http://IPアドレス/cgi-bin/test.py</li>
+</ol>
   <a href='https://murkouc.github.io/2020/05/nginx%E3%81%A8%E9%80%A3%E6%90%BA%E3%81%97%E3%81%A6python%E3%82%92%E5%8B%95%E3%81%8B%E3%81%99/'>Read more →</a>
 </article> 
 
@@ -159,7 +361,51 @@
 
 </p>
   </header>
-  [基本環境] Python 3.7.3 Docker 19.03.8 [注意] Docker SDK for Pythonを基にしたDocker制御ではない Subprocessを基にしたDocker制御である Dockerのオプションを多様したいなら、結局、Subprocessに落ち着く [Dockerコンテナ一覧の取得] Dockerコマンドなら docker ps -a Pythonコードなら import subprocess comp = subprocess.
+  <h6 id="基本環境">[基本環境]</h6>
+<ul>
+<li>Python 3.7.3</li>
+<li>Docker 19.03.8</li>
+</ul>
+<h6 id="注意">[注意]</h6>
+<ul>
+<li>Docker SDK for Pythonを基にしたDocker制御ではない</li>
+<li>Subprocessを基にしたDocker制御である</li>
+<li>Dockerのオプションを多様したいなら、結局、Subprocessに落ち着く</li>
+</ul>
+<h6 id="dockerコンテナ一覧の取得">[Dockerコンテナ一覧の取得]</h6>
+<ul>
+<li>Dockerコマンドなら
+<ul>
+<li>docker ps -a</li>
+</ul>
+</li>
+<li>Pythonコードなら
+<ol>
+<li>import subprocess</li>
+<li>comp = subprocess.run([&lsquo;docker&rsquo;, &lsquo;ps&rsquo;, &lsquo;-a&rsquo;], encoding=&lsquo;utf-8&rsquo;, stdout=subprocess.PIPE)</li>
+<li>print(comp)</li>
+</ol>
+</li>
+</ul>
+<h6 id="dockerコンテナの起動">[Dockerコンテナの起動]</h6>
+<ul>
+<li>Dockerコマンドなら
+<ul>
+<li>docker run -itd --priviledged -p 80:80/tcp --name websrv debian:stable</li>
+</ul>
+</li>
+<li>Pythonコードなら
+<ol>
+<li>import subprocess</li>
+<li>comp = subprocess.run([&lsquo;docker&rsquo;, &lsquo;run&rsquo;, &lsquo;-itd&rsquo;, &lsquo;--priviledged&rsquo;, &lsquo;-p&rsquo;, &lsquo;80:80/tcp&rsquo;, &lsquo;--name&rsquo;, &lsquo;websrv&rsquo;, &lsquo;debian:stable&rsquo;], encoding=&lsquo;utf-8&rsquo;, stdout=subprocess.PIPE)</li>
+<li>print(comp)</li>
+</ol>
+</li>
+</ul>
+<h6 id="まとめ">[まとめ]</h6>
+<ul>
+<li>subprocess.runの第一引数のリストにコマンドとオプションを列挙することで、オプションが増えても気にせず実行できる</li>
+</ul>
   <a href='https://murkouc.github.io/2020/04/python%E3%81%A7docker%E3%82%92%E5%88%B6%E5%BE%A1%E3%81%99%E3%82%8B/'>Read more →</a>
 </article> 
 
@@ -179,7 +425,40 @@
 
 </p>
   </header>
-  [基本環境] Debian 10.3.0 (amd64) Docker 19.03.8 [注意] Docker環境の構築や他のサイトを読んで、Docker環境を構築していること [Dockerコンテナの展開] mkdir /home/ユーザ名/workspace ホストのディレクトリをコンテナでマウントするための準備 ユーザ名は各々の環境に合わせて置き換える docker run -itd --privileged -v /home/ユーザ名/workspace:/mnt --name wordcloud debian:stable docker exec -it wordcloud /bin/bash [コンテナ(wordcloud)内での手続き] apt update apt install python-pip python3-pip pip3 install wordcloud apt install vim cd /mnt vi sample.
+  <h6 id="基本環境">[基本環境]</h6>
+<ul>
+<li>Debian 10.3.0 (amd64)</li>
+<li>Docker 19.03.8</li>
+</ul>
+<h6 id="注意">[注意]</h6>
+<ul>
+<li><a href="/2020/03/docker%E7%92%B0%E5%A2%83%E3%81%AE%E6%A7%8B%E7%AF%89/">Docker環境の構築</a>や他のサイトを読んで、Docker環境を構築していること</li>
+</ul>
+<h6 id="dockerコンテナの展開">[Dockerコンテナの展開]</h6>
+<ol>
+<li>mkdir /home/ユーザ名/workspace
+<ul>
+<li>ホストのディレクトリをコンテナでマウントするための準備</li>
+<li>ユーザ名は各々の環境に合わせて置き換える</li>
+</ul>
+</li>
+<li>docker run -itd --privileged -v /home/ユーザ名/workspace:/mnt --name wordcloud debian:stable</li>
+<li>docker exec -it wordcloud /bin/bash</li>
+</ol>
+<h6 id="コンテナwordcloud内での手続き">[コンテナ(wordcloud)内での手続き]</h6>
+<ol>
+<li>apt update</li>
+<li>apt install python-pip python3-pip</li>
+<li>pip3 install wordcloud</li>
+<li>apt install vim</li>
+<li>cd /mnt</li>
+<li>vi <a href="/sources/sample.py">sample.py</a></li>
+<li>python3 sample.py
+<ul>
+<li>sample.pngが生成されている</li>
+</ul>
+</li>
+</ol>
   <a href='https://murkouc.github.io/2020/03/wordcloud%E3%82%92%E4%BD%9C%E3%82%8B/'>Read more →</a>
 </article> 
 

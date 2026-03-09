@@ -5,15 +5,18 @@
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<meta property="og:title" content="ubuntu" />
-<meta property="og:description" content="The special secret of making dreams come true can be summarized in four C&#39;s. They are Curiosity, Confidence, Courage, and Constancy. --Walt Disney" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://murkouc.github.io/tags/ubuntu/" />
+<meta property="og:url" content="https://murkouc.github.io/tags/ubuntu/">
+  <meta property="og:site_name" content="K.MIURA@OUC">
+  <meta property="og:title" content="Ubuntu">
+  <meta property="og:description" content="The special secret of making dreams come true can be summarized in four C&#39;s. They are Curiosity, Confidence, Courage, and Constancy. --Walt Disney">
+  <meta property="og:locale" content="ja_jp">
+  <meta property="og:type" content="website">
 
 
-<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="ubuntu"/>
-<meta name="twitter:description" content="The special secret of making dreams come true can be summarized in four C&#39;s. They are Curiosity, Confidence, Courage, and Constancy. --Walt Disney"/>
-<meta name="generator" content="Hugo 0.121.2">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Ubuntu">
+  <meta name="twitter:description" content="The special secret of making dreams come true can be summarized in four C&#39;s. They are Curiosity, Confidence, Courage, and Constancy. --Walt Disney">
+<meta name="generator" content="Hugo 0.157.0">
 
 
     
@@ -99,7 +102,149 @@
 
 </p>
   </header>
-  [基本環境] Ubuntu 18.04 Docker 19.03.12 [参考サイト] Redmine 4.1をUbuntu Server 18.04.3 LTSにインストールする手順 [注意] Docker環境の構築や他のサイトを読んで、Docker環境を構築していること [Dockerコンテナの展開(ホストOS上で実行)] docker pull ubuntu:18.
+  <h6 id="基本環境">[基本環境]</h6>
+<ul>
+<li>Ubuntu 18.04</li>
+<li>Docker 19.03.12</li>
+</ul>
+<h6 id="参考サイト">[参考サイト]</h6>
+<ul>
+<li><a href="http://blog.redmine.jp/articles/4_1/install/ubuntu/">Redmine 4.1をUbuntu Server 18.04.3 LTSにインストールする手順</a></li>
+</ul>
+<h6 id="注意">[注意]</h6>
+<ul>
+<li><a href="/2020/03/docker%E7%92%B0%E5%A2%83%E3%81%AE%E6%A7%8B%E7%AF%89/">Docker環境の構築</a>や他のサイトを読んで、Docker環境を構築していること</li>
+</ul>
+<h6 id="dockerコンテナの展開ホストos上で実行">[Dockerコンテナの展開(ホストOS上で実行)]</h6>
+<ol>
+<li>docker pull ubuntu:18.04</li>
+<li>docker run -itd --privileged -p 80:80/tcp --name redmine ubuntu:18.04</li>
+<li>docker exec -it redmine /bin/bash</li>
+</ol>
+<h6 id="コンテナredmine内での手続き">[コンテナ(redmine)内での手続き]</h6>
+<ol>
+<li>adduser ubuntu</li>
+<li>apt-get update</li>
+<li>apt-get upgrade</li>
+<li>apt-get install sudo</li>
+<li>usermod -G sudo ubuntu</li>
+<li>su - ubuntu</li>
+<li>sudo apt-get install locales</li>
+<li>sudo locale-gen ja_JP.UTF-8</li>
+<li>locale -a
+<ul>
+<li>ja_JP.utf8の存在を確認</li>
+</ul>
+</li>
+<li>sudo apt-get install build-essential zlib1g-dev libssl-dev libreadline-dev</li>
+<li>sudo apt-get install libyaml-dev libcurl4-openssl-dev libffi-dev</li>
+<li>sudo apt-get install postgresql libpq-dev</li>
+<li>sudo apt-get install apache2 apache2-dev</li>
+<li>sudo apt-get install imagemagick fonts-takao-pgothic</li>
+<li>sudo apt-get install subversion git vim</li>
+<li>curl -O <a href="https://cache.ruby-lang.org/pub/ruby/2.6/ruby-2.6.5.tar.gz">https://cache.ruby-lang.org/pub/ruby/2.6/ruby-2.6.5.tar.gz</a></li>
+<li>tar xvf ruby-2.6.5.tar.gz</li>
+<li>cd ruby-2.6.5</li>
+<li>./configure --disable-install-doc</li>
+<li>make</li>
+<li>sudo make install</li>
+<li>cd</li>
+<li>ruby -v
+<ul>
+<li>Rubyのバージョンを確認</li>
+</ul>
+</li>
+<li>sudo service postgresql start</li>
+<li>sudo -u postgres createuser -P redmine
+<ul>
+<li>パスワードをredmineと仮定</li>
+</ul>
+</li>
+<li>sudo -u postgres createdb -E UTF-8 -l ja_JP.UTF-8 -O redmine -T template0 redmine</li>
+<li>sudo mkdir /var/lib/redmine</li>
+<li>sudo chown www-data /var/lib/redmine</li>
+<li>sudo -u www-data svn co <a href="https://svn.redmine.org/redmine/branches/4.1-stable">https://svn.redmine.org/redmine/branches/4.1-stable</a> /var/lib/redmine</li>
+<li>cd</li>
+<li>vi <a href="/sources/database-yml.sh">database-yml.sh</a></li>
+<li>chmod 755 database-yml.sh</li>
+<li>sudo ./database-yml.sh</li>
+<li>more /var/lib/redmine/config/database.yml
+<ul>
+<li>ファイルの存在を確認</li>
+<li>password:にpostgresqlの<strong>ユーザredmineのパスワード</strong>を書く</li>
+</ul>
+</li>
+<li>vi <a href="/sources/configuration-yml.sh">configuration-yml.sh</a></li>
+<li>chmod 755 configuration-yml.sh</li>
+<li>sudo ./configuration-yml.sh</li>
+<li>more /var/lib/redmine/config/configuration.yml
+<ul>
+<li>ファイルの存在を確認</li>
+</ul>
+</li>
+<li>cd /var/lib/redmine/config/</li>
+<li>sudo chown www-data:www-data database.yml</li>
+<li>sudo chown www-data:www-data configuration.yml</li>
+<li>cd /var/lib/redmine/</li>
+<li>sudo -u www-data bundle install --without development test --path vendor/bundle</li>
+<li>sudo -u www-data bin/rake generate_secret_token</li>
+<li>sudo -u www-data RAILS_ENV=production bin/rake db:migrate</li>
+<li>sudo gem install passenger -N</li>
+<li>sudo passenger-install-apache2-module --auto --languages ruby</li>
+<li>cd</li>
+<li>vi <a href="/sources/redmine-conf.sh">redmine-conf.sh</a></li>
+<li>chmod 755 redmine-conf.sh</li>
+<li>sudo ./redmine-conf.sh</li>
+<li>more /etc/apache2/conf-available/redmine.conf
+<ul>
+<li>ファイルの存在を確認</li>
+<li>3行目(&lt;/Directory&gt;)以降の内容が<strong>passenger-install-apache2-module --snippet</strong>の出力結果であることを確認</li>
+</ul>
+</li>
+<li>sudo a2enconf redmine</li>
+<li>apache2ctl configtest</li>
+<li>sudo service apache2 reload</li>
+<li>sudo vi /etc/apache2/sites-enabled/000-default.conf
+<ul>
+<li>DocumentRootの値を <strong>/var/lib/redmine/public</strong> に変更</li>
+</ul>
+</li>
+<li>apache2ctl configtest</li>
+<li>sudo service apache2 reload</li>
+<li>sudo service apache2 start</li>
+<li>sudo vi /etc/init.d/<a href="/sources/redmine-start.sh">redmine-start.sh</a></li>
+<li>sudo chmod 755 /etc/init.d/redmine-start.sh</li>
+<li>sudo vi /etc/init.d/<a href="/sources/redmine-stop.sh">redmine-stop.sh</a></li>
+<li>sudo chmod 755 /etc/init.d/redmine-stop.sh</li>
+<li>sudo service postgresql stop</li>
+<li>sudo service apache2 stop</li>
+<li>exit</li>
+<li>exit</li>
+</ol>
+<h6 id="dockerイメージの生成ホストos上で実行">[Dockerイメージの生成(ホストOS上で実行)]</h6>
+<ol>
+<li>docker stop redmine</li>
+<li>docker commit redmine ubuntu1804:redmine</li>
+</ol>
+<h6 id="dockerイメージからredmineを展開ホストos上で実行">[DockerイメージからRedmineを展開(ホストOS上で実行)]</h6>
+<ol>
+<li>docker run -itd --privileged -p 8080:80 --name sample ubuntu1804:redmine</li>
+<li>docker exec sample /etc/init.d/redmine-start.sh</li>
+</ol>
+<h6 id="redmineコンテナの停止">[Redmineコンテナの停止]</h6>
+<ol>
+<li>docker exec sample /etc/init.d/redmine-stop.sh</li>
+<li>docker stop sample</li>
+</ol>
+<h6 id="redmineコンテナの起動">[Redmineコンテナの起動]</h6>
+<ol>
+<li>docker start sample</li>
+<li>docker exec sample /etc/init.d/redmine-start.sh</li>
+</ol>
+<h6 id="redmineの起動を確認">[Redmineの起動を確認]</h6>
+<ol>
+<li>手元PCのウェブブラウザで <strong>http://RedmineのIPアドレス:8080/</strong> に接続する</li>
+</ol>
   <a href='https://murkouc.github.io/2020/09/docker%E4%B8%8A%E3%81%A7redmine%E3%82%92%E5%B1%95%E9%96%8B%E3%81%99%E3%82%8B/'>Read more →</a>
 </article> 
 
@@ -119,7 +264,42 @@
 
 </p>
   </header>
-  [基本環境] Ubuntu 18.04 nginx 1.16 [apache2-utilsのインストール] sudo apt update sudo apt install apache2-utils [.
+  <h6 id="基本環境">[基本環境]</h6>
+<ul>
+<li>Ubuntu 18.04</li>
+<li>nginx 1.16</li>
+</ul>
+<h6 id="apache2-utilsのインストール">[apache2-utilsのインストール]</h6>
+<ol>
+<li>sudo apt update</li>
+<li>sudo apt install apache2-utils</li>
+</ol>
+<h6 id="htpasswdの生成">[.htpasswdの生成]</h6>
+<ol>
+<li>cd /home/ユーザ名/</li>
+<li>mkdir web
+<ul>
+<li>webは任意のディレクトリ名で良い</li>
+</ul>
+</li>
+<li>htpasswd -c /home/ユーザ名/web/.htpasswd user-id
+<ul>
+<li>user-idはBasic認証のユーザ名であり、任意のユーザ名で良い</li>
+</ul>
+</li>
+</ol>
+<h6 id="nginxconfの編集">[nginx.confの編集]</h6>
+<ol>
+<li>cd /etc/nginx</li>
+<li>sudo vi nginx.conf
+<ul>
+<li>http{&hellip;}の中に、<br>
+auth_basic &ldquo;Your Auth Message&rdquo;;<br>
+auth_basic_user_file /home/ユーザ名/web/.htpasswd;<br>
+を追加する</li>
+</ul>
+</li>
+</ol>
   <a href='https://murkouc.github.io/2020/04/nginx%E3%81%A7basic%E8%AA%8D%E8%A8%BC%E3%82%92%E6%9C%89%E5%8A%B9%E3%81%AB%E3%81%99%E3%82%8B/'>Read more →</a>
 </article> 
 
@@ -139,7 +319,29 @@
 
 </p>
   </header>
-  [基本環境] Oracleクラウド (VMインスタンス) Ubuntu 18.04 [問題設定] OSがUbuntuのVMインスタンスを使いWEBサイトを展開する OSのFWで80/tcpを開放してもWEBサイトにアクセスできない [対処方法] sudo vi /etc/iptables/rules.
+  <h6 id="基本環境">[基本環境]</h6>
+<ul>
+<li>Oracleクラウド (VMインスタンス)</li>
+<li>Ubuntu 18.04</li>
+</ul>
+<h6 id="問題設定">[問題設定]</h6>
+<ul>
+<li>OSがUbuntuのVMインスタンスを使いWEBサイトを展開する</li>
+<li>OSのFWで80/tcpを開放してもWEBサイトにアクセスできない</li>
+</ul>
+<h6 id="対処方法">[対処方法]</h6>
+<ol>
+<li>sudo vi /etc/iptables/rules.v4
+<ul>
+<li>-A INPUT -j ACCEPT を先頭に追加する</li>
+</ul>
+</li>
+<li>reboot
+<ul>
+<li>「Inputは常に受信する」になるが、OracleのSEが言うに、OCIのFW機能で防御するのが通常らしい</li>
+</ul>
+</li>
+</ol>
   <a href='https://murkouc.github.io/2020/04/oracle%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%89%E3%82%92%E4%BD%BF%E3%81%86%E6%99%82%E3%81%AE%E6%B3%A8%E6%84%8F/'>Read more →</a>
 </article> 
 
@@ -159,7 +361,67 @@
 
 </p>
   </header>
-  [基本環境] Ubuntu 18.04 nextcloud 13.0.1 Oracleクラウド (NFSサーバ) [参考サイト] NextCloudでファイル共有【その1】サーバインストール手順 OCIでファイルストレージサービス(FSS)を実装してみた [NFSサーバのマウント] 前提としてNFSサーバが構築されていること
+  <h6 id="基本環境">[基本環境]</h6>
+<ul>
+<li>Ubuntu 18.04</li>
+<li>nextcloud 13.0.1</li>
+<li>Oracleクラウド (NFSサーバ)</li>
+</ul>
+<h6 id="参考サイト">[参考サイト]</h6>
+<ul>
+<li><a href="https://mongonta.com/f317-howto-install-nextcloud-to-ubuntu">NextCloudでファイル共有【その1】サーバインストール手順</a></li>
+<li><a href="https://blogs.techvan.co.jp/oci/2019/06/21/oci%E3%81%A7%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%B9%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B8%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9fss%E3%82%92%E5%AE%9F%E8%A3%85%E3%81%97%E3%81%A6%E3%81%BF%E3%81%9F/">OCIでファイルストレージサービス(FSS)を実装してみた</a></li>
+</ul>
+<h6 id="nfsサーバのマウント">[NFSサーバのマウント]</h6>
+<ul>
+<li>前提としてNFSサーバが構築されていること<br>
+(本記事の場合はOracleクラウドのマネージドサービスで構築した)</li>
+</ul>
+<ol>
+<li>sudo mkdir -p /mnt/filesystem
+<ul>
+<li>filesystemは任意のディレクトリ名で良い</li>
+</ul>
+</li>
+<li>sudo mount IPアドレス:/nfsdir /mnt/filesystem
+<ul>
+<li>IPアドレスはNFSサーバのアドレス</li>
+<li>nfsdirはNFSサーバで公開されたディレクトリ名</li>
+</ul>
+</li>
+</ol>
+<h6 id="nextcloudからの接続">[nextcloudからの接続]</h6>
+<ul>
+<li>コンソール上で実行する
+<ol>
+<li>cd /mnt/filesystem</li>
+<li>sudo mkdir nextdir
+<ul>
+<li>nextdirは任意のディレクトリ名で良い</li>
+</ul>
+</li>
+<li>sudo chmod -R 777 nextdir</li>
+<li>sudo chown -R user:group nextdir
+<ul>
+<li>userとgroupは利用中の環境に合わせて変更する</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>ブラウザ上で実行する
+<ol>
+<li>管理者でログインする</li>
+<li>「+アプリ」-&gt;「External storage support」-&gt;「有効にする」</li>
+<li>「設定」-&gt;「外部ストレージ」
+<ul>
+<li>フォルダ名: 任意の名前 (nextcloud上で表示される)</li>
+<li>外部ストレージ: ローカル</li>
+<li>設定: /mnt/filesystem/nextdir</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
   <a href='https://murkouc.github.io/2020/04/nextcloud%E3%81%A8nfs%E3%82%B5%E3%83%BC%E3%83%90%E3%82%92%E6%8E%A5%E7%B6%9A%E3%81%99%E3%82%8B/'>Read more →</a>
 </article> 
 

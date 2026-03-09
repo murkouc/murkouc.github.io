@@ -5,17 +5,23 @@
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<meta property="og:title" content="Debianの初期設定" />
-<meta property="og:description" content="[基本環境] VirtualBox 6.0.18 (Mac版) Debian 10.3.0 (amd64) [PATHへの/usr/sbin/の追加] cd /home/ユーザ名 ホームディレクトリに移動する touch ." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://murkouc.github.io/2020/04/debian%E3%81%AE%E5%88%9D%E6%9C%9F%E8%A8%AD%E5%AE%9A/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2020-04-02T17:07:19+09:00" />
-<meta property="article:modified_time" content="2020-04-02T17:07:19+09:00" />
+<meta property="og:url" content="https://murkouc.github.io/2020/04/debian%E3%81%AE%E5%88%9D%E6%9C%9F%E8%A8%AD%E5%AE%9A/">
+  <meta property="og:site_name" content="K.MIURA@OUC">
+  <meta property="og:title" content="Debianの初期設定">
+  <meta property="og:description" content="[基本環境] VirtualBox 6.0.18 (Mac版) Debian 10.3.0 (amd64) [PATHへの/usr/sbin/の追加] cd /home/ユーザ名 ホームディレクトリに移動する touch .bash_profile vi .bash_profile export PATH=$PATH:/usr/sbin/ と書いて保存する source .bash_profile [一般ユーザに対するsudo権限の付与] su usermod -aG sudo ユーザ名 reboot [sources.listの編集] cd /etc/apt sudo vi sources.list deb cdrom:[Debian GNU/Linux… の先頭に#を追加する">
+  <meta property="og:locale" content="ja_jp">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2020-04-02T17:07:19+09:00">
+    <meta property="article:modified_time" content="2020-04-02T17:07:19+09:00">
+    <meta property="article:tag" content="技術">
+    <meta property="article:tag" content="Debian">
 
 
-<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Debianの初期設定"/>
-<meta name="twitter:description" content="[基本環境] VirtualBox 6.0.18 (Mac版) Debian 10.3.0 (amd64) [PATHへの/usr/sbin/の追加] cd /home/ユーザ名 ホームディレクトリに移動する touch ."/>
-<meta name="generator" content="Hugo 0.121.2">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Debianの初期設定">
+  <meta name="twitter:description" content="[基本環境] VirtualBox 6.0.18 (Mac版) Debian 10.3.0 (amd64) [PATHへの/usr/sbin/の追加] cd /home/ユーザ名 ホームディレクトリに移動する touch .bash_profile vi .bash_profile export PATH=$PATH:/usr/sbin/ と書いて保存する source .bash_profile [一般ユーザに対するsudo権限の付与] su usermod -aG sudo ユーザ名 reboot [sources.listの編集] cd /etc/apt sudo vi sources.list deb cdrom:[Debian GNU/Linux… の先頭に#を追加する">
+<meta name="generator" content="Hugo 0.157.0">
 
 
     
@@ -167,6 +173,8 @@
 
   
 
+  
+  
   
   </footer>
   

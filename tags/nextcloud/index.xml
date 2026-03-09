@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>nextcloud on K.MIURA@OUC</title>
+    <title>Nextcloud on K.MIURA@OUC</title>
     <link>https://murkouc.github.io/tags/nextcloud/</link>
-    <description>Recent content in nextcloud on K.MIURA@OUC</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content in Nextcloud on K.MIURA@OUC</description>
+    <generator>Hugo</generator>
     <language>ja-jp</language>
     <lastBuildDate>Sun, 12 Apr 2020 17:27:58 +0900</lastBuildDate>
     <atom:link href="https://murkouc.github.io/tags/nextcloud/index.xml" rel="self" type="application/rss+xml" />
@@ -13,7 +13,7 @@
       <link>https://murkouc.github.io/2020/04/nextcloud%E3%81%A8nfs%E3%82%B5%E3%83%BC%E3%83%90%E3%82%92%E6%8E%A5%E7%B6%9A%E3%81%99%E3%82%8B/</link>
       <pubDate>Sun, 12 Apr 2020 17:27:58 +0900</pubDate>
       <guid>https://murkouc.github.io/2020/04/nextcloud%E3%81%A8nfs%E3%82%B5%E3%83%BC%E3%83%90%E3%82%92%E6%8E%A5%E7%B6%9A%E3%81%99%E3%82%8B/</guid>
-      <description>[基本環境] Ubuntu 18.04 nextcloud 13.0.1 Oracleクラウド (NFSサーバ) [参考サイト] NextCloudでファイル共有【その1】サーバインストール手順 OCIでファイルストレージサービス(FSS)を実装してみた [NFSサーバのマウント] 前提としてNFSサーバが構築されていること</description>
+      <description>&lt;h6 id=&#34;基本環境&#34;&gt;[基本環境]&lt;/h6&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Ubuntu 18.04&lt;/li&gt;&#xA;&lt;li&gt;nextcloud 13.0.1&lt;/li&gt;&#xA;&lt;li&gt;Oracleクラウド (NFSサーバ)&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h6 id=&#34;参考サイト&#34;&gt;[参考サイト]&lt;/h6&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://mongonta.com/f317-howto-install-nextcloud-to-ubuntu&#34;&gt;NextCloudでファイル共有【その1】サーバインストール手順&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://blogs.techvan.co.jp/oci/2019/06/21/oci%E3%81%A7%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%B9%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B8%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9fss%E3%82%92%E5%AE%9F%E8%A3%85%E3%81%97%E3%81%A6%E3%81%BF%E3%81%9F/&#34;&gt;OCIでファイルストレージサービス(FSS)を実装してみた&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h6 id=&#34;nfsサーバのマウント&#34;&gt;[NFSサーバのマウント]&lt;/h6&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;前提としてNFSサーバが構築されていること&lt;br&gt;&#xA;(本記事の場合はOracleクラウドのマネージドサービスで構築した)&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;sudo mkdir -p /mnt/filesystem&#xA;&lt;ul&gt;&#xA;&lt;li&gt;filesystemは任意のディレクトリ名で良い&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;sudo mount IPアドレス:/nfsdir /mnt/filesystem&#xA;&lt;ul&gt;&#xA;&lt;li&gt;IPアドレスはNFSサーバのアドレス&lt;/li&gt;&#xA;&lt;li&gt;nfsdirはNFSサーバで公開されたディレクトリ名&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h6 id=&#34;nextcloudからの接続&#34;&gt;[nextcloudからの接続]&lt;/h6&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;コンソール上で実行する&#xA;&lt;ol&gt;&#xA;&lt;li&gt;cd /mnt/filesystem&lt;/li&gt;&#xA;&lt;li&gt;sudo mkdir nextdir&#xA;&lt;ul&gt;&#xA;&lt;li&gt;nextdirは任意のディレクトリ名で良い&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;sudo chmod -R 777 nextdir&lt;/li&gt;&#xA;&lt;li&gt;sudo chown -R user:group nextdir&#xA;&lt;ul&gt;&#xA;&lt;li&gt;userとgroupは利用中の環境に合わせて変更する&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;ブラウザ上で実行する&#xA;&lt;ol&gt;&#xA;&lt;li&gt;管理者でログインする&lt;/li&gt;&#xA;&lt;li&gt;「+アプリ」-&amp;gt;「External storage support」-&amp;gt;「有効にする」&lt;/li&gt;&#xA;&lt;li&gt;「設定」-&amp;gt;「外部ストレージ」&#xA;&lt;ul&gt;&#xA;&lt;li&gt;フォルダ名: 任意の名前 (nextcloud上で表示される)&lt;/li&gt;&#xA;&lt;li&gt;外部ストレージ: ローカル&lt;/li&gt;&#xA;&lt;li&gt;設定: /mnt/filesystem/nextdir&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
     </item>
   </channel>
 </rss>

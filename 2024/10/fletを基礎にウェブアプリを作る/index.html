@@ -5,17 +5,40 @@
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<meta property="og:title" content="Fletを基礎にウェブアプリを作る" />
-<meta property="og:description" content="[基本環境] Debian 12 (amd64):Host(VM) Python 3.11:Host(VM) Ubuntu 22.04(amd64):Guest(Container) Python 3.11:Guest(Container) [やりたいこと] Fletを基礎にしたウェブアプリ開発の基盤環境を作りたい [注意] Docker環境の構築や他のサイトを読んで、Docker環境を構築していること [Flet環境の構築手順] ホストOS上にDockerコンテナを展開する" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://murkouc.github.io/2024/10/flet%E3%82%92%E5%9F%BA%E7%A4%8E%E3%81%AB%E3%82%A6%E3%82%A7%E3%83%96%E3%82%A2%E3%83%97%E3%83%AA%E3%82%92%E4%BD%9C%E3%82%8B/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2024-10-14T01:01:01+09:00" />
-<meta property="article:modified_time" content="2024-10-14T01:01:01+09:00" />
+<meta property="og:url" content="https://murkouc.github.io/2024/10/flet%E3%82%92%E5%9F%BA%E7%A4%8E%E3%81%AB%E3%82%A6%E3%82%A7%E3%83%96%E3%82%A2%E3%83%97%E3%83%AA%E3%82%92%E4%BD%9C%E3%82%8B/">
+  <meta property="og:site_name" content="K.MIURA@OUC">
+  <meta property="og:title" content="Fletを基礎にウェブアプリを作る">
+  <meta property="og:description" content="[基本環境] Debian 12 (amd64):Host(VM) Python 3.11:Host(VM) Ubuntu 22.04(amd64):Guest(Container) Python 3.11:Guest(Container) [やりたいこと] Fletを基礎にしたウェブアプリ開発の基盤環境を作りたい [注意] Docker環境の構築や他のサイトを読んで、Docker環境を構築していること [Flet環境の構築手順] ホストOS上にDockerコンテナを展開する
+※ コンテナ名をfletにしている $ docker pull ubuntu:22.04 $ docker run -itd --privileged -p 80:80/tcp --name flet ubuntu:22.04 $ docker exec -it flet /bin/bash Fletプログラミング用のユーザを作成する
+※ ここから先はコンテナ(flet)内での手続き
+※ ユーザ名をfuserにしている $ apt update $ apt upgrade $ apt install sudo $ adduser fuser $ usermod -G sudo fuser $ su - fuser Flet環境を構築する
+※ 2の続きなので、ここもコンテナ内での手続き
+※ python仮想環境名をenvにしている
+※ Flet環境名をflet-testにしている $ sudo apt install nano python3.11-venv pip git $ python3.11 -m venv env $ source env/bin/activate $ pip install flet $ flet create flet-test $ editor flet-test/src/main.py main.pyの一番下の行にある ft.app(main)を ft.app(target=main,view=None,port=8000)に変更して上書き保存する $ sudo apt install apache2 systemctl $ sudo editor /etc/apache2/conf-available/reverse_proxy.conf reverse_proxy.confの中に、以下の内容を書いて保存する &lt;IfModule mod_proxy.c&gt; ProxyRequests Off &lt;Proxy *&gt; Require all granted &lt;/Proxy&gt; ProxyPass /ws ws://localhost:8000/ws ProxyPassReverse /ws ws://localhost:8000/ws ProxyPass / http://localhost:8000/ ProxyPassReverse / http://localhost:8000/ &lt;/IfModule&gt; $ sudo a2enconf reverse_proxy $ sudo a2enmod proxy proxy_http $ sudo systemctl restart apache2 Flet環境を起動する
+※ 3の続きなので、ここもコンテナ内での手続き $ python3.11 flet-test/src/main.py &amp; PCのウェブブラウザを開いて、 http://127.0.0.1/ または グローバルIPを持っているなら、127.0.0.1をグローバルIPにする に接続すると、Fletの実行結果を確認できるはず Flet環境を停止する
+※ 4の続きなので、ここもコンテナ内での手続き $ ps -aux | grep python このコマンドを実行すると fuser &lt;数字&gt; ..略.. python3.11 flet-test/main.py という行があるはず &lt;数字&gt;は、その都度、確認すること! $ kill -9 &lt;数字&gt; [Fletプログラミング] main.pyを編集すると、実行結果が変わります プログラム例は、別の記事でまとめたいと思います">
+  <meta property="og:locale" content="ja_jp">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2024-10-14T01:01:01+09:00">
+    <meta property="article:modified_time" content="2024-10-14T01:01:01+09:00">
+    <meta property="article:tag" content="技術">
+    <meta property="article:tag" content="Python">
+    <meta property="article:tag" content="Flet">
 
 
-<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Fletを基礎にウェブアプリを作る"/>
-<meta name="twitter:description" content="[基本環境] Debian 12 (amd64):Host(VM) Python 3.11:Host(VM) Ubuntu 22.04(amd64):Guest(Container) Python 3.11:Guest(Container) [やりたいこと] Fletを基礎にしたウェブアプリ開発の基盤環境を作りたい [注意] Docker環境の構築や他のサイトを読んで、Docker環境を構築していること [Flet環境の構築手順] ホストOS上にDockerコンテナを展開する"/>
-<meta name="generator" content="Hugo 0.121.2">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Fletを基礎にウェブアプリを作る">
+  <meta name="twitter:description" content="[基本環境] Debian 12 (amd64):Host(VM) Python 3.11:Host(VM) Ubuntu 22.04(amd64):Guest(Container) Python 3.11:Guest(Container) [やりたいこと] Fletを基礎にしたウェブアプリ開発の基盤環境を作りたい [注意] Docker環境の構築や他のサイトを読んで、Docker環境を構築していること [Flet環境の構築手順] ホストOS上にDockerコンテナを展開する
+※ コンテナ名をfletにしている $ docker pull ubuntu:22.04 $ docker run -itd --privileged -p 80:80/tcp --name flet ubuntu:22.04 $ docker exec -it flet /bin/bash Fletプログラミング用のユーザを作成する
+※ ここから先はコンテナ(flet)内での手続き
+※ ユーザ名をfuserにしている $ apt update $ apt upgrade $ apt install sudo $ adduser fuser $ usermod -G sudo fuser $ su - fuser Flet環境を構築する
+※ 2の続きなので、ここもコンテナ内での手続き
+※ python仮想環境名をenvにしている
+※ Flet環境名をflet-testにしている $ sudo apt install nano python3.11-venv pip git $ python3.11 -m venv env $ source env/bin/activate $ pip install flet $ flet create flet-test $ editor flet-test/src/main.py main.pyの一番下の行にある ft.app(main)を ft.app(target=main,view=None,port=8000)に変更して上書き保存する $ sudo apt install apache2 systemctl $ sudo editor /etc/apache2/conf-available/reverse_proxy.conf reverse_proxy.confの中に、以下の内容を書いて保存する &lt;IfModule mod_proxy.c&gt; ProxyRequests Off &lt;Proxy *&gt; Require all granted &lt;/Proxy&gt; ProxyPass /ws ws://localhost:8000/ws ProxyPassReverse /ws ws://localhost:8000/ws ProxyPass / http://localhost:8000/ ProxyPassReverse / http://localhost:8000/ &lt;/IfModule&gt; $ sudo a2enconf reverse_proxy $ sudo a2enmod proxy proxy_http $ sudo systemctl restart apache2 Flet環境を起動する
+※ 3の続きなので、ここもコンテナ内での手続き $ python3.11 flet-test/src/main.py &amp; PCのウェブブラウザを開いて、 http://127.0.0.1/ または グローバルIPを持っているなら、127.0.0.1をグローバルIPにする に接続すると、Fletの実行結果を確認できるはず Flet環境を停止する
+※ 4の続きなので、ここもコンテナ内での手続き $ ps -aux | grep python このコマンドを実行すると fuser &lt;数字&gt; ..略.. python3.11 flet-test/main.py という行があるはず &lt;数字&gt;は、その都度、確認すること! $ kill -9 &lt;数字&gt; [Fletプログラミング] main.pyを編集すると、実行結果が変わります プログラム例は、別の記事でまとめたいと思います">
+<meta name="generator" content="Hugo 0.157.0">
 
 
     
@@ -132,7 +155,7 @@
 <li>ホストOS上にDockerコンテナを展開する<br>
 ※ コンテナ名を<strong>flet</strong>にしている</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span> $ docker pull ubuntu:22.04
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span> $ docker pull ubuntu:22.04
 </span></span><span style="display:flex;"><span> $ docker run -itd --privileged -p 80:80/tcp --name flet ubuntu:22.04
 </span></span><span style="display:flex;"><span> $ docker exec -it flet /bin/bash
 </span></span></code></pre></div><ol start="2">
@@ -140,7 +163,7 @@
 ※ ここから先はコンテナ(flet)内での手続き<br>
 ※ ユーザ名を<strong>fuser</strong>にしている</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span> $ apt update
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span> $ apt update
 </span></span><span style="display:flex;"><span> $ apt upgrade
 </span></span><span style="display:flex;"><span> $ apt install sudo
 </span></span><span style="display:flex;"><span> $ adduser fuser
@@ -152,7 +175,7 @@
 ※ python仮想環境名を<strong>env</strong>にしている<br>
 ※ Flet環境名を<strong>flet-test</strong>にしている</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span> $ sudo apt install nano python3.11-venv pip git
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span> $ sudo apt install nano python3.11-venv pip git
 </span></span><span style="display:flex;"><span> $ python3.11 -m venv env
 </span></span><span style="display:flex;"><span> $ source env/bin/activate
 </span></span><span style="display:flex;"><span> $ pip install flet
@@ -177,13 +200,11 @@
 </span></span><span style="display:flex;"><span> $ sudo a2enconf reverse_proxy
 </span></span><span style="display:flex;"><span> $ sudo a2enmod proxy proxy_http
 </span></span><span style="display:flex;"><span> $ sudo systemctl restart apache2
-</span></span></code></pre></div><!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<ol start="4">
+</span></span></code></pre></div><ol start="4">
 <li>Flet環境を起動する<br>
 ※ 3の続きなので、ここもコンテナ内での手続き</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span> $ python3.11 flet-test/src/main.py &amp;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span> $ python3.11 flet-test/src/main.py &amp;
 </span></span><span style="display:flex;"><span>   PCのウェブブラウザを開いて、
 </span></span><span style="display:flex;"><span>     http://127.0.0.1/ または 
 </span></span><span style="display:flex;"><span>     グローバルIPを持っているなら、127.0.0.1をグローバルIPにする
@@ -192,7 +213,7 @@
 <li>Flet環境を停止する<br>
 ※ 4の続きなので、ここもコンテナ内での手続き</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span> $ ps -aux | grep python
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span> $ ps -aux | grep python
 </span></span><span style="display:flex;"><span>   このコマンドを実行すると
 </span></span><span style="display:flex;"><span>     fuser &lt;数字&gt; ..略.. python3.11 flet-test/main.py
 </span></span><span style="display:flex;"><span>   という行があるはず
@@ -223,6 +244,8 @@
 
   
 
+  
+  
   
   </footer>
   

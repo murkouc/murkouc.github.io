@@ -5,17 +5,23 @@
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<meta property="og:title" content="テキスト内の全角文字を見つける" />
-<meta property="og:description" content="[基本環境] Python 2.7.16 [やりたいこと] TeXソースファイルの中に全角文字があるかどうかをチェックしたい [プログラムの使い方] 以下のソースコードをisHarfCheck.pyという名前で保存したと仮定する sample.texという名前のTeXソースファイルをチェックすると仮定する このとき、以下のコマンドで実行できる $ python isHarfCheck." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://murkouc.github.io/2022/02/%E3%83%86%E3%82%AD%E3%82%B9%E3%83%88%E5%86%85%E3%81%AE%E5%85%A8%E8%A7%92%E6%96%87%E5%AD%97%E3%82%92%E8%A6%8B%E3%81%A4%E3%81%91%E3%82%8B/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2022-02-10T01:01:01+09:00" />
-<meta property="article:modified_time" content="2022-02-10T01:01:01+09:00" />
+<meta property="og:url" content="https://murkouc.github.io/2022/02/%E3%83%86%E3%82%AD%E3%82%B9%E3%83%88%E5%86%85%E3%81%AE%E5%85%A8%E8%A7%92%E6%96%87%E5%AD%97%E3%82%92%E8%A6%8B%E3%81%A4%E3%81%91%E3%82%8B/">
+  <meta property="og:site_name" content="K.MIURA@OUC">
+  <meta property="og:title" content="テキスト内の全角文字を見つける">
+  <meta property="og:description" content="[基本環境] Python 2.7.16 [やりたいこと] TeXソースファイルの中に全角文字があるかどうかをチェックしたい [プログラムの使い方] 以下のソースコードをisHarfCheck.pyという名前で保存したと仮定する sample.texという名前のTeXソースファイルをチェックすると仮定する このとき、以下のコマンドで実行できる $ python isHarfCheck.py sample.tex [ソースコード] 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 import re,sys def isHarf(value): return re.match(r&#34;^[\x20-\x7E]&#43;$&#34;, value) is not None def isEnter(value): return re.match(&#34;^\n$&#34;, value) is not None def isHarfCheck(file): fid = open(file, &#34;r&#34;) list = fid.readlines() line = 1 flag = 0 for value in list: if isHarf(value)!=True: if isEnter(value)!=True: print(&#34;l.&#34;&#43;str(line)&#43;&#34;: &#34;&#43;value) flag = 1 line = line &#43; 1 fid.close() return flag args = sys.argv flag = isHarfCheck(args[1]) print(&#34;----------&#34;) print(&#34;msg&gt; Checked &#39;&#34;&#43;args[1]&#43;&#34;&#39;.&#34;) if flag!=0: print(&#34;msg&gt; Double-byte characters APPEAR in the text.&#34;) else: print(&#34;msg&gt; Double-byte characters do NOT appear in the text.&#34;)">
+  <meta property="og:locale" content="ja_jp">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2022-02-10T01:01:01+09:00">
+    <meta property="article:modified_time" content="2022-02-10T01:01:01+09:00">
+    <meta property="article:tag" content="技術">
+    <meta property="article:tag" content="Python">
 
 
-<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="テキスト内の全角文字を見つける"/>
-<meta name="twitter:description" content="[基本環境] Python 2.7.16 [やりたいこと] TeXソースファイルの中に全角文字があるかどうかをチェックしたい [プログラムの使い方] 以下のソースコードをisHarfCheck.pyという名前で保存したと仮定する sample.texという名前のTeXソースファイルをチェックすると仮定する このとき、以下のコマンドで実行できる $ python isHarfCheck."/>
-<meta name="generator" content="Hugo 0.121.2">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="テキスト内の全角文字を見つける">
+  <meta name="twitter:description" content="[基本環境] Python 2.7.16 [やりたいこと] TeXソースファイルの中に全角文字があるかどうかをチェックしたい [プログラムの使い方] 以下のソースコードをisHarfCheck.pyという名前で保存したと仮定する sample.texという名前のTeXソースファイルをチェックすると仮定する このとき、以下のコマンドで実行できる $ python isHarfCheck.py sample.tex [ソースコード] 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 import re,sys def isHarf(value): return re.match(r&#34;^[\x20-\x7E]&#43;$&#34;, value) is not None def isEnter(value): return re.match(&#34;^\n$&#34;, value) is not None def isHarfCheck(file): fid = open(file, &#34;r&#34;) list = fid.readlines() line = 1 flag = 0 for value in list: if isHarf(value)!=True: if isEnter(value)!=True: print(&#34;l.&#34;&#43;str(line)&#43;&#34;: &#34;&#43;value) flag = 1 line = line &#43; 1 fid.close() return flag args = sys.argv flag = isHarfCheck(args[1]) print(&#34;----------&#34;) print(&#34;msg&gt; Checked &#39;&#34;&#43;args[1]&#43;&#34;&#39;.&#34;) if flag!=0: print(&#34;msg&gt; Double-byte characters APPEAR in the text.&#34;) else: print(&#34;msg&gt; Double-byte characters do NOT appear in the text.&#34;)">
+<meta name="generator" content="Hugo 0.157.0">
 
 
     
@@ -126,11 +132,11 @@
 <li><strong>sample.tex</strong>という名前のTeXソースファイルをチェックすると仮定する</li>
 <li>このとき、以下のコマンドで実行できる</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>  $ python isHarfCheck.py sample.tex
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>  $ python isHarfCheck.py sample.tex
 </span></span></code></pre></div><h6 id="ソースコード">[ソースコード]</h6>
-<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;">
 <table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
@@ -162,7 +168,7 @@
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> re<span style="color:#f92672">,</span>sys
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> re<span style="color:#f92672">,</span>sys
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">isHarf</span>(value):
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> re<span style="color:#f92672">.</span><span style="color:#66d9ef">match</span>(<span style="color:#e6db74">r</span><span style="color:#e6db74">&#34;^[\x20-\x7E]+$&#34;</span>, value) <span style="color:#f92672">is</span> <span style="color:#f92672">not</span> <span style="color:#66d9ef">None</span>
@@ -214,6 +220,8 @@
 
   
 
+  
+  
   
   </footer>
   

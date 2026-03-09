@@ -5,15 +5,18 @@
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<meta property="og:title" content="cgi" />
-<meta property="og:description" content="The special secret of making dreams come true can be summarized in four C&#39;s. They are Curiosity, Confidence, Courage, and Constancy. --Walt Disney" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://murkouc.github.io/tags/cgi/" />
+<meta property="og:url" content="https://murkouc.github.io/tags/cgi/">
+  <meta property="og:site_name" content="K.MIURA@OUC">
+  <meta property="og:title" content="Cgi">
+  <meta property="og:description" content="The special secret of making dreams come true can be summarized in four C&#39;s. They are Curiosity, Confidence, Courage, and Constancy. --Walt Disney">
+  <meta property="og:locale" content="ja_jp">
+  <meta property="og:type" content="website">
 
 
-<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="cgi"/>
-<meta name="twitter:description" content="The special secret of making dreams come true can be summarized in four C&#39;s. They are Curiosity, Confidence, Courage, and Constancy. --Walt Disney"/>
-<meta name="generator" content="Hugo 0.121.2">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Cgi">
+  <meta name="twitter:description" content="The special secret of making dreams come true can be summarized in four C&#39;s. They are Curiosity, Confidence, Courage, and Constancy. --Walt Disney">
+<meta name="generator" content="Hugo 0.157.0">
 
 
     
@@ -99,7 +102,36 @@
 
 </p>
   </header>
-  [基本環境] Ubuntu 18.04 nginx 1.14 [注意] PythonでCGIは&hellip;と思う人にはお勧めしません [nginxとfcgiwrapのインストール] sudo apt update sudo atp upgrade sudo apt install python3 nginx-full fcgiwrap vim sudo vi /etc/nginx/fcgiwrap.
+  <h6 id="基本環境">[基本環境]</h6>
+<ul>
+<li>Ubuntu 18.04</li>
+<li>nginx 1.14</li>
+</ul>
+<h6 id="注意">[注意]</h6>
+<ul>
+<li>PythonでCGIは&hellip;と思う人にはお勧めしません</li>
+</ul>
+<h6 id="nginxとfcgiwrapのインストール">[nginxとfcgiwrapのインストール]</h6>
+<ol>
+<li>sudo apt update</li>
+<li>sudo atp upgrade</li>
+<li>sudo apt install python3 nginx-full fcgiwrap vim</li>
+<li>sudo vi /etc/nginx/<a href="/sources/fcgiwrap.conf">fcgiwrap.conf</a></li>
+<li>cd /var/www</li>
+<li>sudo mkdir cgi-bin</li>
+<li>sudo chmod 755 cgi-bin</li>
+<li>sudo vi /etc/nginx/sites-availabel/default<br>
+server{&hellip;}の中に、include fcgiwrap.conf; を追加する</li>
+<li>sudo service nginx restart</li>
+<li>sudo service fcgiwrap restart</li>
+<li>cd cgi-bin</li>
+<li>sudo vi <a href="/sources/test.py">test.py</a></li>
+<li>sudo chmod 755 test.py</li>
+</ol>
+<h6 id="cgiの動作確認">[CGIの動作確認]</h6>
+<ol>
+<li>http://IPアドレス/cgi-bin/test.py</li>
+</ol>
   <a href='https://murkouc.github.io/2020/05/nginx%E3%81%A8%E9%80%A3%E6%90%BA%E3%81%97%E3%81%A6python%E3%82%92%E5%8B%95%E3%81%8B%E3%81%99/'>Read more →</a>
 </article> 
 

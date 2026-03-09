@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>oraclecloud on K.MIURA@OUC</title>
+    <title>Oraclecloud on K.MIURA@OUC</title>
     <link>https://murkouc.github.io/tags/oraclecloud/</link>
-    <description>Recent content in oraclecloud on K.MIURA@OUC</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content in Oraclecloud on K.MIURA@OUC</description>
+    <generator>Hugo</generator>
     <language>ja-jp</language>
     <lastBuildDate>Mon, 13 Apr 2020 00:50:37 +0900</lastBuildDate>
     <atom:link href="https://murkouc.github.io/tags/oraclecloud/index.xml" rel="self" type="application/rss+xml" />
@@ -13,7 +13,7 @@
       <link>https://murkouc.github.io/2020/04/oracle%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%89%E3%82%92%E4%BD%BF%E3%81%86%E6%99%82%E3%81%AE%E6%B3%A8%E6%84%8F/</link>
       <pubDate>Mon, 13 Apr 2020 00:50:37 +0900</pubDate>
       <guid>https://murkouc.github.io/2020/04/oracle%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%89%E3%82%92%E4%BD%BF%E3%81%86%E6%99%82%E3%81%AE%E6%B3%A8%E6%84%8F/</guid>
-      <description>[基本環境] Oracleクラウド (VMインスタンス) Ubuntu 18.04 [問題設定] OSがUbuntuのVMインスタンスを使いWEBサイトを展開する OSのFWで80/tcpを開放してもWEBサイトにアクセスできない [対処方法] sudo vi /etc/iptables/rules.</description>
+      <description>&lt;h6 id=&#34;基本環境&#34;&gt;[基本環境]&lt;/h6&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Oracleクラウド (VMインスタンス)&lt;/li&gt;&#xA;&lt;li&gt;Ubuntu 18.04&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h6 id=&#34;問題設定&#34;&gt;[問題設定]&lt;/h6&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;OSがUbuntuのVMインスタンスを使いWEBサイトを展開する&lt;/li&gt;&#xA;&lt;li&gt;OSのFWで80/tcpを開放してもWEBサイトにアクセスできない&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h6 id=&#34;対処方法&#34;&gt;[対処方法]&lt;/h6&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;sudo vi /etc/iptables/rules.v4&#xA;&lt;ul&gt;&#xA;&lt;li&gt;-A INPUT -j ACCEPT を先頭に追加する&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;reboot&#xA;&lt;ul&gt;&#xA;&lt;li&gt;「Inputは常に受信する」になるが、OracleのSEが言うに、OCIのFW機能で防御するのが通常らしい&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ol&gt;</description>
     </item>
   </channel>
 </rss>

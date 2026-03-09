@@ -5,15 +5,18 @@
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<meta property="og:title" content="oraclecloud" />
-<meta property="og:description" content="The special secret of making dreams come true can be summarized in four C&#39;s. They are Curiosity, Confidence, Courage, and Constancy. --Walt Disney" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://murkouc.github.io/tags/oraclecloud/" />
+<meta property="og:url" content="https://murkouc.github.io/tags/oraclecloud/">
+  <meta property="og:site_name" content="K.MIURA@OUC">
+  <meta property="og:title" content="Oraclecloud">
+  <meta property="og:description" content="The special secret of making dreams come true can be summarized in four C&#39;s. They are Curiosity, Confidence, Courage, and Constancy. --Walt Disney">
+  <meta property="og:locale" content="ja_jp">
+  <meta property="og:type" content="website">
 
 
-<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="oraclecloud"/>
-<meta name="twitter:description" content="The special secret of making dreams come true can be summarized in four C&#39;s. They are Curiosity, Confidence, Courage, and Constancy. --Walt Disney"/>
-<meta name="generator" content="Hugo 0.121.2">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Oraclecloud">
+  <meta name="twitter:description" content="The special secret of making dreams come true can be summarized in four C&#39;s. They are Curiosity, Confidence, Courage, and Constancy. --Walt Disney">
+<meta name="generator" content="Hugo 0.157.0">
 
 
     
@@ -99,7 +102,29 @@
 
 </p>
   </header>
-  [基本環境] Oracleクラウド (VMインスタンス) Ubuntu 18.04 [問題設定] OSがUbuntuのVMインスタンスを使いWEBサイトを展開する OSのFWで80/tcpを開放してもWEBサイトにアクセスできない [対処方法] sudo vi /etc/iptables/rules.
+  <h6 id="基本環境">[基本環境]</h6>
+<ul>
+<li>Oracleクラウド (VMインスタンス)</li>
+<li>Ubuntu 18.04</li>
+</ul>
+<h6 id="問題設定">[問題設定]</h6>
+<ul>
+<li>OSがUbuntuのVMインスタンスを使いWEBサイトを展開する</li>
+<li>OSのFWで80/tcpを開放してもWEBサイトにアクセスできない</li>
+</ul>
+<h6 id="対処方法">[対処方法]</h6>
+<ol>
+<li>sudo vi /etc/iptables/rules.v4
+<ul>
+<li>-A INPUT -j ACCEPT を先頭に追加する</li>
+</ul>
+</li>
+<li>reboot
+<ul>
+<li>「Inputは常に受信する」になるが、OracleのSEが言うに、OCIのFW機能で防御するのが通常らしい</li>
+</ul>
+</li>
+</ol>
   <a href='https://murkouc.github.io/2020/04/oracle%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%89%E3%82%92%E4%BD%BF%E3%81%86%E6%99%82%E3%81%AE%E6%B3%A8%E6%84%8F/'>Read more →</a>
 </article> 
 

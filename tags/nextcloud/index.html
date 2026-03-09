@@ -5,15 +5,18 @@
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<meta property="og:title" content="nextcloud" />
-<meta property="og:description" content="The special secret of making dreams come true can be summarized in four C&#39;s. They are Curiosity, Confidence, Courage, and Constancy. --Walt Disney" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://murkouc.github.io/tags/nextcloud/" />
+<meta property="og:url" content="https://murkouc.github.io/tags/nextcloud/">
+  <meta property="og:site_name" content="K.MIURA@OUC">
+  <meta property="og:title" content="Nextcloud">
+  <meta property="og:description" content="The special secret of making dreams come true can be summarized in four C&#39;s. They are Curiosity, Confidence, Courage, and Constancy. --Walt Disney">
+  <meta property="og:locale" content="ja_jp">
+  <meta property="og:type" content="website">
 
 
-<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="nextcloud"/>
-<meta name="twitter:description" content="The special secret of making dreams come true can be summarized in four C&#39;s. They are Curiosity, Confidence, Courage, and Constancy. --Walt Disney"/>
-<meta name="generator" content="Hugo 0.121.2">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Nextcloud">
+  <meta name="twitter:description" content="The special secret of making dreams come true can be summarized in four C&#39;s. They are Curiosity, Confidence, Courage, and Constancy. --Walt Disney">
+<meta name="generator" content="Hugo 0.157.0">
 
 
     
@@ -99,7 +102,67 @@
 
 </p>
   </header>
-  [基本環境] Ubuntu 18.04 nextcloud 13.0.1 Oracleクラウド (NFSサーバ) [参考サイト] NextCloudでファイル共有【その1】サーバインストール手順 OCIでファイルストレージサービス(FSS)を実装してみた [NFSサーバのマウント] 前提としてNFSサーバが構築されていること
+  <h6 id="基本環境">[基本環境]</h6>
+<ul>
+<li>Ubuntu 18.04</li>
+<li>nextcloud 13.0.1</li>
+<li>Oracleクラウド (NFSサーバ)</li>
+</ul>
+<h6 id="参考サイト">[参考サイト]</h6>
+<ul>
+<li><a href="https://mongonta.com/f317-howto-install-nextcloud-to-ubuntu">NextCloudでファイル共有【その1】サーバインストール手順</a></li>
+<li><a href="https://blogs.techvan.co.jp/oci/2019/06/21/oci%E3%81%A7%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%B9%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B8%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9fss%E3%82%92%E5%AE%9F%E8%A3%85%E3%81%97%E3%81%A6%E3%81%BF%E3%81%9F/">OCIでファイルストレージサービス(FSS)を実装してみた</a></li>
+</ul>
+<h6 id="nfsサーバのマウント">[NFSサーバのマウント]</h6>
+<ul>
+<li>前提としてNFSサーバが構築されていること<br>
+(本記事の場合はOracleクラウドのマネージドサービスで構築した)</li>
+</ul>
+<ol>
+<li>sudo mkdir -p /mnt/filesystem
+<ul>
+<li>filesystemは任意のディレクトリ名で良い</li>
+</ul>
+</li>
+<li>sudo mount IPアドレス:/nfsdir /mnt/filesystem
+<ul>
+<li>IPアドレスはNFSサーバのアドレス</li>
+<li>nfsdirはNFSサーバで公開されたディレクトリ名</li>
+</ul>
+</li>
+</ol>
+<h6 id="nextcloudからの接続">[nextcloudからの接続]</h6>
+<ul>
+<li>コンソール上で実行する
+<ol>
+<li>cd /mnt/filesystem</li>
+<li>sudo mkdir nextdir
+<ul>
+<li>nextdirは任意のディレクトリ名で良い</li>
+</ul>
+</li>
+<li>sudo chmod -R 777 nextdir</li>
+<li>sudo chown -R user:group nextdir
+<ul>
+<li>userとgroupは利用中の環境に合わせて変更する</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>ブラウザ上で実行する
+<ol>
+<li>管理者でログインする</li>
+<li>「+アプリ」-&gt;「External storage support」-&gt;「有効にする」</li>
+<li>「設定」-&gt;「外部ストレージ」
+<ul>
+<li>フォルダ名: 任意の名前 (nextcloud上で表示される)</li>
+<li>外部ストレージ: ローカル</li>
+<li>設定: /mnt/filesystem/nextdir</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
   <a href='https://murkouc.github.io/2020/04/nextcloud%E3%81%A8nfs%E3%82%B5%E3%83%BC%E3%83%90%E3%82%92%E6%8E%A5%E7%B6%9A%E3%81%99%E3%82%8B/'>Read more →</a>
 </article> 
 

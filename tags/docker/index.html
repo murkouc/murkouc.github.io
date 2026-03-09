@@ -5,15 +5,18 @@
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<meta property="og:title" content="docker" />
-<meta property="og:description" content="The special secret of making dreams come true can be summarized in four C&#39;s. They are Curiosity, Confidence, Courage, and Constancy. --Walt Disney" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://murkouc.github.io/tags/docker/" />
+<meta property="og:url" content="https://murkouc.github.io/tags/docker/">
+  <meta property="og:site_name" content="K.MIURA@OUC">
+  <meta property="og:title" content="Docker">
+  <meta property="og:description" content="The special secret of making dreams come true can be summarized in four C&#39;s. They are Curiosity, Confidence, Courage, and Constancy. --Walt Disney">
+  <meta property="og:locale" content="ja_jp">
+  <meta property="og:type" content="website">
 
 
-<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="docker"/>
-<meta name="twitter:description" content="The special secret of making dreams come true can be summarized in four C&#39;s. They are Curiosity, Confidence, Courage, and Constancy. --Walt Disney"/>
-<meta name="generator" content="Hugo 0.121.2">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Docker">
+  <meta name="twitter:description" content="The special secret of making dreams come true can be summarized in four C&#39;s. They are Curiosity, Confidence, Courage, and Constancy. --Walt Disney">
+<meta name="generator" content="Hugo 0.157.0">
 
 
     
@@ -99,7 +102,63 @@
 
 </p>
   </header>
-  [基本環境] Debian 12 (amd64) Docker 27.3.1 [やりたいこと] gcloudコマンドがインストール済みのDockerコンテナを作りたい ついでに、日本語入力対応済みのコンテナにする [注意] Docker環境の構築や他のサイトを読んで、Docker環境を構築していること [Dockerコンテナの展開手順] Dockerイメージを作成する
+  <h6 id="基本環境">[基本環境]</h6>
+<ul>
+<li>Debian 12 (amd64)</li>
+<li>Docker 27.3.1</li>
+</ul>
+<h6 id="やりたいこと">[やりたいこと]</h6>
+<ul>
+<li><strong>gcloudコマンドがインストール済み</strong>のDockerコンテナを作りたい</li>
+<li>ついでに、<strong>日本語入力対応済み</strong>のコンテナにする</li>
+</ul>
+<h6 id="注意">[注意]</h6>
+<ul>
+<li><a href="/2020/03/docker%E7%92%B0%E5%A2%83%E3%81%AE%E6%A7%8B%E7%AF%89/">Docker環境の構築</a>や他のサイトを読んで、Docker環境を構築していること</li>
+</ul>
+<h6 id="dockerコンテナの展開手順">[Dockerコンテナの展開手順]</h6>
+<ol>
+<li>Dockerイメージを作成する<br>
+※ <strong>ubuntu 22.04</strong>を基礎とする<br>
+※ Dockerイメージ名を<strong>ubuntu2204:gcloud</strong>にしている</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span> $ docker pull ubuntu:22.04
+</span></span><span style="display:flex;"><span> $ touch Dockerfile
+</span></span><span style="display:flex;"><span> $ editor Dockerfile
+</span></span><span style="display:flex;"><span>   Dockerfileの中に、以下の内容を書いて保存する
+</span></span><span style="display:flex;"><span>   FROM ubuntu:22.04
+</span></span><span style="display:flex;"><span>   RUN apt-get update -y <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>       apt-get install -y curl <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>       apt-get install -y apt-transport-https <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>       apt-get install -y ca-certificates <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>       apt-get install -y gnupg
+</span></span><span style="display:flex;"><span>   RUN echo <span style="color:#e6db74">&#34;deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main&#34;</span> | tee -a /etc/apt/sources.list.d/google-cloud-sdk.list <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>       curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | gpg --dearmor -o /usr/share/keyrings/cloud.google.gpg <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>       apt-get update -y <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>       apt-get install google-cloud-cli -y
+</span></span><span style="display:flex;"><span>   RUN apt-get update -y <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>       apt-get install -y locales <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>       locale-gen ja_JP.UTF-8 <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>       each <span style="color:#e6db74">&#34;export LANG=ja_JP.UTF-8&#34;</span> &gt;&gt; ~/.bashrc
+</span></span><span style="display:flex;"><span> $ docker build ./ -t ubuntu2204:gcloud
+</span></span><span style="display:flex;"><span> 
+</span></span></code></pre></div><ol start="2">
+<li>Dockerイメージを確認する</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span> $ docker images
+</span></span><span style="display:flex;"><span>   このコマンドを実行すると
+</span></span><span style="display:flex;"><span>     ubuntu2204  gcloud ..略..
+</span></span><span style="display:flex;"><span>   という行があるはず
+</span></span></code></pre></div><ol start="3">
+<li>Dockerコンテナを展開する<br>
+※ コンテナ名を<strong>google-env</strong>にしている</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span> $ docker run -itd --privileged --name google-env ubuntu2204:gcloud
+</span></span><span style="display:flex;"><span> $ docker exec -it google-env /bin/bash
+</span></span><span style="display:flex;"><span>   このコマンドを実行して
+</span></span><span style="display:flex;"><span>     root@&lt;コンテナID&gt;:/#
+</span></span><span style="display:flex;"><span>   が表示されていれば、コンテナの展開に成功している
+</span></span></code></pre></div>
   <a href='https://murkouc.github.io/2025/05/gcloud%E3%82%92%E5%85%A5%E3%82%8C%E3%81%9F%E3%82%B3%E3%83%B3%E3%83%86%E3%83%8A%E3%82%92%E4%BD%9C%E3%82%8B/'>Read more →</a>
 </article> 
 
@@ -119,7 +178,149 @@
 
 </p>
   </header>
-  [基本環境] Ubuntu 18.04 Docker 19.03.12 [参考サイト] Redmine 4.1をUbuntu Server 18.04.3 LTSにインストールする手順 [注意] Docker環境の構築や他のサイトを読んで、Docker環境を構築していること [Dockerコンテナの展開(ホストOS上で実行)] docker pull ubuntu:18.
+  <h6 id="基本環境">[基本環境]</h6>
+<ul>
+<li>Ubuntu 18.04</li>
+<li>Docker 19.03.12</li>
+</ul>
+<h6 id="参考サイト">[参考サイト]</h6>
+<ul>
+<li><a href="http://blog.redmine.jp/articles/4_1/install/ubuntu/">Redmine 4.1をUbuntu Server 18.04.3 LTSにインストールする手順</a></li>
+</ul>
+<h6 id="注意">[注意]</h6>
+<ul>
+<li><a href="/2020/03/docker%E7%92%B0%E5%A2%83%E3%81%AE%E6%A7%8B%E7%AF%89/">Docker環境の構築</a>や他のサイトを読んで、Docker環境を構築していること</li>
+</ul>
+<h6 id="dockerコンテナの展開ホストos上で実行">[Dockerコンテナの展開(ホストOS上で実行)]</h6>
+<ol>
+<li>docker pull ubuntu:18.04</li>
+<li>docker run -itd --privileged -p 80:80/tcp --name redmine ubuntu:18.04</li>
+<li>docker exec -it redmine /bin/bash</li>
+</ol>
+<h6 id="コンテナredmine内での手続き">[コンテナ(redmine)内での手続き]</h6>
+<ol>
+<li>adduser ubuntu</li>
+<li>apt-get update</li>
+<li>apt-get upgrade</li>
+<li>apt-get install sudo</li>
+<li>usermod -G sudo ubuntu</li>
+<li>su - ubuntu</li>
+<li>sudo apt-get install locales</li>
+<li>sudo locale-gen ja_JP.UTF-8</li>
+<li>locale -a
+<ul>
+<li>ja_JP.utf8の存在を確認</li>
+</ul>
+</li>
+<li>sudo apt-get install build-essential zlib1g-dev libssl-dev libreadline-dev</li>
+<li>sudo apt-get install libyaml-dev libcurl4-openssl-dev libffi-dev</li>
+<li>sudo apt-get install postgresql libpq-dev</li>
+<li>sudo apt-get install apache2 apache2-dev</li>
+<li>sudo apt-get install imagemagick fonts-takao-pgothic</li>
+<li>sudo apt-get install subversion git vim</li>
+<li>curl -O <a href="https://cache.ruby-lang.org/pub/ruby/2.6/ruby-2.6.5.tar.gz">https://cache.ruby-lang.org/pub/ruby/2.6/ruby-2.6.5.tar.gz</a></li>
+<li>tar xvf ruby-2.6.5.tar.gz</li>
+<li>cd ruby-2.6.5</li>
+<li>./configure --disable-install-doc</li>
+<li>make</li>
+<li>sudo make install</li>
+<li>cd</li>
+<li>ruby -v
+<ul>
+<li>Rubyのバージョンを確認</li>
+</ul>
+</li>
+<li>sudo service postgresql start</li>
+<li>sudo -u postgres createuser -P redmine
+<ul>
+<li>パスワードをredmineと仮定</li>
+</ul>
+</li>
+<li>sudo -u postgres createdb -E UTF-8 -l ja_JP.UTF-8 -O redmine -T template0 redmine</li>
+<li>sudo mkdir /var/lib/redmine</li>
+<li>sudo chown www-data /var/lib/redmine</li>
+<li>sudo -u www-data svn co <a href="https://svn.redmine.org/redmine/branches/4.1-stable">https://svn.redmine.org/redmine/branches/4.1-stable</a> /var/lib/redmine</li>
+<li>cd</li>
+<li>vi <a href="/sources/database-yml.sh">database-yml.sh</a></li>
+<li>chmod 755 database-yml.sh</li>
+<li>sudo ./database-yml.sh</li>
+<li>more /var/lib/redmine/config/database.yml
+<ul>
+<li>ファイルの存在を確認</li>
+<li>password:にpostgresqlの<strong>ユーザredmineのパスワード</strong>を書く</li>
+</ul>
+</li>
+<li>vi <a href="/sources/configuration-yml.sh">configuration-yml.sh</a></li>
+<li>chmod 755 configuration-yml.sh</li>
+<li>sudo ./configuration-yml.sh</li>
+<li>more /var/lib/redmine/config/configuration.yml
+<ul>
+<li>ファイルの存在を確認</li>
+</ul>
+</li>
+<li>cd /var/lib/redmine/config/</li>
+<li>sudo chown www-data:www-data database.yml</li>
+<li>sudo chown www-data:www-data configuration.yml</li>
+<li>cd /var/lib/redmine/</li>
+<li>sudo -u www-data bundle install --without development test --path vendor/bundle</li>
+<li>sudo -u www-data bin/rake generate_secret_token</li>
+<li>sudo -u www-data RAILS_ENV=production bin/rake db:migrate</li>
+<li>sudo gem install passenger -N</li>
+<li>sudo passenger-install-apache2-module --auto --languages ruby</li>
+<li>cd</li>
+<li>vi <a href="/sources/redmine-conf.sh">redmine-conf.sh</a></li>
+<li>chmod 755 redmine-conf.sh</li>
+<li>sudo ./redmine-conf.sh</li>
+<li>more /etc/apache2/conf-available/redmine.conf
+<ul>
+<li>ファイルの存在を確認</li>
+<li>3行目(&lt;/Directory&gt;)以降の内容が<strong>passenger-install-apache2-module --snippet</strong>の出力結果であることを確認</li>
+</ul>
+</li>
+<li>sudo a2enconf redmine</li>
+<li>apache2ctl configtest</li>
+<li>sudo service apache2 reload</li>
+<li>sudo vi /etc/apache2/sites-enabled/000-default.conf
+<ul>
+<li>DocumentRootの値を <strong>/var/lib/redmine/public</strong> に変更</li>
+</ul>
+</li>
+<li>apache2ctl configtest</li>
+<li>sudo service apache2 reload</li>
+<li>sudo service apache2 start</li>
+<li>sudo vi /etc/init.d/<a href="/sources/redmine-start.sh">redmine-start.sh</a></li>
+<li>sudo chmod 755 /etc/init.d/redmine-start.sh</li>
+<li>sudo vi /etc/init.d/<a href="/sources/redmine-stop.sh">redmine-stop.sh</a></li>
+<li>sudo chmod 755 /etc/init.d/redmine-stop.sh</li>
+<li>sudo service postgresql stop</li>
+<li>sudo service apache2 stop</li>
+<li>exit</li>
+<li>exit</li>
+</ol>
+<h6 id="dockerイメージの生成ホストos上で実行">[Dockerイメージの生成(ホストOS上で実行)]</h6>
+<ol>
+<li>docker stop redmine</li>
+<li>docker commit redmine ubuntu1804:redmine</li>
+</ol>
+<h6 id="dockerイメージからredmineを展開ホストos上で実行">[DockerイメージからRedmineを展開(ホストOS上で実行)]</h6>
+<ol>
+<li>docker run -itd --privileged -p 8080:80 --name sample ubuntu1804:redmine</li>
+<li>docker exec sample /etc/init.d/redmine-start.sh</li>
+</ol>
+<h6 id="redmineコンテナの停止">[Redmineコンテナの停止]</h6>
+<ol>
+<li>docker exec sample /etc/init.d/redmine-stop.sh</li>
+<li>docker stop sample</li>
+</ol>
+<h6 id="redmineコンテナの起動">[Redmineコンテナの起動]</h6>
+<ol>
+<li>docker start sample</li>
+<li>docker exec sample /etc/init.d/redmine-start.sh</li>
+</ol>
+<h6 id="redmineの起動を確認">[Redmineの起動を確認]</h6>
+<ol>
+<li>手元PCのウェブブラウザで <strong>http://RedmineのIPアドレス:8080/</strong> に接続する</li>
+</ol>
   <a href='https://murkouc.github.io/2020/09/docker%E4%B8%8A%E3%81%A7redmine%E3%82%92%E5%B1%95%E9%96%8B%E3%81%99%E3%82%8B/'>Read more →</a>
 </article> 
 
@@ -139,7 +340,51 @@
 
 </p>
   </header>
-  [基本環境] Python 3.7.3 Docker 19.03.8 [注意] Docker SDK for Pythonを基にしたDocker制御ではない Subprocessを基にしたDocker制御である Dockerのオプションを多様したいなら、結局、Subprocessに落ち着く [Dockerコンテナ一覧の取得] Dockerコマンドなら docker ps -a Pythonコードなら import subprocess comp = subprocess.
+  <h6 id="基本環境">[基本環境]</h6>
+<ul>
+<li>Python 3.7.3</li>
+<li>Docker 19.03.8</li>
+</ul>
+<h6 id="注意">[注意]</h6>
+<ul>
+<li>Docker SDK for Pythonを基にしたDocker制御ではない</li>
+<li>Subprocessを基にしたDocker制御である</li>
+<li>Dockerのオプションを多様したいなら、結局、Subprocessに落ち着く</li>
+</ul>
+<h6 id="dockerコンテナ一覧の取得">[Dockerコンテナ一覧の取得]</h6>
+<ul>
+<li>Dockerコマンドなら
+<ul>
+<li>docker ps -a</li>
+</ul>
+</li>
+<li>Pythonコードなら
+<ol>
+<li>import subprocess</li>
+<li>comp = subprocess.run([&lsquo;docker&rsquo;, &lsquo;ps&rsquo;, &lsquo;-a&rsquo;], encoding=&lsquo;utf-8&rsquo;, stdout=subprocess.PIPE)</li>
+<li>print(comp)</li>
+</ol>
+</li>
+</ul>
+<h6 id="dockerコンテナの起動">[Dockerコンテナの起動]</h6>
+<ul>
+<li>Dockerコマンドなら
+<ul>
+<li>docker run -itd --priviledged -p 80:80/tcp --name websrv debian:stable</li>
+</ul>
+</li>
+<li>Pythonコードなら
+<ol>
+<li>import subprocess</li>
+<li>comp = subprocess.run([&lsquo;docker&rsquo;, &lsquo;run&rsquo;, &lsquo;-itd&rsquo;, &lsquo;--priviledged&rsquo;, &lsquo;-p&rsquo;, &lsquo;80:80/tcp&rsquo;, &lsquo;--name&rsquo;, &lsquo;websrv&rsquo;, &lsquo;debian:stable&rsquo;], encoding=&lsquo;utf-8&rsquo;, stdout=subprocess.PIPE)</li>
+<li>print(comp)</li>
+</ol>
+</li>
+</ul>
+<h6 id="まとめ">[まとめ]</h6>
+<ul>
+<li>subprocess.runの第一引数のリストにコマンドとオプションを列挙することで、オプションが増えても気にせず実行できる</li>
+</ul>
   <a href='https://murkouc.github.io/2020/04/python%E3%81%A7docker%E3%82%92%E5%88%B6%E5%BE%A1%E3%81%99%E3%82%8B/'>Read more →</a>
 </article> 
 
@@ -159,7 +404,118 @@
 
 </p>
   </header>
-  [基本環境] Debian 10.3.0 (amd64) Docker 19.03.8 [参考サイト] EC2(Ubuntu 18.04 LS)にJupyter Notebookをインストールしてみた [注意] Docker環境の構築や他のサイトを読んで、Docker環境を構築していること 本記事は、Jupyter NotebookをWEBブラウザで確認するまでの手続きである [Dockerコンテナの展開] docker pull debian:stable docker run -itd --privileged -p 8888:8888/tcp -p 8888:8888/udp --name jupyter debian:stable docker exec -it jupyter /bin/bash [コンテナ(jupyter)内での手続き] apt update apt upgrade apt install git apt install curl apt install bzip2 apt install vim git clone https://github.
+  <h6 id="基本環境">[基本環境]</h6>
+<ul>
+<li>Debian 10.3.0 (amd64)</li>
+<li>Docker 19.03.8</li>
+</ul>
+<h6 id="参考サイト">[参考サイト]</h6>
+<ul>
+<li><a href="https://dev.classmethod.jp/articles/ubuntu-jupyternotebook/">EC2(Ubuntu 18.04 LS)にJupyter Notebookをインストールしてみた</a></li>
+</ul>
+<h6 id="注意">[注意]</h6>
+<ul>
+<li><a href="/2020/03/docker%E7%92%B0%E5%A2%83%E3%81%AE%E6%A7%8B%E7%AF%89/">Docker環境の構築</a>や他のサイトを読んで、Docker環境を構築していること</li>
+<li>本記事は、Jupyter NotebookをWEBブラウザで確認するまでの手続きである</li>
+</ul>
+<h6 id="dockerコンテナの展開">[Dockerコンテナの展開]</h6>
+<ol>
+<li>docker pull debian:stable</li>
+<li>docker run -itd --privileged -p 8888:8888/tcp -p 8888:8888/udp --name jupyter debian:stable</li>
+<li>docker exec -it jupyter /bin/bash</li>
+</ol>
+<h6 id="コンテナjupyter内での手続き">[コンテナ(jupyter)内での手続き]</h6>
+<ol>
+<li>apt update</li>
+<li>apt upgrade</li>
+<li>apt install git</li>
+<li>apt install curl</li>
+<li>apt install bzip2</li>
+<li>apt install vim</li>
+<li>git clone <a href="https://github.com/pyenv/pyenv.git">https://github.com/pyenv/pyenv.git</a> ~/.pyenv</li>
+<li>echo &rsquo;export PYENV_ROOT=&quot;${HOME}/.pyenv&quot;&rsquo; &raquo; ~/.bash_profile</li>
+<li>echo &rsquo;export PATH=&quot;${PYENV_ROOT}/bin:$PATH&quot;&rsquo; &raquo; ~/.bash_profile</li>
+<li>echo &rsquo;export PATH=&quot;${PYENV_ROOT}/shims:$PATH&quot;&rsquo; &raquo; ~/.bash_profile</li>
+<li>echo &rsquo;eval &ldquo;$(pyenv init -)&rdquo;&rsquo; &raquo; ~/.bash_profile</li>
+<li>source ~/.bash_profile</li>
+<li>pyenv install anaconda3-5.3.1</li>
+<li>echo &rsquo;export PATH=&quot;$PYENV_ROOT/versions/anaconda3-5.3.1/bin:$PATH&quot;&rsquo; &raquo; ~/.bash_profile</li>
+<li>source ~/.bash_profile</li>
+<li>pyenv versions
+<ul>
+<li>anacondaのインストールを確認する</li>
+</ul>
+</li>
+<li>pyenv global anaconda3-5.3.1</li>
+<li>ipython3
+<ul>
+<li>In [1]: from IPython.lib import passwd</li>
+<li>In [2]: passwd()
+<ul>
+<li>Jupyter Notebookを開くときの<strong>パスワード</strong>を設定する</li>
+</ul>
+</li>
+<li>Out[2]: &lsquo;sha1:xxxxxxxxx&rsquo; <strong>これをメモしておく</strong></li>
+<li>In[3]: quit()</li>
+</ul>
+</li>
+<li>jupyter-notebook --generate-config</li>
+<li>vi ~/.jupyter/jupyter_notebook_config.py
+<ul>
+<li>先頭(本当はどこでも良い)に以下の内容を追加する<br>
+c.IPKernelApp.pylab = &lsquo;inline&rsquo;<br>
+c.NotebookApp.ip = &lsquo;*&rsquo;<br>
+c.NotebookApp.open_browser = False<br>
+c.NotebookApp.port = 8888<br>
+c.NotebookApp.password = u&rsquo;sha1:xxxxxxxxx&rsquo; <strong>メモしたやつ</strong></li>
+</ul>
+</li>
+</ol>
+<h6 id="jupyter-notebookの起動">[Jupyter Notebookの起動]</h6>
+<ol>
+<li>mkdir workspace <strong>ホームディレクトリで実行する</strong></li>
+<li>cd workspace</li>
+<li>jupyter-notebook --allow-root
+<ul>
+<li>WEBブラウザで <strong>http://IPアドレス:8888/</strong> にアクセスする</li>
+<li>パスワードには上の <strong>passwd()</strong> で設定したものを記述する</li>
+<li>停止するときは<strong>Control + Z</strong>を押す</li>
+<li>プロセスが生きていたらkillで強制終了する</li>
+</ul>
+</li>
+</ol>
+<h6 id="おまけコンテナ起動時にjupyter-notebookを一緒に起動する">[おまけ：コンテナ起動時にJupyter Notebookを一緒に起動する]</h6>
+<ul>
+<li>シェルスクリプトを仕込む (コンテナ内で実行する)
+<ol>
+<li>vi /etc/rc.local
+<ul>
+<li>以下の内容を記述する<br>
+#!/bin/bash<br>
+/etc/init.d/jupyter.sh</li>
+</ul>
+</li>
+<li>chmod 755 /etc/rc.local</li>
+<li>vi /etc/init.d/jupyter.sh
+<ul>
+<li>以下の内容を記述する<br>
+#!/bin/bash<br>
+. ~/.bash_profile<br>
+cd /workspace<br>
+sleep 3;jupyter-notebook --allow-root</li>
+</ul>
+</li>
+<li>chmod 755 /etc/init.d/jupyter.sh</li>
+<li>exit <strong>コンテナ(jupyter)から一度出る</strong></li>
+</ol>
+</li>
+<li>コンテナ(jupyter)を起動する
+<ol>
+<li>docker restart jupyter</li>
+<li>docker exec jupyter /etc/rc.local</li>
+</ol>
+</li>
+</ul>
   <a href='https://murkouc.github.io/2020/04/docker%E4%B8%8A%E3%81%A7jupyter%E3%82%92%E5%B1%95%E9%96%8B%E3%81%99%E3%82%8B/'>Read more →</a>
 </article> 
 
@@ -179,7 +535,40 @@
 
 </p>
   </header>
-  [基本環境] Debian 10.3.0 (amd64) Docker 19.03.8 [注意] Docker環境の構築や他のサイトを読んで、Docker環境を構築していること [Dockerコンテナの展開] mkdir /home/ユーザ名/workspace ホストのディレクトリをコンテナでマウントするための準備 ユーザ名は各々の環境に合わせて置き換える docker run -itd --privileged -v /home/ユーザ名/workspace:/mnt --name wordcloud debian:stable docker exec -it wordcloud /bin/bash [コンテナ(wordcloud)内での手続き] apt update apt install python-pip python3-pip pip3 install wordcloud apt install vim cd /mnt vi sample.
+  <h6 id="基本環境">[基本環境]</h6>
+<ul>
+<li>Debian 10.3.0 (amd64)</li>
+<li>Docker 19.03.8</li>
+</ul>
+<h6 id="注意">[注意]</h6>
+<ul>
+<li><a href="/2020/03/docker%E7%92%B0%E5%A2%83%E3%81%AE%E6%A7%8B%E7%AF%89/">Docker環境の構築</a>や他のサイトを読んで、Docker環境を構築していること</li>
+</ul>
+<h6 id="dockerコンテナの展開">[Dockerコンテナの展開]</h6>
+<ol>
+<li>mkdir /home/ユーザ名/workspace
+<ul>
+<li>ホストのディレクトリをコンテナでマウントするための準備</li>
+<li>ユーザ名は各々の環境に合わせて置き換える</li>
+</ul>
+</li>
+<li>docker run -itd --privileged -v /home/ユーザ名/workspace:/mnt --name wordcloud debian:stable</li>
+<li>docker exec -it wordcloud /bin/bash</li>
+</ol>
+<h6 id="コンテナwordcloud内での手続き">[コンテナ(wordcloud)内での手続き]</h6>
+<ol>
+<li>apt update</li>
+<li>apt install python-pip python3-pip</li>
+<li>pip3 install wordcloud</li>
+<li>apt install vim</li>
+<li>cd /mnt</li>
+<li>vi <a href="/sources/sample.py">sample.py</a></li>
+<li>python3 sample.py
+<ul>
+<li>sample.pngが生成されている</li>
+</ul>
+</li>
+</ol>
   <a href='https://murkouc.github.io/2020/03/wordcloud%E3%82%92%E4%BD%9C%E3%82%8B/'>Read more →</a>
 </article> 
 
@@ -187,14 +576,76 @@
 
 
 
-<nav class="blog-pagination">
-  
-  
-  
-  <a class="btn btn-outline-primary disabled" href="#" role="button" aria-disabled="true">Previous page</a>
-  <a class="btn btn-outline-primary" href="/tags/docker/page/2/" rel="next" role="button">Next page</a>
-  
-</nav>
+
+<article class="blog-post">
+  <header>
+    <h2 class="blog-post-title" dir="auto"><a href="https://murkouc.github.io/2020/03/docker%E7%92%B0%E5%A2%83%E3%81%AE%E6%A7%8B%E7%AF%89/">Docker環境の構築</a></h2>
+    <p class="blog-post-meta"><time datetime="2020-03-31T12:09:48+09:00">Tue Mar 31, 2020</time> by Katsunori MIURA in 
+<span class="fas fa-folder" aria-hidden="true"></span>&nbsp;<a href="/categories/%E5%B0%8F%E6%A8%BD%E5%95%86%E5%A4%A7/" rel="category tag">小樽商大</a>
+
+
+<span class="fas fa-tag" aria-hidden="true"></span>&nbsp;<a href="/tags/%E6%8A%80%E8%A1%93/" rel="tag">技術</a>, <a href="/tags/docker/" rel="tag">docker</a>, <a href="/tags/debian/" rel="tag">debian</a>
+
+</p>
+  </header>
+  <h6 id="基本環境">[基本環境]</h6>
+<ul>
+<li>Debian 12 (amd64)</li>
+</ul>
+<h6 id="docker環境の構築手順">[Docker環境の構築手順]</h6>
+<ol>
+<li>Dockerをインストールする</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span> $ sudo apt update
+</span></span><span style="display:flex;"><span> $ sudo apt install apt-transport-https
+</span></span><span style="display:flex;"><span> $ sudo apt install ca-certificates
+</span></span><span style="display:flex;"><span> $ sudo apt install curl
+</span></span><span style="display:flex;"><span> $ sudo apt install gnupg2
+</span></span><span style="display:flex;"><span> $ sudo apt install software-properties-common
+</span></span><span style="display:flex;"><span> $ curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
+</span></span><span style="display:flex;"><span> $ sudo add-apt-repository <span style="color:#e6db74">&#34;deb [arch=amd64] https://download.docker.com/linux/debian </span><span style="color:#66d9ef">$(</span>lsb_release -cs<span style="color:#66d9ef">)</span><span style="color:#e6db74"> stable&#34;</span>
+</span></span><span style="display:flex;"><span> $ sudo apt update
+</span></span><span style="display:flex;"><span> $ sudo apt install docker-ce
+</span></span><span style="display:flex;"><span> 
+</span></span></code></pre></div><ol start="2">
+<li>Dockerの動作状況を確認する</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span> $ sudo systemctl status docker
+</span></span><span style="display:flex;"><span>   このコマンドを実行して
+</span></span><span style="display:flex;"><span>     Active: active <span style="color:#f92672">(</span>running<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>   が表示されるなら、Dockerは動作中である
+</span></span><span style="display:flex;"><span> $ sudo docker ps -a
+</span></span><span style="display:flex;"><span>   このコマンドを実行して
+</span></span><span style="display:flex;"><span>     CONTAINER ID IMAGE ..略..
+</span></span><span style="display:flex;"><span>   が表示されるなら、Dockerコマンドも正しく動作している
+</span></span></code></pre></div><ol start="3">
+<li>一般ユーザにDockerコマンドの実行権限を与える</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span> $ sudo usermod -aG docker <span style="color:#e6db74">${</span>USER<span style="color:#e6db74">}</span>
+</span></span><span style="display:flex;"><span> $ sudo reboot
+</span></span></code></pre></div><h6 id="dockerコンテナの展開">[Dockerコンテナの展開]</h6>
+<ol>
+<li>Dockerイメージをダウンロードする<br>
+※ 例として、<strong>Debian</strong>のイメージファイルをダウンロードしている</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span> $ docker pull debian:stable
+</span></span></code></pre></div><ol start="2">
+<li>新規コンテナを展開する<br>
+※ ホストとの間で<strong>80(HTTP)ポート</strong>を繋いだコンテナを作っている<br>
+※ コンテナ名を<strong>webserv</strong>にしている</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span> $ docker run -itd --privileged -p 80:80/tcp -p 80:80/udp --name webserv debian:stable
+</span></span><span style="display:flex;"><span> 
+</span></span></code></pre></div><ol start="3">
+<li>コンテナの中にログインする</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span> $ docker exec -it webserv /bin/bash
+</span></span></code></pre></div>
+  <a href='https://murkouc.github.io/2020/03/docker%E7%92%B0%E5%A2%83%E3%81%AE%E6%A7%8B%E7%AF%89/'>Read more →</a>
+</article> 
+
+
+
 
 
 

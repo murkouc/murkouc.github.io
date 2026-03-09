@@ -5,15 +5,18 @@
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<meta property="og:title" content="nginx" />
-<meta property="og:description" content="The special secret of making dreams come true can be summarized in four C&#39;s. They are Curiosity, Confidence, Courage, and Constancy. --Walt Disney" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://murkouc.github.io/tags/nginx/" />
+<meta property="og:url" content="https://murkouc.github.io/tags/nginx/">
+  <meta property="og:site_name" content="K.MIURA@OUC">
+  <meta property="og:title" content="Nginx">
+  <meta property="og:description" content="The special secret of making dreams come true can be summarized in four C&#39;s. They are Curiosity, Confidence, Courage, and Constancy. --Walt Disney">
+  <meta property="og:locale" content="ja_jp">
+  <meta property="og:type" content="website">
 
 
-<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="nginx"/>
-<meta name="twitter:description" content="The special secret of making dreams come true can be summarized in four C&#39;s. They are Curiosity, Confidence, Courage, and Constancy. --Walt Disney"/>
-<meta name="generator" content="Hugo 0.121.2">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Nginx">
+  <meta name="twitter:description" content="The special secret of making dreams come true can be summarized in four C&#39;s. They are Curiosity, Confidence, Courage, and Constancy. --Walt Disney">
+<meta name="generator" content="Hugo 0.157.0">
 
 
     
@@ -99,7 +102,36 @@
 
 </p>
   </header>
-  [基本環境] Ubuntu 18.04 nginx 1.14 [注意] PythonでCGIは&hellip;と思う人にはお勧めしません [nginxとfcgiwrapのインストール] sudo apt update sudo atp upgrade sudo apt install python3 nginx-full fcgiwrap vim sudo vi /etc/nginx/fcgiwrap.
+  <h6 id="基本環境">[基本環境]</h6>
+<ul>
+<li>Ubuntu 18.04</li>
+<li>nginx 1.14</li>
+</ul>
+<h6 id="注意">[注意]</h6>
+<ul>
+<li>PythonでCGIは&hellip;と思う人にはお勧めしません</li>
+</ul>
+<h6 id="nginxとfcgiwrapのインストール">[nginxとfcgiwrapのインストール]</h6>
+<ol>
+<li>sudo apt update</li>
+<li>sudo atp upgrade</li>
+<li>sudo apt install python3 nginx-full fcgiwrap vim</li>
+<li>sudo vi /etc/nginx/<a href="/sources/fcgiwrap.conf">fcgiwrap.conf</a></li>
+<li>cd /var/www</li>
+<li>sudo mkdir cgi-bin</li>
+<li>sudo chmod 755 cgi-bin</li>
+<li>sudo vi /etc/nginx/sites-availabel/default<br>
+server{&hellip;}の中に、include fcgiwrap.conf; を追加する</li>
+<li>sudo service nginx restart</li>
+<li>sudo service fcgiwrap restart</li>
+<li>cd cgi-bin</li>
+<li>sudo vi <a href="/sources/test.py">test.py</a></li>
+<li>sudo chmod 755 test.py</li>
+</ol>
+<h6 id="cgiの動作確認">[CGIの動作確認]</h6>
+<ol>
+<li>http://IPアドレス/cgi-bin/test.py</li>
+</ol>
   <a href='https://murkouc.github.io/2020/05/nginx%E3%81%A8%E9%80%A3%E6%90%BA%E3%81%97%E3%81%A6python%E3%82%92%E5%8B%95%E3%81%8B%E3%81%99/'>Read more →</a>
 </article> 
 
@@ -119,7 +151,42 @@
 
 </p>
   </header>
-  [基本環境] Ubuntu 18.04 nginx 1.16 [apache2-utilsのインストール] sudo apt update sudo apt install apache2-utils [.
+  <h6 id="基本環境">[基本環境]</h6>
+<ul>
+<li>Ubuntu 18.04</li>
+<li>nginx 1.16</li>
+</ul>
+<h6 id="apache2-utilsのインストール">[apache2-utilsのインストール]</h6>
+<ol>
+<li>sudo apt update</li>
+<li>sudo apt install apache2-utils</li>
+</ol>
+<h6 id="htpasswdの生成">[.htpasswdの生成]</h6>
+<ol>
+<li>cd /home/ユーザ名/</li>
+<li>mkdir web
+<ul>
+<li>webは任意のディレクトリ名で良い</li>
+</ul>
+</li>
+<li>htpasswd -c /home/ユーザ名/web/.htpasswd user-id
+<ul>
+<li>user-idはBasic認証のユーザ名であり、任意のユーザ名で良い</li>
+</ul>
+</li>
+</ol>
+<h6 id="nginxconfの編集">[nginx.confの編集]</h6>
+<ol>
+<li>cd /etc/nginx</li>
+<li>sudo vi nginx.conf
+<ul>
+<li>http{&hellip;}の中に、<br>
+auth_basic &ldquo;Your Auth Message&rdquo;;<br>
+auth_basic_user_file /home/ユーザ名/web/.htpasswd;<br>
+を追加する</li>
+</ul>
+</li>
+</ol>
   <a href='https://murkouc.github.io/2020/04/nginx%E3%81%A7basic%E8%AA%8D%E8%A8%BC%E3%82%92%E6%9C%89%E5%8A%B9%E3%81%AB%E3%81%99%E3%82%8B/'>Read more →</a>
 </article> 
 
@@ -139,7 +206,67 @@
 
 </p>
   </header>
-  [基本環境] Debian 10.3.0 (amd64) [参考サイト] ストリーミングサーバーを10分で作る [nginxとrtmpのインストール] sudo apt update sudo apt upgrade sudo add-apt-repository ppa:nginx/stable レポジトリ追加の際の確認事項に対しては、[Enter]を押す sudo apt install nginx libnginx-mod-rtmp [rtmpの有効化] cd /etc/nginx sudo vi nginx.
+  <h6 id="基本環境">[基本環境]</h6>
+<ul>
+<li>Debian 10.3.0 (amd64)</li>
+</ul>
+<h6 id="参考サイト">[参考サイト]</h6>
+<ul>
+<li><a href="https://qiita.com/bellx2/items/4239bb2fc2f47469ee4d">ストリーミングサーバーを10分で作る</a></li>
+</ul>
+<h6 id="nginxとrtmpのインストール">[nginxとrtmpのインストール]</h6>
+<ol>
+<li>sudo apt update</li>
+<li>sudo apt upgrade</li>
+<li>sudo add-apt-repository ppa:nginx/stable
+<ul>
+<li>レポジトリ追加の際の確認事項に対しては、[Enter]を押す</li>
+</ul>
+</li>
+<li>sudo apt install nginx libnginx-mod-rtmp</li>
+</ol>
+<h6 id="rtmpの有効化">[rtmpの有効化]</h6>
+<ol>
+<li>cd /etc/nginx</li>
+<li>sudo vi <a href="/sources/nginx-sample.conf">nginx.conf</a>
+<ul>
+<li>hogelive(5行目)を自由に変更する</li>
+</ul>
+</li>
+<li>sudo service nginx restart</li>
+</ol>
+<h6 id="受付用indexhtmlの作成">[受付用index.htmlの作成]</h6>
+<ol>
+<li>cd /var/www/html</li>
+<li>sudo vi <a href="/sources/index-sample.html">index.html</a>
+<ul>
+<li>hogeliveをnginx.confと同じものにする</li>
+<li>ipアドレスをストリーミングサーバのIPアドレスにする</li>
+<li>hogekeyを自由に変更する</li>
+</ul>
+</li>
+</ol>
+<h6 id="配信システムの構築">[配信システムの構築]</h6>
+<ul>
+<li>mp4動画を配信するだけなら、以下の作業は必要ない</li>
+<li>/var/www/html以下にディレクトリを作成して、mp4動画を保存する</li>
+</ul>
+<ol>
+<li>sudo apt-get install ffmpeg</li>
+<li>sudo add-apt-repository ppa:obsproject/obs-studio</li>
+<li>sudo apt-get update</li>
+<li>sudo apt-get install obs-studio</li>
+<li>obs
+<ul>
+<li>配信先: rtmp://IPアドレス:1935/hogelive</li>
+<li>ストリームキー: hogekey</li>
+</ul>
+</li>
+</ol>
+<h6 id="視聴者の操作">[視聴者の操作]</h6>
+<ol>
+<li>WEBブラウザで http://IPアドレス/ にアクセスする</li>
+</ol>
   <a href='https://murkouc.github.io/2020/04/%E3%82%B9%E3%83%88%E3%83%AA%E3%83%BC%E3%83%9F%E3%83%B3%E3%82%B0%E3%82%B5%E3%83%BC%E3%83%90%E3%82%92%E7%AB%8B%E3%81%A6%E3%82%8B/'>Read more →</a>
 </article> 
 

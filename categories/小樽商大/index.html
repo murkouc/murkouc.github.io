@@ -5,15 +5,18 @@
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<meta property="og:title" content="小樽商大" />
-<meta property="og:description" content="The special secret of making dreams come true can be summarized in four C&#39;s. They are Curiosity, Confidence, Courage, and Constancy. --Walt Disney" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://murkouc.github.io/categories/%E5%B0%8F%E6%A8%BD%E5%95%86%E5%A4%A7/" />
+<meta property="og:url" content="https://murkouc.github.io/categories/%E5%B0%8F%E6%A8%BD%E5%95%86%E5%A4%A7/">
+  <meta property="og:site_name" content="K.MIURA@OUC">
+  <meta property="og:title" content="小樽商大">
+  <meta property="og:description" content="The special secret of making dreams come true can be summarized in four C&#39;s. They are Curiosity, Confidence, Courage, and Constancy. --Walt Disney">
+  <meta property="og:locale" content="ja_jp">
+  <meta property="og:type" content="website">
 
 
-<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="小樽商大"/>
-<meta name="twitter:description" content="The special secret of making dreams come true can be summarized in four C&#39;s. They are Curiosity, Confidence, Courage, and Constancy. --Walt Disney"/>
-<meta name="generator" content="Hugo 0.121.2">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="小樽商大">
+  <meta name="twitter:description" content="The special secret of making dreams come true can be summarized in four C&#39;s. They are Curiosity, Confidence, Courage, and Constancy. --Walt Disney">
+<meta name="generator" content="Hugo 0.157.0">
 
 
     
@@ -99,7 +102,19 @@
 
 </p>
   </header>
-  [実施方法・教室] 対面形式 第1実習室 [時間] 火曜日 3講目(12:50&ndash;14:20) [講義内容と資料] 資料の配布は終了しました。 
+  <h6 id="実施方法教室">[実施方法・教室]</h6>
+<ul>
+<li>対面形式</li>
+<li>第1実習室</li>
+</ul>
+<h6 id="時間">[時間]</h6>
+<ul>
+<li>火曜日 3講目(12:50&ndash;14:20)</li>
+</ul>
+<h6 id="講義内容と資料">[講義内容と資料]</h6>
+<ul>
+<li>準備中</li>
+</ul>
   <a href='https://murkouc.github.io/2026/03/%E6%83%85%E5%A0%B1%E5%87%A6%E7%90%86i/'>Read more →</a>
 </article> 
 
@@ -119,7 +134,63 @@
 
 </p>
   </header>
-  [基本環境] Debian 12 (amd64) Docker 27.3.1 [やりたいこと] gcloudコマンドがインストール済みのDockerコンテナを作りたい ついでに、日本語入力対応済みのコンテナにする [注意] Docker環境の構築や他のサイトを読んで、Docker環境を構築していること [Dockerコンテナの展開手順] Dockerイメージを作成する
+  <h6 id="基本環境">[基本環境]</h6>
+<ul>
+<li>Debian 12 (amd64)</li>
+<li>Docker 27.3.1</li>
+</ul>
+<h6 id="やりたいこと">[やりたいこと]</h6>
+<ul>
+<li><strong>gcloudコマンドがインストール済み</strong>のDockerコンテナを作りたい</li>
+<li>ついでに、<strong>日本語入力対応済み</strong>のコンテナにする</li>
+</ul>
+<h6 id="注意">[注意]</h6>
+<ul>
+<li><a href="/2020/03/docker%E7%92%B0%E5%A2%83%E3%81%AE%E6%A7%8B%E7%AF%89/">Docker環境の構築</a>や他のサイトを読んで、Docker環境を構築していること</li>
+</ul>
+<h6 id="dockerコンテナの展開手順">[Dockerコンテナの展開手順]</h6>
+<ol>
+<li>Dockerイメージを作成する<br>
+※ <strong>ubuntu 22.04</strong>を基礎とする<br>
+※ Dockerイメージ名を<strong>ubuntu2204:gcloud</strong>にしている</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span> $ docker pull ubuntu:22.04
+</span></span><span style="display:flex;"><span> $ touch Dockerfile
+</span></span><span style="display:flex;"><span> $ editor Dockerfile
+</span></span><span style="display:flex;"><span>   Dockerfileの中に、以下の内容を書いて保存する
+</span></span><span style="display:flex;"><span>   FROM ubuntu:22.04
+</span></span><span style="display:flex;"><span>   RUN apt-get update -y <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>       apt-get install -y curl <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>       apt-get install -y apt-transport-https <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>       apt-get install -y ca-certificates <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>       apt-get install -y gnupg
+</span></span><span style="display:flex;"><span>   RUN echo <span style="color:#e6db74">&#34;deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main&#34;</span> | tee -a /etc/apt/sources.list.d/google-cloud-sdk.list <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>       curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | gpg --dearmor -o /usr/share/keyrings/cloud.google.gpg <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>       apt-get update -y <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>       apt-get install google-cloud-cli -y
+</span></span><span style="display:flex;"><span>   RUN apt-get update -y <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>       apt-get install -y locales <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>       locale-gen ja_JP.UTF-8 <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>       each <span style="color:#e6db74">&#34;export LANG=ja_JP.UTF-8&#34;</span> &gt;&gt; ~/.bashrc
+</span></span><span style="display:flex;"><span> $ docker build ./ -t ubuntu2204:gcloud
+</span></span><span style="display:flex;"><span> 
+</span></span></code></pre></div><ol start="2">
+<li>Dockerイメージを確認する</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span> $ docker images
+</span></span><span style="display:flex;"><span>   このコマンドを実行すると
+</span></span><span style="display:flex;"><span>     ubuntu2204  gcloud ..略..
+</span></span><span style="display:flex;"><span>   という行があるはず
+</span></span></code></pre></div><ol start="3">
+<li>Dockerコンテナを展開する<br>
+※ コンテナ名を<strong>google-env</strong>にしている</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span> $ docker run -itd --privileged --name google-env ubuntu2204:gcloud
+</span></span><span style="display:flex;"><span> $ docker exec -it google-env /bin/bash
+</span></span><span style="display:flex;"><span>   このコマンドを実行して
+</span></span><span style="display:flex;"><span>     root@&lt;コンテナID&gt;:/#
+</span></span><span style="display:flex;"><span>   が表示されていれば、コンテナの展開に成功している
+</span></span></code></pre></div>
   <a href='https://murkouc.github.io/2025/05/gcloud%E3%82%92%E5%85%A5%E3%82%8C%E3%81%9F%E3%82%B3%E3%83%B3%E3%83%86%E3%83%8A%E3%82%92%E4%BD%9C%E3%82%8B/'>Read more →</a>
 </article> 
 
@@ -139,7 +210,95 @@
 
 </p>
   </header>
-  [基本環境] Debian 12 (amd64):Host(VM) Python 3.11:Host(VM) Ubuntu 22.04(amd64):Guest(Container) Python 3.11:Guest(Container) [やりたいこと] Fletを基礎にしたウェブアプリ開発の基盤環境を作りたい [注意] Docker環境の構築や他のサイトを読んで、Docker環境を構築していること [Flet環境の構築手順] ホストOS上にDockerコンテナを展開する
+  <h6 id="基本環境">[基本環境]</h6>
+<ul>
+<li>Debian 12 (amd64):Host(VM)</li>
+<li>Python 3.11:Host(VM)</li>
+<li>Ubuntu 22.04(amd64):Guest(Container)</li>
+<li>Python 3.11:Guest(Container)</li>
+</ul>
+<h6 id="やりたいこと">[やりたいこと]</h6>
+<ul>
+<li>Fletを基礎にした<strong>ウェブアプリ開発</strong>の基盤環境を作りたい</li>
+</ul>
+<h6 id="注意">[注意]</h6>
+<ul>
+<li><a href="/2020/03/docker%E7%92%B0%E5%A2%83%E3%81%AE%E6%A7%8B%E7%AF%89/">Docker環境の構築</a>や他のサイトを読んで、Docker環境を構築していること</li>
+</ul>
+<h6 id="flet環境の構築手順">[Flet環境の構築手順]</h6>
+<ol>
+<li>ホストOS上にDockerコンテナを展開する<br>
+※ コンテナ名を<strong>flet</strong>にしている</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span> $ docker pull ubuntu:22.04
+</span></span><span style="display:flex;"><span> $ docker run -itd --privileged -p 80:80/tcp --name flet ubuntu:22.04
+</span></span><span style="display:flex;"><span> $ docker exec -it flet /bin/bash
+</span></span></code></pre></div><ol start="2">
+<li>Fletプログラミング用のユーザを作成する<br>
+※ ここから先はコンテナ(flet)内での手続き<br>
+※ ユーザ名を<strong>fuser</strong>にしている</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span> $ apt update
+</span></span><span style="display:flex;"><span> $ apt upgrade
+</span></span><span style="display:flex;"><span> $ apt install sudo
+</span></span><span style="display:flex;"><span> $ adduser fuser
+</span></span><span style="display:flex;"><span> $ usermod -G sudo fuser
+</span></span><span style="display:flex;"><span> $ su - fuser
+</span></span></code></pre></div><ol start="3">
+<li>Flet環境を構築する<br>
+※ 2の続きなので、ここもコンテナ内での手続き<br>
+※ python仮想環境名を<strong>env</strong>にしている<br>
+※ Flet環境名を<strong>flet-test</strong>にしている</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span> $ sudo apt install nano python3.11-venv pip git
+</span></span><span style="display:flex;"><span> $ python3.11 -m venv env
+</span></span><span style="display:flex;"><span> $ source env/bin/activate
+</span></span><span style="display:flex;"><span> $ pip install flet
+</span></span><span style="display:flex;"><span> $ flet create flet-test
+</span></span><span style="display:flex;"><span> $ editor flet-test/src/main.py
+</span></span><span style="display:flex;"><span>   main.pyの一番下の行にある
+</span></span><span style="display:flex;"><span>   ft.app<span style="color:#f92672">(</span>main<span style="color:#f92672">)</span>を
+</span></span><span style="display:flex;"><span>   ft.app<span style="color:#f92672">(</span>target<span style="color:#f92672">=</span>main,view<span style="color:#f92672">=</span>None,port<span style="color:#f92672">=</span>8000<span style="color:#f92672">)</span>に変更して上書き保存する
+</span></span><span style="display:flex;"><span> $ sudo apt install apache2 systemctl
+</span></span><span style="display:flex;"><span> $ sudo editor /etc/apache2/conf-available/reverse_proxy.conf
+</span></span><span style="display:flex;"><span>   reverse_proxy.confの中に、以下の内容を書いて保存する
+</span></span><span style="display:flex;"><span>   &lt;IfModule mod_proxy.c&gt;
+</span></span><span style="display:flex;"><span>     ProxyRequests Off
+</span></span><span style="display:flex;"><span>     &lt;Proxy *&gt;
+</span></span><span style="display:flex;"><span>       Require all granted
+</span></span><span style="display:flex;"><span>     &lt;/Proxy&gt;
+</span></span><span style="display:flex;"><span>     ProxyPass /ws ws://localhost:8000/ws
+</span></span><span style="display:flex;"><span>     ProxyPassReverse /ws ws://localhost:8000/ws
+</span></span><span style="display:flex;"><span>     ProxyPass / http://localhost:8000/
+</span></span><span style="display:flex;"><span>     ProxyPassReverse / http://localhost:8000/
+</span></span><span style="display:flex;"><span>   &lt;/IfModule&gt;
+</span></span><span style="display:flex;"><span> $ sudo a2enconf reverse_proxy
+</span></span><span style="display:flex;"><span> $ sudo a2enmod proxy proxy_http
+</span></span><span style="display:flex;"><span> $ sudo systemctl restart apache2
+</span></span></code></pre></div><ol start="4">
+<li>Flet環境を起動する<br>
+※ 3の続きなので、ここもコンテナ内での手続き</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span> $ python3.11 flet-test/src/main.py &amp;
+</span></span><span style="display:flex;"><span>   PCのウェブブラウザを開いて、
+</span></span><span style="display:flex;"><span>     http://127.0.0.1/ または 
+</span></span><span style="display:flex;"><span>     グローバルIPを持っているなら、127.0.0.1をグローバルIPにする
+</span></span><span style="display:flex;"><span>   に接続すると、Fletの実行結果を確認できるはず
+</span></span></code></pre></div><ol start="5">
+<li>Flet環境を停止する<br>
+※ 4の続きなので、ここもコンテナ内での手続き</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span> $ ps -aux | grep python
+</span></span><span style="display:flex;"><span>   このコマンドを実行すると
+</span></span><span style="display:flex;"><span>     fuser &lt;数字&gt; ..略.. python3.11 flet-test/main.py
+</span></span><span style="display:flex;"><span>   という行があるはず
+</span></span><span style="display:flex;"><span>   &lt;数字&gt;は、その都度、確認すること!
+</span></span><span style="display:flex;"><span> $ kill -9 &lt;数字&gt;
+</span></span></code></pre></div><h6 id="fletプログラミング">[Fletプログラミング]</h6>
+<ul>
+<li><strong>main.py</strong>を編集すると、実行結果が変わります</li>
+<li>プログラム例は、別の記事でまとめたいと思います</li>
+</ul>
   <a href='https://murkouc.github.io/2024/10/flet%E3%82%92%E5%9F%BA%E7%A4%8E%E3%81%AB%E3%82%A6%E3%82%A7%E3%83%96%E3%82%A2%E3%83%97%E3%83%AA%E3%82%92%E4%BD%9C%E3%82%8B/'>Read more →</a>
 </article> 
 
@@ -159,7 +318,44 @@
 
 </p>
   </header>
-  [基本環境] Mac mini(Apple M1チップ) [参考サイト] UTMを用いてM1 MacBookにUbuntuの仮想化環境を構築する [やりたいこと] UTMを用いてLinux環境の仮想マシンを展開する [UTMのインストール] ここにアクセスする GitHubの方にあるDownload from GitHubをクリックする
+  <h6 id="基本環境">[基本環境]</h6>
+<ul>
+<li>Mac mini(Apple M1チップ)</li>
+</ul>
+<h6 id="参考サイト">[参考サイト]</h6>
+<ul>
+<li><a href="https://envader.plus/article/66">UTMを用いてM1 MacBookにUbuntuの仮想化環境を構築する</a></li>
+</ul>
+<h6 id="やりたいこと">[やりたいこと]</h6>
+<ul>
+<li>UTMを用いてLinux環境の仮想マシンを展開する</li>
+</ul>
+<h6 id="utmのインストール">[UTMのインストール]</h6>
+<ol>
+<li><a href="https://docs.getutm.app/installation/macos">ここ</a>にアクセスする</li>
+<li>GitHubの方にある<strong>Download from GitHub</strong>をクリックする<br>
+※ UTM.dmgがダウンロードされる</li>
+<li><strong>UTM.dmg</strong>をダブルクリックした後、UTMをApplicationフォルダに追加する</li>
+</ol>
+<h6 id="仮想マシンの作成">[仮想マシンの作成]</h6>
+<ol>
+<li>Applicationの中にある<strong>UTM</strong>を選択する</li>
+<li>メニュー画面の中から<strong>新規仮想マシンを作成</strong>を選択する</li>
+<li>カスタムの中から<strong>仮想化</strong>を選択する</li>
+<li>OSの中から<strong>Linux</strong>を選択する</li>
+<li>[起動ISOイメージ]欄の[選択]ボタンを押す</li>
+<li>LinuxのISOファイル(ubuntu-24.04-live-server-arm64.iso)を選択する<br>
+※ ISOファイルは事前に<a href="https://ubuntu.com/download/server/arm">ここ</a>からダウンロードしておくこと<br>
+※ GUI(デスクトップ)環境が必要なら、<a href="https://cdimage.ubuntu.com/releases/22.04/release/">ここ</a>から入手できる<strong>ubuntu-22.04.4-live-server-arm64.iso</strong>を使ったほうが良い</li>
+<li>メモリ・CPU・ストレージ・共有ディレクトリは適当に設定する</li>
+<li>仮想マシン名は<strong>半角文字</strong>で適当に設定する</li>
+</ol>
+<h6 id="仮想マシンの起動">[仮想マシンの起動]</h6>
+<ol>
+<li>UTMの左側にある一覧の中から、起動する仮想マシンを選択する<br>
+※ 初めての起動では、<strong>Linuxのインストール</strong>が実行される<br>
+※ Linuxのインストール手順は、上記の<strong>参考サイト</strong>を見てほしい</li>
+</ol>
   <a href='https://murkouc.github.io/2024/07/utm%E3%82%92%E7%94%A8%E3%81%84%E3%81%A6linux%E7%92%B0%E5%A2%83%E3%82%92%E4%BD%9C%E3%82%8B/'>Read more →</a>
 </article> 
 
@@ -179,8 +375,301 @@
 
 </p>
   </header>
-  [実施方法・教室] 対面形式 160CL [時間] 金曜日 4講目(14:30&ndash;16:00) [講義内容と資料] 資料の配布は終了しました。 
+  <h6 id="実施方法教室">[実施方法・教室]</h6>
+<ul>
+<li>対面形式</li>
+<li>160CL</li>
+</ul>
+<h6 id="時間">[時間]</h6>
+<ul>
+<li>金曜日 4講目(14:30&ndash;16:00)</li>
+</ul>
+<h6 id="講義内容と資料">[講義内容と資料]</h6>
+<ul>
+<li>準備中</li>
+</ul>
   <a href='https://murkouc.github.io/2024/03/%E7%A4%BE%E4%BC%9A%E6%83%85%E5%A0%B1%E5%85%A5%E9%96%80i/'>Read more →</a>
+</article> 
+
+
+
+
+
+
+<article class="blog-post">
+  <header>
+    <h2 class="blog-post-title" dir="auto"><a href="https://murkouc.github.io/2024/01/%E3%82%B7%E3%83%B3%E3%83%97%E3%83%AB%E3%81%AAqa%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E3%82%92%E4%BD%9C%E3%82%8B/">シンプルなQAシステムを作る</a></h2>
+    <p class="blog-post-meta"><time datetime="2024-01-22T01:01:01+09:00">Mon Jan 22, 2024</time> by Katsunori MIURA in 
+<span class="fas fa-folder" aria-hidden="true"></span>&nbsp;<a href="/categories/%E5%B0%8F%E6%A8%BD%E5%95%86%E5%A4%A7/" rel="category tag">小樽商大</a>
+
+
+<span class="fas fa-tag" aria-hidden="true"></span>&nbsp;<a href="/tags/%E6%8A%80%E8%A1%93/" rel="tag">技術</a>, <a href="/tags/gcp/" rel="tag">gcp</a>, <a href="/tags/ai/" rel="tag">ai</a>
+
+</p>
+  </header>
+  <h6 id="基本環境">[基本環境]</h6>
+<ul>
+<li>Google Cloud Platform (GCP)</li>
+</ul>
+<h6 id="やりたいこと">[やりたいこと]</h6>
+<ul>
+<li>Vertex AI Searchを基礎にシンプルなQAシステムを作る</li>
+</ul>
+<h6 id="cloud-storageの設定">[Cloud Storageの設定]</h6>
+<p>目的：QAシステムからの回答の情報源となるデータを準備する</p>
+  <a href='https://murkouc.github.io/2024/01/%E3%82%B7%E3%83%B3%E3%83%97%E3%83%AB%E3%81%AAqa%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E3%82%92%E4%BD%9C%E3%82%8B/'>Read more →</a>
+</article> 
+
+
+
+
+
+
+<article class="blog-post">
+  <header>
+    <h2 class="blog-post-title" dir="auto"><a href="https://murkouc.github.io/2023/03/%E7%A4%BE%E4%BC%9A%E6%83%85%E5%A0%B1%E5%85%A5%E9%96%80%E5%A4%9C%E9%96%93/">社会情報入門(夜間)</a></h2>
+    <p class="blog-post-meta"><time datetime="2023-03-08T13:20:02+09:00">Wed Mar 08, 2023</time> by Katsunori MIURA in 
+<span class="fas fa-folder" aria-hidden="true"></span>&nbsp;<a href="/categories/%E5%B0%8F%E6%A8%BD%E5%95%86%E5%A4%A7/" rel="category tag">小樽商大</a>
+
+
+<span class="fas fa-tag" aria-hidden="true"></span>&nbsp;<a href="/tags/%E8%AC%9B%E7%BE%A9/" rel="tag">講義</a>, <a href="/tags/%E5%AD%A6%E9%83%A8/" rel="tag">学部</a>
+
+</p>
+  </header>
+  <h6 id="実施方法教室">[実施方法・教室]</h6>
+<ul>
+<li>オンデマンド配信</li>
+</ul>
+<h6 id="講義内容と資料">[講義内容と資料]</h6>
+  <a href='https://murkouc.github.io/2023/03/%E7%A4%BE%E4%BC%9A%E6%83%85%E5%A0%B1%E5%85%A5%E9%96%80%E5%A4%9C%E9%96%93/'>Read more →</a>
+</article> 
+
+
+
+
+
+
+<article class="blog-post">
+  <header>
+    <h2 class="blog-post-title" dir="auto"><a href="https://murkouc.github.io/2022/02/%E3%83%86%E3%82%AD%E3%82%B9%E3%83%88%E5%86%85%E3%81%AE%E5%85%A8%E8%A7%92%E6%96%87%E5%AD%97%E3%82%92%E8%A6%8B%E3%81%A4%E3%81%91%E3%82%8B/">テキスト内の全角文字を見つける</a></h2>
+    <p class="blog-post-meta"><time datetime="2022-02-10T01:01:01+09:00">Thu Feb 10, 2022</time> by Katsunori MIURA in 
+<span class="fas fa-folder" aria-hidden="true"></span>&nbsp;<a href="/categories/%E5%B0%8F%E6%A8%BD%E5%95%86%E5%A4%A7/" rel="category tag">小樽商大</a>
+
+
+<span class="fas fa-tag" aria-hidden="true"></span>&nbsp;<a href="/tags/%E6%8A%80%E8%A1%93/" rel="tag">技術</a>, <a href="/tags/python/" rel="tag">python</a>
+
+</p>
+  </header>
+  <h6 id="基本環境">[基本環境]</h6>
+<ul>
+<li>Python 2.7.16</li>
+</ul>
+<h6 id="やりたいこと">[やりたいこと]</h6>
+<ul>
+<li>TeXソースファイルの中に<strong>全角文字</strong>があるかどうかをチェックしたい</li>
+</ul>
+<h6 id="プログラムの使い方">[プログラムの使い方]</h6>
+<ol>
+<li>以下のソースコードを<strong>isHarfCheck.py</strong>という名前で保存したと仮定する</li>
+<li><strong>sample.tex</strong>という名前のTeXソースファイルをチェックすると仮定する</li>
+<li>このとき、以下のコマンドで実行できる</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>  $ python isHarfCheck.py sample.tex
+</span></span></code></pre></div><h6 id="ソースコード">[ソースコード]</h6>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> re<span style="color:#f92672">,</span>sys
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">isHarf</span>(value):
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> re<span style="color:#f92672">.</span><span style="color:#66d9ef">match</span>(<span style="color:#e6db74">r</span><span style="color:#e6db74">&#34;^[\x20-\x7E]+$&#34;</span>, value) <span style="color:#f92672">is</span> <span style="color:#f92672">not</span> <span style="color:#66d9ef">None</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">isEnter</span>(value):
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> re<span style="color:#f92672">.</span><span style="color:#66d9ef">match</span>(<span style="color:#e6db74">&#34;^</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">$&#34;</span>, value) <span style="color:#f92672">is</span> <span style="color:#f92672">not</span> <span style="color:#66d9ef">None</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">isHarfCheck</span>(file):
+</span></span><span style="display:flex;"><span>  fid <span style="color:#f92672">=</span> open(file, <span style="color:#e6db74">&#34;r&#34;</span>)
+</span></span><span style="display:flex;"><span>  list <span style="color:#f92672">=</span> fid<span style="color:#f92672">.</span>readlines()
+</span></span><span style="display:flex;"><span>  line <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>  flag <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">for</span> value <span style="color:#f92672">in</span> list:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> isHarf(value)<span style="color:#f92672">!=</span><span style="color:#66d9ef">True</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">if</span> isEnter(value)<span style="color:#f92672">!=</span><span style="color:#66d9ef">True</span>:
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">&#34;l.&#34;</span><span style="color:#f92672">+</span>str(line)<span style="color:#f92672">+</span><span style="color:#e6db74">&#34;: &#34;</span><span style="color:#f92672">+</span>value)
+</span></span><span style="display:flex;"><span>        flag <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>    line <span style="color:#f92672">=</span> line <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>  fid<span style="color:#f92672">.</span>close()
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> flag
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>args <span style="color:#f92672">=</span> sys<span style="color:#f92672">.</span>argv
+</span></span><span style="display:flex;"><span>flag <span style="color:#f92672">=</span> isHarfCheck(args[<span style="color:#ae81ff">1</span>])
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#34;----------&#34;</span>)
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#34;msg&gt; Checked &#39;&#34;</span><span style="color:#f92672">+</span>args[<span style="color:#ae81ff">1</span>]<span style="color:#f92672">+</span><span style="color:#e6db74">&#34;&#39;.&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> flag<span style="color:#f92672">!=</span><span style="color:#ae81ff">0</span>:
+</span></span><span style="display:flex;"><span>  print(<span style="color:#e6db74">&#34;msg&gt; Double-byte characters APPEAR in the text.&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>  print(<span style="color:#e6db74">&#34;msg&gt; Double-byte characters do NOT appear in the text.&#34;</span>)
+</span></span></code></pre></td></tr></table>
+</div>
+</div>
+  <a href='https://murkouc.github.io/2022/02/%E3%83%86%E3%82%AD%E3%82%B9%E3%83%88%E5%86%85%E3%81%AE%E5%85%A8%E8%A7%92%E6%96%87%E5%AD%97%E3%82%92%E8%A6%8B%E3%81%A4%E3%81%91%E3%82%8B/'>Read more →</a>
+</article> 
+
+
+
+
+
+
+<article class="blog-post">
+  <header>
+    <h2 class="blog-post-title" dir="auto"><a href="https://murkouc.github.io/2021/12/%E3%82%B7%E3%83%A7%E3%83%BC%E3%83%88%E3%82%AB%E3%83%83%E3%83%88%E3%82%AD%E3%83%BC%E3%82%92%E8%A8%AD%E5%AE%9A%E3%81%99%E3%82%8B/">ショートカットキーを設定する</a></h2>
+    <p class="blog-post-meta"><time datetime="2021-12-10T01:01:01+09:00">Fri Dec 10, 2021</time> by Katsunori MIURA in 
+<span class="fas fa-folder" aria-hidden="true"></span>&nbsp;<a href="/categories/%E5%B0%8F%E6%A8%BD%E5%95%86%E5%A4%A7/" rel="category tag">小樽商大</a>
+
+
+<span class="fas fa-tag" aria-hidden="true"></span>&nbsp;<a href="/tags/%E6%8A%80%E8%A1%93/" rel="tag">技術</a>, <a href="/tags/vscode/" rel="tag">vscode</a>, <a href="/tags/macos/" rel="tag">macos</a>
+
+</p>
+  </header>
+  <h6 id="基本環境">[基本環境]</h6>
+<ul>
+<li>Visual Studio Code(VSCode) 1.42.2</li>
+</ul>
+<h6 id="参考サイト">[参考サイト]</h6>
+<ul>
+<li><a href="https://onedarling.site/programming/tool/vscode-terminal-shortcutkey/">VSCode内でエディターからターミナルへ移動するショートカットキーを設定しよう</a></li>
+</ul>
+<h6 id="やりたいこと">[やりたいこと]</h6>
+<ul>
+<li>VSCode内のターミナルとエディターをショートカットキーで行き来したい</li>
+</ul>
+<h6 id="初期設定のショートカットキー">[初期設定のショートカットキー]</h6>
+<ul>
+<li>[Ctrl]キー+[Shift]キー+[@]キー：ターミナルが開く</li>
+<li>[Ctrl]キー+[数字]キー：数字で指定したエディターに移動する
+<ul>
+<li>[1]キーは一番左のエディターで、[2]キーはその隣のエディターである</li>
+</ul>
+</li>
+</ul>
+<h6 id="ターミナルに移動するショートカットキーを設定する">[ターミナルに移動するショートカットキーを設定する]</h6>
+<ol>
+<li>[Code]-&gt;[基本設定]-&gt;[キーボード ショートカット]で設定画面を開く</li>
+<li>入力してキーバインド内を検索で<strong>workbench.action.terminal.focus</strong>を検索する
+<ul>
+<li>説明文に「ターミナル：ターミナルにフォーカス」と書いている</li>
+</ul>
+</li>
+<li>説明文の左に現れる[+]ボタンをクリックする
+<ul>
+<li>設定済みなら[ペン]ボタンになっている</li>
+</ul>
+</li>
+<li>ショートカットキーを設定する
+<ul>
+<li>例えば、<strong>[Ctrl]キー+[M]キーを押したあとに、[T]キーを押す</strong>みたいな感じ</li>
+</ul>
+</li>
+</ol>
+  <a href='https://murkouc.github.io/2021/12/%E3%82%B7%E3%83%A7%E3%83%BC%E3%83%88%E3%82%AB%E3%83%83%E3%83%88%E3%82%AD%E3%83%BC%E3%82%92%E8%A8%AD%E5%AE%9A%E3%81%99%E3%82%8B/'>Read more →</a>
+</article> 
+
+
+
+
+
+
+<article class="blog-post">
+  <header>
+    <h2 class="blog-post-title" dir="auto"><a href="https://murkouc.github.io/2021/09/%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3%E8%AA%8D%E8%A8%BC%E3%81%A7git%E3%82%92%E5%AE%9F%E8%A1%8C%E3%81%99%E3%82%8B/">トークン認証でgitを実行する</a></h2>
+    <p class="blog-post-meta"><time datetime="2021-09-10T15:00:00+09:00">Fri Sep 10, 2021</time> by Katsunori MIURA in 
+<span class="fas fa-folder" aria-hidden="true"></span>&nbsp;<a href="/categories/%E5%B0%8F%E6%A8%BD%E5%95%86%E5%A4%A7/" rel="category tag">小樽商大</a>
+
+
+<span class="fas fa-tag" aria-hidden="true"></span>&nbsp;<a href="/tags/%E6%8A%80%E8%A1%93/" rel="tag">技術</a>, <a href="/tags/github/" rel="tag">github</a>, <a href="/tags/debian/" rel="tag">debian</a>
+
+</p>
+  </header>
+  <h6 id="基本環境">[基本環境]</h6>
+<ul>
+<li>Debian 10.3.0</li>
+</ul>
+<h6 id="参考サイト">[参考サイト]</h6>
+<ul>
+<li><a href="https://qiita.com/atsymd/items/a1ff5a496b78f47ce80e">GitHubでパスワード認証廃止による認証エラーが出た件</a></li>
+<li><a href="https://note.kiriukun.com/entry/20210904-github-password-authentication-was-removed">GitHubのリポジトリアクセス時に「remote: Support for password authentication was removed on August 13, 2021.」エラー</a></li>
+</ul>
+<h6 id="注意">[注意]</h6>
+<ul>
+<li>8月末まで、次のコマンドをを実行した後に、パスワード認証で更新できた
+<ul>
+<li>git push origin master</li>
+</ul>
+</li>
+<li>しかし、この認証が廃止されたので、トークン認証に変更する必要がある</li>
+<li>この記事は、トークン認証に変更する方法をまとめている</li>
+</ul>
+<h6 id="トークンを生成する-githubのウェブサイト上で実行">[トークンを生成する (GitHubのウェブサイト上で実行)]</h6>
+<ol>
+<li>プロフィールのアイコンをクリックし、 <strong>Settings</strong> をクリックする</li>
+<li>左端に並んでいる項目の中から <strong>Developer settings</strong> をクリックする</li>
+<li>左端に並んでいる項目の中から <strong>Personal access tokens</strong> をクリックする</li>
+<li><strong>Generate new token</strong> をクリックして、トークンを生成する
+<ul>
+<li><strong>Note</strong> は、トークンのラベルの感覚で、適当に記述する</li>
+<li><strong>Expiration</strong> は、トークンの有効期限を設定する</li>
+<li><strong>Select scopes</strong> は、アクセスを許す項目を選択する</li>
+</ul>
+</li>
+<li>トークンをメモする</li>
+</ol>
+<h6 id="トークンを適用する-ターミナル上で実行">[トークンを適用する (ターミナル上で実行)]</h6>
+<ol>
+<li>git remote set-url origin <a href="https://ghp_xxxxxxxxxx@github.com/hoge/hoge.git">https://ghp_xxxxxxxxxx@github.com/hoge/hoge.git</a>
+<ul>
+<li>ghp_xxxxxxxxxx をトークンとする</li>
+<li><a href="https://github.com/hoge/hoge.git">https://github.com/hoge/hoge.git</a> を元のリモートURLとする</li>
+</ul>
+</li>
+</ol>
+<h6 id="データをアップロードする-ターミナル上で実行">[データをアップロードする (ターミナル上で実行)]</h6>
+<ol>
+<li>git add -A</li>
+<li>git commit -m &ldquo;コメント&rdquo;</li>
+<li>git push origin master</li>
+</ol>
+  <a href='https://murkouc.github.io/2021/09/%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3%E8%AA%8D%E8%A8%BC%E3%81%A7git%E3%82%92%E5%AE%9F%E8%A1%8C%E3%81%99%E3%82%8B/'>Read more →</a>
 </article> 
 
 

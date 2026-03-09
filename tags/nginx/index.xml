@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>nginx on K.MIURA@OUC</title>
+    <title>Nginx on K.MIURA@OUC</title>
     <link>https://murkouc.github.io/tags/nginx/</link>
-    <description>Recent content in nginx on K.MIURA@OUC</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content in Nginx on K.MIURA@OUC</description>
+    <generator>Hugo</generator>
     <language>ja-jp</language>
     <lastBuildDate>Tue, 19 May 2020 22:35:27 +0900</lastBuildDate>
     <atom:link href="https://murkouc.github.io/tags/nginx/index.xml" rel="self" type="application/rss+xml" />
@@ -13,21 +13,21 @@
       <link>https://murkouc.github.io/2020/05/nginx%E3%81%A8%E9%80%A3%E6%90%BA%E3%81%97%E3%81%A6python%E3%82%92%E5%8B%95%E3%81%8B%E3%81%99/</link>
       <pubDate>Tue, 19 May 2020 22:35:27 +0900</pubDate>
       <guid>https://murkouc.github.io/2020/05/nginx%E3%81%A8%E9%80%A3%E6%90%BA%E3%81%97%E3%81%A6python%E3%82%92%E5%8B%95%E3%81%8B%E3%81%99/</guid>
-      <description>[基本環境] Ubuntu 18.04 nginx 1.14 [注意] PythonでCGIは&amp;hellip;と思う人にはお勧めしません [nginxとfcgiwrapのインストール] sudo apt update sudo atp upgrade sudo apt install python3 nginx-full fcgiwrap vim sudo vi /etc/nginx/fcgiwrap.</description>
+      <description>&lt;h6 id=&#34;基本環境&#34;&gt;[基本環境]&lt;/h6&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Ubuntu 18.04&lt;/li&gt;&#xA;&lt;li&gt;nginx 1.14&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h6 id=&#34;注意&#34;&gt;[注意]&lt;/h6&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;PythonでCGIは&amp;hellip;と思う人にはお勧めしません&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h6 id=&#34;nginxとfcgiwrapのインストール&#34;&gt;[nginxとfcgiwrapのインストール]&lt;/h6&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;sudo apt update&lt;/li&gt;&#xA;&lt;li&gt;sudo atp upgrade&lt;/li&gt;&#xA;&lt;li&gt;sudo apt install python3 nginx-full fcgiwrap vim&lt;/li&gt;&#xA;&lt;li&gt;sudo vi /etc/nginx/&lt;a href=&#34;https://murkouc.github.io/sources/fcgiwrap.conf&#34;&gt;fcgiwrap.conf&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;cd /var/www&lt;/li&gt;&#xA;&lt;li&gt;sudo mkdir cgi-bin&lt;/li&gt;&#xA;&lt;li&gt;sudo chmod 755 cgi-bin&lt;/li&gt;&#xA;&lt;li&gt;sudo vi /etc/nginx/sites-availabel/default&lt;br&gt;&#xA;server{&amp;hellip;}の中に、include fcgiwrap.conf; を追加する&lt;/li&gt;&#xA;&lt;li&gt;sudo service nginx restart&lt;/li&gt;&#xA;&lt;li&gt;sudo service fcgiwrap restart&lt;/li&gt;&#xA;&lt;li&gt;cd cgi-bin&lt;/li&gt;&#xA;&lt;li&gt;sudo vi &lt;a href=&#34;https://murkouc.github.io/sources/test.py&#34;&gt;test.py&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;sudo chmod 755 test.py&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h6 id=&#34;cgiの動作確認&#34;&gt;[CGIの動作確認]&lt;/h6&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;http://IPアドレス/cgi-bin/test.py&lt;/li&gt;&#xA;&lt;/ol&gt;</description>
     </item>
     <item>
       <title>nginxでBasic認証を有効にする</title>
       <link>https://murkouc.github.io/2020/04/nginx%E3%81%A7basic%E8%AA%8D%E8%A8%BC%E3%82%92%E6%9C%89%E5%8A%B9%E3%81%AB%E3%81%99%E3%82%8B/</link>
       <pubDate>Mon, 13 Apr 2020 21:43:59 +0900</pubDate>
       <guid>https://murkouc.github.io/2020/04/nginx%E3%81%A7basic%E8%AA%8D%E8%A8%BC%E3%82%92%E6%9C%89%E5%8A%B9%E3%81%AB%E3%81%99%E3%82%8B/</guid>
-      <description>[基本環境] Ubuntu 18.04 nginx 1.16 [apache2-utilsのインストール] sudo apt update sudo apt install apache2-utils [.</description>
+      <description>&lt;h6 id=&#34;基本環境&#34;&gt;[基本環境]&lt;/h6&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Ubuntu 18.04&lt;/li&gt;&#xA;&lt;li&gt;nginx 1.16&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h6 id=&#34;apache2-utilsのインストール&#34;&gt;[apache2-utilsのインストール]&lt;/h6&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;sudo apt update&lt;/li&gt;&#xA;&lt;li&gt;sudo apt install apache2-utils&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h6 id=&#34;htpasswdの生成&#34;&gt;[.htpasswdの生成]&lt;/h6&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;cd /home/ユーザ名/&lt;/li&gt;&#xA;&lt;li&gt;mkdir web&#xA;&lt;ul&gt;&#xA;&lt;li&gt;webは任意のディレクトリ名で良い&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;htpasswd -c /home/ユーザ名/web/.htpasswd user-id&#xA;&lt;ul&gt;&#xA;&lt;li&gt;user-idはBasic認証のユーザ名であり、任意のユーザ名で良い&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h6 id=&#34;nginxconfの編集&#34;&gt;[nginx.confの編集]&lt;/h6&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;cd /etc/nginx&lt;/li&gt;&#xA;&lt;li&gt;sudo vi nginx.conf&#xA;&lt;ul&gt;&#xA;&lt;li&gt;http{&amp;hellip;}の中に、&lt;br&gt;&#xA;auth_basic &amp;ldquo;Your Auth Message&amp;rdquo;;&lt;br&gt;&#xA;auth_basic_user_file /home/ユーザ名/web/.htpasswd;&lt;br&gt;&#xA;を追加する&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ol&gt;</description>
     </item>
     <item>
       <title>ストリーミングサーバを立てる</title>
       <link>https://murkouc.github.io/2020/04/%E3%82%B9%E3%83%88%E3%83%AA%E3%83%BC%E3%83%9F%E3%83%B3%E3%82%B0%E3%82%B5%E3%83%BC%E3%83%90%E3%82%92%E7%AB%8B%E3%81%A6%E3%82%8B/</link>
       <pubDate>Fri, 03 Apr 2020 23:42:42 +0900</pubDate>
       <guid>https://murkouc.github.io/2020/04/%E3%82%B9%E3%83%88%E3%83%AA%E3%83%BC%E3%83%9F%E3%83%B3%E3%82%B0%E3%82%B5%E3%83%BC%E3%83%90%E3%82%92%E7%AB%8B%E3%81%A6%E3%82%8B/</guid>
-      <description>[基本環境] Debian 10.3.0 (amd64) [参考サイト] ストリーミングサーバーを10分で作る [nginxとrtmpのインストール] sudo apt update sudo apt upgrade sudo add-apt-repository ppa:nginx/stable レポジトリ追加の際の確認事項に対しては、[Enter]を押す sudo apt install nginx libnginx-mod-rtmp [rtmpの有効化] cd /etc/nginx sudo vi nginx.</description>
+      <description>&lt;h6 id=&#34;基本環境&#34;&gt;[基本環境]&lt;/h6&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Debian 10.3.0 (amd64)&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h6 id=&#34;参考サイト&#34;&gt;[参考サイト]&lt;/h6&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://qiita.com/bellx2/items/4239bb2fc2f47469ee4d&#34;&gt;ストリーミングサーバーを10分で作る&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h6 id=&#34;nginxとrtmpのインストール&#34;&gt;[nginxとrtmpのインストール]&lt;/h6&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;sudo apt update&lt;/li&gt;&#xA;&lt;li&gt;sudo apt upgrade&lt;/li&gt;&#xA;&lt;li&gt;sudo add-apt-repository ppa:nginx/stable&#xA;&lt;ul&gt;&#xA;&lt;li&gt;レポジトリ追加の際の確認事項に対しては、[Enter]を押す&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;sudo apt install nginx libnginx-mod-rtmp&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h6 id=&#34;rtmpの有効化&#34;&gt;[rtmpの有効化]&lt;/h6&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;cd /etc/nginx&lt;/li&gt;&#xA;&lt;li&gt;sudo vi &lt;a href=&#34;https://murkouc.github.io/sources/nginx-sample.conf&#34;&gt;nginx.conf&lt;/a&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;hogelive(5行目)を自由に変更する&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;sudo service nginx restart&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h6 id=&#34;受付用indexhtmlの作成&#34;&gt;[受付用index.htmlの作成]&lt;/h6&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;cd /var/www/html&lt;/li&gt;&#xA;&lt;li&gt;sudo vi &lt;a href=&#34;https://murkouc.github.io/sources/index-sample.html&#34;&gt;index.html&lt;/a&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;hogeliveをnginx.confと同じものにする&lt;/li&gt;&#xA;&lt;li&gt;ipアドレスをストリーミングサーバのIPアドレスにする&lt;/li&gt;&#xA;&lt;li&gt;hogekeyを自由に変更する&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h6 id=&#34;配信システムの構築&#34;&gt;[配信システムの構築]&lt;/h6&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;mp4動画を配信するだけなら、以下の作業は必要ない&lt;/li&gt;&#xA;&lt;li&gt;/var/www/html以下にディレクトリを作成して、mp4動画を保存する&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;sudo apt-get install ffmpeg&lt;/li&gt;&#xA;&lt;li&gt;sudo add-apt-repository ppa:obsproject/obs-studio&lt;/li&gt;&#xA;&lt;li&gt;sudo apt-get update&lt;/li&gt;&#xA;&lt;li&gt;sudo apt-get install obs-studio&lt;/li&gt;&#xA;&lt;li&gt;obs&#xA;&lt;ul&gt;&#xA;&lt;li&gt;配信先: rtmp://IPアドレス:1935/hogelive&lt;/li&gt;&#xA;&lt;li&gt;ストリームキー: hogekey&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h6 id=&#34;視聴者の操作&#34;&gt;[視聴者の操作]&lt;/h6&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;WEBブラウザで http://IPアドレス/ にアクセスする&lt;/li&gt;&#xA;&lt;/ol&gt;</description>
     </item>
   </channel>
 </rss>

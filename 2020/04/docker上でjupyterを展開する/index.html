@@ -5,17 +5,47 @@
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<meta property="og:title" content="Docker上でJupyterを展開する" />
-<meta property="og:description" content="[基本環境] Debian 10.3.0 (amd64) Docker 19.03.8 [参考サイト] EC2(Ubuntu 18.04 LS)にJupyter Notebookをインストールしてみた [注意] Docker環境の構築や他のサイトを読んで、Docker環境を構築していること 本記事は、Jupyter NotebookをWEBブラウザで確認するまでの手続きである [Dockerコンテナの展開] docker pull debian:stable docker run -itd --privileged -p 8888:8888/tcp -p 8888:8888/udp --name jupyter debian:stable docker exec -it jupyter /bin/bash [コンテナ(jupyter)内での手続き] apt update apt upgrade apt install git apt install curl apt install bzip2 apt install vim git clone https://github." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://murkouc.github.io/2020/04/docker%E4%B8%8A%E3%81%A7jupyter%E3%82%92%E5%B1%95%E9%96%8B%E3%81%99%E3%82%8B/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2020-04-20T12:27:29+09:00" />
-<meta property="article:modified_time" content="2020-04-20T12:27:29+09:00" />
+<meta property="og:url" content="https://murkouc.github.io/2020/04/docker%E4%B8%8A%E3%81%A7jupyter%E3%82%92%E5%B1%95%E9%96%8B%E3%81%99%E3%82%8B/">
+  <meta property="og:site_name" content="K.MIURA@OUC">
+  <meta property="og:title" content="Docker上でJupyterを展開する">
+  <meta property="og:description" content="[基本環境] Debian 10.3.0 (amd64) Docker 19.03.8 [参考サイト] EC2(Ubuntu 18.04 LS)にJupyter Notebookをインストールしてみた [注意] Docker環境の構築や他のサイトを読んで、Docker環境を構築していること 本記事は、Jupyter NotebookをWEBブラウザで確認するまでの手続きである [Dockerコンテナの展開] docker pull debian:stable docker run -itd --privileged -p 8888:8888/tcp -p 8888:8888/udp --name jupyter debian:stable docker exec -it jupyter /bin/bash [コンテナ(jupyter)内での手続き] apt update apt upgrade apt install git apt install curl apt install bzip2 apt install vim git clone https://github.com/pyenv/pyenv.git ~/.pyenv echo ’export PYENV_ROOT=&#34;${HOME}/.pyenv&#34;’ » ~/.bash_profile echo ’export PATH=&#34;${PYENV_ROOT}/bin:$PATH&#34;’ » ~/.bash_profile echo ’export PATH=&#34;${PYENV_ROOT}/shims:$PATH&#34;’ » ~/.bash_profile echo ’eval “$(pyenv init -)”’ » ~/.bash_profile source ~/.bash_profile pyenv install anaconda3-5.3.1 echo ’export PATH=&#34;$PYENV_ROOT/versions/anaconda3-5.3.1/bin:$PATH&#34;’ » ~/.bash_profile source ~/.bash_profile pyenv versions anacondaのインストールを確認する pyenv global anaconda3-5.3.1 ipython3 In [1]: from IPython.lib import passwd In [2]: passwd() Jupyter Notebookを開くときのパスワードを設定する Out[2]: ‘sha1:xxxxxxxxx’ これをメモしておく In[3]: quit() jupyter-notebook --generate-config vi ~/.jupyter/jupyter_notebook_config.py 先頭(本当はどこでも良い)に以下の内容を追加する
+c.IPKernelApp.pylab = ‘inline’
+c.NotebookApp.ip = ‘*’
+c.NotebookApp.open_browser = False
+c.NotebookApp.port = 8888
+c.NotebookApp.password = u’sha1:xxxxxxxxx’ メモしたやつ [Jupyter Notebookの起動] mkdir workspace ホームディレクトリで実行する cd workspace jupyter-notebook --allow-root WEBブラウザで http://IPアドレス:8888/ にアクセスする パスワードには上の passwd() で設定したものを記述する 停止するときはControl &#43; Zを押す プロセスが生きていたらkillで強制終了する [おまけ：コンテナ起動時にJupyter Notebookを一緒に起動する] シェルスクリプトを仕込む (コンテナ内で実行する) vi /etc/rc.local 以下の内容を記述する
+#!/bin/bash
+/etc/init.d/jupyter.sh chmod 755 /etc/rc.local vi /etc/init.d/jupyter.sh 以下の内容を記述する
+#!/bin/bash
+. ~/.bash_profile
+cd /workspace
+sleep 3;jupyter-notebook --allow-root chmod 755 /etc/init.d/jupyter.sh exit コンテナ(jupyter)から一度出る コンテナ(jupyter)を起動する docker restart jupyter docker exec jupyter /etc/rc.local">
+  <meta property="og:locale" content="ja_jp">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2020-04-20T12:27:29+09:00">
+    <meta property="article:modified_time" content="2020-04-20T12:27:29+09:00">
+    <meta property="article:tag" content="技術">
+    <meta property="article:tag" content="Docker">
+    <meta property="article:tag" content="Jupyter">
+    <meta property="article:tag" content="Debian">
 
 
-<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Docker上でJupyterを展開する"/>
-<meta name="twitter:description" content="[基本環境] Debian 10.3.0 (amd64) Docker 19.03.8 [参考サイト] EC2(Ubuntu 18.04 LS)にJupyter Notebookをインストールしてみた [注意] Docker環境の構築や他のサイトを読んで、Docker環境を構築していること 本記事は、Jupyter NotebookをWEBブラウザで確認するまでの手続きである [Dockerコンテナの展開] docker pull debian:stable docker run -itd --privileged -p 8888:8888/tcp -p 8888:8888/udp --name jupyter debian:stable docker exec -it jupyter /bin/bash [コンテナ(jupyter)内での手続き] apt update apt upgrade apt install git apt install curl apt install bzip2 apt install vim git clone https://github."/>
-<meta name="generator" content="Hugo 0.121.2">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Docker上でJupyterを展開する">
+  <meta name="twitter:description" content="[基本環境] Debian 10.3.0 (amd64) Docker 19.03.8 [参考サイト] EC2(Ubuntu 18.04 LS)にJupyter Notebookをインストールしてみた [注意] Docker環境の構築や他のサイトを読んで、Docker環境を構築していること 本記事は、Jupyter NotebookをWEBブラウザで確認するまでの手続きである [Dockerコンテナの展開] docker pull debian:stable docker run -itd --privileged -p 8888:8888/tcp -p 8888:8888/udp --name jupyter debian:stable docker exec -it jupyter /bin/bash [コンテナ(jupyter)内での手続き] apt update apt upgrade apt install git apt install curl apt install bzip2 apt install vim git clone https://github.com/pyenv/pyenv.git ~/.pyenv echo ’export PYENV_ROOT=&#34;${HOME}/.pyenv&#34;’ » ~/.bash_profile echo ’export PATH=&#34;${PYENV_ROOT}/bin:$PATH&#34;’ » ~/.bash_profile echo ’export PATH=&#34;${PYENV_ROOT}/shims:$PATH&#34;’ » ~/.bash_profile echo ’eval “$(pyenv init -)”’ » ~/.bash_profile source ~/.bash_profile pyenv install anaconda3-5.3.1 echo ’export PATH=&#34;$PYENV_ROOT/versions/anaconda3-5.3.1/bin:$PATH&#34;’ » ~/.bash_profile source ~/.bash_profile pyenv versions anacondaのインストールを確認する pyenv global anaconda3-5.3.1 ipython3 In [1]: from IPython.lib import passwd In [2]: passwd() Jupyter Notebookを開くときのパスワードを設定する Out[2]: ‘sha1:xxxxxxxxx’ これをメモしておく In[3]: quit() jupyter-notebook --generate-config vi ~/.jupyter/jupyter_notebook_config.py 先頭(本当はどこでも良い)に以下の内容を追加する
+c.IPKernelApp.pylab = ‘inline’
+c.NotebookApp.ip = ‘*’
+c.NotebookApp.open_browser = False
+c.NotebookApp.port = 8888
+c.NotebookApp.password = u’sha1:xxxxxxxxx’ メモしたやつ [Jupyter Notebookの起動] mkdir workspace ホームディレクトリで実行する cd workspace jupyter-notebook --allow-root WEBブラウザで http://IPアドレス:8888/ にアクセスする パスワードには上の passwd() で設定したものを記述する 停止するときはControl &#43; Zを押す プロセスが生きていたらkillで強制終了する [おまけ：コンテナ起動時にJupyter Notebookを一緒に起動する] シェルスクリプトを仕込む (コンテナ内で実行する) vi /etc/rc.local 以下の内容を記述する
+#!/bin/bash
+/etc/init.d/jupyter.sh chmod 755 /etc/rc.local vi /etc/init.d/jupyter.sh 以下の内容を記述する
+#!/bin/bash
+. ~/.bash_profile
+cd /workspace
+sleep 3;jupyter-notebook --allow-root chmod 755 /etc/init.d/jupyter.sh exit コンテナ(jupyter)から一度出る コンテナ(jupyter)を起動する docker restart jupyter docker exec jupyter /etc/rc.local">
+<meta name="generator" content="Hugo 0.157.0">
 
 
     
@@ -244,6 +274,8 @@ sleep 3;jupyter-notebook --allow-root</li>
 
   
 
+  
+  
   
   </footer>
   

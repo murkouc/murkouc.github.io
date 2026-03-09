@@ -5,15 +5,18 @@
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<meta property="og:title" content="redmine" />
-<meta property="og:description" content="The special secret of making dreams come true can be summarized in four C&#39;s. They are Curiosity, Confidence, Courage, and Constancy. --Walt Disney" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://murkouc.github.io/tags/redmine/" />
+<meta property="og:url" content="https://murkouc.github.io/tags/redmine/">
+  <meta property="og:site_name" content="K.MIURA@OUC">
+  <meta property="og:title" content="Redmine">
+  <meta property="og:description" content="The special secret of making dreams come true can be summarized in four C&#39;s. They are Curiosity, Confidence, Courage, and Constancy. --Walt Disney">
+  <meta property="og:locale" content="ja_jp">
+  <meta property="og:type" content="website">
 
 
-<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="redmine"/>
-<meta name="twitter:description" content="The special secret of making dreams come true can be summarized in four C&#39;s. They are Curiosity, Confidence, Courage, and Constancy. --Walt Disney"/>
-<meta name="generator" content="Hugo 0.121.2">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Redmine">
+  <meta name="twitter:description" content="The special secret of making dreams come true can be summarized in four C&#39;s. They are Curiosity, Confidence, Courage, and Constancy. --Walt Disney">
+<meta name="generator" content="Hugo 0.157.0">
 
 
     
@@ -99,7 +102,149 @@
 
 </p>
   </header>
-  [基本環境] Ubuntu 18.04 Docker 19.03.12 [参考サイト] Redmine 4.1をUbuntu Server 18.04.3 LTSにインストールする手順 [注意] Docker環境の構築や他のサイトを読んで、Docker環境を構築していること [Dockerコンテナの展開(ホストOS上で実行)] docker pull ubuntu:18.
+  <h6 id="基本環境">[基本環境]</h6>
+<ul>
+<li>Ubuntu 18.04</li>
+<li>Docker 19.03.12</li>
+</ul>
+<h6 id="参考サイト">[参考サイト]</h6>
+<ul>
+<li><a href="http://blog.redmine.jp/articles/4_1/install/ubuntu/">Redmine 4.1をUbuntu Server 18.04.3 LTSにインストールする手順</a></li>
+</ul>
+<h6 id="注意">[注意]</h6>
+<ul>
+<li><a href="/2020/03/docker%E7%92%B0%E5%A2%83%E3%81%AE%E6%A7%8B%E7%AF%89/">Docker環境の構築</a>や他のサイトを読んで、Docker環境を構築していること</li>
+</ul>
+<h6 id="dockerコンテナの展開ホストos上で実行">[Dockerコンテナの展開(ホストOS上で実行)]</h6>
+<ol>
+<li>docker pull ubuntu:18.04</li>
+<li>docker run -itd --privileged -p 80:80/tcp --name redmine ubuntu:18.04</li>
+<li>docker exec -it redmine /bin/bash</li>
+</ol>
+<h6 id="コンテナredmine内での手続き">[コンテナ(redmine)内での手続き]</h6>
+<ol>
+<li>adduser ubuntu</li>
+<li>apt-get update</li>
+<li>apt-get upgrade</li>
+<li>apt-get install sudo</li>
+<li>usermod -G sudo ubuntu</li>
+<li>su - ubuntu</li>
+<li>sudo apt-get install locales</li>
+<li>sudo locale-gen ja_JP.UTF-8</li>
+<li>locale -a
+<ul>
+<li>ja_JP.utf8の存在を確認</li>
+</ul>
+</li>
+<li>sudo apt-get install build-essential zlib1g-dev libssl-dev libreadline-dev</li>
+<li>sudo apt-get install libyaml-dev libcurl4-openssl-dev libffi-dev</li>
+<li>sudo apt-get install postgresql libpq-dev</li>
+<li>sudo apt-get install apache2 apache2-dev</li>
+<li>sudo apt-get install imagemagick fonts-takao-pgothic</li>
+<li>sudo apt-get install subversion git vim</li>
+<li>curl -O <a href="https://cache.ruby-lang.org/pub/ruby/2.6/ruby-2.6.5.tar.gz">https://cache.ruby-lang.org/pub/ruby/2.6/ruby-2.6.5.tar.gz</a></li>
+<li>tar xvf ruby-2.6.5.tar.gz</li>
+<li>cd ruby-2.6.5</li>
+<li>./configure --disable-install-doc</li>
+<li>make</li>
+<li>sudo make install</li>
+<li>cd</li>
+<li>ruby -v
+<ul>
+<li>Rubyのバージョンを確認</li>
+</ul>
+</li>
+<li>sudo service postgresql start</li>
+<li>sudo -u postgres createuser -P redmine
+<ul>
+<li>パスワードをredmineと仮定</li>
+</ul>
+</li>
+<li>sudo -u postgres createdb -E UTF-8 -l ja_JP.UTF-8 -O redmine -T template0 redmine</li>
+<li>sudo mkdir /var/lib/redmine</li>
+<li>sudo chown www-data /var/lib/redmine</li>
+<li>sudo -u www-data svn co <a href="https://svn.redmine.org/redmine/branches/4.1-stable">https://svn.redmine.org/redmine/branches/4.1-stable</a> /var/lib/redmine</li>
+<li>cd</li>
+<li>vi <a href="/sources/database-yml.sh">database-yml.sh</a></li>
+<li>chmod 755 database-yml.sh</li>
+<li>sudo ./database-yml.sh</li>
+<li>more /var/lib/redmine/config/database.yml
+<ul>
+<li>ファイルの存在を確認</li>
+<li>password:にpostgresqlの<strong>ユーザredmineのパスワード</strong>を書く</li>
+</ul>
+</li>
+<li>vi <a href="/sources/configuration-yml.sh">configuration-yml.sh</a></li>
+<li>chmod 755 configuration-yml.sh</li>
+<li>sudo ./configuration-yml.sh</li>
+<li>more /var/lib/redmine/config/configuration.yml
+<ul>
+<li>ファイルの存在を確認</li>
+</ul>
+</li>
+<li>cd /var/lib/redmine/config/</li>
+<li>sudo chown www-data:www-data database.yml</li>
+<li>sudo chown www-data:www-data configuration.yml</li>
+<li>cd /var/lib/redmine/</li>
+<li>sudo -u www-data bundle install --without development test --path vendor/bundle</li>
+<li>sudo -u www-data bin/rake generate_secret_token</li>
+<li>sudo -u www-data RAILS_ENV=production bin/rake db:migrate</li>
+<li>sudo gem install passenger -N</li>
+<li>sudo passenger-install-apache2-module --auto --languages ruby</li>
+<li>cd</li>
+<li>vi <a href="/sources/redmine-conf.sh">redmine-conf.sh</a></li>
+<li>chmod 755 redmine-conf.sh</li>
+<li>sudo ./redmine-conf.sh</li>
+<li>more /etc/apache2/conf-available/redmine.conf
+<ul>
+<li>ファイルの存在を確認</li>
+<li>3行目(&lt;/Directory&gt;)以降の内容が<strong>passenger-install-apache2-module --snippet</strong>の出力結果であることを確認</li>
+</ul>
+</li>
+<li>sudo a2enconf redmine</li>
+<li>apache2ctl configtest</li>
+<li>sudo service apache2 reload</li>
+<li>sudo vi /etc/apache2/sites-enabled/000-default.conf
+<ul>
+<li>DocumentRootの値を <strong>/var/lib/redmine/public</strong> に変更</li>
+</ul>
+</li>
+<li>apache2ctl configtest</li>
+<li>sudo service apache2 reload</li>
+<li>sudo service apache2 start</li>
+<li>sudo vi /etc/init.d/<a href="/sources/redmine-start.sh">redmine-start.sh</a></li>
+<li>sudo chmod 755 /etc/init.d/redmine-start.sh</li>
+<li>sudo vi /etc/init.d/<a href="/sources/redmine-stop.sh">redmine-stop.sh</a></li>
+<li>sudo chmod 755 /etc/init.d/redmine-stop.sh</li>
+<li>sudo service postgresql stop</li>
+<li>sudo service apache2 stop</li>
+<li>exit</li>
+<li>exit</li>
+</ol>
+<h6 id="dockerイメージの生成ホストos上で実行">[Dockerイメージの生成(ホストOS上で実行)]</h6>
+<ol>
+<li>docker stop redmine</li>
+<li>docker commit redmine ubuntu1804:redmine</li>
+</ol>
+<h6 id="dockerイメージからredmineを展開ホストos上で実行">[DockerイメージからRedmineを展開(ホストOS上で実行)]</h6>
+<ol>
+<li>docker run -itd --privileged -p 8080:80 --name sample ubuntu1804:redmine</li>
+<li>docker exec sample /etc/init.d/redmine-start.sh</li>
+</ol>
+<h6 id="redmineコンテナの停止">[Redmineコンテナの停止]</h6>
+<ol>
+<li>docker exec sample /etc/init.d/redmine-stop.sh</li>
+<li>docker stop sample</li>
+</ol>
+<h6 id="redmineコンテナの起動">[Redmineコンテナの起動]</h6>
+<ol>
+<li>docker start sample</li>
+<li>docker exec sample /etc/init.d/redmine-start.sh</li>
+</ol>
+<h6 id="redmineの起動を確認">[Redmineの起動を確認]</h6>
+<ol>
+<li>手元PCのウェブブラウザで <strong>http://RedmineのIPアドレス:8080/</strong> に接続する</li>
+</ol>
   <a href='https://murkouc.github.io/2020/09/docker%E4%B8%8A%E3%81%A7redmine%E3%82%92%E5%B1%95%E9%96%8B%E3%81%99%E3%82%8B/'>Read more →</a>
 </article> 
 

@@ -5,15 +5,18 @@
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<meta property="og:title" content="小樽商大" />
-<meta property="og:description" content="The special secret of making dreams come true can be summarized in four C&#39;s. They are Curiosity, Confidence, Courage, and Constancy. --Walt Disney" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://murkouc.github.io/categories/%E5%B0%8F%E6%A8%BD%E5%95%86%E5%A4%A7/" />
+<meta property="og:url" content="https://murkouc.github.io/categories/%E5%B0%8F%E6%A8%BD%E5%95%86%E5%A4%A7/">
+  <meta property="og:site_name" content="K.MIURA@OUC">
+  <meta property="og:title" content="小樽商大">
+  <meta property="og:description" content="The special secret of making dreams come true can be summarized in four C&#39;s. They are Curiosity, Confidence, Courage, and Constancy. --Walt Disney">
+  <meta property="og:locale" content="ja_jp">
+  <meta property="og:type" content="website">
 
 
-<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="小樽商大"/>
-<meta name="twitter:description" content="The special secret of making dreams come true can be summarized in four C&#39;s. They are Curiosity, Confidence, Courage, and Constancy. --Walt Disney"/>
-<meta name="generator" content="Hugo 0.121.2">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="小樽商大">
+  <meta name="twitter:description" content="The special secret of making dreams come true can be summarized in four C&#39;s. They are Curiosity, Confidence, Courage, and Constancy. --Walt Disney">
+<meta name="generator" content="Hugo 0.157.0">
 
 
     
@@ -90,8 +93,377 @@
 
 <article class="blog-post">
   <header>
-    <h2 class="blog-post-title" dir="auto"><a href="https://murkouc.github.io/2021/02/%E5%BF%9C%E7%94%A8%E6%83%85%E5%A0%B1%E8%AB%96i/">応用情報論I</a></h2>
-    <p class="blog-post-meta"><time datetime="2021-02-03T11:56:14+09:00">Wed Feb 03, 2021</time> by Katsunori MIURA in 
+    <h2 class="blog-post-title" dir="auto"><a href="https://murkouc.github.io/2020/04/hugo-github%E3%81%A7%E4%BD%9C%E3%82%8Bweb%E3%82%B5%E3%82%A4%E3%83%88/">Hugo+GitHubで作るWEBサイト</a></h2>
+    <p class="blog-post-meta"><time datetime="2020-04-02T21:43:56+09:00">Thu Apr 02, 2020</time> by Katsunori MIURA in 
+<span class="fas fa-folder" aria-hidden="true"></span>&nbsp;<a href="/categories/%E5%B0%8F%E6%A8%BD%E5%95%86%E5%A4%A7/" rel="category tag">小樽商大</a>
+
+
+<span class="fas fa-tag" aria-hidden="true"></span>&nbsp;<a href="/tags/%E6%8A%80%E8%A1%93/" rel="tag">技術</a>, <a href="/tags/hugo/" rel="tag">hugo</a>, <a href="/tags/github/" rel="tag">github</a>, <a href="/tags/debian/" rel="tag">debian</a>
+
+</p>
+  </header>
+  <h6 id="基本環境">[基本環境]</h6>
+<ul>
+<li>Debian 10.3.0 (amd64)</li>
+</ul>
+<h6 id="注意">[注意]</h6>
+<ul>
+<li>HugoとGitHubで作るWEBサイトの大まかな流れを掴むためのまとめです</li>
+<li>記事を書くときのMarkdownについては、別のサイトを参照すること</li>
+</ul>
+<h6 id="hugoのインストール">[Hugoのインストール]</h6>
+<ol>
+<li>sudo apt update</li>
+<li>sudo apt install git</li>
+<li>sudo apt install golang</li>
+<li>sudo apt install snapd</li>
+<li>sudo snap install hugo --channel=extended</li>
+<li>cd /usr/bin</li>
+<li>sudo ln -s /snap/bin/hugo hugo</li>
+</ol>
+<h6 id="作業用ディレクトリの作成">[作業用ディレクトリの作成]</h6>
+<ol>
+<li>cd /home/ユーザ名</li>
+<li>mkdir workspace
+<ul>
+<li>ディレクトリ名は何でも良い</li>
+</ul>
+</li>
+<li>hugo new site blog
+<ul>
+<li>blogという名前でWEBサイトを新規作成する</li>
+<li>WEBサイト名は何でも良い</li>
+</ul>
+</li>
+</ol>
+<h6 id="hugoテーマのdl">[HugoテーマのDL]</h6>
+<ol>
+<li>cd ~/workspace/blog/theme</li>
+<li><a href="https://themes.gohugo.io">Hugoテーマ</a>のDL方法
+<ul>
+<li><a href="https://themes.gohugo.io/hugo-theme-bootstrap4-blog">Hugo Bootstrap v4 Blog</a>をDLするなら (本サイトと同じ)
+<ol>
+<li>git clone <a href="https://github.com/alanorth/hugo-theme-bootstrap4-blog.git">https://github.com/alanorth/hugo-theme-bootstrap4-blog.git</a></li>
+</ol>
+</li>
+<li><a href="https://themes.gohugo.io/minimal/">Minimal</a>をDLするなら (別のシンプルなテーマ)
+<ol>
+<li>git init</li>
+<li>git submodule add <a href="https://github.com/calintat/minimal.git">https://github.com/calintat/minimal.git</a> minimal</li>
+<li>git submodule init</li>
+<li>git submodule update</li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+<h6 id="configtomlの編集">[config.tomlの編集]</h6>
+<ol>
+<li>cd ~/workspace/blog</li>
+<li>mv config.toml config.toml.org</li>
+<li>cp themes/テーマ名/exampleSite/config.toml .</li>
+<li>vi config.toml
+<ul>
+<li>テーマ毎に内容が異なるため、テーマのWEBサイトを参照すること</li>
+<li>DLしたテーマを基にオリジナルテーマを作っても良い</li>
+<li>本サイトは、Hugo Bootstrap v4 Blogに少し手を入れている</li>
+</ul>
+</li>
+</ol>
+<h6 id="記事の新規作成">[記事の新規作成]</h6>
+<ol>
+<li>cd ~/workspace/blog</li>
+<li>hugo new posts/sample.md
+<ul>
+<li>postsは記事が保存されるディレクトリであり、ディレクトリ名は何でも良い (存在しないときは自動的に作られる)</li>
+<li>sample.mdは記事ファイルであり、ファイル名は何でも良い</li>
+</ul>
+</li>
+<li>cd content/posts</li>
+<li>vi sample.md
+<ul>
+<li>記事はMarkdownで書く</li>
+<li>「draft: true」は非公開記事で、「draft:false」は公開記事である</li>
+<li>title:は記事タイトルなので、ファイル名から書き換える</li>
+</ul>
+</li>
+</ol>
+<h6 id="githubへアップロードするファイルの作成">[GitHubへアップロードするファイルの作成]</h6>
+<ol>
+<li>cd ~/workspace/blog</li>
+<li>hugo
+<ul>
+<li>publicというディレクトリが生成される</li>
+<li>ここにアップロードするファイルが作られる</li>
+</ul>
+</li>
+</ol>
+<h6 id="githubへのアップロード">[GitHubへのアップロード]</h6>
+<ul>
+<li>GitHub上に「GitHubアカウント名.github.io」というレポジトリを作成する</li>
+</ul>
+<ol>
+<li>cd ~/workspace/blog/public</li>
+<li>git remote add origin <a href="https://github.com/GitHub">https://github.com/GitHub</a>アカウント名/GitHubアカウント名.github.io.git</li>
+<li>git add -A</li>
+<li>git commit -m &ldquo;コメント&rdquo;</li>
+<li>git push origin master</li>
+</ol>
+<h6 id="2件目以降の記事作成からアップロード">[2件目以降の記事作成からアップロード]</h6>
+<ol>
+<li>記事を作り
+<ol>
+<li>cd ~/workspace/blog</li>
+<li>hugo new posts/sample.md</li>
+<li>cd content/posts</li>
+<li>vi sample.md</li>
+</ol>
+</li>
+<li>アップロードするファイルを作り
+<ol>
+<li>cd ~/workspace/blog</li>
+<li>hugo</li>
+</ol>
+</li>
+<li>GitHubへアップロード
+<ol>
+<li>cd public</li>
+<li>git add -A</li>
+<li>git commit -m &ldquo;コメント&rdquo;</li>
+<li>git push origin master</li>
+</ol>
+</li>
+</ol>
+  <a href='https://murkouc.github.io/2020/04/hugo-github%E3%81%A7%E4%BD%9C%E3%82%8Bweb%E3%82%B5%E3%82%A4%E3%83%88/'>Read more →</a>
+</article> 
+
+
+
+
+
+
+<article class="blog-post">
+  <header>
+    <h2 class="blog-post-title" dir="auto"><a href="https://murkouc.github.io/2020/04/debian%E3%81%AE%E5%88%9D%E6%9C%9F%E8%A8%AD%E5%AE%9A/">Debianの初期設定</a></h2>
+    <p class="blog-post-meta"><time datetime="2020-04-02T17:07:19+09:00">Thu Apr 02, 2020</time> by Katsunori MIURA in 
+<span class="fas fa-folder" aria-hidden="true"></span>&nbsp;<a href="/categories/%E5%B0%8F%E6%A8%BD%E5%95%86%E5%A4%A7/" rel="category tag">小樽商大</a>
+
+
+<span class="fas fa-tag" aria-hidden="true"></span>&nbsp;<a href="/tags/%E6%8A%80%E8%A1%93/" rel="tag">技術</a>, <a href="/tags/debian/" rel="tag">debian</a>
+
+</p>
+  </header>
+  <h6 id="基本環境">[基本環境]</h6>
+<ul>
+<li>VirtualBox 6.0.18 (Mac版)</li>
+<li>Debian 10.3.0 (amd64)</li>
+</ul>
+<h6 id="pathへのusrsbinの追加">[PATHへの/usr/sbin/の追加]</h6>
+<ol>
+<li>cd /home/ユーザ名
+<ul>
+<li>ホームディレクトリに移動する</li>
+</ul>
+</li>
+<li>touch .bash_profile</li>
+<li>vi .bash_profile
+<ul>
+<li>export PATH=$PATH:/usr/sbin/ と書いて保存する</li>
+</ul>
+</li>
+<li>source .bash_profile</li>
+</ol>
+<h6 id="一般ユーザに対するsudo権限の付与">[一般ユーザに対するsudo権限の付与]</h6>
+<ol>
+<li>su</li>
+<li>usermod -aG sudo ユーザ名</li>
+<li>reboot</li>
+</ol>
+<h6 id="sourceslistの編集">[sources.listの編集]</h6>
+<ol>
+<li>cd /etc/apt</li>
+<li>sudo vi sources.list
+<ul>
+<li>deb cdrom:[Debian GNU/Linux&hellip; の先頭に#を追加する</li>
+</ul>
+</li>
+</ol>
+  <a href='https://murkouc.github.io/2020/04/debian%E3%81%AE%E5%88%9D%E6%9C%9F%E8%A8%AD%E5%AE%9A/'>Read more →</a>
+</article> 
+
+
+
+
+
+
+<article class="blog-post">
+  <header>
+    <h2 class="blog-post-title" dir="auto"><a href="https://murkouc.github.io/2020/03/wordcloud%E3%82%92%E4%BD%9C%E3%82%8B/">WordCloudを作る</a></h2>
+    <p class="blog-post-meta"><time datetime="2020-03-31T12:40:37+09:00">Tue Mar 31, 2020</time> by Katsunori MIURA in 
+<span class="fas fa-folder" aria-hidden="true"></span>&nbsp;<a href="/categories/%E5%B0%8F%E6%A8%BD%E5%95%86%E5%A4%A7/" rel="category tag">小樽商大</a>
+
+
+<span class="fas fa-tag" aria-hidden="true"></span>&nbsp;<a href="/tags/%E6%8A%80%E8%A1%93/" rel="tag">技術</a>, <a href="/tags/python/" rel="tag">python</a>, <a href="/tags/debian/" rel="tag">debian</a>, <a href="/tags/docker/" rel="tag">docker</a>
+
+</p>
+  </header>
+  <h6 id="基本環境">[基本環境]</h6>
+<ul>
+<li>Debian 10.3.0 (amd64)</li>
+<li>Docker 19.03.8</li>
+</ul>
+<h6 id="注意">[注意]</h6>
+<ul>
+<li><a href="/2020/03/docker%E7%92%B0%E5%A2%83%E3%81%AE%E6%A7%8B%E7%AF%89/">Docker環境の構築</a>や他のサイトを読んで、Docker環境を構築していること</li>
+</ul>
+<h6 id="dockerコンテナの展開">[Dockerコンテナの展開]</h6>
+<ol>
+<li>mkdir /home/ユーザ名/workspace
+<ul>
+<li>ホストのディレクトリをコンテナでマウントするための準備</li>
+<li>ユーザ名は各々の環境に合わせて置き換える</li>
+</ul>
+</li>
+<li>docker run -itd --privileged -v /home/ユーザ名/workspace:/mnt --name wordcloud debian:stable</li>
+<li>docker exec -it wordcloud /bin/bash</li>
+</ol>
+<h6 id="コンテナwordcloud内での手続き">[コンテナ(wordcloud)内での手続き]</h6>
+<ol>
+<li>apt update</li>
+<li>apt install python-pip python3-pip</li>
+<li>pip3 install wordcloud</li>
+<li>apt install vim</li>
+<li>cd /mnt</li>
+<li>vi <a href="/sources/sample.py">sample.py</a></li>
+<li>python3 sample.py
+<ul>
+<li>sample.pngが生成されている</li>
+</ul>
+</li>
+</ol>
+  <a href='https://murkouc.github.io/2020/03/wordcloud%E3%82%92%E4%BD%9C%E3%82%8B/'>Read more →</a>
+</article> 
+
+
+
+
+
+
+<article class="blog-post">
+  <header>
+    <h2 class="blog-post-title" dir="auto"><a href="https://murkouc.github.io/2020/03/docker%E7%92%B0%E5%A2%83%E3%81%AE%E6%A7%8B%E7%AF%89/">Docker環境の構築</a></h2>
+    <p class="blog-post-meta"><time datetime="2020-03-31T12:09:48+09:00">Tue Mar 31, 2020</time> by Katsunori MIURA in 
+<span class="fas fa-folder" aria-hidden="true"></span>&nbsp;<a href="/categories/%E5%B0%8F%E6%A8%BD%E5%95%86%E5%A4%A7/" rel="category tag">小樽商大</a>
+
+
+<span class="fas fa-tag" aria-hidden="true"></span>&nbsp;<a href="/tags/%E6%8A%80%E8%A1%93/" rel="tag">技術</a>, <a href="/tags/docker/" rel="tag">docker</a>, <a href="/tags/debian/" rel="tag">debian</a>
+
+</p>
+  </header>
+  <h6 id="基本環境">[基本環境]</h6>
+<ul>
+<li>Debian 12 (amd64)</li>
+</ul>
+<h6 id="docker環境の構築手順">[Docker環境の構築手順]</h6>
+<ol>
+<li>Dockerをインストールする</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span> $ sudo apt update
+</span></span><span style="display:flex;"><span> $ sudo apt install apt-transport-https
+</span></span><span style="display:flex;"><span> $ sudo apt install ca-certificates
+</span></span><span style="display:flex;"><span> $ sudo apt install curl
+</span></span><span style="display:flex;"><span> $ sudo apt install gnupg2
+</span></span><span style="display:flex;"><span> $ sudo apt install software-properties-common
+</span></span><span style="display:flex;"><span> $ curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
+</span></span><span style="display:flex;"><span> $ sudo add-apt-repository <span style="color:#e6db74">&#34;deb [arch=amd64] https://download.docker.com/linux/debian </span><span style="color:#66d9ef">$(</span>lsb_release -cs<span style="color:#66d9ef">)</span><span style="color:#e6db74"> stable&#34;</span>
+</span></span><span style="display:flex;"><span> $ sudo apt update
+</span></span><span style="display:flex;"><span> $ sudo apt install docker-ce
+</span></span><span style="display:flex;"><span> 
+</span></span></code></pre></div><ol start="2">
+<li>Dockerの動作状況を確認する</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span> $ sudo systemctl status docker
+</span></span><span style="display:flex;"><span>   このコマンドを実行して
+</span></span><span style="display:flex;"><span>     Active: active <span style="color:#f92672">(</span>running<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>   が表示されるなら、Dockerは動作中である
+</span></span><span style="display:flex;"><span> $ sudo docker ps -a
+</span></span><span style="display:flex;"><span>   このコマンドを実行して
+</span></span><span style="display:flex;"><span>     CONTAINER ID IMAGE ..略..
+</span></span><span style="display:flex;"><span>   が表示されるなら、Dockerコマンドも正しく動作している
+</span></span></code></pre></div><ol start="3">
+<li>一般ユーザにDockerコマンドの実行権限を与える</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span> $ sudo usermod -aG docker <span style="color:#e6db74">${</span>USER<span style="color:#e6db74">}</span>
+</span></span><span style="display:flex;"><span> $ sudo reboot
+</span></span></code></pre></div><h6 id="dockerコンテナの展開">[Dockerコンテナの展開]</h6>
+<ol>
+<li>Dockerイメージをダウンロードする<br>
+※ 例として、<strong>Debian</strong>のイメージファイルをダウンロードしている</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span> $ docker pull debian:stable
+</span></span></code></pre></div><ol start="2">
+<li>新規コンテナを展開する<br>
+※ ホストとの間で<strong>80(HTTP)ポート</strong>を繋いだコンテナを作っている<br>
+※ コンテナ名を<strong>webserv</strong>にしている</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span> $ docker run -itd --privileged -p 80:80/tcp -p 80:80/udp --name webserv debian:stable
+</span></span><span style="display:flex;"><span> 
+</span></span></code></pre></div><ol start="3">
+<li>コンテナの中にログインする</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span> $ docker exec -it webserv /bin/bash
+</span></span></code></pre></div>
+  <a href='https://murkouc.github.io/2020/03/docker%E7%92%B0%E5%A2%83%E3%81%AE%E6%A7%8B%E7%AF%89/'>Read more →</a>
+</article> 
+
+
+
+
+
+
+<article class="blog-post">
+  <header>
+    <h2 class="blog-post-title" dir="auto"><a href="https://murkouc.github.io/2020/03/%E3%82%BC%E3%83%9F%E3%83%8A%E3%83%BC%E3%83%AB/">ゼミナール</a></h2>
+    <p class="blog-post-meta"><time datetime="2020-03-29T22:39:49+09:00">Sun Mar 29, 2020</time> by Katsunori MIURA in 
+<span class="fas fa-folder" aria-hidden="true"></span>&nbsp;<a href="/categories/%E5%B0%8F%E6%A8%BD%E5%95%86%E5%A4%A7/" rel="category tag">小樽商大</a>
+
+
+<span class="fas fa-tag" aria-hidden="true"></span>&nbsp;<a href="/tags/%E8%AC%9B%E7%BE%A9/" rel="tag">講義</a>
+
+</p>
+  </header>
+  <h6 id="ゼミ室装備品実験機器">[ゼミ室装備品(実験機器)]</h6>
+<ul>
+<li>Raspberry Pi (GPS受信装置付きx1、重量計測装置付きx1)</li>
+<li>Xbox One Kinect V2 (モーションキャプチャーセンサー)</li>
+<li>Oculus Quest 2 (VRゴーグル)</li>
+<li>PC, Server
+<ol>
+<li>iMac MHK23J/A</li>
+<li>DAIV Z5-Z690W11-CPSC (GPU機器)</li>
+<li>SuperMicro SYS-E200-8D</li>
+<li>HP ZBook Firefly 14inch G8</li>
+</ol>
+</li>
+</ul>
+<h6 id="ゼミ生卒論タイトル">[ゼミ生卒論タイトル]</h6>
+<ul>
+<li><a href="/bc/thesis.txt">卒論タイトル一覧</a></li>
+</ul>
+<h6 id="卒論用texテンプレート">[卒論用TeXテンプレート]</h6>
+<p><strong>ゼミ生に配布するために設置しています。</strong></p>
+  <a href='https://murkouc.github.io/2020/03/%E3%82%BC%E3%83%9F%E3%83%8A%E3%83%BC%E3%83%AB/'>Read more →</a>
+</article> 
+
+
+
+
+
+
+<article class="blog-post">
+  <header>
+    <h2 class="blog-post-title" dir="auto"><a href="https://murkouc.github.io/2020/03/%E6%83%85%E5%A0%B1%E5%87%A6%E7%90%86%E5%A4%9C%E9%96%93/">情報処理(夜間)</a></h2>
+    <p class="blog-post-meta"><time datetime="2020-03-29T13:20:02+09:01">Sun Mar 29, 2020</time> by Katsunori MIURA in 
 <span class="fas fa-folder" aria-hidden="true"></span>&nbsp;<a href="/categories/%E5%B0%8F%E6%A8%BD%E5%95%86%E5%A4%A7/" rel="category tag">小樽商大</a>
 
 
@@ -99,8 +471,19 @@
 
 </p>
   </header>
-  [実施方法・教室] 対面形式 第1演習室(情報総合センター) [時間] 木曜日 3講目(12:50&ndash;14:20) [講義内容と資料] 資料の配布は終了しました。 
-  <a href='https://murkouc.github.io/2021/02/%E5%BF%9C%E7%94%A8%E6%83%85%E5%A0%B1%E8%AB%96i/'>Read more →</a>
+  <h6 id="教室">[教室]</h6>
+<ul>
+<li>第1実習室</li>
+</ul>
+<h6 id="時間">[時間]</h6>
+<ul>
+<li>月曜日 7講目(19:25&ndash;20:55)</li>
+</ul>
+<h6 id="講義内容と資料">[講義内容と資料]</h6>
+<ul>
+<li>資料の配布は終了しました。</li>
+</ul>
+  <a href='https://murkouc.github.io/2020/03/%E6%83%85%E5%A0%B1%E5%87%A6%E7%90%86%E5%A4%9C%E9%96%93/'>Read more →</a>
 </article> 
 
 
@@ -110,17 +493,29 @@
 
 <article class="blog-post">
   <header>
-    <h2 class="blog-post-title" dir="auto"><a href="https://murkouc.github.io/2020/09/docker%E4%B8%8A%E3%81%A7redmine%E3%82%92%E5%B1%95%E9%96%8B%E3%81%99%E3%82%8B/">Docker上でRedmineを展開する</a></h2>
-    <p class="blog-post-meta"><time datetime="2020-09-07T19:58:23+09:00">Mon Sep 07, 2020</time> by Katsunori MIURA in 
+    <h2 class="blog-post-title" dir="auto"><a href="https://murkouc.github.io/2020/03/%E6%83%85%E5%A0%B1%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E7%AE%A1%E7%90%86%E8%AB%96/">情報システム管理論</a></h2>
+    <p class="blog-post-meta"><time datetime="2020-03-29T12:47:09+09:00">Sun Mar 29, 2020</time> by Katsunori MIURA in 
 <span class="fas fa-folder" aria-hidden="true"></span>&nbsp;<a href="/categories/%E5%B0%8F%E6%A8%BD%E5%95%86%E5%A4%A7/" rel="category tag">小樽商大</a>
 
 
-<span class="fas fa-tag" aria-hidden="true"></span>&nbsp;<a href="/tags/%E6%8A%80%E8%A1%93/" rel="tag">技術</a>, <a href="/tags/docker/" rel="tag">docker</a>, <a href="/tags/redmine/" rel="tag">redmine</a>, <a href="/tags/ubuntu/" rel="tag">ubuntu</a>
+<span class="fas fa-tag" aria-hidden="true"></span>&nbsp;<a href="/tags/%E8%AC%9B%E7%BE%A9/" rel="tag">講義</a>, <a href="/tags/%E5%AD%A6%E9%83%A8/" rel="tag">学部</a>
 
 </p>
   </header>
-  [基本環境] Ubuntu 18.04 Docker 19.03.12 [参考サイト] Redmine 4.1をUbuntu Server 18.04.3 LTSにインストールする手順 [注意] Docker環境の構築や他のサイトを読んで、Docker環境を構築していること [Dockerコンテナの展開(ホストOS上で実行)] docker pull ubuntu:18.
-  <a href='https://murkouc.github.io/2020/09/docker%E4%B8%8A%E3%81%A7redmine%E3%82%92%E5%B1%95%E9%96%8B%E3%81%99%E3%82%8B/'>Read more →</a>
+  <h6 id="実施方法教室">[実施方法・教室]</h6>
+<ul>
+<li>対面形式</li>
+<li>210</li>
+</ul>
+<h6 id="時間">[時間]</h6>
+<ul>
+<li>月曜日 5講目(16:10&ndash;17:40)</li>
+</ul>
+<h6 id="講義内容と資料">[講義内容と資料]</h6>
+<ul>
+<li>準備中</li>
+</ul>
+  <a href='https://murkouc.github.io/2020/03/%E6%83%85%E5%A0%B1%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E7%AE%A1%E7%90%86%E8%AB%96/'>Read more →</a>
 </article> 
 
 
@@ -130,17 +525,30 @@
 
 <article class="blog-post">
   <header>
-    <h2 class="blog-post-title" dir="auto"><a href="https://murkouc.github.io/2020/08/%E3%81%8A%E7%9F%A5%E3%82%89%E3%81%9B/">お知らせ</a></h2>
-    <p class="blog-post-meta"><time datetime="2020-08-20T00:00:09+09:00">Thu Aug 20, 2020</time> by Katsunori MIURA in 
+    <h2 class="blog-post-title" dir="auto"><a href="https://murkouc.github.io/2020/03/%E6%83%85%E5%A0%B1%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E6%A7%8B%E7%AF%89%E8%AB%96/">情報システム構築論</a></h2>
+    <p class="blog-post-meta"><time datetime="2020-03-29T12:46:09+09:00">Sun Mar 29, 2020</time> by Katsunori MIURA in 
 <span class="fas fa-folder" aria-hidden="true"></span>&nbsp;<a href="/categories/%E5%B0%8F%E6%A8%BD%E5%95%86%E5%A4%A7/" rel="category tag">小樽商大</a>
 
 
-<span class="fas fa-tag" aria-hidden="true"></span>&nbsp;<a href="/tags/%E3%81%9D%E3%81%AE%E4%BB%96/" rel="tag">その他</a>
+<span class="fas fa-tag" aria-hidden="true"></span>&nbsp;<a href="/tags/%E8%AC%9B%E7%BE%A9/" rel="tag">講義</a>, <a href="/tags/%E5%AD%A6%E9%83%A8/" rel="tag">学部</a>
 
 </p>
   </header>
-  2023年11月29日(水曜日) 担当講義-ゼミナールから、Google Cloudセミナーの資料がダウンロードできます。(※ 配信は終了しました。) 2022年2月2日(水曜日) 担当講義-ゼミナールの卒論用TeXテンプレートをアップデートしました。 2022年2月1日(火曜日) 担当講義-ゼミナールに、ゼミ室装備品(実験機器)の情報を追加しました。 2020年3月29日(日曜日) 本サイトは、Googleサイトで運用していた「MIURA@OUC」を引き継いでいます。 今後は、本サイトから講義資料(主にPDF)を発信します。 これに伴いGoogleサイト上の「MIURA@OUC」を閉鎖します。 
-  <a href='https://murkouc.github.io/2020/08/%E3%81%8A%E7%9F%A5%E3%82%89%E3%81%9B/'>Read more →</a>
+  <h6 id="実施方法教室">[実施方法・教室]</h6>
+<ul>
+<li>対面形式</li>
+<li>教室未定</li>
+</ul>
+<h6 id="時間">[時間]</h6>
+<ul>
+<li>木曜日 3講目(12:50&ndash;14:20)</li>
+</ul>
+<h6 id="講義内容と資料">[講義内容と資料]</h6>
+<ul>
+<li>準備中</li>
+</ul>
+<h6 id="小テストの問題">[小テストの問題]</h6>
+  <a href='https://murkouc.github.io/2020/03/%E6%83%85%E5%A0%B1%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E6%A7%8B%E7%AF%89%E8%AB%96/'>Read more →</a>
 </article> 
 
 
@@ -150,17 +558,50 @@
 
 <article class="blog-post">
   <header>
-    <h2 class="blog-post-title" dir="auto"><a href="https://murkouc.github.io/2020/05/nginx%E3%81%A8%E9%80%A3%E6%90%BA%E3%81%97%E3%81%A6python%E3%82%92%E5%8B%95%E3%81%8B%E3%81%99/">nginxと連携してPythonを動かす</a></h2>
-    <p class="blog-post-meta"><time datetime="2020-05-19T22:35:27+09:00">Tue May 19, 2020</time> by Katsunori MIURA in 
+    <h2 class="blog-post-title" dir="auto"><a href="https://murkouc.github.io/2020/03/%E7%A0%94%E7%A9%B6%E6%A5%AD%E7%B8%BE/">研究業績</a></h2>
+    <p class="blog-post-meta"><time datetime="2020-03-29T00:39:09+09:00">Sun Mar 29, 2020</time> by Katsunori MIURA in 
 <span class="fas fa-folder" aria-hidden="true"></span>&nbsp;<a href="/categories/%E5%B0%8F%E6%A8%BD%E5%95%86%E5%A4%A7/" rel="category tag">小樽商大</a>
 
 
-<span class="fas fa-tag" aria-hidden="true"></span>&nbsp;<a href="/tags/%E6%8A%80%E8%A1%93/" rel="tag">技術</a>, <a href="/tags/python/" rel="tag">python</a>, <a href="/tags/nginx/" rel="tag">nginx</a>, <a href="/tags/cgi/" rel="tag">cgi</a>
+<span class="fas fa-tag" aria-hidden="true"></span>&nbsp;<a href="/tags/%E7%A0%94%E7%A9%B6/" rel="tag">研究</a>
 
 </p>
   </header>
-  [基本環境] Ubuntu 18.04 nginx 1.14 [注意] PythonでCGIは&hellip;と思う人にはお勧めしません [nginxとfcgiwrapのインストール] sudo apt update sudo atp upgrade sudo apt install python3 nginx-full fcgiwrap vim sudo vi /etc/nginx/fcgiwrap.
-  <a href='https://murkouc.github.io/2020/05/nginx%E3%81%A8%E9%80%A3%E6%90%BA%E3%81%97%E3%81%A6python%E3%82%92%E5%8B%95%E3%81%8B%E3%81%99/'>Read more →</a>
+  <h6 id="キーワード">[キーワード]</h6>
+<ul>
+<li>等価変換 (Equivalent transformation)</li>
+<li>プログラム合成 (Program synthesis)</li>
+<li>クラウドサービス (Cloud services)</li>
+<li>最適化 (Optimization)</li>
+</ul>
+<h6 id="業績-論文誌-国際会議">[業績 (論文誌, 国際会議)]</h6>
+<ol>
+<li>Automatic Proof of Logical Equivalences belonging to the ES Class using Confluence Search incorporating Slicing, 2023.12</li>
+<li>Many-Constraint and Many-Objective optimization with Bias Index for Intercloud Multi-Workflow Resource Provisioning, 2022.11</li>
+<li>Optimal answer generation by equivalent transformation incorporating multi-objective genetic algorithm, 2022.3</li>
+<li>Generation of Logical Equivalences belonging to the C2LE Class applied to Program Synthesis based on Equivalent Transformation, 2021.8</li>
+<li>Constrained Multi-objective Optimization Method for Practica Scientific Workflow Resource Selection, 2019.3</li>
+<li>Optimal and Feasible Cloud Resource Configurations Generation Method for Genomic Analytics Applications, 2018.12</li>
+<li>Towards a Small Diverse Pareto-optimal Solutions Set Generator for Multi-objective Optimization Problems, 2018.7</li>
+<li>Optimal Cloud Resource Selection Method Considering Hard and Soft Constraints and Multiple Conflicting, 2018.7</li>
+<li>Cloud Resource Selection based on PLS for deploying Optimal Infrastructures for Genomic Analytics Applications, 2017.12</li>
+<li>A Predicate Logic-defined Specification Method for Systems Deployed by Intercloud Brokerages, 2016.4</li>
+<li>Intercloud Brokerages based on PLS Method for deploying Infrastructures for Big Data Analytics, 2016.12</li>
+<li>ET-based Bidirectional Search for proving Formulas in the Class ES, 2014.12</li>
+<li>Proof of Unsatisfiability of Atom Sets based on Computation by Equivalent Transformation Rules, 2013.11</li>
+<li>Theoretical Basis for making Equivalent Transformation Rules from Logical Equivalence for Program Synthesis, 2013.6</li>
+<li>Generation Method for Correct Parallel Programs based on Equivalent Transformation, 2012.11</li>
+<li>Generating Functionality-based Rules for Program Construction, 2009.9</li>
+<li>Creation of ET Rules from Logical Formulas representing Equivalent Relations, 2009.2</li>
+<li>Generating Speq Rules based on Automatic Proof of Logical Equivalence, 2008</li>
+<li>Construction of Equivalent Transformation Rules from Logical Equivalence, 2007.12</li>
+<li>Creation of ET Rules via Logical Equivalence, 2007.9</li>
+<li>Constraint Solving Specialization for Equality on an Interval-Variable Domain, 2007</li>
+<li>Infinite Computation in the Equivalent Transformation Model, 2007</li>
+<li>Construction of Equivalent Transformation Relations of Definite Clauses from Logical Equivalence, 2006.12</li>
+<li>The Squeeze Method -A Method for Program Construction in the Equivalent Transformation Computation Model, 2005</li>
+</ol>
+  <a href='https://murkouc.github.io/2020/03/%E7%A0%94%E7%A9%B6%E6%A5%AD%E7%B8%BE/'>Read more →</a>
 </article> 
 
 
@@ -170,17 +611,48 @@
 
 <article class="blog-post">
   <header>
-    <h2 class="blog-post-title" dir="auto"><a href="https://murkouc.github.io/2020/04/python%E3%81%A7docker%E3%82%92%E5%88%B6%E5%BE%A1%E3%81%99%E3%82%8B/">PythonでDockerを制御する</a></h2>
-    <p class="blog-post-meta"><time datetime="2020-04-27T23:25:40+09:00">Mon Apr 27, 2020</time> by Katsunori MIURA in 
+    <h2 class="blog-post-title" dir="auto"><a href="https://murkouc.github.io/2020/03/%E6%8B%85%E5%BD%93%E8%AC%9B%E7%BE%A9/">担当講義</a></h2>
+    <p class="blog-post-meta"><time datetime="2020-03-28T22:36:00+09:00">Sat Mar 28, 2020</time> by Katsunori MIURA in 
 <span class="fas fa-folder" aria-hidden="true"></span>&nbsp;<a href="/categories/%E5%B0%8F%E6%A8%BD%E5%95%86%E5%A4%A7/" rel="category tag">小樽商大</a>
 
 
-<span class="fas fa-tag" aria-hidden="true"></span>&nbsp;<a href="/tags/%E6%8A%80%E8%A1%93/" rel="tag">技術</a>, <a href="/tags/python/" rel="tag">python</a>, <a href="/tags/docker/" rel="tag">docker</a>
+<span class="fas fa-tag" aria-hidden="true"></span>&nbsp;<a href="/tags/%E8%AC%9B%E7%BE%A9/" rel="tag">講義</a>
 
 </p>
   </header>
-  [基本環境] Python 3.7.3 Docker 19.03.8 [注意] Docker SDK for Pythonを基にしたDocker制御ではない Subprocessを基にしたDocker制御である Dockerのオプションを多様したいなら、結局、Subprocessに落ち着く [Dockerコンテナ一覧の取得] Dockerコマンドなら docker ps -a Pythonコードなら import subprocess comp = subprocess.
-  <a href='https://murkouc.github.io/2020/04/python%E3%81%A7docker%E3%82%92%E5%88%B6%E5%BE%A1%E3%81%99%E3%82%8B/'>Read more →</a>
+  <h3 id="2025年度">2025年度</h3>
+<hr>
+<h4 id="学部講義">学部講義</h4>
+<h6 id="前期開講">[前期開講]</h6>
+<ul>
+<li><a href="/2020/03/%E6%83%85%E5%A0%B1%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E7%AE%A1%E7%90%86%E8%AB%96">情報システム管理論</a>　(210, 月曜日5講目)</li>
+<li><a href="/2026/03/%E6%83%85%E5%A0%B1%E5%87%A6%E7%90%86i">情報処理I</a>　(第1実習室, 火曜日3講目)</li>
+<li><a href="/2024/03/%E7%A4%BE%E4%BC%9A%E6%83%85%E5%A0%B1%E5%85%A5%E9%96%80i">社会情報入門I</a>　(160CL, 金曜日4講目)</li>
+</ul>
+<h6 id="後期開講">[後期開講]</h6>
+<ul>
+<li><a href="/2020/03/%E6%83%85%E5%A0%B1%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E6%A7%8B%E7%AF%89%E8%AB%96">情報システム構築論</a>　(教室未定, 木曜日3講目)</li>
+<li><a href="/2023/03/%E7%A4%BE%E4%BC%9A%E6%83%85%E5%A0%B1%E5%85%A5%E9%96%80%E5%A4%9C%E9%96%93">社会情報入門(夜間)</a>　(オンデマンド配信)</li>
+</ul>
+<h6 id="通年">[通年]</h6>
+<ul>
+<li><a href="/2020/03/%E3%82%BC%E3%83%9F%E3%83%8A%E3%83%BC%E3%83%AB">ゼミナール</a></li>
+</ul>
+<hr>
+<h4 id="大学院講義">大学院講義</h4>
+<h6 id="前期開講-1">[前期開講]</h6>
+<ul>
+<li>現代情報システム特論　(大学院講義室, 日時未定)</li>
+</ul>
+<h6 id="後期開講-1">[後期開講]</h6>
+<ul>
+<li>情報システムII　(大学院講義室, 火曜日3講目)</li>
+</ul>
+<hr>
+<p>2025年度：情報システム管理論, 情報システム構築論, 基礎ゼミナール<br>
+2024年度：情報システム管理論, 情報システム構築論, 社会情報入門I<br>
+2023年度：情報システム管理論, 情報システム構築論, 応用情報論I, 社会情報入門(夜間)</p>
+  <a href='https://murkouc.github.io/2020/03/%E6%8B%85%E5%BD%93%E8%AC%9B%E7%BE%A9/'>Read more →</a>
 </article> 
 
 
@@ -189,9 +661,9 @@
 
 <nav class="blog-pagination">
   
-  <a class="btn btn-outline-primary" href="/categories/%E5%B0%8F%E6%A8%BD%E5%95%86%E5%A4%A7/page/2/" rel="prev" role="button">Previous page</a>
-  <a class="btn btn-outline-primary" href="/categories/%E5%B0%8F%E6%A8%BD%E5%95%86%E5%A4%A7/page/4/" rel="next" role="button">Next page</a>
   
+  <a class="btn btn-outline-primary" href="/categories/%E5%B0%8F%E6%A8%BD%E5%95%86%E5%A4%A7/page/2/" rel="prev" role="button">Previous page</a>
+  <a class="btn btn-outline-primary disabled" href="#" role="button" aria-disabled="true">Next page</a>
   
   
 </nav>

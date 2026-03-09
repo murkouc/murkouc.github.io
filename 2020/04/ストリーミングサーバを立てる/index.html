@@ -5,17 +5,24 @@
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<meta property="og:title" content="ストリーミングサーバを立てる" />
-<meta property="og:description" content="[基本環境] Debian 10.3.0 (amd64) [参考サイト] ストリーミングサーバーを10分で作る [nginxとrtmpのインストール] sudo apt update sudo apt upgrade sudo add-apt-repository ppa:nginx/stable レポジトリ追加の際の確認事項に対しては、[Enter]を押す sudo apt install nginx libnginx-mod-rtmp [rtmpの有効化] cd /etc/nginx sudo vi nginx." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://murkouc.github.io/2020/04/%E3%82%B9%E3%83%88%E3%83%AA%E3%83%BC%E3%83%9F%E3%83%B3%E3%82%B0%E3%82%B5%E3%83%BC%E3%83%90%E3%82%92%E7%AB%8B%E3%81%A6%E3%82%8B/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2020-04-03T23:42:42+09:00" />
-<meta property="article:modified_time" content="2020-04-03T23:42:42+09:00" />
+<meta property="og:url" content="https://murkouc.github.io/2020/04/%E3%82%B9%E3%83%88%E3%83%AA%E3%83%BC%E3%83%9F%E3%83%B3%E3%82%B0%E3%82%B5%E3%83%BC%E3%83%90%E3%82%92%E7%AB%8B%E3%81%A6%E3%82%8B/">
+  <meta property="og:site_name" content="K.MIURA@OUC">
+  <meta property="og:title" content="ストリーミングサーバを立てる">
+  <meta property="og:description" content="[基本環境] Debian 10.3.0 (amd64) [参考サイト] ストリーミングサーバーを10分で作る [nginxとrtmpのインストール] sudo apt update sudo apt upgrade sudo add-apt-repository ppa:nginx/stable レポジトリ追加の際の確認事項に対しては、[Enter]を押す sudo apt install nginx libnginx-mod-rtmp [rtmpの有効化] cd /etc/nginx sudo vi nginx.conf hogelive(5行目)を自由に変更する sudo service nginx restart [受付用index.htmlの作成] cd /var/www/html sudo vi index.html hogeliveをnginx.confと同じものにする ipアドレスをストリーミングサーバのIPアドレスにする hogekeyを自由に変更する [配信システムの構築] mp4動画を配信するだけなら、以下の作業は必要ない /var/www/html以下にディレクトリを作成して、mp4動画を保存する sudo apt-get install ffmpeg sudo add-apt-repository ppa:obsproject/obs-studio sudo apt-get update sudo apt-get install obs-studio obs 配信先: rtmp://IPアドレス:1935/hogelive ストリームキー: hogekey [視聴者の操作] WEBブラウザで http://IPアドレス/ にアクセスする">
+  <meta property="og:locale" content="ja_jp">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2020-04-03T23:42:42+09:00">
+    <meta property="article:modified_time" content="2020-04-03T23:42:42+09:00">
+    <meta property="article:tag" content="技術">
+    <meta property="article:tag" content="Nginx">
+    <meta property="article:tag" content="Debian">
 
 
-<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="ストリーミングサーバを立てる"/>
-<meta name="twitter:description" content="[基本環境] Debian 10.3.0 (amd64) [参考サイト] ストリーミングサーバーを10分で作る [nginxとrtmpのインストール] sudo apt update sudo apt upgrade sudo add-apt-repository ppa:nginx/stable レポジトリ追加の際の確認事項に対しては、[Enter]を押す sudo apt install nginx libnginx-mod-rtmp [rtmpの有効化] cd /etc/nginx sudo vi nginx."/>
-<meta name="generator" content="Hugo 0.121.2">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="ストリーミングサーバを立てる">
+  <meta name="twitter:description" content="[基本環境] Debian 10.3.0 (amd64) [参考サイト] ストリーミングサーバーを10分で作る [nginxとrtmpのインストール] sudo apt update sudo apt upgrade sudo add-apt-repository ppa:nginx/stable レポジトリ追加の際の確認事項に対しては、[Enter]を押す sudo apt install nginx libnginx-mod-rtmp [rtmpの有効化] cd /etc/nginx sudo vi nginx.conf hogelive(5行目)を自由に変更する sudo service nginx restart [受付用index.htmlの作成] cd /var/www/html sudo vi index.html hogeliveをnginx.confと同じものにする ipアドレスをストリーミングサーバのIPアドレスにする hogekeyを自由に変更する [配信システムの構築] mp4動画を配信するだけなら、以下の作業は必要ない /var/www/html以下にディレクトリを作成して、mp4動画を保存する sudo apt-get install ffmpeg sudo add-apt-repository ppa:obsproject/obs-studio sudo apt-get update sudo apt-get install obs-studio obs 配信先: rtmp://IPアドレス:1935/hogelive ストリームキー: hogekey [視聴者の操作] WEBブラウザで http://IPアドレス/ にアクセスする">
+<meta name="generator" content="Hugo 0.157.0">
 
 
     
@@ -193,6 +200,8 @@
 
   
 
+  
+  
   
   </footer>
   

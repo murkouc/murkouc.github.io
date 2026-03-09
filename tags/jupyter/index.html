@@ -5,15 +5,18 @@
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<meta property="og:title" content="jupyter" />
-<meta property="og:description" content="The special secret of making dreams come true can be summarized in four C&#39;s. They are Curiosity, Confidence, Courage, and Constancy. --Walt Disney" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://murkouc.github.io/tags/jupyter/" />
+<meta property="og:url" content="https://murkouc.github.io/tags/jupyter/">
+  <meta property="og:site_name" content="K.MIURA@OUC">
+  <meta property="og:title" content="Jupyter">
+  <meta property="og:description" content="The special secret of making dreams come true can be summarized in four C&#39;s. They are Curiosity, Confidence, Courage, and Constancy. --Walt Disney">
+  <meta property="og:locale" content="ja_jp">
+  <meta property="og:type" content="website">
 
 
-<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="jupyter"/>
-<meta name="twitter:description" content="The special secret of making dreams come true can be summarized in four C&#39;s. They are Curiosity, Confidence, Courage, and Constancy. --Walt Disney"/>
-<meta name="generator" content="Hugo 0.121.2">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Jupyter">
+  <meta name="twitter:description" content="The special secret of making dreams come true can be summarized in four C&#39;s. They are Curiosity, Confidence, Courage, and Constancy. --Walt Disney">
+<meta name="generator" content="Hugo 0.157.0">
 
 
     
@@ -99,7 +102,118 @@
 
 </p>
   </header>
-  [基本環境] Debian 10.3.0 (amd64) Docker 19.03.8 [参考サイト] EC2(Ubuntu 18.04 LS)にJupyter Notebookをインストールしてみた [注意] Docker環境の構築や他のサイトを読んで、Docker環境を構築していること 本記事は、Jupyter NotebookをWEBブラウザで確認するまでの手続きである [Dockerコンテナの展開] docker pull debian:stable docker run -itd --privileged -p 8888:8888/tcp -p 8888:8888/udp --name jupyter debian:stable docker exec -it jupyter /bin/bash [コンテナ(jupyter)内での手続き] apt update apt upgrade apt install git apt install curl apt install bzip2 apt install vim git clone https://github.
+  <h6 id="基本環境">[基本環境]</h6>
+<ul>
+<li>Debian 10.3.0 (amd64)</li>
+<li>Docker 19.03.8</li>
+</ul>
+<h6 id="参考サイト">[参考サイト]</h6>
+<ul>
+<li><a href="https://dev.classmethod.jp/articles/ubuntu-jupyternotebook/">EC2(Ubuntu 18.04 LS)にJupyter Notebookをインストールしてみた</a></li>
+</ul>
+<h6 id="注意">[注意]</h6>
+<ul>
+<li><a href="/2020/03/docker%E7%92%B0%E5%A2%83%E3%81%AE%E6%A7%8B%E7%AF%89/">Docker環境の構築</a>や他のサイトを読んで、Docker環境を構築していること</li>
+<li>本記事は、Jupyter NotebookをWEBブラウザで確認するまでの手続きである</li>
+</ul>
+<h6 id="dockerコンテナの展開">[Dockerコンテナの展開]</h6>
+<ol>
+<li>docker pull debian:stable</li>
+<li>docker run -itd --privileged -p 8888:8888/tcp -p 8888:8888/udp --name jupyter debian:stable</li>
+<li>docker exec -it jupyter /bin/bash</li>
+</ol>
+<h6 id="コンテナjupyter内での手続き">[コンテナ(jupyter)内での手続き]</h6>
+<ol>
+<li>apt update</li>
+<li>apt upgrade</li>
+<li>apt install git</li>
+<li>apt install curl</li>
+<li>apt install bzip2</li>
+<li>apt install vim</li>
+<li>git clone <a href="https://github.com/pyenv/pyenv.git">https://github.com/pyenv/pyenv.git</a> ~/.pyenv</li>
+<li>echo &rsquo;export PYENV_ROOT=&quot;${HOME}/.pyenv&quot;&rsquo; &raquo; ~/.bash_profile</li>
+<li>echo &rsquo;export PATH=&quot;${PYENV_ROOT}/bin:$PATH&quot;&rsquo; &raquo; ~/.bash_profile</li>
+<li>echo &rsquo;export PATH=&quot;${PYENV_ROOT}/shims:$PATH&quot;&rsquo; &raquo; ~/.bash_profile</li>
+<li>echo &rsquo;eval &ldquo;$(pyenv init -)&rdquo;&rsquo; &raquo; ~/.bash_profile</li>
+<li>source ~/.bash_profile</li>
+<li>pyenv install anaconda3-5.3.1</li>
+<li>echo &rsquo;export PATH=&quot;$PYENV_ROOT/versions/anaconda3-5.3.1/bin:$PATH&quot;&rsquo; &raquo; ~/.bash_profile</li>
+<li>source ~/.bash_profile</li>
+<li>pyenv versions
+<ul>
+<li>anacondaのインストールを確認する</li>
+</ul>
+</li>
+<li>pyenv global anaconda3-5.3.1</li>
+<li>ipython3
+<ul>
+<li>In [1]: from IPython.lib import passwd</li>
+<li>In [2]: passwd()
+<ul>
+<li>Jupyter Notebookを開くときの<strong>パスワード</strong>を設定する</li>
+</ul>
+</li>
+<li>Out[2]: &lsquo;sha1:xxxxxxxxx&rsquo; <strong>これをメモしておく</strong></li>
+<li>In[3]: quit()</li>
+</ul>
+</li>
+<li>jupyter-notebook --generate-config</li>
+<li>vi ~/.jupyter/jupyter_notebook_config.py
+<ul>
+<li>先頭(本当はどこでも良い)に以下の内容を追加する<br>
+c.IPKernelApp.pylab = &lsquo;inline&rsquo;<br>
+c.NotebookApp.ip = &lsquo;*&rsquo;<br>
+c.NotebookApp.open_browser = False<br>
+c.NotebookApp.port = 8888<br>
+c.NotebookApp.password = u&rsquo;sha1:xxxxxxxxx&rsquo; <strong>メモしたやつ</strong></li>
+</ul>
+</li>
+</ol>
+<h6 id="jupyter-notebookの起動">[Jupyter Notebookの起動]</h6>
+<ol>
+<li>mkdir workspace <strong>ホームディレクトリで実行する</strong></li>
+<li>cd workspace</li>
+<li>jupyter-notebook --allow-root
+<ul>
+<li>WEBブラウザで <strong>http://IPアドレス:8888/</strong> にアクセスする</li>
+<li>パスワードには上の <strong>passwd()</strong> で設定したものを記述する</li>
+<li>停止するときは<strong>Control + Z</strong>を押す</li>
+<li>プロセスが生きていたらkillで強制終了する</li>
+</ul>
+</li>
+</ol>
+<h6 id="おまけコンテナ起動時にjupyter-notebookを一緒に起動する">[おまけ：コンテナ起動時にJupyter Notebookを一緒に起動する]</h6>
+<ul>
+<li>シェルスクリプトを仕込む (コンテナ内で実行する)
+<ol>
+<li>vi /etc/rc.local
+<ul>
+<li>以下の内容を記述する<br>
+#!/bin/bash<br>
+/etc/init.d/jupyter.sh</li>
+</ul>
+</li>
+<li>chmod 755 /etc/rc.local</li>
+<li>vi /etc/init.d/jupyter.sh
+<ul>
+<li>以下の内容を記述する<br>
+#!/bin/bash<br>
+. ~/.bash_profile<br>
+cd /workspace<br>
+sleep 3;jupyter-notebook --allow-root</li>
+</ul>
+</li>
+<li>chmod 755 /etc/init.d/jupyter.sh</li>
+<li>exit <strong>コンテナ(jupyter)から一度出る</strong></li>
+</ol>
+</li>
+<li>コンテナ(jupyter)を起動する
+<ol>
+<li>docker restart jupyter</li>
+<li>docker exec jupyter /etc/rc.local</li>
+</ol>
+</li>
+</ul>
   <a href='https://murkouc.github.io/2020/04/docker%E4%B8%8A%E3%81%A7jupyter%E3%82%92%E5%B1%95%E9%96%8B%E3%81%99%E3%82%8B/'>Read more →</a>
 </article> 
 

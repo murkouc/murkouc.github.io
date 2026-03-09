@@ -4,7 +4,7 @@
     <title>Tags on K.MIURA@OUC</title>
     <link>https://murkouc.github.io/tags/</link>
     <description>Recent content in Tags on K.MIURA@OUC</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>ja-jp</language>
     <lastBuildDate>Sun, 08 Mar 2026 13:20:02 +0901</lastBuildDate>
     <atom:link href="https://murkouc.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
@@ -23,14 +23,14 @@
       <description></description>
     </item>
     <item>
-      <title>docker</title>
+      <title>Docker</title>
       <link>https://murkouc.github.io/tags/docker/</link>
       <pubDate>Fri, 16 May 2025 01:01:01 +0900</pubDate>
       <guid>https://murkouc.github.io/tags/docker/</guid>
       <description></description>
     </item>
     <item>
-      <title>gcp</title>
+      <title>Gcp</title>
       <link>https://murkouc.github.io/tags/gcp/</link>
       <pubDate>Fri, 16 May 2025 01:01:01 +0900</pubDate>
       <guid>https://murkouc.github.io/tags/gcp/</guid>
@@ -44,70 +44,70 @@
       <description></description>
     </item>
     <item>
-      <title>flet</title>
+      <title>Flet</title>
       <link>https://murkouc.github.io/tags/flet/</link>
       <pubDate>Mon, 14 Oct 2024 01:01:01 +0900</pubDate>
       <guid>https://murkouc.github.io/tags/flet/</guid>
       <description></description>
     </item>
     <item>
-      <title>python</title>
+      <title>Python</title>
       <link>https://murkouc.github.io/tags/python/</link>
       <pubDate>Mon, 14 Oct 2024 01:01:01 +0900</pubDate>
       <guid>https://murkouc.github.io/tags/python/</guid>
       <description></description>
     </item>
     <item>
-      <title>macos</title>
+      <title>Macos</title>
       <link>https://murkouc.github.io/tags/macos/</link>
       <pubDate>Fri, 05 Jul 2024 01:01:01 +0900</pubDate>
       <guid>https://murkouc.github.io/tags/macos/</guid>
       <description></description>
     </item>
     <item>
-      <title>utm</title>
+      <title>Utm</title>
       <link>https://murkouc.github.io/tags/utm/</link>
       <pubDate>Fri, 05 Jul 2024 01:01:01 +0900</pubDate>
       <guid>https://murkouc.github.io/tags/utm/</guid>
       <description></description>
     </item>
     <item>
-      <title>ai</title>
+      <title>Ai</title>
       <link>https://murkouc.github.io/tags/ai/</link>
       <pubDate>Mon, 22 Jan 2024 01:01:01 +0900</pubDate>
       <guid>https://murkouc.github.io/tags/ai/</guid>
       <description></description>
     </item>
     <item>
-      <title>vscode</title>
+      <title>Vscode</title>
       <link>https://murkouc.github.io/tags/vscode/</link>
       <pubDate>Fri, 10 Dec 2021 01:01:01 +0900</pubDate>
       <guid>https://murkouc.github.io/tags/vscode/</guid>
       <description></description>
     </item>
     <item>
-      <title>debian</title>
+      <title>Debian</title>
       <link>https://murkouc.github.io/tags/debian/</link>
       <pubDate>Fri, 10 Sep 2021 15:00:00 +0900</pubDate>
       <guid>https://murkouc.github.io/tags/debian/</guid>
       <description></description>
     </item>
     <item>
-      <title>github</title>
+      <title>Github</title>
       <link>https://murkouc.github.io/tags/github/</link>
       <pubDate>Fri, 10 Sep 2021 15:00:00 +0900</pubDate>
       <guid>https://murkouc.github.io/tags/github/</guid>
       <description></description>
     </item>
     <item>
-      <title>redmine</title>
+      <title>Redmine</title>
       <link>https://murkouc.github.io/tags/redmine/</link>
       <pubDate>Mon, 07 Sep 2020 19:58:23 +0900</pubDate>
       <guid>https://murkouc.github.io/tags/redmine/</guid>
       <description></description>
     </item>
     <item>
-      <title>ubuntu</title>
+      <title>Ubuntu</title>
       <link>https://murkouc.github.io/tags/ubuntu/</link>
       <pubDate>Mon, 07 Sep 2020 19:58:23 +0900</pubDate>
       <guid>https://murkouc.github.io/tags/ubuntu/</guid>
@@ -121,49 +121,49 @@
       <description></description>
     </item>
     <item>
-      <title>cgi</title>
+      <title>Cgi</title>
       <link>https://murkouc.github.io/tags/cgi/</link>
       <pubDate>Tue, 19 May 2020 22:35:27 +0900</pubDate>
       <guid>https://murkouc.github.io/tags/cgi/</guid>
       <description></description>
     </item>
     <item>
-      <title>nginx</title>
+      <title>Nginx</title>
       <link>https://murkouc.github.io/tags/nginx/</link>
       <pubDate>Tue, 19 May 2020 22:35:27 +0900</pubDate>
       <guid>https://murkouc.github.io/tags/nginx/</guid>
       <description></description>
     </item>
     <item>
-      <title>jupyter</title>
+      <title>Jupyter</title>
       <link>https://murkouc.github.io/tags/jupyter/</link>
       <pubDate>Mon, 20 Apr 2020 12:27:29 +0900</pubDate>
       <guid>https://murkouc.github.io/tags/jupyter/</guid>
       <description></description>
     </item>
     <item>
-      <title>oraclecloud</title>
+      <title>Oraclecloud</title>
       <link>https://murkouc.github.io/tags/oraclecloud/</link>
       <pubDate>Mon, 13 Apr 2020 00:50:37 +0900</pubDate>
       <guid>https://murkouc.github.io/tags/oraclecloud/</guid>
       <description></description>
     </item>
     <item>
-      <title>nextcloud</title>
+      <title>Nextcloud</title>
       <link>https://murkouc.github.io/tags/nextcloud/</link>
       <pubDate>Sun, 12 Apr 2020 17:27:58 +0900</pubDate>
       <guid>https://murkouc.github.io/tags/nextcloud/</guid>
       <description></description>
     </item>
     <item>
-      <title>nfs</title>
+      <title>Nfs</title>
       <link>https://murkouc.github.io/tags/nfs/</link>
       <pubDate>Sun, 12 Apr 2020 17:27:58 +0900</pubDate>
       <guid>https://murkouc.github.io/tags/nfs/</guid>
       <description></description>
     </item>
     <item>
-      <title>hugo</title>
+      <title>Hugo</title>
       <link>https://murkouc.github.io/tags/hugo/</link>
       <pubDate>Thu, 02 Apr 2020 21:43:56 +0900</pubDate>
       <guid>https://murkouc.github.io/tags/hugo/</guid>

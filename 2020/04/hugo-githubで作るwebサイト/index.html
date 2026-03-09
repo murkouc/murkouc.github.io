@@ -5,17 +5,25 @@
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<meta property="og:title" content="Hugo&#43;GitHubで作るWEBサイト" />
-<meta property="og:description" content="[基本環境] Debian 10.3.0 (amd64) [注意] HugoとGitHubで作るWEBサイトの大まかな流れを掴むためのまとめです 記事を書くときのMarkdownについては、別のサイトを参照すること [Hugoのインストール] sudo apt update sudo apt install git sudo apt install golang sudo apt install snapd sudo snap install hugo --channel=extended cd /usr/bin sudo ln -s /snap/bin/hugo hugo [作業用ディレクトリの作成] cd /home/ユーザ名 mkdir workspace ディレクトリ名は何でも良い hugo new site blog blogという名前でWEBサイトを新規作成する WEBサイト名は何でも良い [HugoテーマのDL] cd ~/workspace/blog/theme HugoテーマのDL方法 Hugo Bootstrap v4 BlogをDLするなら (本サイトと同じ) git clone https://github." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://murkouc.github.io/2020/04/hugo-github%E3%81%A7%E4%BD%9C%E3%82%8Bweb%E3%82%B5%E3%82%A4%E3%83%88/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2020-04-02T21:43:56+09:00" />
-<meta property="article:modified_time" content="2020-04-02T21:43:56+09:00" />
+<meta property="og:url" content="https://murkouc.github.io/2020/04/hugo-github%E3%81%A7%E4%BD%9C%E3%82%8Bweb%E3%82%B5%E3%82%A4%E3%83%88/">
+  <meta property="og:site_name" content="K.MIURA@OUC">
+  <meta property="og:title" content="Hugo&#43;GitHubで作るWEBサイト">
+  <meta property="og:description" content="[基本環境] Debian 10.3.0 (amd64) [注意] HugoとGitHubで作るWEBサイトの大まかな流れを掴むためのまとめです 記事を書くときのMarkdownについては、別のサイトを参照すること [Hugoのインストール] sudo apt update sudo apt install git sudo apt install golang sudo apt install snapd sudo snap install hugo --channel=extended cd /usr/bin sudo ln -s /snap/bin/hugo hugo [作業用ディレクトリの作成] cd /home/ユーザ名 mkdir workspace ディレクトリ名は何でも良い hugo new site blog blogという名前でWEBサイトを新規作成する WEBサイト名は何でも良い [HugoテーマのDL] cd ~/workspace/blog/theme HugoテーマのDL方法 Hugo Bootstrap v4 BlogをDLするなら (本サイトと同じ) git clone https://github.com/alanorth/hugo-theme-bootstrap4-blog.git MinimalをDLするなら (別のシンプルなテーマ) git init git submodule add https://github.com/calintat/minimal.git minimal git submodule init git submodule update [config.tomlの編集] cd ~/workspace/blog mv config.toml config.toml.org cp themes/テーマ名/exampleSite/config.toml . vi config.toml テーマ毎に内容が異なるため、テーマのWEBサイトを参照すること DLしたテーマを基にオリジナルテーマを作っても良い 本サイトは、Hugo Bootstrap v4 Blogに少し手を入れている [記事の新規作成] cd ~/workspace/blog hugo new posts/sample.md postsは記事が保存されるディレクトリであり、ディレクトリ名は何でも良い (存在しないときは自動的に作られる) sample.mdは記事ファイルであり、ファイル名は何でも良い cd content/posts vi sample.md 記事はMarkdownで書く 「draft: true」は非公開記事で、「draft:false」は公開記事である title:は記事タイトルなので、ファイル名から書き換える [GitHubへアップロードするファイルの作成] cd ~/workspace/blog hugo publicというディレクトリが生成される ここにアップロードするファイルが作られる [GitHubへのアップロード] GitHub上に「GitHubアカウント名.github.io」というレポジトリを作成する cd ~/workspace/blog/public git remote add origin https://github.com/GitHubアカウント名/GitHubアカウント名.github.io.git git add -A git commit -m “コメント” git push origin master [2件目以降の記事作成からアップロード] 記事を作り cd ~/workspace/blog hugo new posts/sample.md cd content/posts vi sample.md アップロードするファイルを作り cd ~/workspace/blog hugo GitHubへアップロード cd public git add -A git commit -m “コメント” git push origin master">
+  <meta property="og:locale" content="ja_jp">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2020-04-02T21:43:56+09:00">
+    <meta property="article:modified_time" content="2020-04-02T21:43:56+09:00">
+    <meta property="article:tag" content="技術">
+    <meta property="article:tag" content="Hugo">
+    <meta property="article:tag" content="Github">
+    <meta property="article:tag" content="Debian">
 
 
-<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Hugo&#43;GitHubで作るWEBサイト"/>
-<meta name="twitter:description" content="[基本環境] Debian 10.3.0 (amd64) [注意] HugoとGitHubで作るWEBサイトの大まかな流れを掴むためのまとめです 記事を書くときのMarkdownについては、別のサイトを参照すること [Hugoのインストール] sudo apt update sudo apt install git sudo apt install golang sudo apt install snapd sudo snap install hugo --channel=extended cd /usr/bin sudo ln -s /snap/bin/hugo hugo [作業用ディレクトリの作成] cd /home/ユーザ名 mkdir workspace ディレクトリ名は何でも良い hugo new site blog blogという名前でWEBサイトを新規作成する WEBサイト名は何でも良い [HugoテーマのDL] cd ~/workspace/blog/theme HugoテーマのDL方法 Hugo Bootstrap v4 BlogをDLするなら (本サイトと同じ) git clone https://github."/>
-<meta name="generator" content="Hugo 0.121.2">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Hugo&#43;GitHubで作るWEBサイト">
+  <meta name="twitter:description" content="[基本環境] Debian 10.3.0 (amd64) [注意] HugoとGitHubで作るWEBサイトの大まかな流れを掴むためのまとめです 記事を書くときのMarkdownについては、別のサイトを参照すること [Hugoのインストール] sudo apt update sudo apt install git sudo apt install golang sudo apt install snapd sudo snap install hugo --channel=extended cd /usr/bin sudo ln -s /snap/bin/hugo hugo [作業用ディレクトリの作成] cd /home/ユーザ名 mkdir workspace ディレクトリ名は何でも良い hugo new site blog blogという名前でWEBサイトを新規作成する WEBサイト名は何でも良い [HugoテーマのDL] cd ~/workspace/blog/theme HugoテーマのDL方法 Hugo Bootstrap v4 BlogをDLするなら (本サイトと同じ) git clone https://github.com/alanorth/hugo-theme-bootstrap4-blog.git MinimalをDLするなら (別のシンプルなテーマ) git init git submodule add https://github.com/calintat/minimal.git minimal git submodule init git submodule update [config.tomlの編集] cd ~/workspace/blog mv config.toml config.toml.org cp themes/テーマ名/exampleSite/config.toml . vi config.toml テーマ毎に内容が異なるため、テーマのWEBサイトを参照すること DLしたテーマを基にオリジナルテーマを作っても良い 本サイトは、Hugo Bootstrap v4 Blogに少し手を入れている [記事の新規作成] cd ~/workspace/blog hugo new posts/sample.md postsは記事が保存されるディレクトリであり、ディレクトリ名は何でも良い (存在しないときは自動的に作られる) sample.mdは記事ファイルであり、ファイル名は何でも良い cd content/posts vi sample.md 記事はMarkdownで書く 「draft: true」は非公開記事で、「draft:false」は公開記事である title:は記事タイトルなので、ファイル名から書き換える [GitHubへアップロードするファイルの作成] cd ~/workspace/blog hugo publicというディレクトリが生成される ここにアップロードするファイルが作られる [GitHubへのアップロード] GitHub上に「GitHubアカウント名.github.io」というレポジトリを作成する cd ~/workspace/blog/public git remote add origin https://github.com/GitHubアカウント名/GitHubアカウント名.github.io.git git add -A git commit -m “コメント” git push origin master [2件目以降の記事作成からアップロード] 記事を作り cd ~/workspace/blog hugo new posts/sample.md cd content/posts vi sample.md アップロードするファイルを作り cd ~/workspace/blog hugo GitHubへアップロード cd public git add -A git commit -m “コメント” git push origin master">
+<meta name="generator" content="Hugo 0.157.0">
 
 
     
@@ -264,6 +272,8 @@
 
   
 
+  
+  
   
   </footer>
   

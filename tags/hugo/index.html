@@ -5,15 +5,18 @@
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<meta property="og:title" content="hugo" />
-<meta property="og:description" content="The special secret of making dreams come true can be summarized in four C&#39;s. They are Curiosity, Confidence, Courage, and Constancy. --Walt Disney" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://murkouc.github.io/tags/hugo/" />
+<meta property="og:url" content="https://murkouc.github.io/tags/hugo/">
+  <meta property="og:site_name" content="K.MIURA@OUC">
+  <meta property="og:title" content="Hugo">
+  <meta property="og:description" content="The special secret of making dreams come true can be summarized in four C&#39;s. They are Curiosity, Confidence, Courage, and Constancy. --Walt Disney">
+  <meta property="og:locale" content="ja_jp">
+  <meta property="og:type" content="website">
 
 
-<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="hugo"/>
-<meta name="twitter:description" content="The special secret of making dreams come true can be summarized in four C&#39;s. They are Curiosity, Confidence, Courage, and Constancy. --Walt Disney"/>
-<meta name="generator" content="Hugo 0.121.2">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Hugo">
+  <meta name="twitter:description" content="The special secret of making dreams come true can be summarized in four C&#39;s. They are Curiosity, Confidence, Courage, and Constancy. --Walt Disney">
+<meta name="generator" content="Hugo 0.157.0">
 
 
     
@@ -99,7 +102,138 @@
 
 </p>
   </header>
-  [基本環境] Debian 10.3.0 (amd64) [注意] HugoとGitHubで作るWEBサイトの大まかな流れを掴むためのまとめです 記事を書くときのMarkdownについては、別のサイトを参照すること [Hugoのインストール] sudo apt update sudo apt install git sudo apt install golang sudo apt install snapd sudo snap install hugo --channel=extended cd /usr/bin sudo ln -s /snap/bin/hugo hugo [作業用ディレクトリの作成] cd /home/ユーザ名 mkdir workspace ディレクトリ名は何でも良い hugo new site blog blogという名前でWEBサイトを新規作成する WEBサイト名は何でも良い [HugoテーマのDL] cd ~/workspace/blog/theme HugoテーマのDL方法 Hugo Bootstrap v4 BlogをDLするなら (本サイトと同じ) git clone https://github.
+  <h6 id="基本環境">[基本環境]</h6>
+<ul>
+<li>Debian 10.3.0 (amd64)</li>
+</ul>
+<h6 id="注意">[注意]</h6>
+<ul>
+<li>HugoとGitHubで作るWEBサイトの大まかな流れを掴むためのまとめです</li>
+<li>記事を書くときのMarkdownについては、別のサイトを参照すること</li>
+</ul>
+<h6 id="hugoのインストール">[Hugoのインストール]</h6>
+<ol>
+<li>sudo apt update</li>
+<li>sudo apt install git</li>
+<li>sudo apt install golang</li>
+<li>sudo apt install snapd</li>
+<li>sudo snap install hugo --channel=extended</li>
+<li>cd /usr/bin</li>
+<li>sudo ln -s /snap/bin/hugo hugo</li>
+</ol>
+<h6 id="作業用ディレクトリの作成">[作業用ディレクトリの作成]</h6>
+<ol>
+<li>cd /home/ユーザ名</li>
+<li>mkdir workspace
+<ul>
+<li>ディレクトリ名は何でも良い</li>
+</ul>
+</li>
+<li>hugo new site blog
+<ul>
+<li>blogという名前でWEBサイトを新規作成する</li>
+<li>WEBサイト名は何でも良い</li>
+</ul>
+</li>
+</ol>
+<h6 id="hugoテーマのdl">[HugoテーマのDL]</h6>
+<ol>
+<li>cd ~/workspace/blog/theme</li>
+<li><a href="https://themes.gohugo.io">Hugoテーマ</a>のDL方法
+<ul>
+<li><a href="https://themes.gohugo.io/hugo-theme-bootstrap4-blog">Hugo Bootstrap v4 Blog</a>をDLするなら (本サイトと同じ)
+<ol>
+<li>git clone <a href="https://github.com/alanorth/hugo-theme-bootstrap4-blog.git">https://github.com/alanorth/hugo-theme-bootstrap4-blog.git</a></li>
+</ol>
+</li>
+<li><a href="https://themes.gohugo.io/minimal/">Minimal</a>をDLするなら (別のシンプルなテーマ)
+<ol>
+<li>git init</li>
+<li>git submodule add <a href="https://github.com/calintat/minimal.git">https://github.com/calintat/minimal.git</a> minimal</li>
+<li>git submodule init</li>
+<li>git submodule update</li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+<h6 id="configtomlの編集">[config.tomlの編集]</h6>
+<ol>
+<li>cd ~/workspace/blog</li>
+<li>mv config.toml config.toml.org</li>
+<li>cp themes/テーマ名/exampleSite/config.toml .</li>
+<li>vi config.toml
+<ul>
+<li>テーマ毎に内容が異なるため、テーマのWEBサイトを参照すること</li>
+<li>DLしたテーマを基にオリジナルテーマを作っても良い</li>
+<li>本サイトは、Hugo Bootstrap v4 Blogに少し手を入れている</li>
+</ul>
+</li>
+</ol>
+<h6 id="記事の新規作成">[記事の新規作成]</h6>
+<ol>
+<li>cd ~/workspace/blog</li>
+<li>hugo new posts/sample.md
+<ul>
+<li>postsは記事が保存されるディレクトリであり、ディレクトリ名は何でも良い (存在しないときは自動的に作られる)</li>
+<li>sample.mdは記事ファイルであり、ファイル名は何でも良い</li>
+</ul>
+</li>
+<li>cd content/posts</li>
+<li>vi sample.md
+<ul>
+<li>記事はMarkdownで書く</li>
+<li>「draft: true」は非公開記事で、「draft:false」は公開記事である</li>
+<li>title:は記事タイトルなので、ファイル名から書き換える</li>
+</ul>
+</li>
+</ol>
+<h6 id="githubへアップロードするファイルの作成">[GitHubへアップロードするファイルの作成]</h6>
+<ol>
+<li>cd ~/workspace/blog</li>
+<li>hugo
+<ul>
+<li>publicというディレクトリが生成される</li>
+<li>ここにアップロードするファイルが作られる</li>
+</ul>
+</li>
+</ol>
+<h6 id="githubへのアップロード">[GitHubへのアップロード]</h6>
+<ul>
+<li>GitHub上に「GitHubアカウント名.github.io」というレポジトリを作成する</li>
+</ul>
+<ol>
+<li>cd ~/workspace/blog/public</li>
+<li>git remote add origin <a href="https://github.com/GitHub">https://github.com/GitHub</a>アカウント名/GitHubアカウント名.github.io.git</li>
+<li>git add -A</li>
+<li>git commit -m &ldquo;コメント&rdquo;</li>
+<li>git push origin master</li>
+</ol>
+<h6 id="2件目以降の記事作成からアップロード">[2件目以降の記事作成からアップロード]</h6>
+<ol>
+<li>記事を作り
+<ol>
+<li>cd ~/workspace/blog</li>
+<li>hugo new posts/sample.md</li>
+<li>cd content/posts</li>
+<li>vi sample.md</li>
+</ol>
+</li>
+<li>アップロードするファイルを作り
+<ol>
+<li>cd ~/workspace/blog</li>
+<li>hugo</li>
+</ol>
+</li>
+<li>GitHubへアップロード
+<ol>
+<li>cd public</li>
+<li>git add -A</li>
+<li>git commit -m &ldquo;コメント&rdquo;</li>
+<li>git push origin master</li>
+</ol>
+</li>
+</ol>
   <a href='https://murkouc.github.io/2020/04/hugo-github%E3%81%A7%E4%BD%9C%E3%82%8Bweb%E3%82%B5%E3%82%A4%E3%83%88/'>Read more →</a>
 </article> 
 

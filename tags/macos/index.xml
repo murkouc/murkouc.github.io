@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>macos on K.MIURA@OUC</title>
+    <title>Macos on K.MIURA@OUC</title>
     <link>https://murkouc.github.io/tags/macos/</link>
-    <description>Recent content in macos on K.MIURA@OUC</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content in Macos on K.MIURA@OUC</description>
+    <generator>Hugo</generator>
     <language>ja-jp</language>
     <lastBuildDate>Fri, 05 Jul 2024 01:01:01 +0900</lastBuildDate>
     <atom:link href="https://murkouc.github.io/tags/macos/index.xml" rel="self" type="application/rss+xml" />
@@ -13,14 +13,14 @@
       <link>https://murkouc.github.io/2024/07/utm%E3%82%92%E7%94%A8%E3%81%84%E3%81%A6linux%E7%92%B0%E5%A2%83%E3%82%92%E4%BD%9C%E3%82%8B/</link>
       <pubDate>Fri, 05 Jul 2024 01:01:01 +0900</pubDate>
       <guid>https://murkouc.github.io/2024/07/utm%E3%82%92%E7%94%A8%E3%81%84%E3%81%A6linux%E7%92%B0%E5%A2%83%E3%82%92%E4%BD%9C%E3%82%8B/</guid>
-      <description>[基本環境] Mac mini(Apple M1チップ) [参考サイト] UTMを用いてM1 MacBookにUbuntuの仮想化環境を構築する [やりたいこと] UTMを用いてLinux環境の仮想マシンを展開する [UTMのインストール] ここにアクセスする GitHubの方にあるDownload from GitHubをクリックする</description>
+      <description>&lt;h6 id=&#34;基本環境&#34;&gt;[基本環境]&lt;/h6&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Mac mini(Apple M1チップ)&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h6 id=&#34;参考サイト&#34;&gt;[参考サイト]&lt;/h6&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://envader.plus/article/66&#34;&gt;UTMを用いてM1 MacBookにUbuntuの仮想化環境を構築する&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h6 id=&#34;やりたいこと&#34;&gt;[やりたいこと]&lt;/h6&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;UTMを用いてLinux環境の仮想マシンを展開する&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h6 id=&#34;utmのインストール&#34;&gt;[UTMのインストール]&lt;/h6&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://docs.getutm.app/installation/macos&#34;&gt;ここ&lt;/a&gt;にアクセスする&lt;/li&gt;&#xA;&lt;li&gt;GitHubの方にある&lt;strong&gt;Download from GitHub&lt;/strong&gt;をクリックする&lt;br&gt;&#xA;※ UTM.dmgがダウンロードされる&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;UTM.dmg&lt;/strong&gt;をダブルクリックした後、UTMをApplicationフォルダに追加する&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h6 id=&#34;仮想マシンの作成&#34;&gt;[仮想マシンの作成]&lt;/h6&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;Applicationの中にある&lt;strong&gt;UTM&lt;/strong&gt;を選択する&lt;/li&gt;&#xA;&lt;li&gt;メニュー画面の中から&lt;strong&gt;新規仮想マシンを作成&lt;/strong&gt;を選択する&lt;/li&gt;&#xA;&lt;li&gt;カスタムの中から&lt;strong&gt;仮想化&lt;/strong&gt;を選択する&lt;/li&gt;&#xA;&lt;li&gt;OSの中から&lt;strong&gt;Linux&lt;/strong&gt;を選択する&lt;/li&gt;&#xA;&lt;li&gt;[起動ISOイメージ]欄の[選択]ボタンを押す&lt;/li&gt;&#xA;&lt;li&gt;LinuxのISOファイル(ubuntu-24.04-live-server-arm64.iso)を選択する&lt;br&gt;&#xA;※ ISOファイルは事前に&lt;a href=&#34;https://ubuntu.com/download/server/arm&#34;&gt;ここ&lt;/a&gt;からダウンロードしておくこと&lt;br&gt;&#xA;※ GUI(デスクトップ)環境が必要なら、&lt;a href=&#34;https://cdimage.ubuntu.com/releases/22.04/release/&#34;&gt;ここ&lt;/a&gt;から入手できる&lt;strong&gt;ubuntu-22.04.4-live-server-arm64.iso&lt;/strong&gt;を使ったほうが良い&lt;/li&gt;&#xA;&lt;li&gt;メモリ・CPU・ストレージ・共有ディレクトリは適当に設定する&lt;/li&gt;&#xA;&lt;li&gt;仮想マシン名は&lt;strong&gt;半角文字&lt;/strong&gt;で適当に設定する&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h6 id=&#34;仮想マシンの起動&#34;&gt;[仮想マシンの起動]&lt;/h6&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;UTMの左側にある一覧の中から、起動する仮想マシンを選択する&lt;br&gt;&#xA;※ 初めての起動では、&lt;strong&gt;Linuxのインストール&lt;/strong&gt;が実行される&lt;br&gt;&#xA;※ Linuxのインストール手順は、上記の&lt;strong&gt;参考サイト&lt;/strong&gt;を見てほしい&lt;/li&gt;&#xA;&lt;/ol&gt;</description>
     </item>
     <item>
       <title>ショートカットキーを設定する</title>
       <link>https://murkouc.github.io/2021/12/%E3%82%B7%E3%83%A7%E3%83%BC%E3%83%88%E3%82%AB%E3%83%83%E3%83%88%E3%82%AD%E3%83%BC%E3%82%92%E8%A8%AD%E5%AE%9A%E3%81%99%E3%82%8B/</link>
       <pubDate>Fri, 10 Dec 2021 01:01:01 +0900</pubDate>
       <guid>https://murkouc.github.io/2021/12/%E3%82%B7%E3%83%A7%E3%83%BC%E3%83%88%E3%82%AB%E3%83%83%E3%83%88%E3%82%AD%E3%83%BC%E3%82%92%E8%A8%AD%E5%AE%9A%E3%81%99%E3%82%8B/</guid>
-      <description>[基本環境] Visual Studio Code(VSCode) 1.42.2 [参考サイト] VSCode内でエディターからターミナルへ移動するショートカットキーを設定しよう [やりたいこと] VSCode内のターミナルとエディターをショートカットキーで行き来したい [初期設定のショートカットキー] [Ctrl]キー+[Shift]キー+[@]キー：ターミナルが開く [Ctrl]キー+[数字]キー：数字で指定したエディターに移動する [1]キーは一番左のエディターで、[2]キーはその隣のエディターである [ターミナルに移動するショートカットキーを設定する] [Code]-&amp;gt;[基本設定]-&amp;gt;[キーボード ショートカット]で設定画面を開く 入力してキーバインド内を検索でworkbench.</description>
+      <description>&lt;h6 id=&#34;基本環境&#34;&gt;[基本環境]&lt;/h6&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Visual Studio Code(VSCode) 1.42.2&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h6 id=&#34;参考サイト&#34;&gt;[参考サイト]&lt;/h6&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://onedarling.site/programming/tool/vscode-terminal-shortcutkey/&#34;&gt;VSCode内でエディターからターミナルへ移動するショートカットキーを設定しよう&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h6 id=&#34;やりたいこと&#34;&gt;[やりたいこと]&lt;/h6&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;VSCode内のターミナルとエディターをショートカットキーで行き来したい&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h6 id=&#34;初期設定のショートカットキー&#34;&gt;[初期設定のショートカットキー]&lt;/h6&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;[Ctrl]キー+[Shift]キー+[@]キー：ターミナルが開く&lt;/li&gt;&#xA;&lt;li&gt;[Ctrl]キー+[数字]キー：数字で指定したエディターに移動する&#xA;&lt;ul&gt;&#xA;&lt;li&gt;[1]キーは一番左のエディターで、[2]キーはその隣のエディターである&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h6 id=&#34;ターミナルに移動するショートカットキーを設定する&#34;&gt;[ターミナルに移動するショートカットキーを設定する]&lt;/h6&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;[Code]-&amp;gt;[基本設定]-&amp;gt;[キーボード ショートカット]で設定画面を開く&lt;/li&gt;&#xA;&lt;li&gt;入力してキーバインド内を検索で&lt;strong&gt;workbench.action.terminal.focus&lt;/strong&gt;を検索する&#xA;&lt;ul&gt;&#xA;&lt;li&gt;説明文に「ターミナル：ターミナルにフォーカス」と書いている&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;説明文の左に現れる[+]ボタンをクリックする&#xA;&lt;ul&gt;&#xA;&lt;li&gt;設定済みなら[ペン]ボタンになっている&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;ショートカットキーを設定する&#xA;&lt;ul&gt;&#xA;&lt;li&gt;例えば、&lt;strong&gt;[Ctrl]キー+[M]キーを押したあとに、[T]キーを押す&lt;/strong&gt;みたいな感じ&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ol&gt;</description>
     </item>
   </channel>
 </rss>

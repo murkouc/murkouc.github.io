@@ -5,15 +5,18 @@
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<meta property="og:title" content="gcp" />
-<meta property="og:description" content="The special secret of making dreams come true can be summarized in four C&#39;s. They are Curiosity, Confidence, Courage, and Constancy. --Walt Disney" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://murkouc.github.io/tags/gcp/" />
+<meta property="og:url" content="https://murkouc.github.io/tags/gcp/">
+  <meta property="og:site_name" content="K.MIURA@OUC">
+  <meta property="og:title" content="Gcp">
+  <meta property="og:description" content="The special secret of making dreams come true can be summarized in four C&#39;s. They are Curiosity, Confidence, Courage, and Constancy. --Walt Disney">
+  <meta property="og:locale" content="ja_jp">
+  <meta property="og:type" content="website">
 
 
-<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="gcp"/>
-<meta name="twitter:description" content="The special secret of making dreams come true can be summarized in four C&#39;s. They are Curiosity, Confidence, Courage, and Constancy. --Walt Disney"/>
-<meta name="generator" content="Hugo 0.121.2">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Gcp">
+  <meta name="twitter:description" content="The special secret of making dreams come true can be summarized in four C&#39;s. They are Curiosity, Confidence, Courage, and Constancy. --Walt Disney">
+<meta name="generator" content="Hugo 0.157.0">
 
 
     
@@ -99,7 +102,63 @@
 
 </p>
   </header>
-  [基本環境] Debian 12 (amd64) Docker 27.3.1 [やりたいこと] gcloudコマンドがインストール済みのDockerコンテナを作りたい ついでに、日本語入力対応済みのコンテナにする [注意] Docker環境の構築や他のサイトを読んで、Docker環境を構築していること [Dockerコンテナの展開手順] Dockerイメージを作成する
+  <h6 id="基本環境">[基本環境]</h6>
+<ul>
+<li>Debian 12 (amd64)</li>
+<li>Docker 27.3.1</li>
+</ul>
+<h6 id="やりたいこと">[やりたいこと]</h6>
+<ul>
+<li><strong>gcloudコマンドがインストール済み</strong>のDockerコンテナを作りたい</li>
+<li>ついでに、<strong>日本語入力対応済み</strong>のコンテナにする</li>
+</ul>
+<h6 id="注意">[注意]</h6>
+<ul>
+<li><a href="/2020/03/docker%E7%92%B0%E5%A2%83%E3%81%AE%E6%A7%8B%E7%AF%89/">Docker環境の構築</a>や他のサイトを読んで、Docker環境を構築していること</li>
+</ul>
+<h6 id="dockerコンテナの展開手順">[Dockerコンテナの展開手順]</h6>
+<ol>
+<li>Dockerイメージを作成する<br>
+※ <strong>ubuntu 22.04</strong>を基礎とする<br>
+※ Dockerイメージ名を<strong>ubuntu2204:gcloud</strong>にしている</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span> $ docker pull ubuntu:22.04
+</span></span><span style="display:flex;"><span> $ touch Dockerfile
+</span></span><span style="display:flex;"><span> $ editor Dockerfile
+</span></span><span style="display:flex;"><span>   Dockerfileの中に、以下の内容を書いて保存する
+</span></span><span style="display:flex;"><span>   FROM ubuntu:22.04
+</span></span><span style="display:flex;"><span>   RUN apt-get update -y <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>       apt-get install -y curl <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>       apt-get install -y apt-transport-https <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>       apt-get install -y ca-certificates <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>       apt-get install -y gnupg
+</span></span><span style="display:flex;"><span>   RUN echo <span style="color:#e6db74">&#34;deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main&#34;</span> | tee -a /etc/apt/sources.list.d/google-cloud-sdk.list <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>       curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | gpg --dearmor -o /usr/share/keyrings/cloud.google.gpg <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>       apt-get update -y <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>       apt-get install google-cloud-cli -y
+</span></span><span style="display:flex;"><span>   RUN apt-get update -y <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>       apt-get install -y locales <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>       locale-gen ja_JP.UTF-8 <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>       each <span style="color:#e6db74">&#34;export LANG=ja_JP.UTF-8&#34;</span> &gt;&gt; ~/.bashrc
+</span></span><span style="display:flex;"><span> $ docker build ./ -t ubuntu2204:gcloud
+</span></span><span style="display:flex;"><span> 
+</span></span></code></pre></div><ol start="2">
+<li>Dockerイメージを確認する</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span> $ docker images
+</span></span><span style="display:flex;"><span>   このコマンドを実行すると
+</span></span><span style="display:flex;"><span>     ubuntu2204  gcloud ..略..
+</span></span><span style="display:flex;"><span>   という行があるはず
+</span></span></code></pre></div><ol start="3">
+<li>Dockerコンテナを展開する<br>
+※ コンテナ名を<strong>google-env</strong>にしている</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span> $ docker run -itd --privileged --name google-env ubuntu2204:gcloud
+</span></span><span style="display:flex;"><span> $ docker exec -it google-env /bin/bash
+</span></span><span style="display:flex;"><span>   このコマンドを実行して
+</span></span><span style="display:flex;"><span>     root@&lt;コンテナID&gt;:/#
+</span></span><span style="display:flex;"><span>   が表示されていれば、コンテナの展開に成功している
+</span></span></code></pre></div>
   <a href='https://murkouc.github.io/2025/05/gcloud%E3%82%92%E5%85%A5%E3%82%8C%E3%81%9F%E3%82%B3%E3%83%B3%E3%83%86%E3%83%8A%E3%82%92%E4%BD%9C%E3%82%8B/'>Read more →</a>
 </article> 
 
@@ -119,7 +178,16 @@
 
 </p>
   </header>
-  [基本環境] Google Cloud Platform (GCP) [やりたいこと] Vertex AI Searchを基礎にシンプルなQAシステムを作る [Cloud Storageの設定] 目的：QAシステムからの回答の情報源となるデータを準備する
+  <h6 id="基本環境">[基本環境]</h6>
+<ul>
+<li>Google Cloud Platform (GCP)</li>
+</ul>
+<h6 id="やりたいこと">[やりたいこと]</h6>
+<ul>
+<li>Vertex AI Searchを基礎にシンプルなQAシステムを作る</li>
+</ul>
+<h6 id="cloud-storageの設定">[Cloud Storageの設定]</h6>
+<p>目的：QAシステムからの回答の情報源となるデータを準備する</p>
   <a href='https://murkouc.github.io/2024/01/%E3%82%B7%E3%83%B3%E3%83%97%E3%83%AB%E3%81%AAqa%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E3%82%92%E4%BD%9C%E3%82%8B/'>Read more →</a>
 </article> 
 
