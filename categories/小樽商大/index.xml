@@ -6,8 +6,15 @@
     <description>Recent content in 小樽商大 on K.MIURA@OUC</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Fri, 16 May 2025 01:01:01 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 08 Mar 2026 13:20:02 +0901</lastBuildDate>
     <atom:link href="https://murkouc.github.io/categories/%E5%B0%8F%E6%A8%BD%E5%95%86%E5%A4%A7/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>情報処理I</title>
+      <link>https://murkouc.github.io/2026/03/%E6%83%85%E5%A0%B1%E5%87%A6%E7%90%86i/</link>
+      <pubDate>Sun, 08 Mar 2026 13:20:02 +0901</pubDate>
+      <guid>https://murkouc.github.io/2026/03/%E6%83%85%E5%A0%B1%E5%87%A6%E7%90%86i/</guid>
+      <description>[実施方法・教室] 対面形式 第1実習室 [時間] 火曜日 3講目(12:50&amp;ndash;14:20) [講義内容と資料] 資料の配布は終了しました。 </description>
+    </item>
     <item>
       <title>gcloudを入れたコンテナを作る</title>
       <link>https://murkouc.github.io/2025/05/gcloud%E3%82%92%E5%85%A5%E3%82%8C%E3%81%9F%E3%82%B3%E3%83%B3%E3%83%86%E3%83%8A%E3%82%92%E4%BD%9C%E3%82%8B/</link>
@@ -195,7 +202,7 @@
       <link>https://murkouc.github.io/2020/03/%E6%83%85%E5%A0%B1%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E6%A7%8B%E7%AF%89%E8%AB%96/</link>
       <pubDate>Sun, 29 Mar 2020 12:46:09 +0900</pubDate>
       <guid>https://murkouc.github.io/2020/03/%E6%83%85%E5%A0%B1%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E6%A7%8B%E7%AF%89%E8%AB%96/</guid>
-      <description>[実施方法・教室] 対面形式 114UR [時間] 木曜日 3講目(12:50&amp;ndash;14:20) [講義内容と資料] 毎週、木曜日の3講目までに資料を追加します。 本授業の概要 =必要な基礎知識と最終目標を知る= (PDF, 2.</description>
+      <description>[実施方法・教室] 対面形式 教室未定 [時間] 木曜日 3講目(12:50&amp;ndash;14:20) [講義内容と資料] 資料の配布は終了しました。 [小テストの問題] </description>
     </item>
     <item>
       <title>研究業績</title>
@@ -209,7 +216,7 @@
       <link>https://murkouc.github.io/2020/03/%E6%8B%85%E5%BD%93%E8%AC%9B%E7%BE%A9/</link>
       <pubDate>Sat, 28 Mar 2020 22:36:00 +0900</pubDate>
       <guid>https://murkouc.github.io/2020/03/%E6%8B%85%E5%BD%93%E8%AC%9B%E7%BE%A9/</guid>
-      <description>2025年度 学部講義 [前期開講] 基礎ゼミナール　(272AL, 月曜日3講目) 情報システム管理論　(105, 金曜日3講目) [後期開講] 情報システム構築論　(114UR, 木曜日3講目) [通年] ゼミナール 大学院講義 [前期開講] 情報システムII　(211A, 月曜日4講目) 2024年度：情報システム管理論, 情報システム構築論, 社会情報入門I</description>
+      <description>2025年度 学部講義 [前期開講] 情報システム管理論　(210, 月曜日5講目) 情報処理I　(第1実習室, 火曜日3講目) 社会情報入門I　(160CL, 金曜日4講目) [後期開講] 情報システム構築論　(教室未定, 木曜日3講目) 社会情報入門(夜間)　(オンデマンド配信) [通年] ゼミナール 大学院講義 [前期開講] 現代情報システム特論　(大学院講義室, 日時未定) [後期開講] 情報システムII　(大学院講義室, 火曜日3講目) 2025年度：情報システム管理論, 情報システム構築論, 基礎ゼミナール</description>
     </item>
   </channel>
 </rss>
