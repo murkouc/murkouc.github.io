@@ -25,7 +25,7 @@
   <meta name="twitter:title" content="nextcloudとNFSサーバを接続する">
   <meta name="twitter:description" content="[基本環境] Ubuntu 18.04 nextcloud 13.0.1 Oracleクラウド (NFSサーバ) [参考サイト] NextCloudでファイル共有【その1】サーバインストール手順 OCIでファイルストレージサービス(FSS)を実装してみた [NFSサーバのマウント] 前提としてNFSサーバが構築されていること
 (本記事の場合はOracleクラウドのマネージドサービスで構築した) sudo mkdir -p /mnt/filesystem filesystemは任意のディレクトリ名で良い sudo mount IPアドレス:/nfsdir /mnt/filesystem IPアドレスはNFSサーバのアドレス nfsdirはNFSサーバで公開されたディレクトリ名 [nextcloudからの接続] コンソール上で実行する cd /mnt/filesystem sudo mkdir nextdir nextdirは任意のディレクトリ名で良い sudo chmod -R 777 nextdir sudo chown -R user:group nextdir userとgroupは利用中の環境に合わせて変更する ブラウザ上で実行する 管理者でログインする 「&#43;アプリ」-&gt;「External storage support」-&gt;「有効にする」 「設定」-&gt;「外部ストレージ」 フォルダ名: 任意の名前 (nextcloud上で表示される) 外部ストレージ: ローカル 設定: /mnt/filesystem/nextdir">
-<meta name="generator" content="Hugo 0.157.0">
+<meta name="generator" content="Hugo 0.161.1">
 
 
     

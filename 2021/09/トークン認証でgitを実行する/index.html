@@ -22,7 +22,7 @@
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="トークン認証でgitを実行する">
   <meta name="twitter:description" content="[基本環境] Debian 10.3.0 [参考サイト] GitHubでパスワード認証廃止による認証エラーが出た件 GitHubのリポジトリアクセス時に「remote: Support for password authentication was removed on August 13, 2021.」エラー [注意] 8月末まで、次のコマンドをを実行した後に、パスワード認証で更新できた git push origin master しかし、この認証が廃止されたので、トークン認証に変更する必要がある この記事は、トークン認証に変更する方法をまとめている [トークンを生成する (GitHubのウェブサイト上で実行)] プロフィールのアイコンをクリックし、 Settings をクリックする 左端に並んでいる項目の中から Developer settings をクリックする 左端に並んでいる項目の中から Personal access tokens をクリックする Generate new token をクリックして、トークンを生成する Note は、トークンのラベルの感覚で、適当に記述する Expiration は、トークンの有効期限を設定する Select scopes は、アクセスを許す項目を選択する トークンをメモする [トークンを適用する (ターミナル上で実行)] git remote set-url origin https://ghp_xxxxxxxxxx@github.com/hoge/hoge.git ghp_xxxxxxxxxx をトークンとする https://github.com/hoge/hoge.git を元のリモートURLとする [データをアップロードする (ターミナル上で実行)] git add -A git commit -m “コメント” git push origin master">
-<meta name="generator" content="Hugo 0.157.0">
+<meta name="generator" content="Hugo 0.161.1">
 
 
     

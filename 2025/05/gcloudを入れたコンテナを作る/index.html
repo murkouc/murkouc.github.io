@@ -28,7 +28,7 @@
 ※ ubuntu 22.04を基礎とする
 ※ Dockerイメージ名をubuntu2204:gcloudにしている $ docker pull ubuntu:22.04 $ touch Dockerfile $ editor Dockerfile Dockerfileの中に、以下の内容を書いて保存する FROM ubuntu:22.04 RUN apt-get update -y &amp;&amp; \ apt-get install -y curl &amp;&amp; \ apt-get install -y apt-transport-https &amp;&amp; \ apt-get install -y ca-certificates &amp;&amp; \ apt-get install -y gnupg RUN echo &#34;deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main&#34; | tee -a /etc/apt/sources.list.d/google-cloud-sdk.list &amp;&amp; \ curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | gpg --dearmor -o /usr/share/keyrings/cloud.google.gpg &amp;&amp; \ apt-get update -y &amp;&amp; \ apt-get install google-cloud-cli -y RUN apt-get update -y &amp;&amp; \ apt-get install -y locales &amp;&amp; \ locale-gen ja_JP.UTF-8 &amp;&amp; \ each &#34;export LANG=ja_JP.UTF-8&#34; &gt;&gt; ~/.bashrc $ docker build ./ -t ubuntu2204:gcloud Dockerイメージを確認する $ docker images このコマンドを実行すると ubuntu2204 gcloud ..略.. という行があるはず Dockerコンテナを展開する
 ※ コンテナ名をgoogle-envにしている $ docker run -itd --privileged --name google-env ubuntu2204:gcloud $ docker exec -it google-env /bin/bash このコマンドを実行して root@&lt;コンテナID&gt;:/# が表示されていれば、コンテナの展開に成功している">
-<meta name="generator" content="Hugo 0.157.0">
+<meta name="generator" content="Hugo 0.161.1">
 
 
     

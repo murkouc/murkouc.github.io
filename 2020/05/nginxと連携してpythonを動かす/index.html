@@ -25,7 +25,7 @@ server{…}の中に、include fcgiwrap.conf; を追加する sudo service nginx
   <meta name="twitter:title" content="nginxと連携してPythonを動かす">
   <meta name="twitter:description" content="[基本環境] Ubuntu 18.04 nginx 1.14 [注意] PythonでCGIは…と思う人にはお勧めしません [nginxとfcgiwrapのインストール] sudo apt update sudo atp upgrade sudo apt install python3 nginx-full fcgiwrap vim sudo vi /etc/nginx/fcgiwrap.conf cd /var/www sudo mkdir cgi-bin sudo chmod 755 cgi-bin sudo vi /etc/nginx/sites-availabel/default
 server{…}の中に、include fcgiwrap.conf; を追加する sudo service nginx restart sudo service fcgiwrap restart cd cgi-bin sudo vi test.py sudo chmod 755 test.py [CGIの動作確認] http://IPアドレス/cgi-bin/test.py">
-<meta name="generator" content="Hugo 0.157.0">
+<meta name="generator" content="Hugo 0.161.1">
 
 
     

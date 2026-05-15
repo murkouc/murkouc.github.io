@@ -22,7 +22,7 @@
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="ストリーミングサーバを立てる">
   <meta name="twitter:description" content="[基本環境] Debian 10.3.0 (amd64) [参考サイト] ストリーミングサーバーを10分で作る [nginxとrtmpのインストール] sudo apt update sudo apt upgrade sudo add-apt-repository ppa:nginx/stable レポジトリ追加の際の確認事項に対しては、[Enter]を押す sudo apt install nginx libnginx-mod-rtmp [rtmpの有効化] cd /etc/nginx sudo vi nginx.conf hogelive(5行目)を自由に変更する sudo service nginx restart [受付用index.htmlの作成] cd /var/www/html sudo vi index.html hogeliveをnginx.confと同じものにする ipアドレスをストリーミングサーバのIPアドレスにする hogekeyを自由に変更する [配信システムの構築] mp4動画を配信するだけなら、以下の作業は必要ない /var/www/html以下にディレクトリを作成して、mp4動画を保存する sudo apt-get install ffmpeg sudo add-apt-repository ppa:obsproject/obs-studio sudo apt-get update sudo apt-get install obs-studio obs 配信先: rtmp://IPアドレス:1935/hogelive ストリームキー: hogekey [視聴者の操作] WEBブラウザで http://IPアドレス/ にアクセスする">
-<meta name="generator" content="Hugo 0.157.0">
+<meta name="generator" content="Hugo 0.161.1">
 
 
     

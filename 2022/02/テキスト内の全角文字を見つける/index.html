@@ -21,7 +21,7 @@
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="テキスト内の全角文字を見つける">
   <meta name="twitter:description" content="[基本環境] Python 2.7.16 [やりたいこと] TeXソースファイルの中に全角文字があるかどうかをチェックしたい [プログラムの使い方] 以下のソースコードをisHarfCheck.pyという名前で保存したと仮定する sample.texという名前のTeXソースファイルをチェックすると仮定する このとき、以下のコマンドで実行できる $ python isHarfCheck.py sample.tex [ソースコード] 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 import re,sys def isHarf(value): return re.match(r&#34;^[\x20-\x7E]&#43;$&#34;, value) is not None def isEnter(value): return re.match(&#34;^\n$&#34;, value) is not None def isHarfCheck(file): fid = open(file, &#34;r&#34;) list = fid.readlines() line = 1 flag = 0 for value in list: if isHarf(value)!=True: if isEnter(value)!=True: print(&#34;l.&#34;&#43;str(line)&#43;&#34;: &#34;&#43;value) flag = 1 line = line &#43; 1 fid.close() return flag args = sys.argv flag = isHarfCheck(args[1]) print(&#34;----------&#34;) print(&#34;msg&gt; Checked &#39;&#34;&#43;args[1]&#43;&#34;&#39;.&#34;) if flag!=0: print(&#34;msg&gt; Double-byte characters APPEAR in the text.&#34;) else: print(&#34;msg&gt; Double-byte characters do NOT appear in the text.&#34;)">
-<meta name="generator" content="Hugo 0.157.0">
+<meta name="generator" content="Hugo 0.161.1">
 
 
     

@@ -38,7 +38,7 @@
 ※ Flet環境名をflet-testにしている $ sudo apt install nano python3.11-venv pip git $ python3.11 -m venv env $ source env/bin/activate $ pip install flet $ flet create flet-test $ editor flet-test/src/main.py main.pyの一番下の行にある ft.app(main)を ft.app(target=main,view=None,port=8000)に変更して上書き保存する $ sudo apt install apache2 systemctl $ sudo editor /etc/apache2/conf-available/reverse_proxy.conf reverse_proxy.confの中に、以下の内容を書いて保存する &lt;IfModule mod_proxy.c&gt; ProxyRequests Off &lt;Proxy *&gt; Require all granted &lt;/Proxy&gt; ProxyPass /ws ws://localhost:8000/ws ProxyPassReverse /ws ws://localhost:8000/ws ProxyPass / http://localhost:8000/ ProxyPassReverse / http://localhost:8000/ &lt;/IfModule&gt; $ sudo a2enconf reverse_proxy $ sudo a2enmod proxy proxy_http $ sudo systemctl restart apache2 Flet環境を起動する
 ※ 3の続きなので、ここもコンテナ内での手続き $ python3.11 flet-test/src/main.py &amp; PCのウェブブラウザを開いて、 http://127.0.0.1/ または グローバルIPを持っているなら、127.0.0.1をグローバルIPにする に接続すると、Fletの実行結果を確認できるはず Flet環境を停止する
 ※ 4の続きなので、ここもコンテナ内での手続き $ ps -aux | grep python このコマンドを実行すると fuser &lt;数字&gt; ..略.. python3.11 flet-test/main.py という行があるはず &lt;数字&gt;は、その都度、確認すること! $ kill -9 &lt;数字&gt; [Fletプログラミング] main.pyを編集すると、実行結果が変わります プログラム例は、別の記事でまとめたいと思います">
-<meta name="generator" content="Hugo 0.157.0">
+<meta name="generator" content="Hugo 0.161.1">
 
 
     
